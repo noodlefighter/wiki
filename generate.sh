@@ -26,3 +26,6 @@ echo "=============================="
 rm -vrf $TARGET_FOLDER/*
 cp -vr $BUILD_FOLDER/* $TARGET_FOLDER
 
+# call hexo
+cd $SHELL_FOLDER/hexo
+hexo g

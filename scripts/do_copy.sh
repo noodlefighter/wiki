@@ -48,8 +48,8 @@ if [[ -d "${IMG_DIR_SOURCE}" ]]; then
 	cp -r $IMG_DIR_SOURCE $IMG_DIR_TARGET
 	
 	# \!\[(\S*)\]\(test\/(\S*)\)
-	# {% assert_img $2 $1 %}\n
-	sed -i "s?\\!\\[\(\\S*\)\\](${FILENAME}/\(\S*\))?{% assert_img \2 \1 %}?g" $TARGET_FILE
+	# {% asset_img $2 $1 %}\n
+	sed -i "s?\\!\\[\(\\S*\)\\](${FILENAME}/\(\S*\))?{% asset_img \2 \1 %}?g" $TARGET_FILE
 	
 #else
 	#echo "img dir no exsit"
