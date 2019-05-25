@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Noodlefighter's Wiki
 subtitle:
 description:
 keywords:
-author: John Doe
+author: Noodlefighter
 language:
 timezone:
 
@@ -15,7 +15,7 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: wiki/:title/
 permalink_defaults:
 
 # Directory
@@ -70,8 +70,39 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
-# Extensions
+## Markdown
+## https://github.com/hexojs/hexo-renderer-marked
+marked:
+  gfm: true
+  
 ## Plugins: https://hexo.io/plugins/
+### JsonContent
+jsonContent:
+  meta: false
+  pages:
+    title: true
+    date: true
+    path: true
+    text: true
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    tags: true
+    categories: true
+  ignore:
+    - 404.html
+    
+### Creat sitemap
+sitemap:
+  path: sitemap.xml
+
+### Adds nofollow attribute to all external links in your hexo blog posts automatically.
+nofollow:
+  enable: true
+  exclude:
+    - noodlefighter.com # eg: zthxxx.me
 ## Themes: https://hexo.io/themes/
 theme: Wikitten
 
