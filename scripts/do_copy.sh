@@ -32,9 +32,13 @@ done
 TARGET_FILE=$TARGET_DIR/${STR_FILEPREFIX}${CGLIST[`expr $CGLIST_COUNT - 1`]}
 #echo TARGET_FILE=$TARGET_FILE
 
+# get lastest edited date form commit
+STR_DATE=`git log --pretty=format:%ci ${SOURCE_FILE}|awk 'NR==1 {print $1}'`
+
 # write file
 echo "generating... ${FILENAME}"
-echo "title: $FILENAME
+echo "title: ${FILENAME}
+date: ${STR_DATE}
 categories:
 $STR_CGLIST
 " > "$TARGET_FILE"

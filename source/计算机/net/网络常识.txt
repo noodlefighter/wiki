@@ -1,0 +1,10 @@
+
+---
+
+## 两台陌生的主机是如何保证数据正确交付的
+
+https://mp.weixin.qq.com/s/3zBIkRq0iwd2B5AcJE1E1g
+
+- 单帧确认
+- 退回N步（GBN）
+- 选择重传（SR）

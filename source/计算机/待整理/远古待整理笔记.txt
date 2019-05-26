@@ -1,0 +1,99 @@
+Behaviour Tree（行为树）
+一个流行的AI技术，涵盖了层次状态机，事件调度，事件计划，行为等一系列技术
+1.高度模块化状态，去掉状态中的跳转逻辑，使得状态变成一个“行为”。
+
+2."行为"和"行为"之间的跳转是通过父节点（Composite）的类型来决定的（例如sequence或者selector) 。比如并行处理两个行为，在状态机里面无法同时处理两个状态。
+
+3.通过增加控制节点的类型，可以达到复用行为的目的。
+
+4. 可视化编辑
+http://blog.csdn.net/cloud_zero/article/details/38043127
+http://www.aisharing.com/archives/439
+
+写便签
+http://blog.csdn.net/shmily0923/article/details/47291909
+
+系统调用、POSIX、C库、系统命令和内核函数
+https://www.douban.com/note/248637026/
+
+HDLC
+http://baike.baidu.com/link?url=XGzIatlVZIJiG6hl14oMStJRcTXyQhkiASlOMh5B2bJE1oFrszvsgHrmREQd3j4MXqWm0Dxzgiw5HfDaBKutFa
+
+回过头来看看堆栈
+http://blog.chinaunix.net/uid-26583794-id-3240534.html
+
+
+c设计模式
+http://blog.csdn.net/feixiaoxing/article/details/7068053
+
+Linux C编程一站式学习
+http://docs.linuxtone.org/ebooks/C&CPP/c/
+
+状态机
+为什么开发者从来不用状态机
+http://www.skorks.com/2011/09/why-developers-never-use-state-machines/
+
+Why developers should be force-fed state machines
+https://engineering.shopify.com/17488160-why-developers-should-be-force-fed-state-machines
+
+boost的MSM库手册
+http://lars.mec.ua.pt/public/LAR%20Projects/Perception/2013_PedroSilva/Disserta%C3%A7%C3%A3o/Code%20bank/boost_1_53_pdf/msm.pdf
+
+
+Qxx定点小数计算
+http://wenku.baidu.com/link?url=OaLO6wQo1fMeQMzROQZzgE-EFHoVMQYbji1IE7Uko24gsXCZKFuwa21zfNLgP4di8_sLKhJyy3JRWIBupEZ_0KbX3NKzQei-qZy4Jin3VKe
+
+C语言 单元测试（比之前的unity要强的的check
+https://libcheck.github.io/check/web/install.html
+https://github.com/libcheck/check
+
+C语言 静态分析工具
+http://blog.sina.com.cn/s/blog_76bf40cd0102vtmz.html
+
+中国人口迁移分析
+http://finance.qq.com/a/20160918/008889.htm
+
+当构析函数遇到多线程_CPP中线程安全的对象回调
+http://files.cppblog.com/Solstice/dtor_meets_mt.pdf
+
+c内存越界检查
+http://blog.csdn.net/whchina/article/details/51448129
+
+fiber纤程（协程）
+http://blog.csdn.net/blade2001/article/details/10628243
+http://blog.codingnow.com/2012/07/c_coroutine.html
+
+自己实现协程（linux下用ucontext.h）
+http://blog.csdn.net/Shreck66/article/details/50477979
+http://blog.csdn.net/kobejayandy/article/details/41779837
+
+协程库
+libtask
+
+c语言常见问题——可移植性、标准
+http://wenku.baidu.com/link?url=5TxBDz4YHgD5_gQ2xyr_eRbQihrFBVPZmw73ih32NsxNUC5kAzf082zsugmQTThQVAhbiyesMXqZg_-ubcngZGIX-DxeMBOCmOXQO3ZKP__
+
+操作系统相关知识
+http://lib.csdn.net/base/42?source=blogtop
+
+内存管理MMU
+http://blog.csdn.net/hzrandd/article/details/51028681
+
+## DMA burst
+SDRAM突发(burst length)的概念
+http://wenku.baidu.com/link?url=uBZOtioey0NvG-o5F8kXbYNbtnb-XxTbx11JgVDHqzxJuIGAIWArU6ZwFwmf_uB3aNv5km0AEpinV7EabX7WKEEsWS8UI0lgGEeSytPmNGu
+
+dma几个概念
+http://blog.csdn.net/lanmanck/article/details/5069618
+
+看起来很dio的讨论（fpga和cpu相连的情况 在应用层如何使用burst模式的讨论）
+http://bbs.csdn.net/topics/380105941
+
+【译（日）】读完了《C现代编程》！全面的现代C语言嵌入式开发技术！
+http://www.ituring.com.cn/article/213953
+
+买本这个
+https://leanpub.com/patternsinc
+
+编写调试脚本
+http://codego.net/281383/

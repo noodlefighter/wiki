@@ -48,7 +48,7 @@ widgets: # default use category only
 ## Enable will truncate auto_excerpt.lines rows in post head to replace excerpt.
 auto_excerpt:
     enable: true
-    lines: 5
+    lines: 3
 
 # Search
 search:
