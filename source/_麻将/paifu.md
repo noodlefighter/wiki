@@ -1,13 +1,7 @@
-title: 牌谱记录本
-description: 
-date: 2018-9-9
-updated: 2018-9-9
-layout: post
-comments: ture
-categories:
-- 笔记
-tags: 
-- 麻将
+
+
+
+
 ---
 
 记录在意的牌谱
