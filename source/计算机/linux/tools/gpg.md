@@ -29,7 +29,7 @@ gpg --armor --output private-key.txt --export-secret-keys
 
 **一、什么是GPG**
 
-![img](gpg/bg2013071202.png)
+![img](_assets/gpg/bg2013071202.png)
 
 
 要了解什么是GPG，就要先了解[PGP](http://en.wikipedia.org/wiki/Pretty_Good_Privacy)。
@@ -40,7 +40,7 @@ GPG有许多用途，本文主要介绍文件加密。至于邮件的加密，�
 
 本文的使用环境为Linux命令行。如果掌握了命令行，[Windows](http://gpg4win.org/) 或 [Mac OS](https://gpgtools.org/) 客户端，就非常容易掌握。GPG并不难学，学会了它，从此就能轻松传递加密信息。建议读者一步步跟着教程做，对每条命令都自行测试。
 
-![img](gpg/bg2013071203.png)
+![img](_assets/gpg/bg2013071203.png)
 
 **二、安装**
 

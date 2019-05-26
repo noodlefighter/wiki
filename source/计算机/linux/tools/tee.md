@@ -46,7 +46,7 @@ tee [OPTION]... [FILE]...
 ping google.com
 ```
 
-![如何在 Linux 上使用 tee 命令](tee/112504ouk3wkdnnt5bww3d.png)
+![如何在 Linux 上使用 tee 命令](_assets/tee/112504ouk3wkdnnt5bww3d.png)
 
 *如何在 Linux 上使用 tee 命令*
 
@@ -58,7 +58,7 @@ ping google.com | tee output.txt
 
 下面的截图展示了这个输出内容不仅被写入 `output.txt` 文件，也被显示在标准输出中。
 
-![tee command 输出](tee/112504j5kwkwn4k5wldzzj.png)
+![tee command 输出](_assets/tee/112504j5kwkwn4k5wldzzj.png)
 
 *tee command 输出*
 
@@ -88,7 +88,7 @@ ping google.com | tee output.txt
 ping google.com | tee output1.txt output2.txt output3.txt
 ```
 
-![如何让 tee 写入多个文件](tee/112504migehhaaezheiaus.png)
+![如何让 tee 写入多个文件](_assets/tee/112504migehhaaezheiaus.png)
 
 *如何让 tee 写入多个文件*
 
@@ -100,7 +100,7 @@ ping google.com | tee output1.txt output2.txt output3.txt
 ls file* | tee output.txt | wc -l
 ```
 
-![如何让 tee 命令的输出内容直接作为另一个命令的输入内容](tee/112505ga9yz979wkze4n4l.png)
+![如何让 tee 命令的输出内容直接作为另一个命令的输入内容](_assets/tee/112505ga9yz979wkze4n4l.png)
 
 *如何让 tee 命令的输出内容直接作为另一个命令的输入内容*
 
@@ -108,7 +108,7 @@ ls file* | tee output.txt | wc -l
 
 假如你使用 [Vim 编辑器](https://www.howtoforge.com/vim-basics) 打开文件，并且做了很多更改，然后当你尝试保存修改时，你得到一个报错，让你意识到那是一个 root 所拥有的文件，这意味着你需要使用 `sudo` 权限保存修改。
 
-![如何使用 tee 命令提升文件写入权限](tee/112505oq4qddmqgdqcrc1j.png)
+![如何使用 tee 命令提升文件写入权限](_assets/tee/112505oq4qddmqgdqcrc1j.png)
 
 *如何使用 tee 命令提升文件写入权限*
 

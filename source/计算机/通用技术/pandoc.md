@@ -1,3 +1,5 @@
+
+
 ---
 
 https://linux.cn/article-10228-1.html
@@ -82,7 +84,7 @@ pandoc math.tex -s --mathml  -o mathMathML.html
 
 参数 `-s` 告诉 Pandoc 生成一个独立的网页（而不是网页片段，因此它将包括 HTML 中的 head 和 body 标签），`-mathml` 参数强制 Pandoc 将 LaTeX 中的数学公式转换成 MathML，从而可以由现代浏览器进行渲染。
 
-![img](pandoc/115210az5oevcc7nnj7rmr.png)
+![img](_assets/pandoc/115210az5oevcc7nnj7rmr.png)
 
 看一下 [网页效果](http://pandoc.org/demo/mathMathML.html) 和 [代码](https://github.com/kikofernandez/pandoc-examples/tree/master/math)，代码仓库中的 Makefile 使得运行更加简单。
 
@@ -140,7 +142,7 @@ pandoc -t revealjs -s --self-contained SLIDES \
 -V theme=white -V slideNumber=true -o index.html
 ```
 
-![img](pandoc/115212vcexdsaxsk0fe4ze.png)
+![img](_assets/pandoc/115212vcexdsaxsk0fe4ze.png)
 
 上面的 Pandoc 命令使用了以下参数：
 
@@ -186,7 +188,7 @@ clean: index.html
 
 创建的文档如下所示：
 
-![img](pandoc/115214jcfyw02rowc0iocw.png)
+![img](_assets/pandoc/115214jcfyw02rowc0iocw.png)
 
 创建此文档的代码如下：
 
@@ -449,7 +451,7 @@ the achievement- driven learning methodology [30]
 
 这篇论文将会产生像下面这样被标号的参考书目：
 
-![img](pandoc/130413nn55ey4n556z565j.png)
+![img](_assets/pandoc/130413nn55ey4n556z565j.png)
 
 引用文章的集合也很容易：只要引用使用分号 `;` 分隔开被标记的参考文献就可以了。如果一个引用有两个标签 —— 例如： `SEABORN201514` 和 `gamification-leaderboard-benefits`—— 像下面这样把它们放在一起引用：
 
@@ -636,16 +638,21 @@ Pandoc 使用下面的标记：
 @bibtex main &> /dev/null
 @pdflatex main.tex &> /dev/null
 @pdflatex main.tex &> /dev/null
+
 ```
 
 脚本用 `@` 忽略输出，并且重定向标准输出和错误到 `/dev/null` ，因此我们在使用这些命令的可执行文件时不会看到任何的输出。
 
 最终的结果展示如下。这篇文章的库可以在 [GitHub](https://github.com/kikofernandez/pandoc-examples/tree/master/research-paper) 找到：
 
-![img](pandoc/130414iw01zqqb10hmzzqi.png)
+![img](_assets/pandoc/130414iw01zqqb10hmzzqi.png)
 
 ### 结论
 
 在我看来，研究的重点是协作、思想的传播，以及在任何一个恰好存在的领域中改进现有的技术。许多计算机科学家和工程师使用 LaTeX 文档系统来写论文，它对数学提供了完美的支持。来自社会科学的研究人员似乎更喜欢 DOCX 文档。
 
 当身处不同社区的研究人员一同写一篇论文时，他们首先应该讨论一下他们将要使用哪种格式。然而如果包含太多的数学符号，DOCX 对于工程师来说不会是最简便的选择，LaTeX 对于缺乏编程经验的研究人员来说也有一些问题。就像这篇文章中展示的，Markdown 是一门工程师和社会科学家都很轻易能够使用的语言。
+
+```
+
+```
