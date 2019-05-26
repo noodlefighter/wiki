@@ -23,6 +23,7 @@ find -name "*.md" -print0|xargs -0 -i $SHELL_FOLDER/scripts/do_copy.sh {} $BUILD
 echo "=============================="
 echo " copy to _post"
 echo "=============================="
+mkdir -p $TARGET_FOLDER
 rm -vrf $TARGET_FOLDER/*
 cp -vr $BUILD_FOLDER/* $TARGET_FOLDER
 

@@ -7,6 +7,7 @@ https://linux.cn/article-10179-1.html
 
 
 
+
 ## 在命令行使用 Pandoc 进行文件转换
 
 > 作者： [Kiko Fernandez-reyes](https://opensource.com/article/18/9/intro-pandoc) 
@@ -363,7 +364,7 @@ pandoc -s -V css=style-html.css document.md document.html
 
 #### 添加并引用章节
 
-要想章节被自动编号，必须使用 Markdown H1 标题编写。子章节使用 H2-H4 子标题编写（通常不需要更多级别了）。例如一个章节的标题是 “Implementation”，写作 `# Implementation {#sec: implementation}`，然后 Pandoc 会把它转化为 `3. Implementation`（或者转换为相应的章节编号）。`Implementation` 这个标题使用了 H1 并且声明了一个 `{#sec: implementation}` 的标签，这是作者用于引用该章节的标签。要想引用一个章节，输入 `@` 符号并跟上对应章节标签，使用方括号括起来即可： `[@ sec:implementation]`
+{% raw %}要想章节被自动编号，必须使用 Markdown H1 标题编写。子章节使用 H2-H4 子标题编写（通常不需要更多级别了）。例如一个章节的标题是 “Implementation”，写作 `# Implementation {#sec: implementation}`，然后 Pandoc 会把它转化为 `3. Implementation`（或者转换为相应的章节编号）。`Implementation` 这个标题使用了 H1 并且声明了一个 `{#sec: implementation}` 的标签，这是作者用于引用该章节的标签。要想引用一个章节，输入 `@` 符号并跟上对应章节标签，使用方括号括起来即可： `[@ sec:implementation]`{% endraw %}
 
 [在这篇论文中](https://dl.acm.org/citation.cfm?id=3270118), 我们发现了下面这个例子：
 
@@ -387,7 +388,7 @@ we lack experience (consistency between TAs, Section 4).
 ![Scatterplot matrix](data/scatterplots/RScatterplotMatrix2.png){#fig:scatter-matrix}
 ```
 
-上面这一行是告诉 Pandoc，有一个标有 Scatterplot matrix 的图像以及这张图片路径是 `data/scatterplots/RScatterplotMatrix2.png`。`{#fig:scatter-matrix}` 表明了用于引用该图像的名字。
+{% raw %}上面这一行是告诉 Pandoc，有一个标有 Scatterplot matrix 的图像以及这张图片路径是 `data/scatterplots/RScatterplotMatrix2.png`。`{#fig:scatter-matrix}` 表明了用于引用该图像的名字。{% endraw %}
 
 这里是从一篇论文中进行图像引用的例子：
 
