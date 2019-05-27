@@ -1,3 +1,7 @@
+
+
+---
+
 https://draapho.github.io/2017/04/19/1713-ble/
 
 https://www.bluetooth.com/specifications/gatt/descriptors
