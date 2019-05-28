@@ -14,13 +14,47 @@ git checkout -f -B branchabc remotes/origin/branchabc --
 git config --global user.signingkey 0A46826A
 ```
 
-### 无法显示中文问题
+
+
+## ff合并和合并细节
+
+注意到有时执行`git merge`不会产生合并记录, 这是触发了git的fast-forward功能.
+
+另外, 合并到master似乎默认使用`--no-ff`方式, 必然产生合并记录.
+
+> 作者：Chuckiefan
+>
+> 链接：https://www.jianshu.com/p/58a166f24c81
+
+### fast-forward合并
+
+通常情况下分支合并都会产生一个合并节点，但是在某些特殊情况下例外。例如调用git pull命令更新远端代码时，如果本地的分支没有任何的提交，那么没有必要产生一个合并节点。这种情况下将不会产生一个合并节点，HEAD直接指向更新后的顶端代码，这种合并的策略就是fast-forward合并。
+
+### 合并细节
+
+除了上文所提到的fast-forward合并模式以外，被合并的分支将会通过一个合并节点和当前分支绑在一起，该合并节点同时拥有合并前的当前分支顶部节点和对方分支顶部节点，共同作为父节点。
+ 一个合并了的版本将会使所有相关分支的变化一致，包括提交节点，HEAD节点和index指针以及节点树都会被更新。只要这些节点中的文件没有重叠的地方，那么这些文件的变化都会在节点树中改动并更新保存。
+ 如果无法明显地合并这些变化，将会发生以下的情况：
+
+1. HEAD指针所指向的节点保持不变
+2.  `MERGE_HEAD`指针被置于其他分支的顶部
+3. 已经合并干净的路径在index文件和节点树中同时更新
+4. 对于冲突路径，index文件记录了三个版本：版本1记录了二者共同的祖先节点，版本2记录了当前分支的顶部，即HEAD，版本3记录了`MERGE_HEAD`。节点树中的文件包含了合并程序运行后的结果。例如三路合并算法会产生冲突。
+5. 其他方面没有任何变化。特别地，你之前进行的本地修改将继续保持原样。
+    如果你尝试了一个导致非常复杂冲突的合并，并想重新开始，那么可以使用`git merge --abort` 
+
+> 关于三路合并算法：
+>  三路合并算法是用于解决冲突的一种方式，当产生冲突时，三路合并算法会获取三个节点：本地冲突的B节点，对方分支的C节点，B，C节点的共同最近祖先节点A。三路合并算法会根据这三个节点进行合并。具体过程是，B，C节点和A节点进行比较，如果B，C节点的某个文件和A节点中的相同，那么不产生冲突；如果B或C只有一个和A节点相比发生变化，那么该文件将会采用该变化了的版本；如果B和C和A相比都发生了变化，且变化不相同，那么则需要手动去合并;如果B，C都发生了变化，且变化相同，那么并不产生冲突，会自动采用该变化的版本。最终合并后会产生D节点，D节点有两个父节点，分别为B和C。
+
+
+
+## 无法显示中文问题
 
 ```
 git config --global core.quotepath false
 ```
 
-### tig
+## tig
 
 tig是git的文字GUI，中文需要安装依赖。
 
@@ -35,7 +69,7 @@ make
 sudo make install install-release-doc
 ```
 
-### icdiff
+## icdiff
 
 改善git diff体验, 双栏
 https://github.com/jeffkaufman/icdiff
@@ -46,7 +80,7 @@ git difftool --extcmd icdiff
 
 ```
 
-### git flow
+## git flow
 
 https://danielkummer.github.io/git-flow-cheatsheet/
 gitflow插件及bash自动完成脚本
@@ -57,7 +91,7 @@ yay -S gitflow-avh gitflow-bashcompletion-avh
 "next release"分支即开发分支
 
 
-### crlf设置
+## crlf设置
 
 ```
 AutoCRLF
