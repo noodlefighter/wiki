@@ -14,7 +14,44 @@ git checkout -f -B branchabc remotes/origin/branchabc --
 git config --global user.signingkey 0A46826A
 ```
 
+## 基本操作
 
+
+
+```
+# 检出dev分支
+git checkout dev
+
+# 检出某个文件, 还原工作区
+git checkout xxx.c
+
+# 把dev合并到当前分支
+git merge dev
+
+# 变基到dev分支
+git rebase dev
+```
+
+
+
+## 恢复
+
+### reset
+
+使分支指针定向到指定commit记录上, 那之后的提交会丢失.
+
+```
+git reset bf7e5b --hard
+```
+
+* --soft 仅重置指针
+
+* --mix, 重置指针和index
+* --hard, 重置指针/index/工作区
+
+### revert
+
+回滚, 用新提交覆盖.
 
 ## ff合并和合并细节
 
