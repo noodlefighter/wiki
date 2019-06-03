@@ -1,4 +1,3 @@
-
 ---
 
 清华镜象服务
@@ -14,9 +13,6 @@ https://www.raspberrypi.org/documentation/configuration/device-tree.md#part4.6
 busybox
 https://www.ibm.com/developerworks/cn/linux/l-busybox/
 
-gdbServer + gdb 调试
-https://www.cnblogs.com/Dennis-mi/articles/5018745.html
-
 DBus
 https://www.cnblogs.com/wuyida/p/6299998.html
 https://www.freedesktop.org/wiki/Software/dbus/
@@ -24,7 +20,7 @@ https://www.freedesktop.org/wiki/Software/dbus/
 和菜鸟一起学linux子系统
 https://blog.csdn.net/eastmoon502136/column/info/linux-child-system
 
---- 
+---
 
 和菜鸟一起学linux系列文章
 https://blog.csdn.net/eastmoon502136/article/list/6?t=1&orderby=UpdateTime

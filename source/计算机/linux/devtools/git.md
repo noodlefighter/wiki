@@ -84,11 +84,29 @@ git difftool --extcmd icdiff
 
 https://danielkummer.github.io/git-flow-cheatsheet/
 gitflow插件及bash自动完成脚本
+
 ```
 yay -S gitflow-avh gitflow-bashcompletion-avh
 ```
 
 "next release"分支即开发分支
+
+### 使用
+
+```
+# 建立特性分支
+git flow feature start xxx [base]
+
+# 完成特性
+
+#     常用可选项: --rebase合并前变基  --squash合并提交
+git flow finish
+
+```
+
+
+
+
 
 
 ## crlf设置
