@@ -24,11 +24,15 @@ stopasgroup=true
 killasgroup=true
 ```
 
+注意这里的command，不是命令行，要执行bash命令可以`bash -c "xxxx"`。
 
-
-命令
+环境变量的问题，类似这样解决，详细可以参考`man supervisor`：
 
 ```
-superviosrctl 交互式
-supervisord 守护程序
+environment=PYTHONPATH=/opt/mypypath:%(ENV_PYTHONPATH)s,PATH=/opt/mypath:%(ENV_PATH)s
 ```
+
+## 交互式操作界面
+
+`superviosrctl`命令进入交互式界面，常用命令：`reload`、`status`
+
