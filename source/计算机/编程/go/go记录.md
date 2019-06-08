@@ -112,3 +112,16 @@ func main() {
 }
 ```
 
+直接输出到stdout上：
+
+```
+func Shellout(command string) (error) {
+    //var stdout bytes.Buffer
+    cmd := exec.Command(ShellToUse, "-c", command)
+    cmd.Stdout = os.Stdout
+    cmd.Stderr = os.Stdout
+    err := cmd.Run()
+    return err
+}
+```
+
