@@ -53,6 +53,10 @@ git reset bf7e5b --hard
 
 回滚, 用新提交覆盖.
 
+场景1：release分支中有一份导致bug的feature提交，需要在hotfix分支中回滚
+
+场景2：开发时，本地缺少部分很难处理的依赖，但开发的功能用不到这部分依赖，可以做一个解除依赖的commit（删删删），待开发完功能，再回滚，把特性分支rebase合并提交。
+
 ## ff合并和合并细节
 
 注意到有时执行`git merge`不会产生合并记录, 这是触发了git的fast-forward功能.
