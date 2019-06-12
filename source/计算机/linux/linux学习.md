@@ -1,3 +1,4 @@
+
 ---
 
 清华镜象服务
@@ -19,6 +20,9 @@ https://www.freedesktop.org/wiki/Software/dbus/
 
 和菜鸟一起学linux子系统
 https://blog.csdn.net/eastmoon502136/column/info/linux-child-system
+
+linux驱动之旅, 把各种驱动都实现了一遍, 适合copy代码
+https://embetronicx.com/tutorials/linux/device-drivers/linux-device-driver-tutorial-part-2-first-device-driver/
 
 ---
 

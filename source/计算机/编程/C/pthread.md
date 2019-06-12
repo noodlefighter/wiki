@@ -1,9 +1,7 @@
-
 ---
 > TODO: 
 
 https://randu.org/tutorials/threads/
-
 
 ---
 > TODO: 
@@ -33,3 +31,21 @@ pthread_create(&thread, NULL, thr_func, NULL);
 
 
 因为rwlock的实现需要做更多的逻辑, 效率比简单的mutex差, 仅在满足上述条件的少数情况有使用的必要.
+
+
+
+## 错误
+
+### 错误1
+
+```
+Assertion `mutex->__data.__owner == 0' failed
+```
+
+> <https://blog.csdn.net/luckyapple1028/article/details/51588946>
+
+### 错误2
+
+```
+__pthread_mutex_lock_full: Assertion `INTERNAL_SYSCALL_ERRNO (e, __err) != ESRCH || !robust' failed
+```

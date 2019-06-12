@@ -15,6 +15,15 @@ ctrl+z挂起
 ctrl+u   ctrl+k   光标处往前删除/光标处往后删除
 ```
 
+## 命令小技巧
+
+```
+# 返回上一个目录
+cd -
+```
+
+
+
 ### pushd,popd命令
 
 pushd：当前目录入目录栈，并进入到指定的目录
@@ -70,6 +79,14 @@ ls -al --color=always | less -R
 ```
 
 文中提到了用expect工具包中的unbuffer能解决，但实际使用发现无效。
+
+为了方便使用, 在.bashrc里加入:
+
+```
+alias ll="ls -lh --color=always|less -R"
+```
+
+
 
 ## set命令
 
@@ -152,3 +169,4 @@ ls -al --color=always | less -R
 http://mridgers.github.io/clink/
 
 好像不怎么用得到。。毕竟win下也能用bash
+
