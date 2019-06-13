@@ -139,15 +139,16 @@ yay -S gitflow-avh gitflow-bashcompletion-avh
 git flow feature start xxx [base]
 
 # 完成特性
-
-#     常用可选项: --rebase合并前变基  --squash合并提交
+# 常用可选项: --rebase合并前变基  --squash合并提交
 git flow finish
 
 ```
 
+--rebase效果就只是git rebase:
 
+![1560408267269](_assets/git/1560408267269.png)
 
-
+--squash会把若干commit合并成一个来提交, 并在commit content里生成列表(但留不留这些信息是用户决定的).
 
 
 ## crlf设置
