@@ -1,3 +1,10 @@
+---
+
+SUSE LINUX的手册, 需要了解的的基础概念/作为使用者的操作思路都在里面了:
+
+<https://www.pks.mpg.de/~mueller/docs/suse10.1/suselinux-manual_en/manual/>
+
+
 
 ---
 

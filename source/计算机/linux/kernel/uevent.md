@@ -30,5 +30,9 @@ case "$1" in
 ...
 ```
 
-uevent编写参考: <https://www.cnblogs.com/fastwave2004/articles/4320725.html>
+uevent编写参考:
+
+ <https://www.cnblogs.com/fastwave2004/articles/4320725.html>
+
+<https://blog.csdn.net/W1107101310/article/details/80211885>
 

@@ -4,4 +4,10 @@ Netlink套接字是用以实现**用户进程与内核进程**通信的一种特
 
 
 
-netlink编写参考:<https://blog.csdn.net/wangfeitaozhijia/article/details/44961651>
+netlink编写参考:
+
+<https://blog.csdn.net/wangfeitaozhijia/article/details/44961651>
+
+https://blog.csdn.net/xiao5678yun/article/details/76922152
+
+<https://www.cnblogs.com/wenqiang/p/6306727.html>
