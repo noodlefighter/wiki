@@ -4,11 +4,13 @@
 
 
 
-busybox上的mdev就是用uevent方式实现的hotplug, 而udev上用的是Netlink方式.
+## 从hotplug说起
+
+busybox上的mdev是用sysfs写入需要触发时执行的程序的方式实现的hotplug.
+
+这是mdev的启动脚本`/etc/init.d/S10mdev `, 开机时给hotplug内核模块传入自身路径.
 
 ```bash
-# cat /etc/init.d/S10mdev 
-
 #!/bin/sh
 #
 # Start mdev....
@@ -29,6 +31,12 @@ case "$1" in
         ;;
 ...
 ```
+
+而udev上实现hotplug用的是uevent方式.
+
+
+
+> TODO:
 
 uevent编写参考:
 
