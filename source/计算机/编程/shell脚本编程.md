@@ -151,6 +151,36 @@ for item in ${my_array[@]};do
 done
 ```
 
+## 字符串操作
+
+获取字符串长度
+
+```
+${#var}
+```
+
+字符串截取
+
+```
+# 最小限度从前面截取word(例a/b/c-->b/foo)
+${var#*word}
+# 最大限度从前面截取word(例a/b/c-->c)
+${var##*word}
+
+# 最小限度从后面截取word(例a/b/c-->a/b)
+${var%word*}
+# 最大限度从后面截取word(例a/b/c-->a)
+${var%%word*}
+
+# 从左边第start个字符，截取len个字符
+${var:start:len}
+${var:start}
+
+# 从右边第start个字符，截取len个字符
+${var:0-start:len}
+${var:0-start}
+```
+
 ## 格式控制
 
 > via:<https://www.cnblogs.com/yaohong/archive/2018/05/31/9118928.html>
