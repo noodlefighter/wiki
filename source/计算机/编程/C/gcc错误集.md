@@ -1,21 +1,23 @@
-
 ---
 
-```
 
+
+## undefined behavior [-Waggressive-loop-optimizations]
+
+```
 #define RGBLED_ROW  4
 #define RGBLED_COL  4
 static uint8_t _g_rgb_data[RGBLED_ROW][RGBLED_COL][3];
 ```
 ```
-        channel = 0;
-        for (i = 0; i < RGBLED_ROW; i++) {
-            for (j = 0; j < RGBLED_COL; j++) {
-                data[channel++] = (uint16_t) (_g_rgb_data[i][j][0] << 2);
-                data[channel++] = (uint16_t) (_g_rgb_data[i][j][1] << 2);
-                data[channel++] = (uint16_t) (_g_rgb_data[i][j][2] << 2);
-            }
-        }
+channel = 0;
+for (i = 0; i < RGBLED_ROW; i++) {
+    for (j = 0; j < RGBLED_COL; j++) {
+        data[channel++] = (uint16_t) (_g_rgb_data[i][j][0] << 2);
+        data[channel++] = (uint16_t) (_g_rgb_data[i][j][1] << 2);
+        data[channel++] = (uint16_t) (_g_rgb_data[i][j][2] << 2);
+    }
+}
 ```
 
 ```

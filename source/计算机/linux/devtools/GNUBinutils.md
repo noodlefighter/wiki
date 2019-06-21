@@ -27,6 +27,26 @@ nlmconv - Converts object code into an NLM.
 windmc - A Windows compatible message compiler.
 windres - A compiler for Windows resource files.
 
+## linux查看依赖的动态库
+
+如果查不到就说明程序可能是静态编译的.
+
+首推readelf:
+
+```
+[r@r-pc imgtrans]$ readelf ./img_trans  -a|grep NEEDED
+ 0x0000000000000001 (NEEDED)             共享库：[libpthread.so.0]
+ 0x0000000000000001 (NEEDED)             共享库：[libdl.so.2]
+ 0x0000000000000001 (NEEDED)             共享库：[libjson-c.so.4]
+ 0x0000000000000001 (NEEDED)             共享库：[libusb-0.1.so.4]
+ 0x0000000000000001 (NEEDED)             共享库：[libusb-1.0.so.0]
+ 0x0000000000000001 (NEEDED)             共享库：[libstdc++.so.6]
+ 0x0000000000000001 (NEEDED)             共享库：[libm.so.6]
+ 0x0000000000000001 (NEEDED)             共享库：[libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             共享库：[libc.so.6]
+
+```
+
 ldd命令可以查看程序依赖的动态库：
 ```bash
 $ ldd /bin/ls

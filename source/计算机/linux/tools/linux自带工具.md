@@ -1,0 +1,90 @@
+tags:
+- linux
+- command
+---
+
+mkdir 创建目录
+cp 拷贝
+cat 输出文件内容
+stat 查看文件属性
+ll 罗列当前目录内容（-h 以K,M,G单位表示文件大小）
+chmod 修改权限，常用开关-R递归，例子 chmod -R a+wr *
+mv 移动文件
+rm 删除,常用开关-f强制-r递归
+ps 查看进程 常用开关-aux
+kill 杀进程
+nohup 后台运行进程 nohup ./xx.sh >output 2>&1 &
+find /home -name "abc.txt"
+tail 查看指定文件末尾几行
+which 获取指定文件的完整路径（$PATH中的）
+shred 粉碎文件
+tail 看文件尾部 -f参数看实时log日志（追加文件内容）
+lsusb 查看usb设备
+file 查看文件类型（比如ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-uClibc.so.0, not stripped）
+htop 查看哪个程序占用了cpu/ram资源
+iotop 查看哪个程序阻塞了io资源
+
+whereis 找二进制文件、其帮助文档的位置
+
+hexdump 16进制查看（-C参数增加ASCII文本显示）
+
+man 使用手册
+info 比使用手册更详细的“电子书”
+
+nano 文本编辑器
+
+
+
+ssh 远程登入工具
+tar 解压压缩
+
+## linux校验值计算命令
+
+```
+# cd /usr/bin && find -name "*sum"
+./cksum
+./md5sum
+./sha1sum
+./sha256sum
+./sha3sum
+./sha512sum
+```
+
+cksum是CRC32
+
+## 管道
+```
+> 输出到
+& 后台运行, 如 echo abc &
+|more和|less 用管道把上一条命令导过来显示，方便查看，比如一屏看不完的时候可以用上
+
+用../source.txt批量覆盖找到的a.txt
+find -name "a.txt"|xargs -I{} cp -f ../source.txt {}
+
+|grep 根据关键词获取到某行内容
+|awk 'NR==3 {print $1}' 获取第3行的第1个“参数”
+```
+
+## 输出个log吧
+
+```bash
+exec 2> /tmp/rc.local.log  # send stderr from rc.local to a log file  
+exec 1>&2                  # send stdout to the same log file  
+set -x                     # tell sh to display commands before execution 
+
+```
+
+
+## 以别的用户身份执行命令
+
+```
+su - username -c "command" 
+crontab -e -u username
+```
+
+
+## 待分类
+
+
+archivemount 利用FUSE（用户层文件系统框架）将归档文件mount到文件系统中
+gdb-multiarch   多架构gdb, 工具链中的gdb有问题的时候可以用
