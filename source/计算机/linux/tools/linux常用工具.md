@@ -38,7 +38,7 @@ $ du --max-depth=1 -h /usr/
 
 <https://github.com/Xfennec/progress>
 
- coreutils viewer，显示coreutils 中的基本命令的进度，比如 cp、mv、rm、dd、tar，基本用法`progress -w`
+ coreutils viewer，显示coreutils 中的基本命令的进度，比如 cp、mv、rm、dd、tar，基本用法`progress -wm`
 
 安装：
 

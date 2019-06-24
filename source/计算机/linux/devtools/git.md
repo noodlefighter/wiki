@@ -95,6 +95,12 @@ git reset bf7e5b --hard
 git config --global core.quotepath false
 ```
 
+## 忽略权限
+
+```
+git config core.filemode false
+```
+
 ## tig
 
 tig是git的文字GUI，中文需要安装依赖。
@@ -174,6 +180,15 @@ git config --global core.safecrlf false
 #提交包含混合换行符的文件时给出警告
 git config --global core.safecrlf warn
 ```
+
+## git的subtree子树
+
+subtree是submodule的改进功能。
+
+> todo:
+> [git subtree教程](https://segmentfault.com/a/1190000012002151)
+>
+> <https://segmentfault.com/a/1190000012002151>
 
 ## git中submodule子模块的添加、使用和删除
 

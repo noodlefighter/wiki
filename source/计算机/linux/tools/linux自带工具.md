@@ -82,9 +82,25 @@ su - username -c "command"
 crontab -e -u username
 ```
 
+## ps
+
+查看实际使用内存
+
+```
+ps -o pid,comm,rss
+```
+
+## watch
+
+linux循环执行命令 2s执行一次
+
+```
+wait -n 2 “xxx”
+```
+
+
 
 ## 待分类
-
 
 archivemount 利用FUSE（用户层文件系统框架）将归档文件mount到文件系统中
 gdb-multiarch   多架构gdb, 工具链中的gdb有问题的时候可以用

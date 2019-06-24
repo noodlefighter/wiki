@@ -12,3 +12,39 @@ systemd的人机交互接口就是systemctl，比如看nfs服务的日志：
 $ systemctl status nfs-server.service
 ```
 
+查找自启服务
+
+```
+$ sudo systemctl list-unit-files | grep enabled
+```
+
+开机自启
+
+```
+$ sudo systemctl enable sshd
+```
+
+禁止开机自启
+
+```
+$ sudo systemctl disable sshd
+```
+
+停止服务
+
+```
+$ systemctl stop sshd
+```
+
+启动服务
+
+```
+$ systemctl start sshd
+```
+
+检查某个服务的状态
+
+```
+$ systemctl status sshd
+```
+
