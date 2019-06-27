@@ -113,7 +113,7 @@ You need to pass copy of unmodified videocard ROM to VM.
 
 - After booting, edit your VM xml and in the section for your GPU (if you have already assigned the GPU to the VM) there should be a section. Add a file='path/to/dump/here' statement to it. My full section looks like:
 
-  ```
+```
   <hostdev mode='subsystem' type='pci' managed='yes'>
     <source>
       <address domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
@@ -121,7 +121,7 @@ You need to pass copy of unmodified videocard ROM to VM.
     <rom bar='on' file='/home/username/KVM/evga_gtx970.dump'/>
     <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
   </hostdev>
-  ```
+```
 
   This will have the VM start the card with that BIOS instead of whatever the kernel gives it.
 
