@@ -32,6 +32,15 @@ git merge dev
 git rebase dev
 ```
 
+## 分支操作
+
+```
+# 删除分支
+git branch -D xxx
+# 删除远程分支
+git branch -D remotes/xxx
+```
+
 
 
 ## 恢复
