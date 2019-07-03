@@ -52,3 +52,26 @@ $ yay -S progress-git
 alias cv="progress -w"
 ```
 
+
+
+## lm_sensors
+
+查看传感器温度，cpu、主板、显卡温度等。
+
+```
+[r@r-pc test-activity]$ sensors 
+k10temp-pci-00c3
+Adapter: PCI adapter
+Tdie:         +43.2°C  (high = +70.0°C)
+Tctl:         +43.2°C  
+
+amdgpu-pci-3800
+Adapter: PCI adapter
+vddgfx:           N/A  
+vddnb:            N/A  
+fan1:             N/A
+temp1:        +43.0°C  (crit = +80.0°C, hyst =  +0.0°C)
+
+
+```
+

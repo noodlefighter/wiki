@@ -131,7 +131,7 @@ i3加入配置：
 bindsym $alt+Tab exec --no-startup-id ~/.config/i3/i3-focus-next
 ```
 
-
+> 注意，虽然能实现功能，但是流畅度明显不行。。
 
 ## 特定工作区启动指定应用程序
 
