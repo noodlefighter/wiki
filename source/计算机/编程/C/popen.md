@@ -66,47 +66,19 @@ popen() may also set errno values as described by spawn(), fork(), or pipe().
 
 ## 一例：popen获取系统命令的输出内容
 
-> via: <https://blog.csdn.net/sinat_36184075/article/details/80172853>
-
 
 
 ```
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-int main (void)
-{
-    int ssh_cnt = 0;
-    char cmd[256] = {0};
-    int status = 0;
-    FILE* fp = NULL;
-    scanf ("%d", &status);
-    // 循环2次，间隔1s
-    while (ssh_cnt < 2) {
-        sleep(1);
-        memset(cmd, 0, sizeof(cmd));
-        snprintf(cmd, sizeof(cmd), "echo start....");
-        // fp指针获取了start...这句输出内容
-        if (NULL != (fp = popen(cmd, "r")))
-        {
-            char out_buf[32] = {0};
-            if (NULL != fgets(out_buf, sizeof(out_buf), fp))
-            {
-                int tmp_status = atoi(out_buf);
-                if (tmp_status != status)
-                {
-                    memset(cmd, 0, sizeof(cmd));
-                    snprintf(cmd, sizeof(cmd), "echo 'Your print is %d'", status);
-                    system(cmd);
-                    ssh_cnt++;
-                } else {
-                    break;
-                }
-            }
-        }
-    }
-    close(fp);
-    return 0;
+fp = popen("top -n 1", "r");
+if(NULL != fp) {
+    fgets(topline[0], 256, fp);
+    fgets(topline[1], 256, fp);
+	pclose(fp);
+} else {
+    printf("command failed!\n");
 }
+
 ```
+
+
 

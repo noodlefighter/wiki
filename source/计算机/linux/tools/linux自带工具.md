@@ -3,6 +3,8 @@ tags:
 - command
 ---
 
+
+
 mkdir 创建目录
 cp 拷贝
 cat 输出文件内容
@@ -20,6 +22,9 @@ which 获取指定文件的完整路径（$PATH中的）
 shred 粉碎文件
 tail 看文件尾部 -f参数看实时log日志（追加文件内容）
 lsusb 查看usb设备
+
+lspci  查看pci设备
+
 file 查看文件类型（比如ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-uClibc.so.0, not stripped）
 htop 查看哪个程序占用了cpu/ram资源
 iotop 查看哪个程序阻塞了io资源
@@ -98,7 +103,11 @@ linux循环执行命令 2s执行一次
 wait -n 2 “xxx”
 ```
 
+## dmsg
 
+设备相关log，常用于诊断设备故障，比如查看加载了哪些驱动、把什么硬件资源分配给了什么驱动。
+
+例如usb设备的插拔信息、给pci设备加载了什么驱动。
 
 ## 待分类
 

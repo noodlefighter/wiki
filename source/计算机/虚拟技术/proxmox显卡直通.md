@@ -15,6 +15,10 @@ Intel E3-1230v2
 Nvidia GTX750
 ```
 
+参考：
+
+https://forums.unraid.net/topic/41951-gpu-passthrough-with-only-one-card/
+
 ## 参考文章
 
 > title: 终于搞定了KVM下的GPU Passthrough
