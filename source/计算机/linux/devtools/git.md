@@ -30,6 +30,9 @@ git merge dev
 
 # 变基到dev分支
 git rebase dev
+
+# 查看某文件历史
+git log --pretty=oneline xxx.c
 ```
 
 ## 分支操作
@@ -38,7 +41,7 @@ git rebase dev
 # 删除分支
 git branch -D xxx
 # 删除远程分支
-git branch -D remotes/xxx
+git push origin --delete feature/main-functions
 ```
 
 
@@ -124,6 +127,19 @@ make configure
 make
 sudo make install install-release-doc
 ```
+
+嗯arch下直接`yay -S tig`就能装好了。
+
+配置在`~/.tigrc`，`man tigrc`能看到编写帮助，可以在tig中增加一些自定义操作。
+
+
+
+```
+# 查看某文件相关的log(文件夹也一样)
+tig xxx.c
+```
+
+
 
 ## icdiff
 

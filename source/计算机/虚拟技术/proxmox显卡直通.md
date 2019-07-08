@@ -26,6 +26,12 @@ ardev socket,id=qmp-event,path=/var/run/qmeventd.sock,reconnect=5 -mon chardev=q
 
 https://forums.unraid.net/topic/41951-gpu-passthrough-with-only-one-card/
 
+## 硬件！！硬件！！
+
+最大的阻碍是硬件，比如要让两个显卡同时运作，H77是做不到的，而Z77就可以，因为有多路原生PCIe。
+
+
+
 ## 参考文章
 
 > title: 终于搞定了KVM下的GPU Passthrough
