@@ -12,8 +12,8 @@
 
 ```c
 #include <stdio.h>
-
 FILE *popen(const char *command, const char *mode);
+int pclose(FILE *stream);
 ```
 
 ### 一般性描述
@@ -61,6 +61,20 @@ popen（）返回的流将被指定为面向字节的。
 EINVAL：The mode argument is invalid.
 
 popen() may also set errno values as described by spawn(), fork(), or pipe().
+
+
+
+## pclose
+
+通过`pclose()`获取执行结果（需要`#include <sys/wait.h>`）：
+
+````
+rv = pclose(pp);
+printf("ifexited: %d\n", WIFEXITED(rv));
+if (WIFEXITED(rv)) {  
+	printf("subprocess exited, exit code: %d\n", WEXITSTATUS(rv));
+}
+````
 
 
 

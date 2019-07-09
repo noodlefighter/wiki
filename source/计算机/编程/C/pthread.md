@@ -17,6 +17,8 @@ pthread_t thread;
 pthread_create(&thread, NULL, thr_func, NULL);
 ```
 
+thr_func返回时，pthread仍保留着线程资源和返回值，直到使用`pthread_join`取走返回值并释放资源。
+
 
 
 ## 同步

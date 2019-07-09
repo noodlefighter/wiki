@@ -41,7 +41,32 @@ nano 文本编辑器
 
 
 ssh 远程登入工具
-tar 解压压缩
+
+## tar 解压压缩
+
+.tar文件本身只是“归档”文件，把多个文件打包，而不带压缩；而.tar.gz文件是先把一些文件打包，然后用gzip压缩。
+
+commands：
+
+```
+c  压缩
+x  解压
+t  列表
+v  繁琐地打印一些信息
+z  gzip
+f  使用归档文件
+
+创建/解压归档文件
+$ tar -cf xxx.tar foo1 foo2
+$ tar -xf xxx.tar
+
+创建归档gzip压缩文件
+$ tar -czf xxx.tar.gz foo1 foo2
+$ tar -xzf xxx.tar.gz
+
+查看文件列表：
+$ tar -tvf xxx.tar
+```
 
 ## linux校验值计算命令
 
