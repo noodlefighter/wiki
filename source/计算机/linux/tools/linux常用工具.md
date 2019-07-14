@@ -24,16 +24,6 @@ $ tree -L 3
 
  利用文件索引缓存快速全盘查找文件
 
-## du
-
-统计文件夹大小
-
-例，深度1：
-
-```
-$ du --max-depth=1 -h /usr/
-```
-
 ## progress（cv）
 
 <https://github.com/Xfennec/progress>

@@ -14,7 +14,10 @@ chmod 修改权限，常用开关-R递归，例子 chmod -R a+wr *
 mv 移动文件
 rm 删除,常用开关-f强制-r递归
 ps 查看进程 常用开关-aux
-kill 杀进程
+kill 杀进程，用进程号
+
+killall 杀进程，用程序名字
+
 nohup 后台运行进程 nohup ./xx.sh >output 2>&1 &
 find /home -name "abc.txt"
 tail 查看指定文件末尾几行
@@ -41,6 +44,18 @@ nano 文本编辑器
 
 
 ssh 远程登入工具
+
+## mount
+
+
+
+```
+# 判断一个目录是否是挂载点
+mountpoint -q /mnt
+echo $?
+```
+
+
 
 ## tar 解压压缩
 
@@ -119,6 +134,18 @@ crontab -e -u username
 ```
 ps -o pid,comm,rss
 ```
+
+## du
+
+统计文件夹大小
+
+例，深度1：
+
+```
+$ du --max-depth=1 -h /usr/
+```
+
+
 
 ## watch
 
