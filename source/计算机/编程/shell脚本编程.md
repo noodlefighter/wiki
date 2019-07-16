@@ -13,6 +13,10 @@ SHELL_DIR=$(cd "$(dirname "$0")";pwd)
 cd $SHELL_DIR
 ```
 
+当需要用source调用这个脚本时，上面这个`$0`是不可靠的，得换成`${BASH_SOURCE[0]}`：
+
+https://stackoverflow.com/questions/35006457/choosing-between-0-and-bash-source
+
 ### 判断环境变量是否存在
 
 ```
