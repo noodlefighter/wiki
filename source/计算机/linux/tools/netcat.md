@@ -16,9 +16,18 @@ nc -l 9898
 
 
 
+## 用nc测试不断地连接、断开
+
+```
+watch -n 0.1 "echo sdfadf |nc -w0 -N localhost 4646"
+```
+
+
+
 ## socat - Multipurpose relay
 
 http://www.dest-unreach.org/socat/
 http://www.dest-unreach.org/socat/doc/socat.html
 
 “多用途中继”,看着是想代替netcat.
+

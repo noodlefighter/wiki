@@ -19,9 +19,48 @@ N模数(modules)，E幂(exponent)，D私有幂（private exponent）。
 
 签名时，生成数据摘要（常见如sha256），用私钥对摘要加密，密文附在数据旁；鉴签时，生成数据摘要，公钥解密密文段，通过对比解密后的数据是否和摘要一致来判断签名有效性。
 
-## RSA的填充方式（padding mode）
+## RSA的填充（padding）
 
-为什么需要填充？因为
+### 为什么RSA的padding是至关重要的？
+
+> via: https://rdist.root.org/2009/10/06/why-rsa-encryption-padding-is-critical/
+
+CRT can also be used to attack RSA. Consider an implementation that does not use any armoring. The encryption operation is simply the RSA primitive itself. A sender wants to send a message to three separate recipients. Thus, the sender calculates:
+
+m^e mod A
+m^e mod B
+m^e mod C
+
+The attacker can’t calculate the inverse of one of these encryptions directly because the eth root problem in each ring is difficult. However, because the message is the same for each recipient (but different ciphertexts), she can convert these operations into a group where the inverse operation is easy. To do this, she uses CRT to combine the three ciphertexts to get:
+
+m^e mod A*B*C
+
+Since m is smaller than each of A, B, and C, m^e is smaller than A*B*C if e=3. This means the attacker just has to calculate the cube root of the result, an operation that is easy in the monoid of integers modulo A*B*C. This is essentially an integer cube root, ordinary arithmetic. This shows why PKCS #1 armoring for encryption has always been randomized. It can be fatal to encrypt the same message multiple times, even to the same recipient. For signatures, it is more secure to randomize the padding as in RSASSA-PSS, but it is not yet fatal for legacy systems to continue to use PKCS #1 v1.5 signature padding, which is not randomized.
+
+In public key crypto, padding is not an optional feature. It is a critical part of the cryptosystem security. The latest version of PKCS #1 (v2.1 as of this writing) should be used for both encryption/signing and decryption/verification. For new implementation, use the approaches that first appeared in v2.0 (RSAES-OAEP for encryption and RSASSA-PSS for signing). Failure to properly manage RSA armoring could allow attackers to forge signatures, decrypt ciphertext, or even recover your private key.
+
+
+### RSA的填充方式
+
+这是某个加密库里截出来的RSA填充方式列表：
+```
+SCHEME_NO_PADDING,            /**< without padding */
+SCHEME_BLOCK_TYPE_0,          /**< PKCS#1 block type 0 padding*/
+SCHEME_BLOCK_TYPE_1,          /**< PKCS#1 block type 1 padding*/
+SCHEME_BLOCK_TYPE_2,          /**< PKCS#1 block type 2 padding*/
+SCHEME_RSAES_OAEP_SHA1,       /**< PKCS#1 RSAES-OAEP-SHA1 padding*/
+SCHEME_RSAES_OAEP_SHA224,     /**< PKCS#1 RSAES-OAEP-SHA224 padding*/
+SCHEME_RSAES_OAEP_SHA256,     /**< PKCS#1 RSAES-OAEP-SHA256 padding*/
+SCHEME_RSAES_OAEP_SHA384,     /**< PKCS#1 RSAES-OAEP-SHA384 padding*/
+SCHEME_RSAES_OAEP_SHA512,     /**< PKCS#1 RSAES-OAEP-SHA512 padding*/
+SCHEME_RSAES_PKCS1_V1_5,      /**< PKCS#1 RSAES-PKCS1_V1_5 padding*/
+```
+
+参考：
+
+OAEP：Optimal asymmetric encryption padding（https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding）
+
+>  https://blog.csdn.net/makenothing/article/details/88429511
 
 ## RSA和AES组合使用
 
