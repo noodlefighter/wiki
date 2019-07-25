@@ -68,3 +68,14 @@ https://blog.csdn.net/kity9420/article/details/75717091
 # docker attach 这sha的前几位
 ```
 
+
+
+## 网络模式
+
+* host模式，使用--net=host指定，网络不隔离直接用主机的网络
+
+* container模式，使用--net=container:NAME_or_ID指定，与指定的容器共享同一网络
+* none模式，使用--net=none指定，不使用网络
+
+* bridge模式，使用--net=bridge指定，默认设置，默认无法访问宿主
+
