@@ -1,4 +1,3 @@
-
 ---
 
 > TODO 整理
@@ -45,3 +44,27 @@ https://blog.csdn.net/jian1jian_/article/details/66475698?locationNum=7&fps=1
 
 如何创建docker镜象
 https://blog.csdn.net/kity9420/article/details/75717091
+
+
+
+## 运行容器
+
+```
+# docker run -it <镜象名> <要执行的程序>
+```
+
+常用选项
+
+```
+-d    demon常驻
+-v    映射宿主目录到容器（应该和mount --bind相同）
+```
+
+## 直接连接容器（操作命令行）
+
+```
+# docker run -itd xxx_image /bin/bash
+（回一串sha）
+# docker attach 这sha的前几位
+```
+

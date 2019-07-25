@@ -24,21 +24,11 @@ $ tree -L 3
 
  利用文件索引缓存快速全盘查找文件
 
-## du
-
-统计文件夹大小
-
-例，深度1：
-
-```
-$ du --max-depth=1 -h /usr/
-```
-
 ## progress（cv）
 
 <https://github.com/Xfennec/progress>
 
- coreutils viewer，显示coreutils 中的基本命令的进度，比如 cp、mv、rm、dd、tar，基本用法`progress -w`
+ coreutils viewer，显示coreutils 中的基本命令的进度，比如 cp、mv、rm、dd、tar，基本用法`progress -wm`
 
 安装：
 
@@ -52,3 +42,33 @@ $ yay -S progress-git
 alias cv="progress -w"
 ```
 
+
+
+## lm_sensors
+
+查看传感器温度，cpu、主板、显卡温度等。
+
+```
+[r@r-pc test-activity]$ sensors 
+k10temp-pci-00c3
+Adapter: PCI adapter
+Tdie:         +43.2°C  (high = +70.0°C)
+Tctl:         +43.2°C  
+
+amdgpu-pci-3800
+Adapter: PCI adapter
+vddgfx:           N/A  
+vddnb:            N/A  
+fan1:             N/A
+temp1:        +43.0°C  (crit = +80.0°C, hyst =  +0.0°C)
+
+
+```
+
+
+
+## Time Cat （tcat）
+
+https://github.com/marcomorain/tcat
+
+给每一行文本打上时间戳

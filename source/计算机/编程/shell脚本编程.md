@@ -3,8 +3,8 @@
 ---
 
 
-
-## 获取脚本所在目录
+## 技巧
+### 获取脚本所在目录
 
 获取脚本所在路径, 而不是$PWD
 
@@ -13,7 +13,11 @@ SHELL_DIR=$(cd "$(dirname "$0")";pwd)
 cd $SHELL_DIR
 ```
 
-## 判断环境变量是否存在
+当需要用source调用这个脚本时，上面这个`$0`是不可靠的，得换成`${BASH_SOURCE[0]}`：
+
+https://stackoverflow.com/questions/35006457/choosing-between-0-and-bash-source
+
+### 判断环境变量是否存在
 
 ```
 if [ -z $JAVA_HOME ];then
@@ -22,6 +26,31 @@ else
 	echo "JAVA_HOME = $JAVA_HOME"
 fi
 ```
+
+### 查看进程是否存在
+
+```
+ps -fe|grep hostapd |grep -v grep
+if [ $? -ne 0 ]; then
+    echo "start process....."
+else
+    echo "runing....."
+fi
+```
+
+
+
+## 传参
+
+```
+$0 第0个参数(执行的命令本身)
+$1 第1个参数
+$2 第2个参数
+$# 参数数量, "ps -a"有1个参数；"tar -xf aaa.tar"有2个参数
+$? 上一条命令返回值
+```
+
+
 
 ## if语句
 
@@ -51,6 +80,22 @@ my_array=(a b c)
 for item in ${my_array[@]};do
 	echo "${item}"
 done
+```
+
+## while语句
+
+计算1到100的和
+
+```bash
+#!/bin/bash
+i=1
+sum=0
+while [ $i -le 100 ]
+do
+  let sum=sum+$i
+  let i++
+done
+echo $sum
 ```
 
 
@@ -180,6 +225,45 @@ ${var:start}
 ${var:0-start:len}
 ${var:0-start}
 ```
+
+## 异常捕获的一种方法
+
+> via:https://stackoverflow.com/questions/22009364/is-there-a-try-catch-command-in-bash
+
+利用`&&`短路性：
+
+```sh
+{ # try
+    command1 &&
+    command2 &&
+    command3
+} || { # catch
+    echo “error catch”
+}
+```
+
+感觉很容易漏写`&&`，特别是维护的人。
+
+## IFS分隔符
+
+用分隔符可以控制shell的行为：
+
+```
+IP=220.112.253.111
+IFS="."
+TMPIP=$(echo $IP)
+IFS=" " # space
+echo $TMPIP | read ip1 ip2 ip3 ip4
+INVERT_IP=$ip4.$ip3.$ip2.$ip1
+```
+
+```
+IFS='|'
+text='a a a a|b b b b|c c c c'
+for i in $text;do echo "i=$i";done
+```
+
+使用的时候得注意，要用`\n`作为分隔符时，得写作`IFS=$'\n'`，原因不明
 
 ## 格式控制
 
