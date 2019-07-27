@@ -33,6 +33,9 @@ git rebase dev
 
 # 查看某文件历史
 git log --pretty=oneline xxx.c
+
+# 删除未跟踪文件 -x连ignore的文件也一起 -d目录
+git clean -xfd
 ```
 
 ## 分支操作
@@ -214,6 +217,28 @@ subtree是submodule的改进功能。
 > [git subtree教程](https://segmentfault.com/a/1190000012002151)
 >
 > <https://segmentfault.com/a/1190000012002151>
+
+### 添加子树
+
+到git仓库顶层，输入命令：
+
+```
+$ git subtree add --prefix=ext/myrepo git@gitlab.com:myteam/myrepo.git dev --squash
+```
+
+git会在`ext/myrepo`目录下，检出指定仓库的`dev`分支，`--squash`参数合并历史。
+
+### 从源仓库拉取子树
+
+```
+$ git subtree pull --prefix=ext/myrepo git@gitlab.com:myteam/myrepo.git dev --squash
+```
+
+### 将子树修改的相关commit推送到源仓库
+
+```
+$ git subtree push --prefix=ext/myrepo git@gitlab.com:myteam/myrepo.git dev
+```
 
 ## git中submodule子模块的添加、使用和删除
 
