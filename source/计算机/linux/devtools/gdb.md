@@ -4,6 +4,12 @@
 
 
 
+参考：
+
+一个15分钟演讲，让你改变对gdb的看法：
+
+https://undo.io/resources/cppcon-2015-greg-law-give-me-15-minutes-ill-change/
+
 
 
 ## gdb基本使用
@@ -132,3 +138,37 @@ $gdb hello 11127
 gdbServer + gdb 调试
 https://www.cnblogs.com/Dennis-mi/articles/5018745.html
 
+
+
+## TUI文本模式UI
+
+`Ctrl+X,A`开启TUI，`Ctrl+X,2`开启汇编代码
+
+查看浮点寄存器`tui reg float`
+
+Up、Down键被TUI用了，而CLI的上翻、下翻变成了`Ctrl+P`和`Ctrl+N`
+
+
+
+## GDB 反向调试（Reverse Debugging）
+
+比如在一个循环中某些情况下才触发的错误，得等到触发了程序才停下来。
+
+
+
+```
+watch 
+reverse-continue
+```
+
+
+
+
+
+## GDB中使用python 
+
+Or you can even set breakpoints in python:
+
+```
+python gdb.Breakpoint(‘7’)
+```
