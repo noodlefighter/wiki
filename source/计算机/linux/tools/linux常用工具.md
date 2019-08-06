@@ -72,3 +72,14 @@ temp1:        +43.0°C  (crit = +80.0°C, hyst =  +0.0°C)
 https://github.com/marcomorain/tcat
 
 给每一行文本打上时间戳
+
+
+
+## Pacapt
+
+包管理器的命令行包装，用于把大多数包管理器的命令转成arch系的pacman式命令，用法：
+
+```
+$ pacapt -Ss somepackage
+```
+
