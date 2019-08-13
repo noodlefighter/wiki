@@ -26,6 +26,8 @@ $ openssl rand -base64 32 > key.bin
 
 ## RSA
 
+### 生成密钥
+
 openssh格式key转pem：
 
 ```
@@ -40,7 +42,7 @@ $ openssl genrsa -out key.pem 2048
 $ openssl rsa -in key.pem -pubout -outform pem > key.pub.pem
 ```
 
-加密解密：
+### 加密解密
 
 ```
 公钥加密
@@ -69,6 +71,21 @@ $ openssl rsautl -encrypt -inkey key.pem -in data.bin -out data.bin.enc
 $ openssl rsautl -decrypt -inkey key.pub.pem -pubin -in data.bin.enc -out data.bin
 ```
 
+### 签名
+
+> 参考： https://jumpnowtek.com/security/Code-signing-with-openssl.html
+
+用私钥签名(默认RSASSA PKCS1 1.5)：
+
+```
+openssl dgst -sha256 -sign key.pem -out data.bin.sign data.bin
+```
+
+用公钥验签：
+
+```
+openssl dgst -sha256 -verify key.pub.pem -signature data.bin.sign data.bin
+```
 
 ## 打印rsa密钥
 

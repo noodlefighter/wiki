@@ -56,3 +56,22 @@ $ xxd -r -p xxx.txt
 $ cat hextest |sed 's/ //g' |sed 's/,//g' |sed 's/0x//g' |xxd -r -p > bintest
 ```
 
+## xxd配合vim使用
+
+打开一个二进制文件:
+
+```
+% vim -b xxx.bin
+```
+
+转换成十六进制文本：
+
+```
+:%!xxd
+```
+
+转回来：
+```
+:%!xxd -r
+```
+

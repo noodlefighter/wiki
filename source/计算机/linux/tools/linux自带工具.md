@@ -45,6 +45,16 @@ nano 文本编辑器
 
 ssh 远程登入工具
 
+## cat
+
+cat拼接文件，连接文件，合并文件
+
+```
+$ cat file1.bin file2.bin
+```
+
+
+
 ## mount
 
 

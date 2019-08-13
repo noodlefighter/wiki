@@ -244,6 +244,26 @@ ${var:0-start}
 
 感觉很容易漏写`&&`，特别是维护的人。
 
+## 获取文件大小
+
+```
+wc -c _app.bin.enc | awk '{print $1}'
+```
+
+shell，bash，获取文件字节数
+
+## 十六进制数字字符串，大端转小端
+
+```
+hex_string_to_le() {
+  printf %s "$1" | dd conv=swab 2> /dev/null | rev
+}
+
+hex_string_to_le 01020304
+```
+
+
+
 ## IFS分隔符
 
 用分隔符可以控制shell的行为：
