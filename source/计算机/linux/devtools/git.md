@@ -142,7 +142,19 @@ sudo make install install-release-doc
 tig xxx.c
 ```
 
+## 使用git diff对比任意文件夹
 
+
+
+```
+diff <(find /dir1/ -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /') <(find /dir2/ -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /')
+```
+
+
+
+```
+git diff --no-index dir1/ dir2/
+```
 
 ## icdiff
 

@@ -92,6 +92,8 @@ alias ll="ls -lh --color=always|less -R"
 
 可以控制bash的行为，比如`set -e`使脚本在错误时退出bash。
 
+> set +e 可以取消
+
 查看帮助用`help set`命令：
 
 ```

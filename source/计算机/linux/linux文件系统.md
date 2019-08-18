@@ -32,3 +32,16 @@ Overlayfs允许一个通常是读写的目录树 覆盖到另一个只读目录�
 ## linux下mount ntfs分区只读的问题
 
 写入文件提示read only，需要安装`ntfs-3g`包才能获得完整的读写支持。
+
+
+
+## SquashFS
+
+HowTo:
+
+https://www.tldp.org/HOWTO/html_single/SquashFS-HOWTO/
+
+Format:
+
+https://dr-emann.github.io/squashfs/#superblock
+
