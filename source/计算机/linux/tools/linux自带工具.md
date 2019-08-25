@@ -120,13 +120,16 @@ find -name "a.txt"|xargs -I{} cp -f ../source.txt {}
 |awk 'NR==3 {print $1}' 获取第3行的第1个“参数”
 ```
 
-## 输出个log吧
+## 输出个log
+
+0 STDIN
+
+1 STDOUT
+
+2 STDERR
 
 ```bash
-exec 2> /tmp/rc.local.log  # send stderr from rc.local to a log file  
-exec 1>&2                  # send stdout to the same log file  
-set -x                     # tell sh to display commands before execution 
-
+cat foo > foo.log 2>&1
 ```
 
 
@@ -170,6 +173,20 @@ wait -n 2 “xxx”
 设备相关log，常用于诊断设备故障，比如查看加载了哪些驱动、把什么硬件资源分配给了什么驱动。
 
 例如usb设备的插拔信息、给pci设备加载了什么驱动。
+
+
+
+## 通过网络更新系统时间
+
+linux网络授时，使用NTP客户端完成：
+
+```
+$ sudo ntpdate -u ntp.api.bz
+```
+
+
+
+
 
 ## 待分类
 

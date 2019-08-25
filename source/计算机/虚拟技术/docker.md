@@ -58,6 +58,9 @@ https://blog.csdn.net/kity9420/article/details/75717091
 ```
 -d    demon常驻
 -v    映射宿主目录到容器（应该和mount --bind相同）
+--env 设置环境变量, `--env XXXX=123`
+-p    将容器的开放的端口映射到宿主上
+--rm  程序退出时自动关闭容器
 ```
 
 ## 直接连接容器（操作命令行）
