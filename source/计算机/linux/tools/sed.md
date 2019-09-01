@@ -29,6 +29,15 @@ hostapd_cli -i wlan0 status|sed -n 's/^ssid\[0\]=\(.*\)/\1/p'
 sed -i 's/^ssid=.*/ssid=abcdefg/' /etc/xxx.conf
 ```
 
+
+## 技巧集
+
+sed命令一次替换多个文本
+```
+$ sed -e 's/11/22/' -e 's/55/99/' num.txt
+```
+
+
 ## SED单行脚本快速参考（Unix 流编辑器）  
 
 > via: http://sed.sourceforge.net/sed1line_zh-CN.html

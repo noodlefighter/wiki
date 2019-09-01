@@ -1,4 +1,3 @@
-
 ---
 
 
@@ -29,7 +28,7 @@ ssh-keyscan     从其他主机上收集公钥
 
 私钥大概长这样，权限600。
 
-​```none
+```none
 -----BEGIN RSA PRIVATE KEY-----
 MIIEoQIBAAKCAQEAiAbdVhzD0c+sWV2nMFIH9vA1z/zCTlti3EDoWFG9lGjyCjL2
 ....
@@ -39,8 +38,10 @@ zgtiENtUwccic/HDVMl8i2K7cYocFE9Iem8wXoYz/eI/QM9vSA==
 -----END RSA PRIVATE KEY-----
 ```
 
+```
+
 默认路径：
-```c
+​```c
 mv ssh_private_key ~/.ssh/id_dsa
 ```
 
@@ -51,6 +52,40 @@ mv ssh_private_key ~/.ssh/id_dsa
 ssh-rsa AAAAB3Nza.....F1Yatzmw==
 ssh-rsa AAAAB3Nza.....1+tinL1aWB/XgJQ==
 ```
+
+临时指定某ssh-key用于建立ssh连接：
+
+```
+$ ssh-agent
+$ ssh-add ~/.ssh/xxxx
+$ ssh user@xxx.com
+```
+
+
+
+## 不同的ssh服务器，自动使用不同的密钥
+
+```
+$ cd ~/.ssh
+$ touch config
+$ nano config
+```
+
+```
+Host exist_server
+    HostName exist_server_IP/exist_server_domain
+    IdentityFile ~/.ssh/id_rsa_exist_server
+    PreferredAuthentications publickey
+    User username
+
+Host github.com
+    HostName github.com
+    IdentityFile ~/.ssh/id_rsa_github
+    PreferredAuthentications publickey
+    User github_username
+```
+
+
 
 ## sshfs
 

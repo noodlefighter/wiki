@@ -77,9 +77,13 @@ https://github.com/marcomorain/tcat
 
 ## Pacapt
 
+安装方法：https://github.com/icy/pacapt#installation
+
 包管理器的命令行包装，用于把大多数包管理器的命令转成arch系的pacman式命令，用法：
 
 ```
 $ pacapt -Ss somepackage
 ```
+
+
 
