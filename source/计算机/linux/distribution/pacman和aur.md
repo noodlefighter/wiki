@@ -20,6 +20,21 @@ pacman -S xxx
 pacman -Rs xxx
 ```
 
+
+
+## pacman自动更换中国源
+
+
+
+```bash
+# pacman-mirrors -c China
+# pacman -Syy
+```
+
+
+
+
+
 ## AUR是非官方提供的包
 
 为了安全，一般不是直接发布二进制包，而是一些包含编译脚本的信息。
