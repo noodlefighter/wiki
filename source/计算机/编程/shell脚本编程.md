@@ -6,12 +6,17 @@
 ## 技巧
 ### 获取脚本所在目录
 
-获取脚本所在路径, 而不是$PWD
+获取脚本所在路径, 而不是$PWD:
+
+```
+cd "$(dirname "$0")"
+```
 
 ```
 SHELL_DIR=$(cd "$(dirname "$0")";pwd)
-cd $SHELL_DIR
 ```
+
+
 
 当需要用source调用这个脚本时，上面这个`$0`是不可靠的，得换成`${BASH_SOURCE[0]}`：
 
@@ -96,6 +101,15 @@ do
   let i++
 done
 echo $sum
+```
+
+死循环
+
+```
+while :
+do
+  echo ...
+done
 ```
 
 
@@ -400,3 +414,14 @@ echo -e "\033[K 清除光标到行尾的内容 \033[0m"
 echo -e "\033[?25l 隐藏光标 \033[0m"  
 echo -e "\033[?25h 显示光标 \033[0m"  
 ```
+
+
+
+## 技巧集
+
+### 获取当前IP地址
+
+```
+ip="$(ifconfig | grep -A 1 'eth0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
+```
+

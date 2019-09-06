@@ -6,6 +6,12 @@ Linux下的USB从设备叫USB Gadget，有一个框架帮助实现：
 
 http://www.linux-usb.org/gadget/
 
+https://www.kernel.org/doc/html/latest/driver-api/usb/gadget.html?highlight=mtp
+
+https://www.kernel.org/doc/html/latest/usb/gadget_serial.html?highlight=gadget
+
+https://www.kernel.org/doc/html/latest/usb/functionfs.html?highlight=mtp
+
 
 
 目标是linux下实现一个MTP Server（设备端）

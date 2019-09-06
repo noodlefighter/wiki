@@ -52,6 +52,26 @@ $gdb hello 11127
 
 如果你的程序是一个服务程序，那么你可以指定这个服务程序运行时的进程ID。gdb会自动attach上去，并调试他。program应该在PATH环境变量中搜索得到。
 
+## gdbserver远程调试
+
+gdbServer + gdb 调试
+https://www.cnblogs.com/Dennis-mi/articles/5018745.html
+
+```
+target$ gdbserver --multi :5678
+```
+
+```
+# 连接到目标机
+gdb> target extended-remote 目标机器IP:5678
+
+# 指定目标程序路径
+gdb> set remote exec-file 目标机器运行程序路径
+
+# 指定本地程序，载入符号表
+gdb> file 本地程序路径
+```
+
 ## gdb交互命令
 
 启动gdb后，进入到交互模式，通过以下命令完成对程序的调试；注意高频使用的命令一般都会有缩写，熟练使用这些缩写命令能提高调试的效率；
@@ -131,13 +151,6 @@ $gdb hello 11127
 
 >  交互模式下直接回车的作用是重复上一指令，对于单步调试非常方便；
 
-## gdbserver远程调试
-
-> TODO 整理
-
-gdbServer + gdb 调试
-https://www.cnblogs.com/Dennis-mi/articles/5018745.html
-
 
 
 ## TUI文本模式UI
@@ -154,15 +167,10 @@ Up、Down键被TUI用了，而CLI的上翻、下翻变成了`Ctrl+P`和`Ctrl+N`
 
 比如在一个循环中某些情况下才触发的错误，得等到触发了程序才停下来。
 
-
-
 ```
 watch 
 reverse-continue
 ```
-
-
-
 
 
 ## GDB中使用python 

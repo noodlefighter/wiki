@@ -18,6 +18,18 @@ Swap:            0          0          0
 
 **江湖传言，保险起见sync要执行两次！因为这命令不可靠**
 
+## Linux MemFree与MemAvailable的区别
+
+> via: https://blog.51cto.com/xujpxm/1961072
+
+2、MemFree：空闲内存数
+
+  表示系统尚未使用的内存。MemUsed=MemTotal-MemFree就是已被用掉的内存。
+
+3、MemAvailable：可用内存数
+
+  应用程序可用内存数。系统中有些内存虽然已被使用但是可以回收的，比如cache/buffer、slab都有一部分可以回收，所以MemFree不能代表全部可用的内存，这部分可回收的内存加上MemFree才是系统可用的内存，即：**MemAvailable≈MemFree+Buffers+Cached**，它是内核使用特定的算法计算出来的，是一个估计值。**它与MemFree的关键区别点在于，MemFree是说的系统层面，MemAvailable是说的应用程序层面。**
+
 ## How to Clear RAM Memory Cache, Buffer and Swap Space on Linux
 
 > via: <https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/>
