@@ -14,6 +14,16 @@ https://www.kernel.org/doc/html/latest/usb/functionfs.html?highlight=mtp
 
 
 
+PPT，Make your own USB gadget：
+
+https://events.static.linuxfound.org/sites/events/files/slides/LinuxConNA-Make-your-own-USB-gadget-Andrzej.Pietrasiewicz.pdf
+
+gadget的configfs配置：
+
+https://www.kernel.org/doc/Documentation/usb/gadget_configfs.txt
+
+
+
 目标是linux下实现一个MTP Server（设备端）
 
 http://www.trivialfeat.com/home/2016/11/17/media-transfer-protocol-in-a-usb-composite-gadget

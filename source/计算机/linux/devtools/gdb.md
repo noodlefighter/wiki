@@ -10,7 +10,9 @@
 
 https://undo.io/resources/cppcon-2015-greg-law-give-me-15-minutes-ill-change/
 
+GDB 自动化操作的技术
 
+https://segmentfault.com/a/1190000005367875
 
 ## gdb基本使用
 
@@ -70,6 +72,9 @@ gdb> set remote exec-file 目标机器运行程序路径
 
 # 指定本地程序，载入符号表
 gdb> file 本地程序路径
+
+# 退出gdbserver
+gdb> monitor exit 
 ```
 
 ## gdb交互命令
@@ -152,6 +157,13 @@ gdb> file 本地程序路径
 >  交互模式下直接回车的作用是重复上一指令，对于单步调试非常方便；
 
 
+### 忽略SIG
+
+例如：
+
+```
+gdb) handle SIGPIPE nostop
+```
 
 ## TUI文本模式UI
 

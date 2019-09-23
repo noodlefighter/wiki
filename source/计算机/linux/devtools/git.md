@@ -34,6 +34,9 @@ git rebase dev
 # 查看某文件历史
 git log --pretty=oneline xxx.c
 
+# 查看某commit中的变更
+git show 7cb554fc6663ea62bae727f1489859947e87c5de
+
 # 删除未跟踪文件 -x连ignore的文件也一起 -d目录
 git clean -xfd
 ```

@@ -25,6 +25,7 @@ which 获取指定文件的完整路径（$PATH中的）
 shred 粉碎文件
 tail 看文件尾部 -f参数看实时log日志（追加文件内容）
 lsusb 查看usb设备
+lsof 列出被打开的文件、被哪个应用打开
 
 lspci  查看pci设备
 

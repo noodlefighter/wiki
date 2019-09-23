@@ -49,3 +49,8 @@ void *from;
 int event = (int)(intptr_t)from;
 ```
 
+
+
+## -fpermissive
+
+-fno-permissive
