@@ -42,12 +42,12 @@ RESULT=="35000c50000a7ef67", NAME +="root_disk%n"
 相关命令：
 
 ```
- # 查看某设备文件的信息（可以用来获取sysfs路径）
- udevadm info /dev/ttyUSB0
- # 测试规则
- udevadm test --action="add" /devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.3/1-1.3.1/1-1.3.1:1.0/ttyUSB0/tty/ttyUSB0
- # 重新载入规则
- udevadm control --reload
+# 查看某设备文件的信息（可以用来获取sysfs路径） ，以便编写规则
+udevadm info --attribute-walk /dev/ttyUSB0
+# 测试规则
+udevadm test --action="add" /devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.3/1-1.3.1/1-1.3.1:1.0/ttyUSB0/tty/ttyUSB0
+# 重新载入规则
+udevadm control --reload
 ```
 
 例子，`99-tty-permission.rules`，设置所有ttyUSB设备权限为0777：

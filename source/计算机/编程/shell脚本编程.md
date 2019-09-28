@@ -425,3 +425,18 @@ echo -e "\033[?25h 显示光标 \033[0m"
 ip="$(ifconfig | grep -A 1 'eth0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
 ```
 
+### 判断当前用户是否为root
+
+```
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
+fi
+```
+
+### 像pip一样安装依赖Requirement.txt
+
+```
+cat packages.txt | xargs sudo apt-get -y install
+```

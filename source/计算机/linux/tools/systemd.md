@@ -48,3 +48,26 @@ $ systemctl start sshd
 $ systemctl status sshd
 ```
 
+## 添加一个服务
+
+> https://www.freedesktop.org/software/systemd/man/systemd.service.html#Examples
+
+`/etc/systemd/system/foo.service`，权限644.
+
+```
+[Unit]
+Description=Foo
+
+[Service]
+ExecStart=/usr/sbin/foo-daemon
+
+[Install]
+WantedBy=multi-user.target
+```
+
+完成后重新载入：
+
+```
+$ systemctl daemon-reload
+```
+

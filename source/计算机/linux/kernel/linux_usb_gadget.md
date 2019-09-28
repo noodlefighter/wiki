@@ -2,17 +2,23 @@
 
 ---
 
-Linux下的USB从设备叫USB Gadget，有一个框架帮助实现：
+
+
+## Linux USB Gadget
+
+Linux下的USB从设备叫USB Gadget。
 
 http://www.linux-usb.org/gadget/
 
-https://www.kernel.org/doc/html/latest/driver-api/usb/gadget.html?highlight=mtp
+https://www.kernel.org/doc/html/latest/driver-api/usb/gadget.html
 
-https://www.kernel.org/doc/html/latest/usb/gadget_serial.html?highlight=gadget
+https://www.kernel.org/doc/html/latest/usb/gadget_serial.html
 
-https://www.kernel.org/doc/html/latest/usb/functionfs.html?highlight=mtp
+https://www.kernel.org/doc/html/latest/usb/functionfs.html
 
 
+
+## 如何用起现有gadget里的function
 
 PPT，Make your own USB gadget：
 
@@ -24,13 +30,15 @@ https://www.kernel.org/doc/Documentation/usb/gadget_configfs.txt
 
 
 
-目标是linux下实现一个MTP Server（设备端）
+## 实现一个MTP Server（设备端）
 
 http://www.trivialfeat.com/home/2016/11/17/media-transfer-protocol-in-a-usb-composite-gadget
 
 文章中提到一个现成的kernel的patch。
 
 文章备份：
+
+```
 
 ## Options:
 
@@ -287,3 +295,5 @@ case "$1" in
 esac
 
 11. The gadget should show up now when plugged in. Here's a quick screen cap of the directory structure showing the /root partition that i'm exposing.
+
+```
