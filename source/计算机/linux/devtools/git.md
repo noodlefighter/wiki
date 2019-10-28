@@ -22,6 +22,9 @@ git config --global user.signingkey 0A46826A
 # 检出dev分支
 git checkout dev
 
+# 创建分支并切换到该分支
+git checkout -b xxx
+
 # 检出某个文件, 还原工作区
 git checkout xxx.c
 

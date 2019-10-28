@@ -87,3 +87,11 @@ $ pacapt -Ss somepackage
 
 
 
+## mplayer
+
+在framebuffer全屏循环播放视频：
+
+```
+$ mplayer -fs -loop 0 -vo fbdev xxx.mp4
+```
+
