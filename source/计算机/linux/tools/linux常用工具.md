@@ -86,9 +86,18 @@ $ pacapt -Ss somepackage
 ```
 
 
+## mplayer
+
+在framebuffer全屏循环播放视频：
+
+```
+$ mplayer -fs -loop 0 -vo fbdev xxx.mp4
+```
+
 
 ## homebrew
 
 macos自带的包管理器，其实Linux和windows的WSL也能用。
 
 可以在home目录下安装软件，不需要root权限。
+

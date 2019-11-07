@@ -440,3 +440,17 @@ fi
 ```
 cat packages.txt | xargs sudo apt-get -y install
 ```
+
+### 取路径中的文件名和目录
+
+
+
+```
+MY_PATH=/tmp/abcd
+
+# 取path中的文件名
+echo $(basename $MY_PATH)
+# 取path中的目录名
+echo $(dirname $MY_PATH)
+```
+

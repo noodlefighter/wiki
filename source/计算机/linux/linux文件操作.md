@@ -65,3 +65,30 @@ int ftruncate (int __fd, __off_t __length);
 ```
 
 注意这个操作不会改变当前指针, 比如缩小文件为0时, 并不会将指针置0.
+
+## 将通过posix接口打开的文件改为非阻塞方式读
+
+`fopen`和`popen`打开的文件，直接操作会是阻塞方式读，这里有个技巧：
+
+```
+fp = popen(path, "r");
+if (NULL == fp) {
+    LOG_ERR("%s:fail to open %s\n", __func__, path);
+    return -1;
+}
+fcntl(fileno(fp), F_SETFL, O_NONBLOCK);
+
+n = read(fileno(fp), buff, sizeof(buff));
+if (n == -1 && errno == EAGAIN) {
+	// no data yet, do nothing
+}
+else if (n > 0) {
+	print_hex(buff, n);
+}
+else {
+	// pipe closed
+	LOG("n=%d, err=%d\n", n, errno);
+}
+
+```
+

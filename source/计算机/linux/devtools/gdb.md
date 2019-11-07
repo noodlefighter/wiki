@@ -192,3 +192,10 @@ Or you can even set breakpoints in python:
 ```
 python gdb.Breakpoint(‘7’)
 ```
+
+## GDB脚本
+
+* GDB启动时，会在当前目录下查找`.gdbinit`，存在则会自动执行脚本
+
+* GDB运行期间可以使用 `source <file>` 来执行GDB脚本
+
