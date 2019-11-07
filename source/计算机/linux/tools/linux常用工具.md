@@ -87,3 +87,8 @@ $ pacapt -Ss somepackage
 
 
 
+## homebrew
+
+macos自带的包管理器，其实Linux和windows的WSL也能用。
+
+可以在home目录下安装软件，不需要root权限。
