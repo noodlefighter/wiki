@@ -102,3 +102,12 @@ $ stow bash
 $ stow uzbl
 $ stow vim
 ```
+
+
+
+## stow文件冲突的问题
+
+欲stow的文件目前已经存在于target中时，stow会失败，此时：
+
+* 使用`--override=.*`可以将强制覆盖其他stow包创建的符号链接
+* 提示"existing target is neither a link nor a directory"，因为冲突的目标文件不是符号链接，只能手动删除，或者如果希望自动备份到stow包中（就是源）可以使用`--adopt`选项

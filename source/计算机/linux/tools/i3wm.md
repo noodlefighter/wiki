@@ -92,15 +92,21 @@ bindsym $mod+o exec "cinnamon-screensaver-command -l"
 
 ## compton
 
-淡入淡出、阴影，GUI配置界面`compton-conf`。
+效果器，提供淡入淡出、阴影、透明等效果支持。
+
+GUI配置界面`compton-conf`。
+
+
 
 ## 正在测试
 
 suckless-tools
 
-Rofi: A window switcher, application launcher and dmenu replacement
-
 ## 像其他环境中Alt+Tab循环切换焦点到下一个窗口
+
+
+> 流畅度不行，习惯i3的操作方式之后，这真没什么用。。。
+
 
 > via: https://gist.github.com/Nervengift/0ab9e6127ac17b8317ac
 
@@ -130,8 +136,6 @@ i3加入配置：
 ```
 bindsym $alt+Tab exec --no-startup-id ~/.config/i3/i3-focus-next
 ```
-
-> 注意，虽然能实现功能，但是流畅度明显不行。。
 
 ## 特定工作区启动指定应用程序
 
