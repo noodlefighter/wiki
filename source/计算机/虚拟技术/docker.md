@@ -86,3 +86,43 @@ https://blog.csdn.net/kity9420/article/details/75717091
 
 * bridge模式，使用--net=bridge指定，默认设置，默认无法访问宿主
 
+
+## Docker Compose
+
+部署docker的脚本工具，能方便地部署脚本，不用打很长的命令，也利于版本管理（不用自己写shell脚本了），如：
+
+```
+# file <docker-compose.yml>
+version: "2"
+
+networks:
+  gitea:
+    external: false
+
+services:
+  server:
+    image: gitea/gitea:1.10.0
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    restart: always
+    networks:
+      - gitea
+    volumes:
+      - ./data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"
+      - "222:22"
+```
+
+命令：
+
+```
+部署
+$ docker-compose up -d
+撤销部署
+$ docker-compose down
+```
+

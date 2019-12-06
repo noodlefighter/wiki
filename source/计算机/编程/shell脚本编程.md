@@ -278,6 +278,25 @@ hex_string_to_le 01020304
 
 
 
+## cut命令
+
+例：
+
+```
+$ wpa_cli -i wlan0 list_networks
+network id / ssid / bssid / flags
+0	a-610377	any	
+1	a-6102D2	any	
+2	a-6102CD	any
+
+$ wpa_cli -i wlan0 list_networks | tail -n +2 | cut -f -1
+0
+1
+2
+```
+
+
+
 ## IFS分隔符
 
 用分隔符可以控制shell的行为：

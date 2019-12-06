@@ -16,6 +16,10 @@ https://www.kernel.org/doc/html/latest/usb/gadget_serial.html
 
 https://www.kernel.org/doc/html/latest/usb/functionfs.html
 
+使用gadgetfs创建自己的usb设备：
+
+https://blog.soutade.fr/post/2016/07/create-your-own-usb-gadget-with-gadgetfs.html
+
 
 
 ## 如何用起现有gadget里的function

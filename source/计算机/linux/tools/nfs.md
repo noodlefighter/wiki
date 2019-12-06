@@ -13,7 +13,7 @@
 
 编辑配置`/etc/exports`：
 ```
-/home/dev/workspaces/hi3516a/nfs        (rw,sync,no_subtree_check)
+/home/dev/workspaces/hi3516a/nfs        *(rw,sync,no_subtree_check)
 ```
 
 挂载：
@@ -27,6 +27,12 @@ mount -t nfs localhost:/home/dev/workspaces/hi3516a/nfs /mnt/nfs
 svc: failed to register lockdv1 RPC service (errno 111)
 加个-o nolock
 ```
+
+
+
+## Arch Linux上的参考
+
+https://wiki.archlinux.org/index.php/NFS
 
 
 
@@ -70,7 +76,7 @@ Use lang = euc-jp|euc-tw|euc-kr|shift-jis|big5|ksc5601|gb2312-80|ansi only
 – the default is suid.
 
 
-  
+
 
 ## hard / soft
 
