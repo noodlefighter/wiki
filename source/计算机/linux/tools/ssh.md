@@ -122,3 +122,52 @@ ServerAliveInterval 60 ＃client每隔60秒发送一次请求给server，然后s
 
 ServerAliveCountMax 3  ＃client发出请求后，服务器端没有响应得次数达到3，就自动断开连接，正常情况下，server不会不响应
 ```
+
+
+
+## ssh穿透-在docker容器里装git服务器
+
+把git服务器装在docker容器中时，如果要用SSH方式访问git仓库，又不想在使用时指定特殊的端口，就必须与宿主共享22端口。
+
+> 参考：http://www.ateijelo.com/blog/2016/07/09/share-port-22-between-docker-gogs-ssh-and-local-system
+
+- 在真实系统里创建名为`git`的用户
+- 把UID和GID传入docker容器，一般是通过参数，在容器内entrypoint接收参数，使用指定UID/GID执行应用，以保证容器中创建的文件与宿主一致
+- 配置SSH端口映射，如命令行 `-v ~git/gogs:/data -p 127.0.0.1:10022:22 -p 3000:3000`.
+- 创建符号链接 `/home/git/.ssh` 到 `gogs/git/.ssh`
+- 生成密钥对，供宿主与容器间通讯
+- 执行：
+
+```
+mkdir -p /app/gogs/
+cat >/app/gogs/gogs <<'END'
+#!/bin/bash
+GIT_KEY_ID=$(cat /home/git/.ssh/id_rsa.pub | awk '{ print $3 }')
+if ! grep -q "no-port.*$GIT_KEY_ID" /home/git/.ssh/authorized_keys
+then
+    echo \
+    "no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty" \
+    "$(cat /home/git/.ssh/id_rsa.pub)" \
+    >> /home/git/.ssh/authorized_keys
+fi
+ssh -p 10022 -o StrictHostKeyChecking=no git@127.0.0.1 \
+    SSH_ORIGINAL_COMMAND=$(printf '%q' "$SSH_ORIGINAL_COMMAND") "$0" "$@"
+END
+chmod 755 /app/gogs/gogs
+```
+
+
+
+原理，在 `~/.ssh/authorized_keys`中：
+
+```
+command="/app/gogs/gogs serv key-1 --config='/data/gogs/conf/app.ini'",no-po
+rt-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAVFUEV0
+SpbdpMBMc.................0ALtpNr6Nc6 gogsuser1@host1
+...
+command="/app/gogs/gogs serv key-2 --config='/data/gogs/conf/app.ini'",no-po
+rt-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAA34ff
+30rV0ay6Q.................hGWhpsqNeuE gogsuser2@host2
+```
+
+当有客户使用git用户连接上宿主的ssh，就会执行`/app/gogs/gogs`从而走向代理通道。
