@@ -1,0 +1,482 @@
+title: shell脚本编程
+date: 2019-12-06
+categories:
+- 计算机
+- 编程
+
+
+
+
+---
+
+
+## 技巧
+### 获取脚本所在目录
+
+获取脚本所在路径, 而不是$PWD:
+
+```
+cd "$(dirname "$0")"
+```
+
+```
+SHELL_DIR=$(cd "$(dirname "$0")";pwd)
+```
+
+
+
+当需要用source调用这个脚本时，上面这个`$0`是不可靠的，得换成`${BASH_SOURCE[0]}`：
+
+https://stackoverflow.com/questions/35006457/choosing-between-0-and-bash-source
+
+### 判断环境变量是否存在
+
+```
+if [ -z $JAVA_HOME ];then
+	echo "not exists"
+else
+	echo "JAVA_HOME = $JAVA_HOME"
+fi
+```
+
+### 查看进程是否存在
+
+```
+ps -fe|grep hostapd |grep -v grep
+if [ $? -ne 0 ]; then
+    echo "start process....."
+else
+    echo "runing....."
+fi
+```
+
+
+
+## 传参
+
+```
+$0 第0个参数(执行的命令本身)
+$1 第1个参数
+$2 第2个参数
+$# 参数数量, "ps -a"有1个参数；"tar -xf aaa.tar"有2个参数
+$? 上一条命令返回值
+```
+
+
+
+## if语句
+
+```
+if [ 条件 ];then
+   echo "do some thing"
+elif [ 条件 ];then
+   echo "do some thing"
+else
+   echo "do some thing"
+fi
+```
+
+## for语句
+
+```
+# 遍历多行文本
+my_multiline_str="a\
+b\
+c"
+for line in $my_multiline_str;do
+	echo "${line}"
+done
+
+# 遍历数组, 千万别写成了遍历多行文本的形式...血泪教训
+my_array=(a b c)
+for item in ${my_array[@]};do
+	echo "${item}"
+done
+```
+
+## while语句
+
+计算1到100的和
+
+```bash
+#!/bin/bash
+i=1
+sum=0
+while [ $i -le 100 ]
+do
+  let sum=sum+$i
+  let i++
+done
+echo $sum
+```
+
+死循环
+
+```
+while :
+do
+  echo ...
+done
+```
+
+
+
+## 文件判断
+
+```
+[ -b FILE ] 如果 FILE 存在且是一个块特殊文件则为真。
+[ -c FILE ] 如果 FILE 存在且是一个字特殊文件则为真。
+[ -d DIR ] 如果 FILE 存在且是一个目录则为真。
+[ -e FILE ] 如果 FILE 存在则为真。
+[ -f FILE ] 如果 FILE 存在且是一个普通文件则为真。
+[ -g FILE ] 如果 FILE 存在且已经设置了SGID则为真。
+[ -k FILE ] 如果 FILE 存在且已经设置了粘制位则为真。
+[ -p FILE ] 如果 FILE 存在且是一个名字管道(F如果O)则为真。
+[ -r FILE ] 如果 FILE 存在且是可读的则为真。
+[ -s FILE ] 如果 FILE 存在且大小不为0则为真。
+[ -t FD ] 如果文件描述符 FD 打开且指向一个终端则为真。
+[ -u FILE ] 如果 FILE 存在且设置了SUID (set user ID)则为真。
+[ -w FILE ] 如果 FILE存在且是可写的则为真。
+[ -x FILE ] 如果 FILE 存在且是可执行的则为真。
+[ -O FILE ] 如果 FILE 存在且属有效用户ID则为真。
+[ -G FILE ] 如果 FILE 存在且属有效用户组则为真。
+[ -L FILE ] 如果 FILE 存在且是一个符号连接则为真。
+[ -N FILE ] 如果 FILE 存在 and has been mod如果ied since it was last read则为真。
+[ -S FILE ] 如果 FILE 存在且是一个套接字则为真。
+[ FILE1 -nt FILE2 ] 如果 FILE1 has been changed more recently than FILE2, or 如果 FILE1 exists and FILE2 does not则为真。
+[ FILE1 -ot FILE2 ] 如果 FILE1 比 FILE2 要老, 或者 FILE2 存在且 FILE1 不存在则为真。
+[ FILE1 -ef FILE2 ] 如果 FILE1 和 FILE2 指向相同的设备和节点号则为真。
+```
+
+## 字符串判断
+
+```
+[ -z STRING ] 如果STRING的长度为零则为真 ，即判断是否为空，空即是真；
+[ -n STRING ] 如果STRING的长度非零则为真 ，即判断是否为非空，非空即是真；
+[ STRING1 = STRING2 ] 如果两个字符串相同则为真 ；
+[ STRING1 != STRING2 ] 如果字符串不相同则为真 ；
+[ STRING1 ]　 如果字符串不为空则为真,与-n类似
+```
+
+## 数值判断
+
+```
+INT1 -eq INT2           INT1和INT2两数相等为真 ,=
+INT1 -ne INT2           INT1和INT2两数不等为真 ,<>
+INT1 -gt INT2            INT1大于INT1为真 ,>
+INT1 -ge INT2           INT1大于等于INT2为真,>=
+INT1 -lt INT2             INT1小于INT2为真 ,<</div>
+INT1 -le INT2             INT1小于等于INT2为真,<=
+```
+
+## 复杂逻辑判断
+
+```
+-a 与
+-o 或
+! 非
+```
+
+例1:  如果a>b且a
+```
+if (( a > b )) && (( a < c ))
+if [[ $a > $b ]] && [[ $a < $c ]]
+if [ $a -gt $b -a $a -lt $c ]
+```
+
+例2:如果a>b或a
+```
+if (( a > b )) || (( a < c ))
+if [[ $a > $b ]] || [[ $a < $c ]]
+if [ $a -gt $b -o $a -lt $c ]
+```
+
+## 数组操作
+
+```
+# 创建数组
+my_array=(value1 ... valueN)
+# 赋值
+my_array[0]=value0
+my_array[1]=value1
+# 取值
+echo ${array_name[0]}
+
+echo "数组的元素为: ${my_array[*]}"
+echo "数组的元素为: ${my_array[@]}"
+echo "数组元素个数为: ${#my_array[*]}"
+echo "数组元素个数为: ${#my_array[@]}"
+
+# 末尾追加元素
+my_array+=(value)
+my_array+=("${other_array[@]}")
+
+# 遍历数组
+for item in ${my_array[@]};do
+	echo "${item}"
+done
+```
+
+## 字符串操作
+
+获取字符串长度
+
+```
+${#var}
+```
+
+字符串截取
+
+```
+# 最小限度从前面截取word(例a/b/c-->b/foo)
+${var#*word}
+# 最大限度从前面截取word(例a/b/c-->c)
+${var##*word}
+
+# 最小限度从后面截取word(例a/b/c-->a/b)
+${var%word*}
+# 最大限度从后面截取word(例a/b/c-->a)
+${var%%word*}
+
+# 从左边第start个字符，截取len个字符
+${var:start:len}
+${var:start}
+
+# 从右边第start个字符，截取len个字符
+${var:0-start:len}
+${var:0-start}
+```
+
+## 异常捕获的一种方法
+
+> via:https://stackoverflow.com/questions/22009364/is-there-a-try-catch-command-in-bash
+
+利用`&&`短路性：
+
+```sh
+{ # try
+    command1 &&
+    command2 &&
+    command3
+} || { # catch
+    echo “error catch”
+}
+```
+
+感觉很容易漏写`&&`，特别是维护的人。
+
+## 获取文件大小
+
+```
+wc -c _app.bin.enc | awk '{print $1}'
+```
+
+shell，bash，获取文件字节数
+
+## 十六进制数字字符串，大端转小端
+
+```
+hex_string_to_le() {
+  printf %s "$1" | dd conv=swab 2> /dev/null | rev
+}
+
+hex_string_to_le 01020304
+```
+
+
+
+## cut命令
+
+例：
+
+```
+$ wpa_cli -i wlan0 list_networks
+network id / ssid / bssid / flags
+0	a-610377	any	
+1	a-6102D2	any	
+2	a-6102CD	any
+
+$ wpa_cli -i wlan0 list_networks | tail -n +2 | cut -f -1
+0
+1
+2
+```
+
+
+
+## IFS分隔符
+
+用分隔符可以控制shell的行为：
+
+```
+IP=220.112.253.111
+IFS="."
+TMPIP=$(echo $IP)
+IFS=" " # space
+echo $TMPIP | read ip1 ip2 ip3 ip4
+INVERT_IP=$ip4.$ip3.$ip2.$ip1
+```
+
+```
+IFS='|'
+text='a a a a|b b b b|c c c c'
+for i in $text;do echo "i=$i";done
+```
+
+使用的时候得注意，要用`\n`作为分隔符时，得写作`IFS=$'\n'`，原因不明
+
+## 格式控制
+
+> via:<https://www.cnblogs.com/yaohong/archive/2018/05/31/9118928.html>
+
+```
+输出特效格式控制：
+\033[0m  关闭所有属性  
+\033[1m   设置高亮度  
+\03[4m   下划线  
+\033[5m   闪烁  
+\033[7m   反显  
+\033[8m   消隐  
+\033[30m   --   \033[37m   设置前景色  
+\033[40m   --   \033[47m   设置背景色
+
+
+光标位置等的格式控制：
+\033[nA  光标上移n行  
+\03[nB   光标下移n行  
+\033[nC   光标右移n行  
+\033[nD   光标左移n行  
+\033[y;xH设置光标位置  
+\033[2J   清屏  
+\033[K   清除从光标到行尾的内容  
+\033[s   保存光标位置  
+\033[u   恢复光标位置  
+\033[?25l   隐藏光标  
+
+\33[?25h   显示光标
+
+整理：
+    编码 颜色/动作
+　　0   重新设置属性到缺省设置
+　　1   设置粗体
+　　2   设置一半亮度(模拟彩色显示器的颜色)
+　　4   设置下划线(模拟彩色显示器的颜色)
+　　5   设置闪烁
+　　7   设置反向图象
+　　22 设置一般密度
+　　24 关闭下划线
+　　25 关闭闪烁
+　　27 关闭反向图象
+　　30 设置黑色前景
+　　31 设置红色前景
+　　32 设置绿色前景
+　　33 设置棕色前景
+　　34 设置蓝色前景
+　　35 设置紫色前景
+　　36 设置青色前景
+　　37 设置白色前景
+　　38 在缺省的前景颜色上设置下划线
+　　39 在缺省的前景颜色上关闭下划线
+　　40 设置黑色背景
+　　41 设置红色背景
+　　42 设置绿色背景
+　　43 设置棕色背景
+　　44 设置蓝色背景
+　　45 设置紫色背景
+　　46 设置青色背景
+　　47 设置白色背景
+　　49 设置缺省黑色背景
+特效可以叠加，需要使用“;”隔开，例如：闪烁+下划线+白底色+黑字为   \033[5;4;47;30m闪烁+下划线+白底色+黑字为\033[0m
+下面是一段小例子
+
+[plain] view plain copy
+#!/bin/bash  
+#  
+#下面是字体输出颜色及终端格式控制  
+#字体色范围：30-37  
+echo -e "\033[30m 黑色字 \033[0m"  
+echo -e "\033[31m 红色字 \033[0m"  
+echo -e "\033[32m 绿色字 \033[0m"  
+echo -e "\033[33m 黄色字 \033[0m"  
+echo -e "\033[34m 蓝色字 \033[0m"  
+echo -e "\033[35m 紫色字 \033[0m"  
+echo -e "\033[36m 天蓝字 \033[0m"  
+echo -e "\033[37m 白色字 \033[0m"  
+#字背景颜色范围：40-47  
+echo -e "\033[40;37m 黑底白字 \033[0m"  
+echo -e "\033[41;30m 红底黑字 \033[0m"  
+echo -e "\033[42;34m 绿底蓝字 \033[0m"  
+echo -e "\033[43;34m 黄底蓝字 \033[0m"  
+echo -e "\033[44;30m 蓝底黑字 \033[0m"  
+echo -e "\033[45;30m 紫底黑字 \033[0m"  
+echo -e "\033[46;30m 天蓝底黑字 \033[0m"  
+echo -e "\033[47;34m 白底蓝字 \033[0m"  
+  
+#控制选项说明  
+#\033[0m 关闭所有属性  
+#\033[1m 设置高亮度  
+#\033[4m 下划线  
+echo -e "\033[4;31m 下划线红字 \033[0m"  
+#闪烁  
+echo -e "\033[5;34m 红字在闪烁 \033[0m"  
+#反影  
+echo -e "\033[8m 消隐 \033[0m "  
+  
+#\033[30m-\033[37m 设置前景色  
+#\033[40m-\033[47m 设置背景色  
+#\033[nA光标上移n行  
+#\033[nB光标下移n行  
+echo -e "\033[4A 光标上移4行 \033[0m"  
+#\033[nC光标右移n行  
+#\033[nD光标左移n行  
+#\033[y;xH设置光标位置  
+#\033[2J清屏  
+#\033[K清除从光标到行尾的内容  
+echo -e "\033[K 清除光标到行尾的内容 \033[0m"  
+#\033[s 保存光标位置  
+#\033[u 恢复光标位置  
+#\033[?25| 隐藏光标  
+#\033[?25h 显示光标  
+echo -e "\033[?25l 隐藏光标 \033[0m"  
+echo -e "\033[?25h 显示光标 \033[0m"  
+```
+
+
+
+## 技巧集
+
+### 获取当前IP地址
+
+```
+ip="$(ifconfig | grep -A 1 'eth0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
+```
+
+### 判断当前用户是否为root
+
+```
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
+fi
+```
+
+### 像pip一样安装依赖Requirement.txt
+
+```
+cat packages.txt | xargs sudo apt-get -y install
+```
+
+### 取路径中的文件名和目录
+
+
+
+```
+MY_PATH=/tmp/abcd
+
+# 取path中的文件名
+echo $(basename $MY_PATH)
+# 取path中的目录名
+echo $(dirname $MY_PATH)
+```
+
