@@ -17,6 +17,7 @@ install:
 
 script:
 - bash generate.sh
+- bash -c "echo wiki.noodlefighter.com > hexo/public/CNAME"
 
 deploy:
   provider: pages
