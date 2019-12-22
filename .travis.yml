@@ -26,4 +26,4 @@ deploy:
   on:
     branch: master
   local_dir:
-    build/
+    hexo/public
