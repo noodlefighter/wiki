@@ -1,0 +1,9 @@
+site_name: Noodlefighter's Wiki
+docs_dir: wiki
+theme:
+  name: null
+  custom_dir: 'theme_windmill'
+  include_search_page: true
+  search_index_only: true
+  static_templates:
+    - 404.html
