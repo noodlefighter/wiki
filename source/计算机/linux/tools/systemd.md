@@ -59,6 +59,7 @@ $ systemctl status sshd
 Description=Foo
 
 [Service]
+WorkingDirectory=/usr/local
 ExecStart=/usr/sbin/foo-daemon
 
 [Install]

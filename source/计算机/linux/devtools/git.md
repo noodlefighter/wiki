@@ -323,3 +323,14 @@ git rm --cached 子模块名称
 ```
 
 完成删除后，提交到仓库即可。
+
+
+
+## 仓库迁移
+
+```
+$ git clone --bare git://oldgithub.com/username/oldproject.git
+$ cd oldproject.git
+$ git push --mirror git@newgithub.com/username/newproject.git
+```
+
