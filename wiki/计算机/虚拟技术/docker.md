@@ -126,3 +126,41 @@ $ docker-compose up -d
 $ docker-compose down
 ```
 
+
+
+## 解决容器内创建的问题的权限问题
+
+
+
+```
+$ docker run --rm -it -u $UID:$GROUPS -v $PWD/platform:/opt/lichee jacklan/licheepi_nano /bin/bash
+```
+
+
+
+## 镜象打包成tar、从tar还原
+
+> 来源：https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html
+>
+> ## docker save和docker export的区别
+>
+> 总结一下docker save和docker export的区别：
+>
+> 1. docker save保存的是镜像（image），docker export保存的是容器（container）；
+> 2. docker load用来载入镜像包，docker import用来载入容器包，但两者都会恢复为镜像；
+> 3. docker load不能对载入的镜像重命名，而docker import可以为镜像指定新名称。
+
+
+
+```
+# docker save -o nginx.tar nginx:latest
+# docker load -i nginx.tar
+```
+
+
+
+```
+# docker export -o postgres-export.tar postgres
+# docker import postgres-export.tar postgres:latest
+```
+
