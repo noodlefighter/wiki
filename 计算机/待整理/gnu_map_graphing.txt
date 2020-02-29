@@ -1,0 +1,15 @@
+https://github.com/d3/d3
+
+https://forum.micropython.org/viewtopic.php?t=577
+https://github.com/Neon22/micropython-examine-mem-maps
+
+https://pypi.python.org/pypi/fpvgcc/0.7.9
+
+https://github.com/jotux/GccMapVisualizer/tree/gh-pages
+
+Linker相关
+http://wen00072.github.io/blog/2014/03/14/study-on-the-linker-script/
+
+
+           json data
+py paser --------------> front-end view (html+js)

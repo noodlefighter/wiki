@@ -1,0 +1,5660 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Sed - Noodlefighter's Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7cb342">
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-green" data-md-color-accent="pink">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../../.." title="Noodlefighter's Wiki" aria-label="Noodlefighter's Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Noodlefighter's Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Sed
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../../.." title="Noodlefighter's Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Noodlefighter's Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Noodlefighter's Wiki" class="md-nav__link">
+      Noodlefighter's Wiki
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      待阅读后删除
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        待阅读后删除
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E5%BE%85%E9%98%85%E8%AF%BB%E5%90%8E%E5%88%A0%E9%99%A4/btrfs%E5%92%8C%E5%B5%8C%E5%85%A5%E5%BC%8F/" title="Btrfs和嵌入式" class="md-nav__link">
+      Btrfs和嵌入式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      心理学
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        心理学
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E5%BF%83%E7%90%86%E5%AD%A6/VALS_value-and-lifesylte/" title="VALS value and lifesylte" class="md-nav__link">
+      VALS value and lifesylte
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E5%BF%83%E7%90%86%E5%AD%A6/%E6%94%BB%E5%87%BB%E6%80%A7%E7%9B%B8%E5%85%B3/" title="攻击性相关" class="md-nav__link">
+      攻击性相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E5%BF%83%E7%90%86%E5%AD%A6/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="社会心理学学习笔记" class="md-nav__link">
+      社会心理学学习笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E5%BF%83%E7%90%86%E5%AD%A6/%E8%A1%8C%E4%B8%BA%E7%BB%8F%E6%B5%8E%E5%AD%A6/" title="行为经济学" class="md-nav__link">
+      行为经济学
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BE%BE%E5%85%8B%E6%95%88%E5%BA%94/" title="达克效应" class="md-nav__link">
+      达克效应
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      日常
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        日常
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/efficiency/" title="Efficiency" class="md-nav__link">
+      Efficiency
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E4%BF%A1%E7%94%A8%E5%8D%A1%E8%A2%AB%E7%9B%97%E5%88%B7%E6%80%8E%E4%B9%88%E5%8A%9E/" title="信用卡被盗刷怎么办" class="md-nav__link">
+      信用卡被盗刷怎么办
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E5%8E%A8%E5%85%B7%E9%80%89%E8%B4%AD/" title="厨具选购" class="md-nav__link">
+      厨具选购
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E5%8F%91%E9%9C%89/" title="发霉" class="md-nav__link">
+      发霉
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      烹饪
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        烹饪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5-1" type="checkbox" id="nav-4-5-1">
+    
+    <label class="md-nav__link" for="nav-4-5-1">
+      油炸系
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-1">
+        油炸系
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E7%83%B9%E9%A5%AA/%E6%B2%B9%E7%82%B8%E7%B3%BB/%E7%82%B8%E7%8C%AA%E6%8E%92/" title="炸猪排" class="md-nav__link">
+      炸猪排
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E7%83%B9%E9%A5%AA/%E6%B2%B9%E7%82%B8%E7%B3%BB/%E7%89%9B%E8%82%89%E9%A5%BC/" title="牛肉饼" class="md-nav__link">
+      牛肉饼
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5-2" type="checkbox" id="nav-4-5-2">
+    
+    <label class="md-nav__link" for="nav-4-5-2">
+      饭团系
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-2">
+        饭团系
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E7%83%B9%E9%A5%AA/%E9%A5%AD%E5%9B%A2%E7%B3%BB/%E7%9B%90%E9%A5%AD%E5%9B%A2/" title="盐饭团" class="md-nav__link">
+      盐饭团
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+    
+    <label class="md-nav__link" for="nav-4-6">
+      装修
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        装修
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E8%A3%85%E4%BF%AE/%E5%87%80%E6%B0%B4%E5%99%A8/" title="净水器" class="md-nav__link">
+      净水器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E8%A3%85%E4%BF%AE/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E6%8B%92%E7%BB%9D%E8%A3%85%E4%BF%AE%E5%85%AC%E5%8F%B8%E7%9A%84%E5%A5%97%E8%B7%AF/" title="如何优雅地拒绝装修公司的套路" class="md-nav__link">
+      如何优雅地拒绝装修公司的套路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E8%A3%85%E4%BF%AE/%E8%A3%85%E4%BF%AE/" title="装修" class="md-nav__link">
+      装修
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
+    
+    <label class="md-nav__link" for="nav-4-7">
+      食品与营养学
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        食品与营养学
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E9%A3%9F%E5%93%81%E4%B8%8E%E8%90%A5%E5%85%BB%E5%AD%A6/%E7%99%BD%E9%85%92%E5%8B%BE%E5%85%91%E5%B7%A5%E8%89%BA/" title="白酒勾兑工艺" class="md-nav__link">
+      白酒勾兑工艺
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E9%A3%9F%E5%93%81%E4%B8%8E%E8%90%A5%E5%85%BB%E5%AD%A6/%E8%86%B3%E9%A3%9F%E7%BA%A4%E7%BB%B4%E4%B8%8E%E9%A3%9F%E5%93%81%E5%81%A5%E5%BA%B7/" title="膳食纤维与食品健康" class="md-nav__link">
+      膳食纤维与食品健康
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E9%A3%9F%E5%93%81%E4%B8%8E%E8%90%A5%E5%85%BB%E5%AD%A6/%E9%A3%9F%E7%89%A9GI%E5%80%BCGL%E5%80%BC/" title="食物GI值GL值" class="md-nav__link">
+      食物GI值GL值
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
+    
+    <label class="md-nav__link" for="nav-4-8">
+      麻将
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        麻将
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E9%BA%BB%E5%B0%86/%E5%9C%A8%E6%84%8F%E7%9A%84%E7%89%8C%E8%B0%B1/" title="在意的牌谱" class="md-nav__link">
+      在意的牌谱
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      电子工程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        电子工程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/mosfet/" title="Mosfet" class="md-nav__link">
+      Mosfet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E7%94%B5%E5%AD%90%E7%9B%B8%E5%85%B3%E6%9D%90%E6%96%99materials/" title="电子相关材料materials" class="md-nav__link">
+      电子相关材料materials
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E7%BB%95%E7%BA%BF%E5%B7%A5%E8%89%BA/" title="绕线工艺" class="md-nav__link">
+      绕线工艺
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E8%84%91%E6%9C%BA%E6%8E%A5%E5%8F%A3BCI/" title="脑机接口BCI" class="md-nav__link">
+      脑机接口BCI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+    
+    <label class="md-nav__link" for="nav-5-5">
+      IoT
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        IoT
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/IoT/IoT%E7%BB%84%E7%BD%91%E6%96%B9%E5%BC%8F/" title="IoT组网方式" class="md-nav__link">
+      IoT组网方式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/IoT/ble/" title="Ble" class="md-nav__link">
+      Ble
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/IoT/lora/" title="Lora" class="md-nav__link">
+      Lora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/IoT/%E7%A9%BA%E9%97%B4%E5%8F%96%E7%94%B5/" title="空间取电" class="md-nav__link">
+      空间取电
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      嵌入式开源项目
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        嵌入式开源项目
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/AI%E7%9B%B8%E5%85%B3/" title="AI相关" class="md-nav__link">
+      AI相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/GUI%E7%9B%B8%E5%85%B3/" title="GUI相关" class="md-nav__link">
+      GUI相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/libc/" title="libc替代" class="md-nav__link">
+      libc替代
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E5%82%A8%E5%AD%98%E5%8F%8A%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="储存及文件系统" class="md-nav__link">
+      储存及文件系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%B9%B3%E5%8F%B0/" title="嵌入式软件平台" class="md-nav__link">
+      嵌入式软件平台
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B/" title="开发过程" class="md-nav__link">
+      开发过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E7%A1%AC%E4%BB%B6/" title="开源硬件" class="md-nav__link">
+      开源硬件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E7%AE%97%E6%B3%95/" title="算法" class="md-nav__link">
+      算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E7%B1%BB%E4%BC%BC%E7%9A%84%E6%94%B6%E9%9B%86%E5%9C%B0/" title="类似的收集地" class="md-nav__link">
+      类似的收集地
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/" title="网络相关" class="md-nav__link">
+      网络相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E8%84%9A%E6%9C%AC/" title="脚本" class="md-nav__link">
+      脚本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E8%A7%86%E9%A2%91%E5%9B%BE%E5%83%8F/" title="视频图像" class="md-nav__link">
+      视频图像
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E9%80%9A%E8%AE%AF%E5%92%8C%E6%80%BB%E7%BA%BF%E5%8D%8F%E8%AE%AE/" title="通讯和总线协议" class="md-nav__link">
+      通讯和总线协议
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7">
+    
+    <label class="md-nav__link" for="nav-5-7">
+      嵌入式硬件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        嵌入式硬件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/%E5%8F%8C%E6%A0%B8%E5%BC%82%E6%9E%84/" title="双核异构" class="md-nav__link">
+      双核异构
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/%E6%80%BB%E7%BA%BF%E6%8A%80%E6%9C%AF/" title="总线技术" class="md-nav__link">
+      总线技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/%E7%A1%AC%E4%BB%B6%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89%E9%80%9F%E6%9F%A5/" title="硬件接口定义速查" class="md-nav__link">
+      硬件接口定义速查
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8">
+    
+    <label class="md-nav__link" for="nav-5-8">
+      嵌入式软件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        嵌入式软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/Golang%E5%BC%80%E5%8F%91%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%8F%AF%E8%A1%8C%E6%80%A7/" title="Golang开发嵌入式软件可行性" class="md-nav__link">
+      Golang开发嵌入式软件可行性
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/SSDP%E7%AE%80%E5%8D%95%E8%AE%BE%E5%A4%87%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE/" title="SSDP简单设备发现协议" class="md-nav__link">
+      SSDP简单设备发现协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/ble%E8%93%9D%E7%89%99/" title="Ble蓝牙" class="md-nav__link">
+      Ble蓝牙
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/rtos/" title="Rtos" class="md-nav__link">
+      Rtos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E6%A1%86%E6%9E%B6/" title="嵌入式程序执行框架" class="md-nav__link">
+      嵌入式程序执行框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%BF%AB%E9%80%9F%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%80%9D%E8%80%83/" title="嵌入式软件快速原型开发的探索与思考" class="md-nav__link">
+      嵌入式软件快速原型开发的探索与思考
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="树莓派基本使用" class="md-nav__link">
+      树莓派基本使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/%E6%B4%BB%E5%8A%A8%E5%AF%B9%E8%B1%A1%E6%A1%86%E6%9E%B6/" title="活动对象框架" class="md-nav__link">
+      活动对象框架
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      自然语言
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        自然语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1">
+    
+    <label class="md-nav__link" for="nav-6-1">
+      日语
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-1">
+        日语
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E6%97%A5%E8%AF%AD/%E5%9C%A8%E6%84%8F%E7%9A%84%E6%97%A5%E8%AF%AD%E8%AF%8D%E6%B1%87/" title="在意的日语词汇" class="md-nav__link">
+      在意的日语词汇
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E6%97%A5%E8%AF%AD/%E7%BF%BB%E8%AF%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E7%94%9F%E8%AF%8D/" title="翻译中遇到的生词" class="md-nav__link">
+      翻译中遇到的生词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E6%97%A5%E8%AF%AD/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9C%AF%E8%AF%AD_%E6%97%A5%E8%AF%AD/" title="计算机术语 日语" class="md-nav__link">
+      计算机术语 日语
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      翻译
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        翻译
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E7%BF%BB%E8%AF%91%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7/" title="翻译相关工具" class="md-nav__link">
+      翻译相关工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-2" type="checkbox" id="nav-6-2-2">
+    
+    <label class="md-nav__link" for="nav-6-2-2">
+      听译练习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-2">
+        听译练习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E5%90%AC%E8%AF%91%E7%BB%83%E4%B9%A0/chobits13/" title="Chobits13" class="md-nav__link">
+      Chobits13
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E5%90%AC%E8%AF%91%E7%BB%83%E4%B9%A0/%E5%8F%8C%E5%8F%B6%E6%9D%8FMAD/" title="双叶杏MAD" class="md-nav__link">
+      双叶杏MAD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E5%90%AC%E8%AF%91%E7%BB%83%E4%B9%A0/%E6%8E%A2%E5%81%B5%E3%82%AA%E3%83%9A%E3%83%A95/" title="探偵オペラ5" class="md-nav__link">
+      探偵オペラ5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E5%90%AC%E8%AF%91%E7%BB%83%E4%B9%A0/%E6%8E%A2%E5%81%B5%E3%82%AA%E3%83%9A%E3%83%A96/" title="探偵オペラ6" class="md-nav__link">
+      探偵オペラ6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E5%90%AC%E8%AF%91%E7%BB%83%E4%B9%A0/%E9%BB%91%E7%99%BD%E5%B0%8F%E5%A7%901/" title="黑白小姐1" class="md-nav__link">
+      黑白小姐1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E5%90%AC%E8%AF%91%E7%BB%83%E4%B9%A0/%E9%BB%91%E7%99%BD%E5%B0%8F%E5%A7%902/" title="黑白小姐2" class="md-nav__link">
+      黑白小姐2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E5%90%AC%E8%AF%91%E7%BB%83%E4%B9%A0/%E9%BB%91%E7%99%BD%E5%B0%8F%E5%A7%903/" title="黑白小姐3" class="md-nav__link">
+      黑白小姐3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E5%90%AC%E8%AF%91%E7%BB%83%E4%B9%A0/%E9%BB%91%E7%99%BD%E5%B0%8F%E5%A7%904/" title="黑白小姐4" class="md-nav__link">
+      黑白小姐4
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3" type="checkbox" id="nav-6-2-3">
+    
+    <label class="md-nav__link" for="nav-6-2-3">
+      杂碎作品
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-3">
+        杂碎作品
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E7%BF%BB%E8%AF%91/%E6%9D%82%E7%A2%8E%E4%BD%9C%E5%93%81/%E8%8D%89%E4%BA%BA%E7%9A%84%E5%8C%97%E9%85%B1%E6%97%B6%E9%9B%A8%E6%83%85%E4%BA%BA%E8%8A%82%E9%BB%91%E7%AB%A5%E8%AF%9D/" title="草人的北酱时雨情人节黑童话" class="md-nav__link">
+      草人的北酱时雨情人节黑童话
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      英语
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        英语
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/%E6%97%A5%E5%B8%B8/" title="日常" class="md-nav__link">
+      日常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9C%AF%E8%AF%AD/" title="计算机术语" class="md-nav__link">
+      计算机术语
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      艺术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        艺术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      摄影
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        摄影
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%89%BA%E6%9C%AF/%E6%91%84%E5%BD%B1/HDR%E7%A0%94%E7%A9%B6/" title="HDR研究" class="md-nav__link">
+      HDR研究
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      音乐
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        音乐
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%89%BA%E6%9C%AF/%E9%9F%B3%E4%B9%90/%E9%9F%B3%E4%B9%90%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" title="音乐基础学习" class="md-nav__link">
+      音乐基础学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%89%BA%E6%9C%AF/%E9%9F%B3%E4%B9%90/%E9%9F%B3%E4%B9%90%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7/" title="音乐相关工具" class="md-nav__link">
+      音乐相关工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2-3" type="checkbox" id="nav-7-2-3">
+    
+    <label class="md-nav__link" for="nav-7-2-3">
+      歌词
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-7-2-3">
+        歌词
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%89%BA%E6%9C%AF/%E9%9F%B3%E4%B9%90/%E6%AD%8C%E8%AF%8D/A-Day-in-the-S.I.O.U/" title="A Day in the S.I.O.U" class="md-nav__link">
+      A Day in the S.I.O.U
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2-4" type="checkbox" id="nav-7-2-4">
+    
+    <label class="md-nav__link" for="nav-7-2-4">
+      谱子
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-7-2-4">
+        谱子
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E8%89%BA%E6%9C%AF/%E9%9F%B3%E4%B9%90/%E8%B0%B1%E5%AD%90/%E5%8F%A3%E7%90%B4%E8%B0%B1/" title="口琴谱" class="md-nav__link">
+      口琴谱
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      计算机
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        计算机
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      Android
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        Android
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../android/android_source_code/" title="Android source code" class="md-nav__link">
+      Android source code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../android/android_usb_accessory/" title="Android usb accessory" class="md-nav__link">
+      Android usb accessory
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2" checked>
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Linux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Linux%E4%B8%8A%E5%AE%9E%E7%8E%B0%E5%8F%8C%E5%90%91%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/" title="Linux上实现双向进程间通信管道" class="md-nav__link">
+      Linux上实现双向进程间通信管道
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../framebuffer%E9%A9%B1%E5%8A%A8/" title="Framebuffer驱动" class="md-nav__link">
+      Framebuffer驱动
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="Linux启动流程" class="md-nav__link">
+      Linux启动流程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E5%A4%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/" title="Linux多用户管理" class="md-nav__link">
+      Linux多用户管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E5%AD%98%E5%82%A8%E7%9B%B8%E5%85%B3/" title="Linux存储相关" class="md-nav__link">
+      Linux存储相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E5%AD%A6%E4%B9%A0/" title="Linux学习" class="md-nav__link">
+      Linux学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E5%B8%B8%E7%94%A8api/" title="Linux常用api" class="md-nav__link">
+      Linux常用api
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="Linux文件操作" class="md-nav__link">
+      Linux文件操作
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="Linux文件系统" class="md-nav__link">
+      Linux文件系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E7%9A%84input%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="Linux的input子系统" class="md-nav__link">
+      Linux的input子系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E7%BC%93%E5%AD%98%E5%9B%9E%E6%94%B6/" title="Linux缓存回收" class="md-nav__link">
+      Linux缓存回收
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E7%BD%91%E7%BB%9C%E8%B0%83%E4%BC%98/" title="Linux网络调优" class="md-nav__link">
+      Linux网络调优
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux%E9%94%AE%E7%9B%98%E5%B8%83%E5%B1%80%E7%9B%B8%E5%85%B3/" title="Linux键盘布局相关" class="md-nav__link">
+      Linux键盘布局相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../unix%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="Unix网络编程" class="md-nav__link">
+      Unix网络编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/" title="动态链接" class="md-nav__link">
+      动态链接
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../%E5%9C%A8%E6%97%A0MMU%E7%9A%84Linux%E4%B8%8B%E7%BC%96%E7%A8%8B/" title="在无MMU的Linux下编程" class="md-nav__link">
+      在无MMU的Linux下编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../%E5%B5%8C%E5%85%A5%E5%BC%8Flinux%E5%8D%87%E7%BA%A7%E7%9B%B8%E5%85%B3/" title="嵌入式linux升级相关" class="md-nav__link">
+      嵌入式linux升级相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../%E6%9E%84%E5%BB%BA/" title="构建" class="md-nav__link">
+      构建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-19" type="checkbox" id="nav-8-2-19">
+    
+    <label class="md-nav__link" for="nav-8-2-19">
+      Devtools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-19">
+        Devtools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/DKMS/" title="DKMS" class="md-nav__link">
+      DKMS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/GNUBinutils/" title="GNUBinutils" class="md-nav__link">
+      GNUBinutils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/automake/" title="Automake" class="md-nav__link">
+      Automake
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/buildroot/" title="Buildroot" class="md-nav__link">
+      Buildroot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/busybox/" title="Busybox" class="md-nav__link">
+      Busybox
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/errno/" title="Errno" class="md-nav__link">
+      Errno
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/expect/" title="Expect" class="md-nav__link">
+      Expect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/gdb/" title="Gdb" class="md-nav__link">
+      Gdb
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/git-crypt/" title="Git crypt" class="md-nav__link">
+      Git crypt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/git-repo/" title="Git repo" class="md-nav__link">
+      Git repo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/git/" title="Git" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/memtool/" title="Memtool" class="md-nav__link">
+      Memtool
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/pkg-config/" title="Pkg config" class="md-nav__link">
+      Pkg config
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/strace%E5%92%8Cltrace/" title="Strace和ltrace" class="md-nav__link">
+      Strace和ltrace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/telnet/" title="Telnet" class="md-nav__link">
+      Telnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/xxd/" title="Xxd" class="md-nav__link">
+      Xxd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%A3%80%E6%B5%8B/" title="内存泄漏检测" class="md-nav__link">
+      内存泄漏检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" title="内核相关" class="md-nav__link">
+      内核相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/%E5%8A%A0%E5%A3%B3%E5%92%8C%E5%8E%8B%E7%BC%A9/" title="加壳和压缩" class="md-nav__link">
+      加壳和压缩
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/" title="动态链接" class="md-nav__link">
+      动态链接
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../devtools/%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3/" title="编译相关" class="md-nav__link">
+      编译相关
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-20" type="checkbox" id="nav-8-2-20">
+    
+    <label class="md-nav__link" for="nav-8-2-20">
+      Distribution
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-20">
+        Distribution
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distribution/linux%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/" title="Linux包管理器" class="md-nav__link">
+      Linux包管理器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distribution/linux%E5%8F%91%E8%A1%8C%E7%89%88%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91/" title="Linux发行版内核编译" class="md-nav__link">
+      Linux发行版内核编译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distribution/linux%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Linux桌面环境配置" class="md-nav__link">
+      Linux桌面环境配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distribution/linux%E6%A1%8C%E9%9D%A2%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4%E7%AC%94%E8%AE%B0/" title="Linux桌面系统维护笔记" class="md-nav__link">
+      Linux桌面系统维护笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distribution/manjaro%E5%B8%83%E7%BD%AE/" title="Manjaro布置" class="md-nav__link">
+      Manjaro布置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distribution/snap%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8F/" title="Snap打包方式" class="md-nav__link">
+      Snap打包方式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-21" type="checkbox" id="nav-8-2-21">
+    
+    <label class="md-nav__link" for="nav-8-2-21">
+      Kernel
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-21">
+        Kernel
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/Netlink/" title="Netlink" class="md-nav__link">
+      Netlink
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/do_div/" title="Do div" class="md-nav__link">
+      Do div
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/eventfd/" title="Eventfd" class="md-nav__link">
+      Eventfd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/linux-chardev/" title="Linux chardev" class="md-nav__link">
+      Linux chardev
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/linux-circular-buffer/" title="Linux circular buffer" class="md-nav__link">
+      Linux circular buffer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/linux-delay/" title="linux 内核中各delay函数的区别" class="md-nav__link">
+      linux 内核中各delay函数的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/linux-list/" title="Linux list" class="md-nav__link">
+      Linux list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/linux-%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9Csmp/" title="Linux 内存屏障smp" class="md-nav__link">
+      Linux 内存屏障smp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/linux_usb_gadget/" title="Linux usb gadget" class="md-nav__link">
+      Linux usb gadget
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/linux_userspace_api/" title="Linux userspace api" class="md-nav__link">
+      Linux userspace api
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/linux%E7%9A%84loglevel/" title="Linux的loglevel" class="md-nav__link">
+      Linux的loglevel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/linux%E7%9A%84panic%E5%92%8Coops/" title="Linux的panic和oops" class="md-nav__link">
+      Linux的panic和oops
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/uevent/" title="Uevent" class="md-nav__link">
+      Uevent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97%E8%B0%83%E8%AF%95ftrace/" title="内核模块调试ftrace" class="md-nav__link">
+      内核模块调试ftrace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel/%E5%BC%82%E6%AD%A5IO/" title="异步IO" class="md-nav__link">
+      异步IO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-22" type="checkbox" id="nav-8-2-22" checked>
+    
+    <label class="md-nav__link" for="nav-8-2-22">
+      Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-22">
+        Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bash/" title="Bash" class="md-nav__link">
+      Bash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../chroot/" title="Chroot" class="md-nav__link">
+      Chroot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../crontab/" title="Crontab" class="md-nav__link">
+      Crontab
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../date/" title="Date" class="md-nav__link">
+      Date
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../enca/" title="Enca" class="md-nav__link">
+      Enca
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fakeroot/" title="Fakeroot" class="md-nav__link">
+      Fakeroot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../filesystem/" title="Filesystem" class="md-nav__link">
+      Filesystem
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fontforge/" title="Fontforge" class="md-nav__link">
+      Fontforge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fuse/" title="Fuse" class="md-nav__link">
+      Fuse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../gpg/" title="Gpg" class="md-nav__link">
+      Gpg
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../heredoc/" title="Heredoc" class="md-nav__link">
+      Heredoc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hostapd/" title="Hostapd" class="md-nav__link">
+      Hostapd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../i3wm/" title="I3wm" class="md-nav__link">
+      I3wm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iperf/" title="Iperf" class="md-nav__link">
+      Iperf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" title="Linux常用工具" class="md-nav__link">
+      Linux常用工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7/" title="Linux网络相关工具" class="md-nav__link">
+      Linux网络相关工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux%E8%87%AA%E5%B8%A6%E5%B7%A5%E5%85%B7/" title="Linux自带工具" class="md-nav__link">
+      Linux自带工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../locate/" title="Locate" class="md-nav__link">
+      Locate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lrzsz/" title="Lrzsz" class="md-nav__link">
+      Lrzsz
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../netcat/" title="Netcat" class="md-nav__link">
+      Netcat
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nfs/" title="Nfs" class="md-nav__link">
+      Nfs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../openssl/" title="Openssl" class="md-nav__link">
+      Openssl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../patch/" title="Patch" class="md-nav__link">
+      Patch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../redsocks/" title="Redsocks" class="md-nav__link">
+      Redsocks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../rsync/" title="Rsync" class="md-nav__link">
+      Rsync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../samba/" title="Samba" class="md-nav__link">
+      Samba
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Sed
+      </label>
+    
+    <a href="./" title="Sed" class="md-nav__link md-nav__link--active">
+      Sed
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    使用例
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    例1.从配置文件中筛选出某项
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    例2.修改配置文件中的某项
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    技巧集
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sedunix" class="md-nav__link">
+    SED单行脚本快速参考（Unix 流编辑器）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    sed命令详解
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    使用语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    常用的命令有以下几种：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    命令示例
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    a命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    i命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    d命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    p命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    s命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ssh/" title="Ssh" class="md-nav__link">
+      Ssh
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../start-stop-daemon/" title="Start stop daemon" class="md-nav__link">
+      Start stop daemon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../stow/" title="Stow" class="md-nav__link">
+      Stow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../su/" title="Su" class="md-nav__link">
+      Su
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sudo/" title="Sudo" class="md-nav__link">
+      Sudo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../supervisor/" title="Supervisor" class="md-nav__link">
+      Supervisor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../systemd/" title="Systemd" class="md-nav__link">
+      Systemd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tee/" title="Tee" class="md-nav__link">
+      Tee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tmux/" title="Tmux" class="md-nav__link">
+      Tmux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../udev/" title="Udev" class="md-nav__link">
+      Udev
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../udisks/" title="Udisks" class="md-nav__link">
+      Udisks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vi/" title="Vi" class="md-nav__link">
+      Vi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../wget/" title="Wget" class="md-nav__link">
+      Wget
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../xdelta/" title="Xdelta" class="md-nav__link">
+      Xdelta
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7/" title="图形桌面相关工具" class="md-nav__link">
+      图形桌面相关工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E7%BC%A9%E5%B0%8F%E9%95%9C%E8%B1%A1%E6%96%87%E4%BB%B6/" title="缩小镜象文件" class="md-nav__link">
+      缩小镜象文件
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-23" type="checkbox" id="nav-8-2-23">
+    
+    <label class="md-nav__link" for="nav-8-2-23">
+      Userspace
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-23">
+        Userspace
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../userspace/linux-socket-tcp/" title="Linux socket tcp" class="md-nav__link">
+      Linux socket tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../userspace/pid-file/" title="Pid file" class="md-nav__link">
+      Pid file
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+    
+    <label class="md-nav__link" for="nav-8-3">
+      Windows
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-3">
+        Windows
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../windows/win10ltsb/" title="Win10ltsb" class="md-nav__link">
+      Win10ltsb
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../windows/windows%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="Windows中遇到的问题" class="md-nav__link">
+      Windows中遇到的问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../windows/windows%E6%8A%80%E5%B7%A7%E9%9B%86/" title="Windows技巧集" class="md-nav__link">
+      Windows技巧集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../windows/windows%E7%9A%84IOCP%E6%A8%A1%E5%9E%8B/" title="windows的IOCP模型" class="md-nav__link">
+      windows的IOCP模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3-5" type="checkbox" id="nav-8-3-5">
+    
+    <label class="md-nav__link" for="nav-8-3-5">
+      Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-3-5">
+        Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../windows/tools/windows%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" title="Windows常用工具" class="md-nav__link">
+      Windows常用工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
+    
+    <label class="md-nav__link" for="nav-8-4">
+      信息安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-4">
+        信息安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/PE%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90/" title="PE行为分析" class="md-nav__link">
+      PE行为分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/rsa%E5%8A%A0%E5%AF%86/" title="Rsa加密" class="md-nav__link">
+      Rsa加密
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E5%8F%8D%E5%BC%B9shell/" title="反弹shell" class="md-nav__link">
+      反弹shell
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E5%AF%86%E6%96%87%E6%94%BB%E5%87%BB/" title="密文攻击" class="md-nav__link">
+      密文攻击
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%97%A0%E6%96%87%E4%BB%B6%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F/" title="无文件执行程序" class="md-nav__link">
+      无文件执行程序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E9%9A%90%E5%86%99%E6%9C%AF/" title="隐写术" class="md-nav__link">
+      隐写术
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5" type="checkbox" id="nav-8-5">
+    
+    <label class="md-nav__link" for="nav-8-5">
+      前端技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-5">
+        前端技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/webassembly/" title="Webassembly" class="md-nav__link">
+      Webassembly
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5-2" type="checkbox" id="nav-8-5-2">
+    
+    <label class="md-nav__link" for="nav-8-5-2">
+      Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-5-2">
+        Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/tools/selenium/" title="Selenium" class="md-nav__link">
+      Selenium
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/tools/%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" title="前端常用工具" class="md-nav__link">
+      前端常用工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
+    
+    <label class="md-nav__link" for="nav-8-6">
+      待整理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-6">
+        待整理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E5%BE%85%E6%95%B4%E7%90%86/elevator_schedule/" title="Elevator schedule" class="md-nav__link">
+      Elevator schedule
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7" type="checkbox" id="nav-8-7">
+    
+    <label class="md-nav__link" for="nav-8-7">
+      攒机相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-7">
+        攒机相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E6%94%92%E6%9C%BA%E7%9B%B8%E5%85%B3/%E7%A1%AC%E7%9B%98%E9%80%89%E8%B4%AD/" title="硬盘选购" class="md-nav__link">
+      硬盘选购
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8" type="checkbox" id="nav-8-8">
+    
+    <label class="md-nav__link" for="nav-8-8">
+      数据分析
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-8">
+        数据分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7/" title="可视化相关工具" class="md-nav__link">
+      可视化相关工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-9" type="checkbox" id="nav-8-9">
+    
+    <label class="md-nav__link" for="nav-8-9">
+      算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-9">
+        算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%AE%97%E6%B3%95/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95zigzag/" title="压缩算法zigzag" class="md-nav__link">
+      压缩算法zigzag
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10" type="checkbox" id="nav-8-10">
+    
+    <label class="md-nav__link" for="nav-8-10">
+      编程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-10">
+        编程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/cmake/" title="Cmake" class="md-nav__link">
+      Cmake
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/lua/" title="Lua" class="md-nav__link">
+      Lua
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/rust/" title="Rust" class="md-nav__link">
+      Rust
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/shell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" title="Shell脚本编程" class="md-nav__link">
+      Shell脚本编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="Web压力测试工具" class="md-nav__link">
+      Web压力测试工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/xmake/" title="Xmake" class="md-nav__link">
+      Xmake
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" title="多线程编程" class="md-nav__link">
+      多线程编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式" class="md-nav__link">
+      正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" title="程序性能分析" class="md-nav__link">
+      程序性能分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5%E6%8A%80%E6%9C%AF/" title="非阻塞同步技术" class="md-nav__link">
+      非阻塞同步技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-11" type="checkbox" id="nav-8-10-11">
+    
+    <label class="md-nav__link" for="nav-8-10-11">
+      C
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-11">
+        C
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/C%E8%AF%AD%E8%A8%80%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5/" title="C语言静态检查" class="md-nav__link">
+      C语言静态检查
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/ansi-c_and_posix/" title="Ansi c and posix" class="md-nav__link">
+      Ansi c and posix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/cmocka/" title="Cmocka" class="md-nav__link">
+      Cmocka
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/c%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E6%97%B6%E9%97%B4/" title="C语言中的时间" class="md-nav__link">
+      C语言中的时间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/c%E8%AF%AD%E8%A8%80%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%8D%E5%AE%9A%E5%8F%82%E6%95%B0/" title="C语言函数的不定参数" class="md-nav__link">
+      C语言函数的不定参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/c%E8%AF%AD%E8%A8%80%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" title="C语言字符串处理" class="md-nav__link">
+      C语言字符串处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%AF%BB%E6%96%87%E4%BB%B6%E8%B6%85%E6%97%B6/" title="C语言实现读文件超时" class="md-nav__link">
+      C语言实现读文件超时
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/gcc%E4%B8%8B%E8%AE%B0%E5%BD%95%E5%87%BD%E6%95%B0%E8%BF%9B%E5%85%A5%E9%80%80%E5%87%BA/" title="Gcc下记录函数进入退出" class="md-nav__link">
+      Gcc下记录函数进入退出
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/gcc%E9%94%99%E8%AF%AF%E9%9B%86/" title="Gcc错误集" class="md-nav__link">
+      Gcc错误集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/gnu-c%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%AE%8F/" title="Gnu c匿名函数宏" class="md-nav__link">
+      Gnu c匿名函数宏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/popen/" title="Popen" class="md-nav__link">
+      Popen
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/pthread/" title="Pthread" class="md-nav__link">
+      Pthread
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/system%E5%87%BD%E6%95%B0/" title="System函数" class="md-nav__link">
+      System函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/%E7%94%A8CPP%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95C/" title="用CPP程序测试C" class="md-nav__link">
+      用CPP程序测试C
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-12" type="checkbox" id="nav-8-10-12">
+    
+    <label class="md-nav__link" for="nav-8-10-12">
+      CPP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-12">
+        CPP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/CPP/CPP%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" title="CPP多线程编程" class="md-nav__link">
+      CPP多线程编程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-13" type="checkbox" id="nav-8-10-13">
+    
+    <label class="md-nav__link" for="nav-8-10-13">
+      Csharp
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-13">
+        Csharp
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/Csharp/csharp-with-vscode/" title="Csharp with vscode" class="md-nav__link">
+      Csharp with vscode
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-14" type="checkbox" id="nav-8-10-14">
+    
+    <label class="md-nav__link" for="nav-8-10-14">
+      JAVA
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-14">
+        JAVA
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/JAVA/java_runtime/" title="Java runtime" class="md-nav__link">
+      Java runtime
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/JAVA/java_web/" title="Java web" class="md-nav__link">
+      Java web
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-15" type="checkbox" id="nav-8-10-15">
+    
+    <label class="md-nav__link" for="nav-8-10-15">
+      QT
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-15">
+        QT
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/QT/QTableWidget/" title="QTableWidget" class="md-nav__link">
+      QTableWidget
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/QT/QT%E6%8B%96%E6%94%BE/" title="QT拖放" class="md-nav__link">
+      QT拖放
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/QT/QT%E8%AE%A1%E7%AE%97md5%E6%A0%A1%E9%AA%8C%E5%80%BC/" title="QT计算md5校验值" class="md-nav__link">
+      QT计算md5校验值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/QT/qmake%E7%9B%B8%E5%85%B3/" title="Qmake相关" class="md-nav__link">
+      Qmake相关
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-16" type="checkbox" id="nav-8-10-16">
+    
+    <label class="md-nav__link" for="nav-8-10-16">
+      Go
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-16">
+        Go
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/go/go%E8%AE%B0%E5%BD%95/" title="Go记录" class="md-nav__link">
+      Go记录
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-17" type="checkbox" id="nav-8-10-17">
+    
+    <label class="md-nav__link" for="nav-8-10-17">
+      Javascript
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-17">
+        Javascript
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/javascript/js-module/" title="Js module" class="md-nav__link">
+      Js module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/javascript/typescript/" title="Typescript" class="md-nav__link">
+      Typescript
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-18" type="checkbox" id="nav-8-10-18">
+    
+    <label class="md-nav__link" for="nav-8-10-18">
+      中间件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-18">
+        中间件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/%E4%B8%AD%E9%97%B4%E4%BB%B6/imgui/" title="Imgui" class="md-nav__link">
+      Imgui
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/%E4%B8%AD%E9%97%B4%E4%BB%B6/opengl/" title="Opengl" class="md-nav__link">
+      Opengl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/%E4%B8%AD%E9%97%B4%E4%BB%B6/protocol_buffer/" title="Protocol buffer" class="md-nav__link">
+      Protocol buffer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/%E4%B8%AD%E9%97%B4%E4%BB%B6/sdl%E5%BA%93/" title="Sdl库" class="md-nav__link">
+      Sdl库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E7%B1%BB%E4%BC%BClibevent%E7%9A%84%E5%BA%93/" title="类似libevent的库" class="md-nav__link">
+      类似libevent的库
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-11" type="checkbox" id="nav-8-11">
+    
+    <label class="md-nav__link" for="nav-8-11">
+      虚拟技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-11">
+        虚拟技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%99%9A%E6%8B%9F%E6%8A%80%E6%9C%AF/docker/" title="Docker" class="md-nav__link">
+      Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%99%9A%E6%8B%9F%E6%8A%80%E6%9C%AF/proxmox%E6%98%BE%E5%8D%A1%E7%9B%B4%E9%80%9A/" title="Proxmox显卡直通" class="md-nav__link">
+      Proxmox显卡直通
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%99%9A%E6%8B%9F%E6%8A%80%E6%9C%AF/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B8%E5%85%B3/" title="虚拟机相关" class="md-nav__link">
+      虚拟机相关
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-12" type="checkbox" id="nav-8-12">
+    
+    <label class="md-nav__link" for="nav-8-12">
+      计算机网络
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-12">
+        计算机网络
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/ne2000/" title="Ne2000" class="md-nav__link">
+      Ne2000
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/rtsp/" title="Rtsp" class="md-nav__link">
+      Rtsp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BC%9F%E5%A4%A7wall/" title="伟大wall" class="md-nav__link">
+      伟大wall
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" title="内网穿透" class="md-nav__link">
+      内网穿透
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%8F%AF%E9%9D%A0UDP%E4%BC%A0%E8%BE%93/" title="可靠UDP传输" class="md-nav__link">
+      可靠UDP传输
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86/" title="网络常识" class="md-nav__link">
+      网络常识
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-13" type="checkbox" id="nav-8-13">
+    
+    <label class="md-nav__link" for="nav-8-13">
+      软件工程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-13">
+        软件工程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%A4%9A%E7%9B%AE%E6%A0%87/" title="多目标" class="md-nav__link">
+      多目标
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E6%B5%8B%E8%AF%95/" title="测试" class="md-nav__link">
+      测试
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AA%E6%9E%84%E5%BB%BA%E7%9B%AE%E6%A0%87%E7%9A%84%E9%80%BB%E8%BE%91%E5%B7%AE%E5%BC%82/" title="管理多个构建目标的逻辑差异" class="md-nav__link">
+      管理多个构建目标的逻辑差异
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-14" type="checkbox" id="nav-8-14">
+    
+    <label class="md-nav__link" for="nav-8-14">
+      通用技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-14">
+        通用技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/hexo/" title="Hexo" class="md-nav__link">
+      Hexo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/markdown/" title="Markdown" class="md-nav__link">
+      Markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/pandoc/" title="Pandoc" class="md-nav__link">
+      Pandoc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/wireshark%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/" title="Wireshark二次开发" class="md-nav__link">
+      Wireshark二次开发
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" title="字符编码" class="md-nav__link">
+      字符编码
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    使用例
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    例1.从配置文件中筛选出某项
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    例2.修改配置文件中的某项
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    技巧集
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sedunix" class="md-nav__link">
+    SED单行脚本快速参考（Unix 流编辑器）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    sed命令详解
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    使用语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    常用的命令有以下几种：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    命令示例
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    a命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    i命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    d命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    p命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    s命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Sed</h1>
+                
+                <h2 id="_1">使用例<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="1">例1.从配置文件中筛选出某项<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>bss[0]=wlan0
+bssid[0]=c8:02:8f:03:3f:d6
+ssid[0]=9377-5G-open
+</code></pre></div>
+
+<p>取出<code>ssid[0]</code>项：</p>
+<div class="codehilite"><pre><span></span><code>hostapd_cli -i wlan0 status|sed -n &#39;s/^ssid\[0\]=\(.*\)/\1/p&#39;
+</code></pre></div>
+
+<ul>
+<li><code>^</code>匹配行首（对应<code>$</code>匹配行末）</li>
+<li><code>-n</code>静默模式，仅打印需要打印的地方</li>
+<li><code>s</code>替换，这里的<code>\(</code>和<code>\)</code>是正则分组，<code>\1</code>表示分组1</li>
+<li><code>p</code>打印命令</li>
+</ul>
+<h3 id="2">例2.修改配置文件中的某项<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>和上一例配置文件格式一样，现在要修改其中某项：</p>
+<div class="codehilite"><pre><span></span><code>sed -i &#39;s/^ssid=.*/ssid=abcdefg/&#39; /etc/xxx.conf
+</code></pre></div>
+
+<h2 id="_2">技巧集<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>sed命令一次替换多个文本
+<div class="codehilite"><pre><span></span><code>$ sed -e &#39;s/11/22/&#39; -e &#39;s/55/99/&#39; num.txt
+</code></pre></div></p>
+<h2 id="sedunix">SED单行脚本快速参考（Unix 流编辑器）<a class="headerlink" href="#sedunix" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>via: <a href="http://sed.sourceforge.net/sed1line_zh-CN.html">http://sed.sourceforge.net/sed1line_zh-CN.html</a></p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code>​-------------------------------------------------------------------------
+SED单行脚本快速参考（Unix 流编辑器）                       2005年12月29日
+
+英文标题：USEFUL ONE-LINE SCRIPTS FOR SED (Unix stream editor)
+原标题：HANDY ONE-LINERS FOR SED (Unix stream editor)
+
+整理：Eric Pement  - 电邮：pemente[at]northpark[dot]edu         版本5.5
+译者：Joe Hong     - 电邮：hq00e[at]126[dot]com
+
+在以下地址可找到本文档的最新（英文）版本：
+   http://sed.sourceforge.net/sed1line.txt
+   http://www.pement.org/sed/sed1line.txt
+
+其他语言版本：
+  中文          - http://sed.sourceforge.net/sed1line_zh-CN.html
+  捷克语        - http://sed.sourceforge.net/sed1line_cz.html
+  荷语          - http://sed.sourceforge.net/sed1line_nl.html
+  法语          - http://sed.sourceforge.net/sed1line_fr.html
+  德语          - http://sed.sourceforge.net/sed1line_de.html
+
+  葡语          - http://sed.sourceforge.net/sed1line_pt-BR.html
+
+
+文本间隔：
+​--------
+
+ # 在每一行后面增加一空行
+ sed G
+
+ # 将原来的所有空行删除并在每一行后面增加一空行。
+ # 这样在输出的文本中每一行后面将有且只有一空行。
+ sed &#39;/^$/d;G&#39;
+
+ # 在每一行后面增加两行空行
+ sed &#39;G;G&#39;
+
+ # 将第一个脚本所产生的所有空行删除（即删除所有偶数行）
+ sed &#39;n;d&#39;
+
+ # 在匹配式样“regex”的行之前插入一空行
+ sed &#39;/regex/{x;p;x;}&#39;
+
+ # 在匹配式样“regex”的行之后插入一空行
+ sed &#39;/regex/G&#39;
+
+ # 在匹配式样“regex”的行之前和之后各插入一空行
+ sed &#39;/regex/{x;p;x;G;}&#39;
+
+编号：
+​--------
+
+ # 为文件中的每一行进行编号（简单的左对齐方式）。这里使用了“制表符”
+ # （tab，见本文末尾关于&#39;\t&#39;的用法的描述）而不是空格来对齐边缘。
+ sed = filename | sed &#39;N;s/\n/\t/&#39;
+
+ # 对文件中的所有行编号（行号在左，文字右端对齐）。
+ sed = filename | sed &#39;N; s/^/     /; s/ *\(.\{6,\}\)\n/\1  /&#39;
+
+ # 对文件中的所有行编号，但只显示非空白行的行号。
+ sed &#39;/./=&#39; filename | sed &#39;/./N; s/\n/ /&#39;
+
+ # 计算行数 （模拟 &quot;wc -l&quot;）
+ sed -n &#39;$=&#39;
+
+文本转换和替代：
+​--------
+
+ # Unix环境：转换DOS的新行符（CR/LF）为Unix格式。
+ sed &#39;s/.$//&#39;                     # 假设所有行以CR/LF结束
+ sed &#39;s/^M$//&#39;                    # 在bash/tcsh中，将按Ctrl-M改为按Ctrl-V
+ sed &#39;s/\x0D$//&#39;                  # ssed、gsed 3.02.80，及更高版本
+
+ # Unix环境：转换Unix的新行符（LF）为DOS格式。
+ sed &quot;s/$/`echo -e \\\r`/&quot;        # 在ksh下所使用的命令
+ sed &#39;s/$&#39;&quot;/`echo \\\r`/&quot;         # 在bash下所使用的命令
+ sed &quot;s/$/`echo \\\r`/&quot;           # 在zsh下所使用的命令
+ sed &#39;s/$/\r/&#39;                    # gsed 3.02.80 及更高版本
+
+ # DOS环境：转换Unix新行符（LF）为DOS格式。
+ sed &quot;s/$//&quot;                      # 方法 1
+ sed -n p                         # 方法 2
+
+ # DOS环境：转换DOS新行符（CR/LF）为Unix格式。
+ # 下面的脚本只对UnxUtils sed 4.0.7 及更高版本有效。要识别UnxUtils版本的
+ #  sed可以通过其特有的“--text”选项。你可以使用帮助选项（“--help”）看
+ # 其中有无一个“--text”项以此来判断所使用的是否是UnxUtils版本。其它DOS
+ # 版本的的sed则无法进行这一转换。但可以用“tr”来实现这一转换。
+ sed &quot;s/\r//&quot; infile &gt;outfile     # UnxUtils sed v4.0.7 或更高版本
+ tr -d \r &lt;infile &gt;outfile        # GNU tr 1.22 或更高版本
+
+ # 将每一行前导的“空白字符”（空格，制表符）删除
+ # 使之左对齐
+ sed &#39;s/^[ \t]*//&#39;                # 见本文末尾关于&#39;\t&#39;用法的描述
+
+ # 将每一行拖尾的“空白字符”（空格，制表符）删除
+ sed &#39;s/[ \t]*$//&#39;                # 见本文末尾关于&#39;\t&#39;用法的描述
+
+ # 将每一行中的前导和拖尾的空白字符删除
+ sed &#39;s/^[ \t]*//;s/[ \t]*$//&#39;
+
+ # 在每一行开头处插入5个空格（使全文向右移动5个字符的位置）
+ sed &#39;s/^/     /&#39;
+
+ # 以79个字符为宽度，将所有文本右对齐
+ sed -e :a -e &#39;s/^.\{1,78\}$/ &amp;/;ta&#39;  # 78个字符外加最后的一个空格
+
+ # 以79个字符为宽度，使所有文本居中。在方法1中，为了让文本居中每一行的前
+ # 头和后头都填充了空格。 在方法2中，在居中文本的过程中只在文本的前面填充
+ # 空格，并且最终这些空格将有一半会被删除。此外每一行的后头并未填充空格。
+ sed  -e :a -e &#39;s/^.\{1,77\}$/ &amp; /;ta&#39;                     # 方法1
+ sed  -e :a -e &#39;s/^.\{1,77\}$/ &amp;/;ta&#39; -e &#39;s/\( *\)\1/\1/&#39;  # 方法2
+
+ # 在每一行中查找字串“foo”，并将找到的“foo”替换为“bar”
+ sed &#39;s/foo/bar/&#39;                 # 只替换每一行中的第一个“foo”字串
+ sed &#39;s/foo/bar/4&#39;                # 只替换每一行中的第四个“foo”字串
+ sed &#39;s/foo/bar/g&#39;                # 将每一行中的所有“foo”都换成“bar”
+ sed &#39;s/\(.*\)foo\(.*foo\)/\1bar\2/&#39; # 替换倒数第二个“foo”
+ sed &#39;s/\(.*\)foo/\1bar/&#39;            # 替换最后一个“foo”
+
+ # 只在行中出现字串“baz”的情况下将“foo”替换成“bar”
+ sed &#39;/baz/s/foo/bar/g&#39;
+
+ # 将“foo”替换成“bar”，并且只在行中未出现字串“baz”的情况下替换
+ sed &#39;/baz/!s/foo/bar/g&#39;
+
+ # 不管是“scarlet”“ruby”还是“puce”，一律换成“red”
+ sed &#39;s/scarlet/red/g;s/ruby/red/g;s/puce/red/g&#39;  #对多数的sed都有效
+ gsed &#39;s/scarlet\|ruby\|puce/red/g&#39;               # 只对GNU sed有效
+
+ # 倒置所有行，第一行成为最后一行，依次类推（模拟“tac”）。
+ # 由于某些原因，使用下面命令时HHsed v1.5会将文件中的空行删除
+ sed &#39;1!G;h;$!d&#39;               # 方法1
+ sed -n &#39;1!G;h;$p&#39;             # 方法2
+
+ # 将行中的字符逆序排列，第一个字成为最后一字，……（模拟“rev”）
+ sed &#39;/\n/!G;s/\(.\)\(.*\n\)/&amp;\2\1/;//D;s/.//&#39;
+
+ # 将每两行连接成一行（类似“paste”）
+ sed &#39;$!N;s/\n/ /&#39;
+
+ # 如果当前行以反斜杠“\”结束，则将下一行并到当前行末尾
+ # 并去掉原来行尾的反斜杠
+ sed -e :a -e &#39;/\\$/N; s/\\\n//; ta&#39;
+
+ # 如果当前行以等号开头，将当前行并到上一行末尾
+ # 并以单个空格代替原来行头的“=”
+ sed -e :a -e &#39;$!N;s/\n=/ /;ta&#39; -e &#39;P;D&#39;
+
+ # 为数字字串增加逗号分隔符号，将“1234567”改为“1,234,567”
+ gsed &#39;:a;s/\B[0-9]\{3\}\&gt;/,&amp;/;ta&#39;                     # GNU sed
+ sed -e :a -e &#39;s/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta&#39;  # 其他sed
+
+ # 为带有小数点和负号的数值增加逗号分隔符（GNU sed）
+ gsed -r &#39;:a;s/(^|[^0-9.])([0-9]+)([0-9]{3})/\1\2,\3/g;ta&#39;
+
+ # 在每5行后增加一空白行 （在第5，10，15，20，等行后增加一空白行）
+ gsed &#39;0~5G&#39;                      # 只对GNU sed有效
+ sed &#39;n;n;n;n;G;&#39;                 # 其他sed
+
+选择性地显示特定行：
+​--------
+
+ # 显示文件中的前10行 （模拟“head”的行为）
+ sed 10q
+
+ # 显示文件中的第一行 （模拟“head -1”命令）
+ sed q
+
+ # 显示文件中的最后10行 （模拟“tail”）
+ sed -e :a -e &#39;$q;N;11,$D;ba&#39;
+
+ # 显示文件中的最后2行（模拟“tail -2”命令）
+ sed &#39;$!N;$!D&#39;
+
+ # 显示文件中的最后一行（模拟“tail -1”）
+ sed &#39;$!d&#39;                        # 方法1
+ sed -n &#39;$p&#39;                      # 方法2
+
+ # 显示文件中的倒数第二行
+ sed -e &#39;$!{h;d;}&#39; -e x              # 当文件中只有一行时，输入空行
+ sed -e &#39;1{$q;}&#39; -e &#39;$!{h;d;}&#39; -e x  # 当文件中只有一行时，显示该行
+ sed -e &#39;1{$d;}&#39; -e &#39;$!{h;d;}&#39; -e x  # 当文件中只有一行时，不输出
+
+ # 只显示匹配正则表达式的行（模拟“grep”）
+ sed -n &#39;/regexp/p&#39;               # 方法1
+ sed &#39;/regexp/!d&#39;                 # 方法2
+
+ # 只显示“不”匹配正则表达式的行（模拟“grep -v”）
+ sed -n &#39;/regexp/!p&#39;              # 方法1，与前面的命令相对应
+ sed &#39;/regexp/d&#39;                  # 方法2，类似的语法
+
+ # 查找“regexp”并将匹配行的上一行显示出来，但并不显示匹配行
+ sed -n &#39;/regexp/{g;1!p;};h&#39;
+
+ # 查找“regexp”并将匹配行的下一行显示出来，但并不显示匹配行
+ sed -n &#39;/regexp/{n;p;}&#39;
+
+ # 显示包含“regexp”的行及其前后行，并在第一行之前加上“regexp”所
+ # 在行的行号 （类似“grep -A1 -B1”）
+ sed -n -e &#39;/regexp/{=;x;1!p;g;$!N;p;D;}&#39; -e h
+
+ # 显示包含“AAA”、“BBB”或“CCC”的行（任意次序）
+ sed &#39;/AAA/!d; /BBB/!d; /CCC/!d&#39;  # 字串的次序不影响结果
+
+ # 显示包含“AAA”、“BBB”和“CCC”的行（固定次序）
+ sed &#39;/AAA.*BBB.*CCC/!d&#39;
+
+ # 显示包含“AAA”“BBB”或“CCC”的行 （模拟“egrep”）
+ sed -e &#39;/AAA/b&#39; -e &#39;/BBB/b&#39; -e &#39;/CCC/b&#39; -e d    # 多数sed
+ gsed &#39;/AAA\|BBB\|CCC/!d&#39;                        # 对GNU sed有效
+
+ # 显示包含“AAA”的段落 （段落间以空行分隔）
+ # HHsed v1.5 必须在“x;”后加入“G;”，接下来的3个脚本都是这样
+ sed -e &#39;/./{H;$!d;}&#39; -e &#39;x;/AAA/!d;&#39;
+
+ # 显示包含“AAA”“BBB”和“CCC”三个字串的段落 （任意次序）
+ sed -e &#39;/./{H;$!d;}&#39; -e &#39;x;/AAA/!d;/BBB/!d;/CCC/!d&#39;
+
+ # 显示包含“AAA”、“BBB”、“CCC”三者中任一字串的段落 （任意次序）
+ sed -e &#39;/./{H;$!d;}&#39; -e &#39;x;/AAA/b&#39; -e &#39;/BBB/b&#39; -e &#39;/CCC/b&#39; -e d
+ gsed &#39;/./{H;$!d;};x;/AAA\|BBB\|CCC/b;d&#39;         # 只对GNU sed有效
+
+ # 显示包含65个或以上字符的行
+ sed -n &#39;/^.\{65\}/p&#39;
+
+ # 显示包含65个以下字符的行
+ sed -n &#39;/^.\{65\}/!p&#39;            # 方法1，与上面的脚本相对应
+ sed &#39;/^.\{65\}/d&#39;                # 方法2，更简便一点的方法
+
+ # 显示部分文本——从包含正则表达式的行开始到最后一行结束
+ sed -n &#39;/regexp/,$p&#39;
+
+ # 显示部分文本——指定行号范围（从第8至第12行，含8和12行）
+ sed -n &#39;8,12p&#39;                   # 方法1
+ sed &#39;8,12!d&#39;                     # 方法2
+
+ # 显示第52行
+ sed -n &#39;52p&#39;                     # 方法1
+ sed &#39;52!d&#39;                       # 方法2
+ sed &#39;52q;d&#39;                      # 方法3, 处理大文件时更有效率
+
+ # 从第3行开始，每7行显示一次    
+ gsed -n &#39;3~7p&#39;                   # 只对GNU sed有效
+ sed -n &#39;3,${p;n;n;n;n;n;n;}&#39;     # 其他sed
+
+ # 显示两个正则表达式之间的文本（包含）
+ sed -n &#39;/Iowa/,/Montana/p&#39;       # 区分大小写方式
+
+选择性地删除特定行：
+​--------
+
+ # 显示通篇文档，除了两个正则表达式之间的内容
+ sed &#39;/Iowa/,/Montana/d&#39;
+
+ # 删除文件中相邻的重复行（模拟“uniq”）
+ # 只保留重复行中的第一行，其他行删除
+ sed &#39;$!N; /^\(.*\)\n\1$/!P; D&#39;
+
+ # 删除文件中的重复行，不管有无相邻。注意hold space所能支持的缓存
+ # 大小，或者使用GNU sed。
+ sed -n &#39;G; s/\n/&amp;&amp;/; /^\([ -~]*\n\).*\n\1/d; s/\n//; h; P&#39;
+
+ # 删除除重复行外的所有行（模拟“uniq -d”）
+ sed &#39;$!N; s/^\(.*\)\n\1$/\1/; t; D&#39;
+
+ # 删除文件中开头的10行
+ sed &#39;1,10d&#39;
+
+ # 删除文件中的最后一行
+ sed &#39;$d&#39;
+
+ # 删除文件中的最后两行
+ sed &#39;N;$!P;$!D;$d&#39;
+
+ # 删除文件中的最后10行
+ sed -e :a -e &#39;$d;N;2,10ba&#39; -e &#39;P;D&#39;   # 方法1
+ sed -n -e :a -e &#39;1,10!{P;N;D;};N;ba&#39;  # 方法2
+
+ # 删除8的倍数行
+ gsed &#39;0~8d&#39;                           # 只对GNU sed有效
+ sed &#39;n;n;n;n;n;n;n;d;&#39;                # 其他sed
+
+ # 删除匹配式样的行
+ sed &#39;/pattern/d&#39;                      # 删除含pattern的行。当然pattern
+                                       # 可以换成任何有效的正则表达式
+
+ # 删除文件中的所有空行（与“grep &#39;.&#39; ”效果相同）
+ sed &#39;/^$/d&#39;                           # 方法1
+ sed &#39;/./!d&#39;                           # 方法2
+
+ # 只保留多个相邻空行的第一行。并且删除文件顶部和尾部的空行。
+ # （模拟“cat -s”）
+ sed &#39;/./,/^$/!d&#39;        #方法1，删除文件顶部的空行，允许尾部保留一空行
+ sed &#39;/^$/N;/\n$/D&#39;      #方法2，允许顶部保留一空行，尾部不留空行
+
+ # 只保留多个相邻空行的前两行。
+ sed &#39;/^$/N;/\n$/N;//D&#39;
+
+ # 删除文件顶部的所有空行
+ sed &#39;/./,$!d&#39;
+
+ # 删除文件尾部的所有空行
+ sed -e :a -e &#39;/^\n*$/{$d;N;ba&#39; -e &#39;}&#39;  # 对所有sed有效
+ sed -e :a -e &#39;/^\n*$/N;/\n$/ba&#39;        # 同上，但只对 gsed 3.02.*有效
+
+ # 删除每个段落的最后一行
+ sed -n &#39;/^$/{p;h;};/./{x;/./p;}&#39;
+
+特殊应用：
+​--------
+
+ # 移除手册页（man page）中的nroff标记。在Unix System V或bash shell下使
+ # 用&#39;echo&#39;命令时可能需要加上 -e 选项。
+ sed &quot;s/.`echo \\\b`//g&quot;    # 外层的双括号是必须的（Unix环境）
+ sed &#39;s/.^H//g&#39;             # 在bash或tcsh中, 按 Ctrl-V 再按 Ctrl-H
+ sed &#39;s/.\x08//g&#39;           # sed 1.5，GNU sed，ssed所使用的十六进制的表示方法
+
+ # 提取新闻组或 e-mail 的邮件头
+ sed &#39;/^$/q&#39;                # 删除第一行空行后的所有内容
+
+ # 提取新闻组或 e-mail 的正文部分
+ sed &#39;1,/^$/d&#39;              # 删除第一行空行之前的所有内容
+
+ # 从邮件头提取“Subject”（标题栏字段），并移除开头的“Subject:”字样
+ sed &#39;/^Subject: */!d; s///;q&#39;
+
+ # 从邮件头获得回复地址
+ sed &#39;/^Reply-To:/q; /^From:/h; /./d;g;q&#39;
+
+ # 获取邮件地址。在上一个脚本所产生的那一行邮件头的基础上进一步的将非电邮
+ # 地址的部分剃除。（见上一脚本）
+ sed &#39;s/ *(.*)//; s/&gt;.*//; s/.*[:&lt;] *//&#39;
+
+ # 在每一行开头加上一个尖括号和空格（引用信息）
+ sed &#39;s/^/&gt; /&#39;
+
+ # 将每一行开头处的尖括号和空格删除（解除引用）
+ sed &#39;s/^&gt; //&#39;
+
+ # 移除大部分的HTML标签（包括跨行标签）
+ sed -e :a -e &#39;s/&lt;[^&gt;]*&gt;//g;/&lt;/N;//ba&#39;
+
+ # 将分成多卷的uuencode文件解码。移除文件头信息，只保留uuencode编码部分。
+ # 文件必须以特定顺序传给sed。下面第一种版本的脚本可以直接在命令行下输入；
+ # 第二种版本则可以放入一个带执行权限的shell脚本中。（由Rahul Dhesi的一
+ # 个脚本修改而来。）
+ sed &#39;/^end/,/^begin/d&#39; file1 file2 ... fileX | uudecode   # vers. 1
+ sed &#39;/^end/,/^begin/d&#39; &quot;$@&quot; | uudecode                    # vers. 2
+
+ # 将文件中的段落以字母顺序排序。段落间以（一行或多行）空行分隔。GNU sed使用
+ # 字元“\v”来表示垂直制表符，这里用它来作为换行符的占位符——当然你也可以
+ # 用其他未在文件中使用的字符来代替它。
+ sed &#39;/./{H;d;};x;s/\n/={NL}=/g&#39; file | sort | sed &#39;1s/={NL}=//;s/={NL}=/\n/g&#39;
+ gsed &#39;/./{H;d};x;y/\n/\v/&#39; file | sort | sed &#39;1s/\v//;y/\v/\n/&#39;
+
+ # 分别压缩每个.TXT文件，压缩后删除原来的文件并将压缩后的.ZIP文件
+ # 命名为与原来相同的名字（只是扩展名不同）。（DOS环境：“dir /b”
+ # 显示不带路径的文件名）。
+ echo @echo off &gt;zipup.bat
+ dir /b *.txt | sed &quot;s/^\(.*\)\.TXT/pkzip -mo \1 \1.TXT/&quot; &gt;&gt;zipup.bat
+
+
+使用SED：Sed接受一个或多个编辑命令，并且每读入一行后就依次应用这些命令。
+当读入第一行输入后，sed对其应用所有的命令，然后将结果输出。接着再读入第二
+行输入，对其应用所有的命令……并重复这个过程。上一个例子中sed由标准输入设
+备（即命令解释器，通常是以管道输入的形式）获得输入。在命令行给出一个或多
+个文件名作为参数时，这些文件取代标准输入设备成为sed的输入。sed的输出将被
+送到标准输出（显示器）。因此：
+
+ cat filename | sed &#39;10q&#39;         # 使用管道输入
+ sed &#39;10q&#39; filename               # 同样效果，但不使用管道输入
+ sed &#39;10q&#39; filename &gt; newfile     # 将输出转移（重定向）到磁盘上
+
+要了解sed命令的使用说明，包括如何通过脚本文件（而非从命令行）来使用这些命
+令，请参阅《sed &amp; awk》第二版，作者Dale Dougherty和Arnold Robbins
+（O&#39;Reilly，1997；http://www.ora.com），《UNIX Text Processing》，作者
+Dale Dougherty和Tim O&#39;Reilly（Hayden Books，1987）或者是Mike Arst写的教
+程——压缩包的名称是“U-SEDIT2.ZIP”（在许多站点上都找得到）。要发掘sed
+的潜力，则必须对“正则表达式”有足够的理解。正则表达式的资料可以看
+《Mastering Regular Expressions》作者Jeffrey Friedl（O&#39;reilly 1997）。
+Unix系统所提供的手册页（“man”）也会有所帮助（试一下这些命令
+“man sed”、“man regexp”，或者看“man ed”中关于正则表达式的部分），但
+手册提供的信息比较“抽象”——这也是它一直为人所诟病的。不过，它本来就不
+是用来教初学者如何使用sed或正则表达式的教材，而只是为那些熟悉这些工具的人
+提供的一些文本参考。
+
+括号语法：前面的例子对sed命令基本上都使用单引号（&#39;...&#39;）而非双引号
+（&quot;...&quot;）这是因为sed通常是在Unix平台上使用。单引号下，Unix的shell（命令
+解释器）不会对美元符（$）和后引号（`...`）进行解释和执行。而在双引号下
+美元符会被展开为变量或参数的值，后引号中的命令被执行并以输出的结果代替
+后引号中的内容。而在“csh”及其衍生的shell中使用感叹号（!）时需要在其前
+面加上转义用的反斜杠（就像这样：\!）以保证上面所使用的例子能正常运行
+（包括使用单引号的情况下）。DOS版本的Sed则一律使用双引号（&quot;...&quot;）而不是
+引号来圈起命令。
+
+&#39;\t&#39;的用法：为了使本文保持行文简洁，我们在脚本中使用&#39;\t&#39;来表示一个制表
+符。但是现在大部分版本的sed还不能识别&#39;\t&#39;的简写方式，因此当在命令行中为
+脚本输入制表符时，你应该直接按TAB键来输入制表符而不是输入&#39;\t&#39;。下列的工
+具软件都支持&#39;\t&#39;做为一个正则表达式的字元来表示制表符：awk、perl、HHsed、
+sedmod以及GNU sed v3.02.80。
+
+不同版本的SED：不同的版本间的sed会有些不同之处，可以想象它们之间在语法上
+会有差异。具体而言，它们中大部分不支持在编辑命令中间使用标签（:name）或分
+支命令（b,t），除非是放在那些的末尾。这篇文档中我们尽量选用了可移植性较高
+的语法，以使大多数版本的sed的用户都能使用这些脚本。不过GNU版本的sed允许使
+用更简洁的语法。想像一下当读者看到一个很长的命令时的心情：
+
+   sed -e &#39;/AAA/b&#39; -e &#39;/BBB/b&#39; -e &#39;/CCC/b&#39; -e d
+
+好消息是GNU sed能让命令更紧凑：
+
+   sed &#39;/AAA/b;/BBB/b;/CCC/b;d&#39;      # 甚至可以写成
+   sed &#39;/AAA\|BBB\|CCC/b;d&#39;
+
+此外，请注意虽然许多版本的sed接受象“/one/ s/RE1/RE2/”这种在&#39;s&#39;前带有空
+格的命令，但这些版本中有些却不接受这样的命令:“/one/! s/RE1/RE2/”。这时
+只需要把中间的空格去掉就行了。
+
+速度优化：当由于某种原因（比如输入文件较大、处理器或硬盘较慢等）需要提高
+命令执行速度时，可以考虑在替换命令（“s/.../.../”）前面加上地址表达式来
+提高速度。举例来说：
+
+   sed &#39;s/foo/bar/g&#39; filename         # 标准替换命令
+   sed &#39;/foo/ s/foo/bar/g&#39; filename   # 速度更快
+   sed &#39;/foo/ s//bar/g&#39; filename      # 简写形式
+
+当只需要显示文件的前面的部分或需要删除后面的内容时，可以在脚本中使用“q”
+命令（退出命令）。在处理大的文件时，这会节省大量时间。因此：
+
+   sed -n &#39;45,50p&#39; filename           # 显示第45到50行
+   sed -n &#39;51q;45,50p&#39; filename       # 一样，但快得多
+
+如果你有其他的单行脚本想与大家分享或者你发现了本文档中错误的地方，请发电
+子邮件给本文档的作者（Eric Pement）。邮件中请记得提供你所使用的sed版本、 
+该sed所运行的操作系统及对问题的适当描述。本文所指的单行脚本指命令行的长
+度在65个字符或65个以下的sed脚本〔译注1〕。本文档的各种脚本是由以下所列作
+者所写或提供：
+
+ Al Aab                               # 建立了“seders”邮件列表
+ Edgar Allen                          # 许多方面
+ Yiorgos Adamopoulos                  # 许多方面
+ Dale Dougherty                       # 《sed &amp; awk》作者
+ Carlos Duarte                        # 《do it with sed》作者
+ Eric Pement                          # 本文档的作者
+ Ken Pizzini                          # GNU sed v3.02 的作者
+ S.G. Ravenhall                       # 去html标签脚本
+ Greg Ubben                           # 有诸多贡献并提供了许多帮助
+​-------------------------------------------------------------------------
+
+译注1：大部分情况下，sed脚本无论多长都能写成单行的形式（通过`-e&#39;选项和`;&#39;
+号）——只要命令解释器支持，所以这里说的单行脚本除了能写成一行还对长度有
+所限制。因为这些单行脚本的意义不在于它们是以单行的形式出现。而是让用户能
+方便地在命令行中使用这些紧凑的脚本才是其意义所在。
+</code></pre></div>
+
+<h2 id="sed">sed命令详解<a class="headerlink" href="#sed" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>via: <a href="http://qifuguang.me/2015/09/21/sed命令详解/">http://qifuguang.me/2015/09/21/sed命令详解/</a></p>
+</blockquote>
+<p>sed是stream editor的简称，也就是流编辑器。
+它一次处理一行内容，处理时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），
+接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。
+接着处理下一行，这样不断重复，直到文件末尾。
+文件内容并没有改变，除非你使用重定向存储输出。</p>
+<hr />
+<h3 id="_3">使用语法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>sed命令的使用规则是这样的：
+<code>sed [option] 'command' input_file</code></p>
+<p>其中option是可选的，常用的option有如下几种：
+* -n 使用安静(silent)模式（想不通为什么不是-s）。在一般sed的用法中，所有来自stdin的内容一般都会被列出到屏幕上。但如果加上-n参数后，则只有经过sed特殊处理的那一行(或者动作)才会被列出来；
+* -e 直接在指令列模式上进行 sed 的动作编辑；
+* -f 直接将 sed 的动作写在一个文件内， <code>-f filename</code> 则可以执行filename内的sed命令；
+* -r 让sed命令支持扩展的正则表达式(默认是基础正则表达式)；
+* -i 直接修改读取的文件内容，而不是由屏幕输出。</p>
+<hr />
+<h3 id="_4">常用的命令有以下几种：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>a： append即追加字符串， <code>a</code>的后面跟上字符串<code>s</code>(多行字符串可以用\n分隔)，则会在当前选择的行的后面都加上字符串s；</li>
+<li>c： 取代/替换字符串，<code>c</code>后面跟上字符串<code>s</code>(多行字符串可以用<code>\n</code>分隔)，则会将当前选中的行替换成字符串s；</li>
+<li>d： delete即删除，该命令会将当前选中的行删除；</li>
+<li>i： insert即插入字符串，<code>i</code>后面跟上字符串<code>s</code>(多行字符串可以用<code>\n</code>分隔)，则会在当前选中的行的前面都插入字符串s；</li>
+<li>p： print即打印，该命令会打印当前选择的行到屏幕上；</li>
+<li>s： 替换，通常<code>s</code>命到第三行写成1令的用法是这样的：<code>1,2s/old/new/g</code>，将<code>old</code>字符串替换成<code>new</code>字符串</li>
+</ul>
+<hr />
+<h3 id="_5">命令示例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>假设有一个本地文件test.txt，文件内容如下：</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ cat test.txt
+this is first line
+this is second line
+this is third line
+this is fourth line
+this fifth line
+happy everyday
+end
+</code></pre></div>
+
+<p>本节将使用该文件详细演示每一个命令的用法。</p>
+<h4 id="a">a命令<a class="headerlink" href="#a" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;1a \add one&#39; test.txt
+this is first line
+add one
+this is second line
+this is third line
+this is fourth line
+this is fifth line
+happy everyday
+end
+</code></pre></div>
+
+<p>本例命令部分中的1表示第一行，同样的第二行写成<code>2</code>，第一行到第三行写成<code>1,3</code>，用<code>$</code>表示最后一行，比如<code>2,$</code>表示第二行到最后一行中间所有的行(包含第二行和最后一行)。
+本例的作用是在第一行之后增加字符串<code>add one</code>，从输出可以看到具体效果。</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;1,$a \add one&#39; test.txt
+this is first line
+add one
+this is second line
+add one
+this is third line
+add one
+this is fourth line
+add one
+this is fifth line
+add one
+happy everyday
+add one
+end
+add one
+</code></pre></div>
+
+<p>本例表示在第一行和最后一行所有的行后面都加上<code>add one</code>字符串，从输出可以看到效果。</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;/first/a \add one&#39; test.txt
+this is first line
+add one
+this is second line
+this is third line
+this is fourth line
+this is fifth line
+happy everyday
+end
+</code></pre></div>
+
+<p>本例表示在包含<code>first</code>字符串的行的后面加上字符串<code>add one</code>，从输出可以看到第一行包含<code>first</code>，所以第一行之后增加了<code>add one</code></p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;/^ha.*day$/a \add one&#39; test.txt
+this is first line
+this is second line
+this is third line
+this is fourth line
+this is fifth line
+happy everyday
+add one
+end
+</code></pre></div>
+
+<p>本例使用正则表达式匹配行，<code>^ha.*day$</code>表示以<code>ha</code>开头，以<code>day</code>结尾的行，则可以匹配到文件的<code>happy everyday</code>这样，所以在该行后面增加了<code>add one</code>字符串。</p>
+<h4 id="i">i命令<a class="headerlink" href="#i" title="Permanent link">&para;</a></h4>
+<p>i命令使用方法和a命令一样的，只不过是在匹配的行的前面插入字符串，所以直接将上面a命令的示例的<code>a</code>替换成<code>i</code>即可，在此就不啰嗦了。</p>
+<h4 id="c">c命令<a class="headerlink" href="#c" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;$c \add one&#39; test.txt
+this is first line
+this is second line
+this is third line
+this is fourth line
+this is     fifth line
+happy everyday
+add one
+</code></pre></div>
+
+<p>本例表示将最后一行替换成字符串<code>add one</code>，从输出可以看到效果。</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;4,$c \add one&#39; test.txt
+this is first line
+this is second line
+this is third line
+add one
+</code></pre></div>
+
+<p>本例将第四行到最后一行的内容替换成字符串<code>add one</code>。</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;/^ha.*day$/c \replace line&#39; test.txt
+this is first line
+this is second line
+this is third line
+this is fourth line
+this is fifth line
+replace line
+end
+</code></pre></div>
+
+<p>本例将以<code>ha</code>开头，以<code>day</code>结尾的行替换成<code>replace line</code>。</p>
+<h4 id="d">d命令<a class="headerlink" href="#d" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;/^ha.*day$/d&#39; test.txt
+this is first line
+this is second line
+this is third line
+this is fourth line
+this is fifth line
+end
+</code></pre></div>
+
+<p>本例删除以<code>ha</code>开头，以<code>day</code>结尾的行。</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;4,$d&#39; test.txt
+this is first line
+this is second line
+this is third line
+</code></pre></div>
+
+<p>本例删除第四行到最后一行中的内容。</p>
+<h4 id="p">p命令<a class="headerlink" href="#p" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed -n &#39;4,$p&#39; test.txt
+this is fourth line
+this is fifth line
+happy everyday
+end
+</code></pre></div>
+
+<p>本例在屏幕上打印第四行到最后一行的内容，p命令一般和-n选项一起使用。</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed -n &#39;/^ha.*day$/p&#39; test.txt
+happy everyday
+</code></pre></div>
+
+<p>本例打印以<code>ha</code>开始，以<code>day</code>结尾的行。</p>
+<h4 id="s">s命令<a class="headerlink" href="#s" title="Permanent link">&para;</a></h4>
+<p>实际运用中s命令是最常使用到的。</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;s/line/text/g&#39; test.txt
+this is first text
+this is second text
+this is third text
+this is fourth text
+this is fifth text
+happy everyday
+end
+</code></pre></div>
+
+<p>本例将文件中的所有<code>line</code>替换成<code>text</code>，最后的<code>g</code>是global的意思，也就是全局替换，如果不加<code>g</code>，则只会替换本行的第一个<code>line</code>。</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;/^ha.*day$/s/happy/very happy/g&#39; test.txt
+this is first line
+this is second line
+this is third line
+this is fourth line
+this is fifth line
+very happy everyday
+end
+</code></pre></div>
+
+<p>本例首先匹配以<code>ha</code>开始，以<code>day</code>结尾的行，本例中匹配到的行是<code>happy everyday</code>这样，然后再将该行中的<code>happy</code>替换成<code>very happy</code>。</p>
+<div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;s/\(.*\)line$/\1/g&#39; test.txt
+this is first
+this is second
+this is third
+this is fourth
+this is fifth
+happy everyday
+end
+</code></pre></div>
+
+<p>这个例子有点复杂，先分解一下。首先s命令的模式是<code>s/old/new/g</code>这样的，所以本例的old部分即<code>\(.*\)line$</code>,sed命令中使用<code>\(\)</code>包裹的内容表示正则表达式的第n部分，序号从1开始计算，本例中只有一个<code>\(\)</code>所以<code>\(.*\)</code>表示正则表达式的第一部分，这部分匹配任意字符串，所以<code>\(.*\)line$</code>匹配的就是以line结尾的任何行。然后将匹配到的行替换成正则表达式的第一部分（本例中相当于删除<code>line</code>部分），使用<code>\1</code>表示匹配到的第一部分，同样<code>\2</code>表示第二部分，<code>\3</code>表示第三部分，可以依次这样引用。比如下面的例子：</p>
+<p><div class="codehilite"><pre><span></span><code>[qifuguang@winwill~]$ sed &#39;s/\(.*\)is\(.*\)line/\1\2/g&#39; test.txt
+this  first
+this  second
+this  third
+this  fourth
+this  fifth
+happy everyday
+end
+</code></pre></div>
+正则表达式中<code>is</code>两边的部分可以用<code>\1</code>和<code>\2</code>表示，该例子的作用其实就是删除中间部分的<code>is</code>。</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../samba/" title="Samba" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                Samba
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../ssh/" title="Ssh" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                Ssh
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1",url:{base:"../../../.."}})</script>
+      
+        <script src="../../../../js/cnzz-statistics.js"></script>
+      
+    
+  </body>
+</html>
