@@ -2,5 +2,5 @@
 
 set -e
 
-sudo pip install mkdocs mkdocs-material
+sudo pip install -r requirements.txt
 

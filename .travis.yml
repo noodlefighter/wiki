@@ -1,23 +1,16 @@
-sudo: false
-language: node_js
-
-node_js:
-- 12
-
-cache:
-  directories:
-  - node_modules
+language: python
+python:
+  - "3.8"
 
 branches:
   only:
   - master
 
 install:
-- bash install.sh
+- pip install -r requirements.txt
 
 script:
 - bash generate.sh
-- bash -c "echo wiki.noodlefighter.com > hexo/public/CNAME"
 
 deploy:
   provider: pages
@@ -27,4 +20,4 @@ deploy:
   on:
     branch: master
   local_dir:
-    hexo/public
+    site/
