@@ -1,15 +1,9 @@
-
-
-## install
-
-```bash
-$ sudo pip install mkdocs
-```
-
 ## usage
 
-
 ```bash
+# 准备环境
+$ ./install.sh
+
 # 生成静态页
 ./generate.sh
 
