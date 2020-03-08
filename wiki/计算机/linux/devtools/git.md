@@ -42,6 +42,9 @@ git show 7cb554fc6663ea62bae727f1489859947e87c5de
 
 # 删除未跟踪文件 -x连ignore的文件也一起 -d目录
 git clean -xfd
+
+# 浅层克隆，用于仓库太大，而只想克隆某分支的场景
+git clone --depth=1 -b <branch> <repo>
 ```
 
 ## 分支操作
