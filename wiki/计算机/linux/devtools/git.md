@@ -45,6 +45,13 @@ git clean -xfd
 
 # 浅层克隆，用于仓库太大，而只想克隆某分支的场景
 git clone --depth=1 -b <branch> <repo>
+
+# 增加tag
+git tag -a v1.1.1
+git push --tags
+# 删除tag
+git tag -d v1.1.1
+git push --delete orgin v1.1.1
 ```
 
 ## 分支操作
