@@ -73,6 +73,9 @@ https://blog.csdn.net/kity9420/article/details/75717091
 # docker run -itd xxx_image /bin/bash
 （回一串sha）
 # docker attach 这sha的前几位
+
+直接操作运行中的容器：
+# docker exec -it name-of-container bash
 ```
 
 
@@ -120,7 +123,7 @@ services:
 命令：
 
 ```
-部署
+部署(或者更新配置)
 $ docker-compose up -d
 撤销部署
 $ docker-compose down
@@ -162,5 +165,28 @@ $ docker run --rm -it -u $UID:$GROUPS -v $PWD/platform:/opt/lichee jacklan/liche
 ```
 # docker export -o postgres-export.tar postgres
 # docker import postgres-export.tar postgres:latest
+```
+
+
+
+## docker的中国区镜象
+
+编辑`/etc/docker/daemon.json`后，重启docker daemon：
+
+```
+{
+  "registry-mirrors" : [
+    "http://ovfftd6p.mirror.aliyuncs.com",
+    "http://registry.docker-cn.com",
+    "http://docker.mirrors.ustc.edu.cn",
+    "http://hub-mirror.c.163.com"
+  ],
+  "insecure-registries" : [
+    "registry.docker-cn.com",
+    "docker.mirrors.ustc.edu.cn"
+  ],
+  "debug" : true,
+  "experimental" : true
+}
 ```
 
