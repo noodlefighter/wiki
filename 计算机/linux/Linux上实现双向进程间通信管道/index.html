@@ -1,38 +1,17 @@
 
 
 
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-      
-      
-        <meta name="lang:clipboard.copy" content="复制">
-      
-        <meta name="lang:clipboard.copied" content="已复制">
-      
-        <meta name="lang:search.language" content="ja">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
-      
-        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
-      
-        <meta name="lang:search.result.other" content="# 个符合条件的结果">
-      
-        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
     
     
       
@@ -40,27 +19,24 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.89dc9fe3.min.css">
       
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecd4686e.min.css">
       
       
         
         
-        <meta name="theme-color" content="#7cb342">
+        <meta name="theme-color" content="#8bc34a">
       
     
-    
-      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
     
     
     
@@ -69,69 +45,72 @@
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="light-green" data-md-color-accent="pink">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="" data-md-color-primary="light-green" data-md-color-accent="pink">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#_1" tabindex="0" class="md-skip">
-        跳转至
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../.." title="Noodlefighter's Wiki" aria-label="Noodlefighter's Wiki" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon"></i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Noodlefighter's Wiki
-            </span>
-            <span class="md-header-nav__topic">
-              
-                Linux上实现双向进程间通信管道
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="../../.." title="Noodlefighter's Wiki" class="md-header-nav__button md-logo" aria-label="Noodlefighter's Wiki">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Noodlefighter's Wiki
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Linux上实现双向进程间通信管道
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             键入以开始搜索
           </div>
@@ -141,31 +120,32 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../.." title="Noodlefighter's Wiki" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Noodlefighter's Wiki" class="md-nav__button md-logo" aria-label="Noodlefighter's Wiki">
       
-        <i class="md-icon"></i>
-      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
     </a>
     Noodlefighter's Wiki
   </label>
@@ -191,49 +171,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
-      待阅读后删除
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        待阅读后删除
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../%E5%BE%85%E9%98%85%E8%AF%BB%E5%90%8E%E5%88%A0%E9%99%A4/btrfs%E5%92%8C%E5%B5%8C%E5%85%A5%E5%BC%8F/" title="Btrfs和嵌入式" class="md-nav__link">
-      Btrfs和嵌入式
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
       心理学
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
+    <nav class="md-nav" aria-label="心理学" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         心理学
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -311,13 +261,73 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      思考
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="思考" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        思考
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E6%80%9D%E8%80%83/btrfs%E5%92%8C%E5%B5%8C%E5%85%A5%E5%BC%8F/" title="Btrfs和嵌入式" class="md-nav__link">
+      Btrfs和嵌入式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E6%80%9D%E8%80%83/%E6%80%9D%E8%80%83/" title="思考" class="md-nav__link">
+      思考
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       日常
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="日常" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         日常
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -378,13 +388,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
     
     <label class="md-nav__link" for="nav-4-5">
       烹饪
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="烹饪" data-md-level="2">
       <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         烹饪
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -397,13 +413,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5-1" type="checkbox" id="nav-4-5-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-1" type="checkbox" id="nav-4-5-1">
     
     <label class="md-nav__link" for="nav-4-5-1">
       油炸系
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="油炸系" data-md-level="3">
       <label class="md-nav__title" for="nav-4-5-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         油炸系
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -445,13 +467,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5-2" type="checkbox" id="nav-4-5-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-2" type="checkbox" id="nav-4-5-2">
     
     <label class="md-nav__link" for="nav-4-5-2">
       饭团系
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="饭团系" data-md-level="3">
       <label class="md-nav__title" for="nav-4-5-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         饭团系
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -486,13 +514,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
     
     <label class="md-nav__link" for="nav-4-6">
       装修
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="装修" data-md-level="2">
       <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         装修
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -546,13 +580,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
     
     <label class="md-nav__link" for="nav-4-7">
       食品与营养学
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="食品与营养学" data-md-level="2">
       <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         食品与营养学
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -606,13 +646,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
     
     <label class="md-nav__link" for="nav-4-8">
       麻将
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="麻将" data-md-level="2">
       <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         麻将
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -647,13 +693,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       电子工程
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="电子工程" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         电子工程
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -726,13 +778,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
     
     <label class="md-nav__link" for="nav-5-6">
       IoT
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="IoT" data-md-level="2">
       <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         IoT
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -798,13 +856,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7">
     
     <label class="md-nav__link" for="nav-5-7">
       嵌入式开源项目
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="嵌入式开源项目" data-md-level="2">
       <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         嵌入式开源项目
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -978,13 +1042,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8">
     
     <label class="md-nav__link" for="nav-5-8">
       嵌入式硬件
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="嵌入式硬件" data-md-level="2">
       <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         嵌入式硬件
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1038,13 +1108,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9">
     
     <label class="md-nav__link" for="nav-5-9">
       嵌入式软件
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="嵌入式软件" data-md-level="2">
       <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         嵌入式软件
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1175,13 +1251,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       自然语言
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="自然语言" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         自然语言
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1194,13 +1276,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1">
     
     <label class="md-nav__link" for="nav-6-1">
       日语
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="日语" data-md-level="2">
       <label class="md-nav__title" for="nav-6-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         日语
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1254,13 +1342,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
     
     <label class="md-nav__link" for="nav-6-2">
       翻译
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="翻译" data-md-level="2">
       <label class="md-nav__title" for="nav-6-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         翻译
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1285,13 +1379,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-2" type="checkbox" id="nav-6-2-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2-2" type="checkbox" id="nav-6-2-2">
     
     <label class="md-nav__link" for="nav-6-2-2">
       听译练习
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="听译练习" data-md-level="3">
       <label class="md-nav__title" for="nav-6-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         听译练习
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1405,13 +1505,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3" type="checkbox" id="nav-6-2-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2-3" type="checkbox" id="nav-6-2-3">
     
     <label class="md-nav__link" for="nav-6-2-3">
       杂碎作品
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="杂碎作品" data-md-level="3">
       <label class="md-nav__title" for="nav-6-2-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         杂碎作品
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1446,13 +1552,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
     
     <label class="md-nav__link" for="nav-6-3">
       英语
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="英语" data-md-level="2">
       <label class="md-nav__title" for="nav-6-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         英语
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1499,13 +1611,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
     <label class="md-nav__link" for="nav-7">
       艺术
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="艺术" data-md-level="1">
       <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         艺术
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1518,13 +1636,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
     
     <label class="md-nav__link" for="nav-7-1">
       摄影
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="摄影" data-md-level="2">
       <label class="md-nav__title" for="nav-7-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         摄影
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1554,13 +1678,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
     <label class="md-nav__link" for="nav-7-2">
       音乐
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="音乐" data-md-level="2">
       <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         音乐
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1597,13 +1727,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2-3" type="checkbox" id="nav-7-2-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2-3" type="checkbox" id="nav-7-2-3">
     
     <label class="md-nav__link" for="nav-7-2-3">
       歌词
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="歌词" data-md-level="3">
       <label class="md-nav__title" for="nav-7-2-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         歌词
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1633,13 +1769,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2-4" type="checkbox" id="nav-7-2-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2-4" type="checkbox" id="nav-7-2-4">
     
     <label class="md-nav__link" for="nav-7-2-4">
       谱子
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="谱子" data-md-level="3">
       <label class="md-nav__title" for="nav-7-2-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         谱子
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1681,13 +1823,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
     
     <label class="md-nav__link" for="nav-8">
       计算机
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="计算机" data-md-level="1">
       <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         计算机
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1700,13 +1848,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
     
     <label class="md-nav__link" for="nav-8-1">
       Android
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Android" data-md-level="2">
       <label class="md-nav__title" for="nav-8-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Android
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1750,13 +1904,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2" checked>
     
     <label class="md-nav__link" for="nav-8-2">
       Linux
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Linux" data-md-level="2">
       <label class="md-nav__title" for="nav-8-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Linux
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1771,11 +1931,14 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Linux上实现双向进程间通信管道
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
       </label>
     
     <a href="./" title="Linux上实现双向进程间通信管道" class="md-nav__link md-nav__link--active">
@@ -1783,11 +1946,16 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -1817,10 +1985,6 @@
   </a>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -2052,13 +2216,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-20" type="checkbox" id="nav-8-2-20">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2-20" type="checkbox" id="nav-8-2-20">
     
     <label class="md-nav__link" for="nav-8-2-20">
       Devtools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Devtools" data-md-level="3">
       <label class="md-nav__title" for="nav-8-2-20">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Devtools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2328,13 +2498,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-21" type="checkbox" id="nav-8-2-21">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2-21" type="checkbox" id="nav-8-2-21">
     
     <label class="md-nav__link" for="nav-8-2-21">
       Distribution
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Distribution" data-md-level="3">
       <label class="md-nav__title" for="nav-8-2-21">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Distribution
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2424,13 +2600,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-22" type="checkbox" id="nav-8-2-22">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2-22" type="checkbox" id="nav-8-2-22">
     
     <label class="md-nav__link" for="nav-8-2-22">
       Kernel
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Kernel" data-md-level="3">
       <label class="md-nav__title" for="nav-8-2-22">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Kernel
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2640,13 +2822,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-23" type="checkbox" id="nav-8-2-23">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2-23" type="checkbox" id="nav-8-2-23">
     
     <label class="md-nav__link" for="nav-8-2-23">
       Tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Tools" data-md-level="3">
       <label class="md-nav__title" for="nav-8-2-23">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Tools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3204,13 +3392,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-24" type="checkbox" id="nav-8-2-24">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2-24" type="checkbox" id="nav-8-2-24">
     
     <label class="md-nav__link" for="nav-8-2-24">
       Userspace
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Userspace" data-md-level="3">
       <label class="md-nav__title" for="nav-8-2-24">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Userspace
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3257,13 +3451,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
     
     <label class="md-nav__link" for="nav-8-3">
       Windows
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Windows" data-md-level="2">
       <label class="md-nav__title" for="nav-8-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Windows
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3324,13 +3524,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3-5" type="checkbox" id="nav-8-3-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-3-5" type="checkbox" id="nav-8-3-5">
     
     <label class="md-nav__link" for="nav-8-3-5">
       Tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Tools" data-md-level="3">
       <label class="md-nav__title" for="nav-8-3-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Tools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3365,13 +3571,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
     
     <label class="md-nav__link" for="nav-8-4">
       信息安全
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="信息安全" data-md-level="2">
       <label class="md-nav__title" for="nav-8-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         信息安全
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3461,13 +3673,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5" type="checkbox" id="nav-8-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-5" type="checkbox" id="nav-8-5">
     
     <label class="md-nav__link" for="nav-8-5">
       前端技术
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="前端技术" data-md-level="2">
       <label class="md-nav__title" for="nav-8-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         前端技术
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3492,13 +3710,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5-2" type="checkbox" id="nav-8-5-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-5-2" type="checkbox" id="nav-8-5-2">
     
     <label class="md-nav__link" for="nav-8-5-2">
       Tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Tools" data-md-level="3">
       <label class="md-nav__title" for="nav-8-5-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Tools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3545,13 +3769,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
     
     <label class="md-nav__link" for="nav-8-6">
       待整理
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="待整理" data-md-level="2">
       <label class="md-nav__title" for="nav-8-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         待整理
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3581,13 +3811,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7" type="checkbox" id="nav-8-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-7" type="checkbox" id="nav-8-7">
     
     <label class="md-nav__link" for="nav-8-7">
       攒机相关
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="攒机相关" data-md-level="2">
       <label class="md-nav__title" for="nav-8-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         攒机相关
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3617,13 +3853,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8" type="checkbox" id="nav-8-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-8" type="checkbox" id="nav-8-8">
     
     <label class="md-nav__link" for="nav-8-8">
       数据分析
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="数据分析" data-md-level="2">
       <label class="md-nav__title" for="nav-8-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         数据分析
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3653,13 +3895,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-9" type="checkbox" id="nav-8-9">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-9" type="checkbox" id="nav-8-9">
     
     <label class="md-nav__link" for="nav-8-9">
       算法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="算法" data-md-level="2">
       <label class="md-nav__title" for="nav-8-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         算法
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3689,13 +3937,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10" type="checkbox" id="nav-8-10">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10" type="checkbox" id="nav-8-10">
     
     <label class="md-nav__link" for="nav-8-10">
       编程
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="编程" data-md-level="2">
       <label class="md-nav__title" for="nav-8-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         编程
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3828,13 +4082,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-11" type="checkbox" id="nav-8-10-11">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-11" type="checkbox" id="nav-8-10-11">
     
     <label class="md-nav__link" for="nav-8-10-11">
       C
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="C" data-md-level="3">
       <label class="md-nav__title" for="nav-8-10-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         C
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4020,13 +4280,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-12" type="checkbox" id="nav-8-10-12">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-12" type="checkbox" id="nav-8-10-12">
     
     <label class="md-nav__link" for="nav-8-10-12">
       CPP
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="CPP" data-md-level="3">
       <label class="md-nav__title" for="nav-8-10-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         CPP
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4056,13 +4322,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-13" type="checkbox" id="nav-8-10-13">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-13" type="checkbox" id="nav-8-10-13">
     
     <label class="md-nav__link" for="nav-8-10-13">
       Csharp
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Csharp" data-md-level="3">
       <label class="md-nav__title" for="nav-8-10-13">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Csharp
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4092,13 +4364,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-14" type="checkbox" id="nav-8-10-14">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-14" type="checkbox" id="nav-8-10-14">
     
     <label class="md-nav__link" for="nav-8-10-14">
       JAVA
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="JAVA" data-md-level="3">
       <label class="md-nav__title" for="nav-8-10-14">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         JAVA
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4140,13 +4418,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-15" type="checkbox" id="nav-8-10-15">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-15" type="checkbox" id="nav-8-10-15">
     
     <label class="md-nav__link" for="nav-8-10-15">
       QT
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="QT" data-md-level="3">
       <label class="md-nav__title" for="nav-8-10-15">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         QT
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4212,13 +4496,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-16" type="checkbox" id="nav-8-10-16">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-16" type="checkbox" id="nav-8-10-16">
     
     <label class="md-nav__link" for="nav-8-10-16">
       Go
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Go" data-md-level="3">
       <label class="md-nav__title" for="nav-8-10-16">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Go
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4248,13 +4538,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-17" type="checkbox" id="nav-8-10-17">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-17" type="checkbox" id="nav-8-10-17">
     
     <label class="md-nav__link" for="nav-8-10-17">
       Javascript
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Javascript" data-md-level="3">
       <label class="md-nav__title" for="nav-8-10-17">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Javascript
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4296,13 +4592,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-18" type="checkbox" id="nav-8-10-18">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-18" type="checkbox" id="nav-8-10-18">
     
     <label class="md-nav__link" for="nav-8-10-18">
       中间件
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="中间件" data-md-level="3">
       <label class="md-nav__title" for="nav-8-10-18">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         中间件
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4385,13 +4687,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-11" type="checkbox" id="nav-8-11">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-11" type="checkbox" id="nav-8-11">
     
     <label class="md-nav__link" for="nav-8-11">
       虚拟技术
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="虚拟技术" data-md-level="2">
       <label class="md-nav__title" for="nav-8-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         虚拟技术
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4445,13 +4753,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-12" type="checkbox" id="nav-8-12">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-12" type="checkbox" id="nav-8-12">
     
     <label class="md-nav__link" for="nav-8-12">
       计算机网络
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="计算机网络" data-md-level="2">
       <label class="md-nav__title" for="nav-8-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         计算机网络
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4541,13 +4855,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-13" type="checkbox" id="nav-8-13">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-13" type="checkbox" id="nav-8-13">
     
     <label class="md-nav__link" for="nav-8-13">
       软件工程
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="软件工程" data-md-level="2">
       <label class="md-nav__title" for="nav-8-13">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         软件工程
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4601,13 +4921,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-14" type="checkbox" id="nav-8-14">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-14" type="checkbox" id="nav-8-14">
     
     <label class="md-nav__link" for="nav-8-14">
       通用技术
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="通用技术" data-md-level="2">
       <label class="md-nav__title" for="nav-8-14">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         通用技术
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4694,11 +5020,16 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
-    <label class="md-nav__title" for="__toc">目录</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -4729,10 +5060,6 @@
   
 </li>
       
-      
-      
-      
-      
     </ul>
   
 </nav>
@@ -4746,6 +5073,9 @@
               
                 
                 
+                  
+                
+                
                   <h1>Linux上实现双向进程间通信管道</h1>
                 
                 <blockquote>
@@ -4753,12 +5083,12 @@
 </blockquote>
 <h2 id="_1">问题和常见方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>Linux 提供了 popen 和 pclose 函数 <a href="https://www.ibm.com/developerworks/cn/linux/l-pipebid/index.html#artrelatedtopics">(1)</a>，用于创建和关闭管道与另外一个进程进行通信。其接口如下：</p>
-<div class="codehilite"><pre><span></span><code><span class="err">`</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">popen</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">command</span><span class="err">，</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">mode</span><span class="p">);</span><span class="err">``</span><span class="kt">int</span> <span class="n">pclose</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span><span class="err">`</span>
+<div class="highlight"><pre><span></span><code><span class="err">`</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">popen</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">command</span><span class="err">，</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">mode</span><span class="p">);</span><span class="err">``</span><span class="kt">int</span> <span class="n">pclose</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span><span class="err">`</span>
 </code></pre></div>
 
 <p>遗憾的是，popen 创建的管道只能是单向的 -- mode 只能是 "r" 或 "w" 而不能是某种组合--用户只能选择要么往里写，要么从中读，而不能同时在一个管道中进行读写。实际应用中，经常会有同时进行读写的要求，比如，我们可能希望把文本数据送往sort工具排序后再取回结果。此时popen就无法用上了。我们需要寻找其它的解决方案。</p>
 <p>有一种解决方案是使用 pipe 函数 <a href="https://www.ibm.com/developerworks/cn/linux/l-pipebid/index.html#artrelatedtopics">(2)</a>创建两个单向管道。没有错误检测的代码示意如下：</p>
-<div class="codehilite"><pre><span></span><code><span class="err">`</span><span class="kt">int</span> <span class="n">pipe_in</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">pipe_out</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="err">``</span><span class="kt">pid_t</span> <span class="n">pid</span><span class="p">;</span><span class="err">``</span><span class="n">pipe</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pipe_in</span><span class="p">);</span> <span class="c1">// 创建父进程中用于读取数据的管道``pipe(&amp;pipe_out);    // 创建父进程中用于写入数据的管道``if ( (pid = fork()) == 0) { // 子进程``    ``close(pipe_in[0]);  // 关闭父进程的读管道的子进程读端``    ``close(pipe_out[1]); // 关闭父进程的写管道的子进程写端``    ``dup2(pipe_in[1], STDOUT_FILENO);    // 复制父进程的读管道到子进程的标准输出``    ``dup2(pipe_out[0], STDIN_FILENO);    // 复制父进程的写管道到子进程的标准输入``    ``close(pipe_in[1]);  // 关闭已复制的读管道``    ``close(pipe_out[0]); // 关闭已复制的写管道``    ``/* 使用exec执行命令 */``} else {    // 父进程``    ``close(pipe_in[1]);  // 关闭读管道的写端``    ``close(pipe_out[0]); // 关闭写管道的读端``    ``/* 现在可向pipe_out[1]中写数据，并从pipe_in[0]中读结果 */``    ``close(pipe_out[1]); // 关闭写管道``    ``/* 读取pipe_in[0]中的剩余数据 */``    ``close(pipe_in[0]);  // 关闭读管道``    ``/* 使用wait系列函数等待子进程退出并取得退出代码 */``}`</span>
+<div class="highlight"><pre><span></span><code><span class="err">`</span><span class="kt">int</span> <span class="n">pipe_in</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">pipe_out</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="err">``</span><span class="kt">pid_t</span> <span class="n">pid</span><span class="p">;</span><span class="err">``</span><span class="n">pipe</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pipe_in</span><span class="p">);</span> <span class="c1">// 创建父进程中用于读取数据的管道``pipe(&amp;pipe_out);    // 创建父进程中用于写入数据的管道``if ( (pid = fork()) == 0) { // 子进程``    ``close(pipe_in[0]);  // 关闭父进程的读管道的子进程读端``    ``close(pipe_out[1]); // 关闭父进程的写管道的子进程写端``    ``dup2(pipe_in[1], STDOUT_FILENO);    // 复制父进程的读管道到子进程的标准输出``    ``dup2(pipe_out[0], STDIN_FILENO);    // 复制父进程的写管道到子进程的标准输入``    ``close(pipe_in[1]);  // 关闭已复制的读管道``    ``close(pipe_out[0]); // 关闭已复制的写管道``    ``/* 使用exec执行命令 */``} else {    // 父进程``    ``close(pipe_in[1]);  // 关闭读管道的写端``    ``close(pipe_out[0]); // 关闭写管道的读端``    ``/* 现在可向pipe_out[1]中写数据，并从pipe_in[0]中读结果 */``    ``close(pipe_out[1]); // 关闭写管道``    ``/* 读取pipe_in[0]中的剩余数据 */``    ``close(pipe_in[0]);  // 关闭读管道``    ``/* 使用wait系列函数等待子进程退出并取得退出代码 */``}`</span>
 </code></pre></div>
 
 <p>当然，这样的代码的可读性（特别是加上错误处理代码之后）比较差，也不容易封装成类似于popen/pclose的函数，方便高层代码使用。究其原因，是pipe函数返回的一对文件描述符只能从第一个中读、第二个中写（至少对于Linux是如此）。为了同时读写，就只能采取这么累赘的两个pipe调用、两个文件描述符的形式了。</p>
@@ -4766,14 +5096,14 @@
 <p>使用pipe就只能如此了。不过，Linux实现了一个源自BSD的socketpair调用 <a href="https://www.ibm.com/developerworks/cn/linux/l-pipebid/index.html#artrelatedtopics">(3)</a>，可以实现上述在同一个文件描述符中进行读写的功能（该调用目前也是POSIX规范的一部分 <a href="https://www.ibm.com/developerworks/cn/linux/l-pipebid/index.html#artrelatedtopics">(4)</a>）。该系统调用能创建一对已连接的（UNIX族）无名socket。在Linux中，完全可以把这一对socket当成pipe返回的文件描述符一样使用，唯一的区别就是这一对文件描述符中的任何一个都可读和可写。</p>
 <p>这似乎可以是一个用来实现进程间通信管道的好方法。不过，要注意的是，为了解决我前面的提出的使用sort的应用问题，我们需要关闭子进程的标准输入通知子进程数据已经发送完毕，而后从子进程的标准输出中读取数据直到遇到EOF。使用两个单向管道的话每个管道可以单独关闭，因而不存在任何问题；而在使用双向管道时，如果不关闭管道就无法通知对端数据已经发送完毕，但关闭了管道又无法从中读取结果数据。——这一问题不解决的话，使用socketpair的设想就变得毫无意义。</p>
 <p>令人高兴的是，shutdown调用 <a href="https://www.ibm.com/developerworks/cn/linux/l-pipebid/index.html#artrelatedtopics">(5)</a>可解决此问题。毕竟socketpair产生的文件描述符是一对socket，socket上的标准操作都可以使用，其中也包括shutdown。——利用shutdown，可以实现一个半关闭操作，通知对端本进程不再发送数据，同时仍可以利用该文件描述符接收来自对端的数据。没有错误检测的代码示意如下：</p>
-<div class="codehilite"><pre><span></span><code><span class="err">`</span><span class="kt">int</span> <span class="n">fd</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="err">``</span><span class="kt">pid_t</span> <span class="n">pid</span><span class="p">;</span><span class="err">``</span><span class="n">socketpair</span><span class="p">(</span><span class="n">AF_UNIX</span><span class="p">,</span> <span class="n">SOCKET_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fd</span><span class="p">);</span>  <span class="c1">// 创建管道``if ( (pid = fork()) == 0) { // 子进程``    ``close(fd[0]);   // 关闭管道的父进程端``    ``dup2(fd[1], STDOUT_FILENO); // 复制管道的子进程端到标准输出``    ``dup2(fd[1], STDIN_FILENO);  // 复制管道的子进程端到标准输入``    ``close(fd[1]);   // 关闭已复制的读管道``    ``/* 使用exec执行命令 */``} else {    // 父进程``    ``close(fd[1]);   // 关闭管道的子进程端``    ``/* 现在可在fd[0]中读写数据 */``    ``shutdown(fd[0], SHUT_WR);   // 通知对端数据发送完毕``    ``/* 读取剩余数据 */``    ``close(fd[0]);   // 关闭管道``    ``/* 使用wait系列函数等待子进程退出并取得退出代码 */``}`</span>
+<div class="highlight"><pre><span></span><code><span class="err">`</span><span class="kt">int</span> <span class="n">fd</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="err">``</span><span class="kt">pid_t</span> <span class="n">pid</span><span class="p">;</span><span class="err">``</span><span class="n">socketpair</span><span class="p">(</span><span class="n">AF_UNIX</span><span class="p">,</span> <span class="n">SOCKET_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fd</span><span class="p">);</span>  <span class="c1">// 创建管道``if ( (pid = fork()) == 0) { // 子进程``    ``close(fd[0]);   // 关闭管道的父进程端``    ``dup2(fd[1], STDOUT_FILENO); // 复制管道的子进程端到标准输出``    ``dup2(fd[1], STDIN_FILENO);  // 复制管道的子进程端到标准输入``    ``close(fd[1]);   // 关闭已复制的读管道``    ``/* 使用exec执行命令 */``} else {    // 父进程``    ``close(fd[1]);   // 关闭管道的子进程端``    ``/* 现在可在fd[0]中读写数据 */``    ``shutdown(fd[0], SHUT_WR);   // 通知对端数据发送完毕``    ``/* 读取剩余数据 */``    ``close(fd[0]);   // 关闭管道``    ``/* 使用wait系列函数等待子进程退出并取得退出代码 */``}`</span>
 </code></pre></div>
 
 <p>很清楚，这比使用两个单向管道的方案要简洁不少。我将在此基础上作进一步的封装和改进。</p>
 <h2 id="_3">封装和实现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>直接使用上面的方法，无论怎么看，至少也是丑陋和不方便的。程序的维护者想看到的是程序的逻辑，而不是完成一件任务的各种各样的繁琐细节。我们需要一个好的封装。</p>
 <p>封装可以使用C或者C++。此处，我按照UNIX的传统，提供一个类似于POSIX标准中popen/pclose函数调用的C封装，以保证最大程度的可用性。接口如下：</p>
-<div class="codehilite"><pre><span></span><code><span class="err">`</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">dpopen</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">command</span><span class="p">);</span><span class="err">``</span><span class="kt">int</span> <span class="n">dpclose</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span><span class="err">``</span><span class="kt">int</span> <span class="n">dphalfclose</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span><span class="err">`</span>
+<div class="highlight"><pre><span></span><code><span class="err">`</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">dpopen</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">command</span><span class="p">);</span><span class="err">``</span><span class="kt">int</span> <span class="n">dpclose</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span><span class="err">``</span><span class="kt">int</span> <span class="n">dphalfclose</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span><span class="err">`</span>
 </code></pre></div>
 
 <p>关于接口，以下几点需要注意一下：</p>
@@ -4791,18 +5121,15 @@
 <li>实现中没有使用任何平台相关特性，以方便移植到其它POSIX平台上。</li>
 </ul>
 <p>下面的代码展示了一个简单例子，将多行文本送到sort中，然后取回结果、显示出来：</p>
-<div class="codehilite"><pre><span></span><code><span class="err">`#</span><span class="n">include</span> <span class="o">&lt;</span><span class="err">``</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="err">``</span><span class="o">&gt;</span><span class="err">``#</span><span class="n">include</span> <span class="o">&lt;</span><span class="err">``</span><span class="n">stdlib</span><span class="p">.</span><span class="n">h</span><span class="err">``</span><span class="o">&gt;</span><span class="err">``#</span><span class="n">include</span> <span class="s">&quot;dpopen.h&quot;</span><span class="err">``#</span><span class="n">define</span> <span class="n">MAXLINE</span> <span class="mi">80</span><span class="err">``</span><span class="kt">int</span> <span class="n">main</span><span class="p">()</span><span class="err">``</span><span class="p">{</span><span class="err">``</span>    <span class="err">``</span><span class="kt">char</span>    <span class="n">line</span><span class="p">[</span><span class="n">MAXLINE</span><span class="p">];</span><span class="err">``</span>    <span class="err">``</span><span class="kt">FILE</span>    <span class="o">*</span><span class="n">fp</span><span class="p">;</span><span class="err">``</span>    <span class="err">``</span><span class="n">fp</span> <span class="o">=</span> <span class="n">dpopen</span><span class="p">(</span><span class="s">&quot;sort&quot;</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="k">if</span> <span class="p">(</span><span class="n">fp</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span><span class="err">``</span>        <span class="err">``</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;dpopen error&quot;</span><span class="p">);</span><span class="err">``</span>        <span class="err">``</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="p">}</span><span class="err">``</span>    <span class="err">``</span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">&quot;orange</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">&quot;apple</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">&quot;pear</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="k">if</span> <span class="p">(</span><span class="n">dphalfclose</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="err">``</span>        <span class="err">``</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;dphalfclose error&quot;</span><span class="p">);</span><span class="err">``</span>        <span class="err">``</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="p">}</span><span class="err">``</span>    <span class="err">``</span><span class="k">for</span> <span class="p">(;;)</span> <span class="p">{</span><span class="err">``</span>        <span class="err">``</span><span class="k">if</span> <span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">MAXLINE</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span><span class="err">``</span>            <span class="err">``</span><span class="k">break</span><span class="p">;</span><span class="err">``</span>        <span class="err">``</span><span class="n">fputs</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="p">}</span><span class="err">``</span>    <span class="err">``</span><span class="n">dpclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="k">return</span> <span class="mi">0</span><span class="p">;</span><span class="err">``</span><span class="p">}</span><span class="err">`</span>
+<div class="highlight"><pre><span></span><code><span class="err">`#</span><span class="n">include</span> <span class="o">&lt;</span><span class="err">``</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="err">``</span><span class="o">&gt;</span><span class="err">``#</span><span class="n">include</span> <span class="o">&lt;</span><span class="err">``</span><span class="n">stdlib</span><span class="p">.</span><span class="n">h</span><span class="err">``</span><span class="o">&gt;</span><span class="err">``#</span><span class="n">include</span> <span class="s">&quot;dpopen.h&quot;</span><span class="err">``#</span><span class="n">define</span> <span class="n">MAXLINE</span> <span class="mi">80</span><span class="err">``</span><span class="kt">int</span> <span class="n">main</span><span class="p">()</span><span class="err">``</span><span class="p">{</span><span class="err">``</span>    <span class="err">``</span><span class="kt">char</span>    <span class="n">line</span><span class="p">[</span><span class="n">MAXLINE</span><span class="p">];</span><span class="err">``</span>    <span class="err">``</span><span class="kt">FILE</span>    <span class="o">*</span><span class="n">fp</span><span class="p">;</span><span class="err">``</span>    <span class="err">``</span><span class="n">fp</span> <span class="o">=</span> <span class="n">dpopen</span><span class="p">(</span><span class="s">&quot;sort&quot;</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="k">if</span> <span class="p">(</span><span class="n">fp</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span><span class="err">``</span>        <span class="err">``</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;dpopen error&quot;</span><span class="p">);</span><span class="err">``</span>        <span class="err">``</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="p">}</span><span class="err">``</span>    <span class="err">``</span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">&quot;orange</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">&quot;apple</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">&quot;pear</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="k">if</span> <span class="p">(</span><span class="n">dphalfclose</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="err">``</span>        <span class="err">``</span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;dphalfclose error&quot;</span><span class="p">);</span><span class="err">``</span>        <span class="err">``</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="p">}</span><span class="err">``</span>    <span class="err">``</span><span class="k">for</span> <span class="p">(;;)</span> <span class="p">{</span><span class="err">``</span>        <span class="err">``</span><span class="k">if</span> <span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">MAXLINE</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span><span class="err">``</span>            <span class="err">``</span><span class="k">break</span><span class="p">;</span><span class="err">``</span>        <span class="err">``</span><span class="n">fputs</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="p">}</span><span class="err">``</span>    <span class="err">``</span><span class="n">dpclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span><span class="err">``</span>    <span class="err">``</span><span class="k">return</span> <span class="mi">0</span><span class="p">;</span><span class="err">``</span><span class="p">}</span><span class="err">`</span>
 </code></pre></div>
 
 <p>输出结果为：</p>
-<div class="codehilite"><pre><span></span><code>`apple``orange``pear`
+<div class="highlight"><pre><span></span><code>`apple``orange``pear`
 </code></pre></div>
 
 <h2 id="_4">总结<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>本文阐述了一个使用socketpair系统调用在Linux上实现双向进程通讯管道的方法，并提供了一个实现。该实现提供的接口与POSIX规范中的popen/pclose函数较为接近，因而非常易于使用。该实现没有使用平台相关的特性，因而可以不加修改或只进行少量修改即可移植到支持socketpair调用的POSIX系统中去。</p>
-                
-                  
-                
                 
               
               
@@ -4819,34 +5146,34 @@
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
         
-          <a href="../../android/android_usb_accessory/" title="Android usb accessory" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a href="../../android/android_usb_accessory/" title="Android usb accessory" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
                 Android usb accessory
-              </span>
+              </div>
             </div>
           </a>
         
         
-          <a href="../framebuffer%E9%A9%B1%E5%8A%A8/" title="Framebuffer驱动" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a href="../framebuffer%E9%A9%B1%E5%8A%A8/" title="Framebuffer驱动" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
                 Framebuffer驱动
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
             </div>
           </a>
         
@@ -4857,11 +5184,10 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -4870,26 +5196,18 @@
       
     </div>
     
-      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
-        
-        
-          
-          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../../../assets/javascripts/lunr/lunr.ja.js"></script>
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.1",url:{base:"../../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="../../../js/cnzz-statistics.js"></script>
       
