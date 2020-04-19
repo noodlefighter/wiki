@@ -50,3 +50,52 @@ sudo reboot
 ## fontconfig-infinality
 
 > todo: 
+
+
+
+## linux和windows的系统时间同步
+
+Windows把RTC时间当作本地时间，而Linux/Unix/Mac把RTC时间当作 UTC，所以Windows和其他系统共存时会出问题。在Linux中迁就一下Windoze还是比较方便的：
+
+```
+# timedatectl set-local-rtc 1
+```
+
+
+
+## Linux桌面 自动执行
+
+refer: https://wiki.archlinux.org/index.php/Autostarting
+
+开机/关机时->systemd
+
+用户登入/登出时->`systemd/User`
+
+设备插入/拔出时->`udev`
+
+定时执行（循环地）->`systemd/Timers` or `Cron`
+
+定时执行（定时执行一次）->`systemd/Timers` or `at`
+
+文件系统事件->`inotify-tools`、`incron`、`fswatch`
+
+shell登入->`/etc/profile`、shell程序的用户配置如`.bashrc`
+
+Xorg启动时->`.xinitrc`（执行xinit时）、`.xprofile`（使用display manager时）
+
+桌面环境启动时->桌面环境会实现[XDG规范](https://specifications.freedesktop.org/autostart-spec/autostart-spec-latest.html)的`$HOME/.config/autostart`目录，例如坚果云的`nutstore-daemon.desktop`：
+
+```
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Icon=nutstore-small
+Exec=sh -c "(sleep 30 && nohup /opt/nutstore/bin/nutstore-pydaemon.py >/dev/null 2>&1) &"
+Name=Nutstore
+Name[zh_CN]=坚果云
+Comment=AutoStart Nutstore
+Comment[zh_CN]=自动启动坚果云
+```
+
+窗口管理器（window manager）启动时->如i3wm的`$HOME/.config/i3/config`。

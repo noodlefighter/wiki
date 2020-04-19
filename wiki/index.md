@@ -28,3 +28,14 @@
 * [基于mkdocs-material搭建个人静态博客](https://cyent.github.io/markdown-with-mkdocs-material/)
 
 之前折腾过[用博客框架Hexo来搭建]([https://noodlefighter.com/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF-%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAWiki/](https://noodlefighter.com/post/计算机技术-用Hexo搭建个人Wiki/))，效果类似，但文章数量一多就对疯狂吃内存，速度也比较慢，所以后面把Wiki迁移到Mkdocs上了。
+
+
+
+## 资源文件夹存放位置
+
+`${filename}`为文章的文件名，对应的资源文件夹为（这其实是Typora的配置）：
+
+```
+./_assets/${filename}/
+```
+
