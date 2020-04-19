@@ -11,17 +11,17 @@
       
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
-        <title>内存泄漏检测 - Noodlefighter's Wiki</title>
+        <title>Linux内存错误检测 - Noodlefighter's Wiki</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.89dc9fe3.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ecd4686e.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -84,7 +84,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              内存泄漏检测
+              Linux内存错误检测
             
           </span>
         </div>
@@ -2313,6 +2313,63 @@
           
           
 
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Linux内存错误检测
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Linux内存错误检测" class="md-nav__link md-nav__link--active">
+      Linux内存错误检测
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mtrace" class="md-nav__link">
+    mtrace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#electric-fence-efence" class="md-nav__link">
+    Electric Fence (eFence)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
 
   <li class="md-nav__item">
     <a href="../memtool/" title="Memtool" class="md-nav__link">
@@ -2366,56 +2423,6 @@
     <a href="../xxd/" title="Xxd" class="md-nav__link">
       Xxd
     </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        内存泄漏检测
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
-        </span>
-      </label>
-    
-    <a href="./" title="内存泄漏检测" class="md-nav__link md-nav__link--active">
-      内存泄漏检测
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-      </span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mtrace" class="md-nav__link">
-    mtrace
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -5020,6 +5027,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#electric-fence-efence" class="md-nav__link">
+    Electric Fence (eFence)
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5036,15 +5050,26 @@
                   
                 
                 
-                  <h1>内存泄漏检测</h1>
+                  <h1>Linux内存错误检测</h1>
                 
                 <h2 id="mtrace">mtrace<a class="headerlink" href="#mtrace" title="Permanent link">&para;</a></h2>
 <p><a href="http://man7.org/linux/man-pages/man3/mtrace.3.html">http://man7.org/linux/man-pages/man3/mtrace.3.html</a></p>
 <div class="highlight"><pre><span></span><code>#include &lt;mcheck.h&gt;
 </code></pre></div>
 
-<p>程序中包含头文件, 使用mtrace命令行工具即可分析内存泄漏问题.</p>
-<p>其实是对malloc/free的hook.</p>
+<p>程序中包含头文件, 使用mtrace命令行工具即可分析内存泄漏问题。</p>
+<h2 id="electric-fence-efence">Electric Fence (eFence)<a class="headerlink" href="#electric-fence-efence" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>via: <a href="https://en.wikipedia.org/wiki/Electric_Fence">https://en.wikipedia.org/wiki/Electric_Fence</a></p>
+<p>Electric Fence is intended to find two common types of programming bugs:</p>
+<ul>
+<li>Overrunning the end (or beginning) of a dynamically allocated buffer</li>
+<li>Using a dynamically allocated buffer after returning it to the heap</li>
+</ul>
+</blockquote>
+<p>用于检测动态分配内存（堆内存）的越界操作、释放后仍然写入的行为。原理是不释放堆内存，持续监控。</p>
+<p>如果用的是archlinux，AUR里有包：<code>yay -S electricfence</code>即可安装好，查看手册<code>man libefence</code>。</p>
+<p>用法：静态链接<code>libefence.a</code>即可，<code>-l:libefence.a</code>和<code>-lefence</code>都可以。</p>
                 
               
               
@@ -5063,7 +5088,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="">
         
-          <a href="../xxd/" title="Xxd" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../git/" title="Git" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
@@ -5072,19 +5097,19 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                Xxd
+                Git
               </div>
             </div>
           </a>
         
         
-          <a href="../%E5%86%85%E6%A0%B8%E7%9B%B8%E5%85%B3/" title="内核相关" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../memtool/" title="Memtool" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                内核相关
+                Memtool
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -5111,15 +5136,15 @@
       
     </div>
     
-      <script src="../../../../assets/javascripts/vendor.36cbf620.min.js"></script>
-      <script src="../../../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      <script src="../../../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
       <script>
         app = initialize({
           base: "../../../..",
           features: [],
           search: Object.assign({
-            worker: "../../../../assets/javascripts/worker/search.7f7c8775.min.js"
+            worker: "../../../../assets/javascripts/worker/search.58d22e8e.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>

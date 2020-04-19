@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
     
     
       
@@ -19,9 +19,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.89dc9fe3.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a676eddb.min.css">
       
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ecd4686e.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.b302131d.min.css">
       
       
         
@@ -2313,6 +2313,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../devtools/linux%E5%86%85%E5%AD%98%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B/" title="Linux内存错误检测" class="md-nav__link">
+      Linux内存错误检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../devtools/memtool/" title="Memtool" class="md-nav__link">
       Memtool
     </a>
@@ -2363,18 +2375,6 @@
   <li class="md-nav__item">
     <a href="../../devtools/xxd/" title="Xxd" class="md-nav__link">
       Xxd
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../devtools/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%A3%80%E6%B5%8B/" title="内存泄漏检测" class="md-nav__link">
-      内存泄漏检测
     </a>
   </li>
 
@@ -2557,6 +2557,20 @@
         <li class="md-nav__item">
   <a href="#fontconfig-infinality" class="md-nav__link">
     fontconfig-infinality
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linuxwindows" class="md-nav__link">
+    linux和windows的系统时间同步
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    Linux桌面 自动执行
   </a>
   
 </li>
@@ -5090,6 +5104,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#linuxwindows" class="md-nav__link">
+    linux和windows的系统时间同步
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    Linux桌面 自动执行
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5136,6 +5164,35 @@ sudo reboot
 <blockquote>
 <p>todo: </p>
 </blockquote>
+<h2 id="linuxwindows">linux和windows的系统时间同步<a class="headerlink" href="#linuxwindows" title="Permanent link">&para;</a></h2>
+<p>Windows把RTC时间当作本地时间，而Linux/Unix/Mac把RTC时间当作 UTC，所以Windows和其他系统共存时会出问题。在Linux中迁就一下Windoze还是比较方便的：</p>
+<div class="highlight"><pre><span></span><code># timedatectl set-local-rtc 1
+</code></pre></div>
+
+<h2 id="linux">Linux桌面 自动执行<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h2>
+<p>refer: <a href="https://wiki.archlinux.org/index.php/Autostarting">https://wiki.archlinux.org/index.php/Autostarting</a></p>
+<p>开机/关机时-&gt;systemd</p>
+<p>用户登入/登出时-&gt;<code>systemd/User</code></p>
+<p>设备插入/拔出时-&gt;<code>udev</code></p>
+<p>定时执行（循环地）-&gt;<code>systemd/Timers</code> or <code>Cron</code></p>
+<p>定时执行（定时执行一次）-&gt;<code>systemd/Timers</code> or <code>at</code></p>
+<p>文件系统事件-&gt;<code>inotify-tools</code>、<code>incron</code>、<code>fswatch</code></p>
+<p>shell登入-&gt;<code>/etc/profile</code>、shell程序的用户配置如<code>.bashrc</code></p>
+<p>Xorg启动时-&gt;<code>.xinitrc</code>（执行xinit时）、<code>.xprofile</code>（使用display manager时）</p>
+<p>桌面环境启动时-&gt;桌面环境会实现<a href="https://specifications.freedesktop.org/autostart-spec/autostart-spec-latest.html">XDG规范</a>的<code>$HOME/.config/autostart</code>目录，例如坚果云的<code>nutstore-daemon.desktop</code>：</p>
+<div class="highlight"><pre><span></span><code>[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Icon=nutstore-small
+Exec=sh -c &quot;(sleep 30 &amp;&amp; nohup /opt/nutstore/bin/nutstore-pydaemon.py &gt;/dev/null 2&gt;&amp;1) &amp;&quot;
+Name=Nutstore
+Name[zh_CN]=坚果云
+Comment=AutoStart Nutstore
+Comment[zh_CN]=自动启动坚果云
+</code></pre></div>
+
+<p>窗口管理器（window manager）启动时-&gt;如i3wm的<code>$HOME/.config/i3/config</code>。</p>
                 
               
               
@@ -5202,15 +5259,15 @@ sudo reboot
       
     </div>
     
-      <script src="../../../../assets/javascripts/vendor.36cbf620.min.js"></script>
-      <script src="../../../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      <script src="../../../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
       <script>
         app = initialize({
           base: "../../../..",
           features: [],
           search: Object.assign({
-            worker: "../../../../assets/javascripts/worker/search.7f7c8775.min.js"
+            worker: "../../../../assets/javascripts/worker/search.58d22e8e.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
