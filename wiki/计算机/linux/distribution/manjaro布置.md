@@ -5,7 +5,6 @@
 > TODO 搬移
 
 
-
 ### 网络命令
 
 ```
@@ -14,6 +13,12 @@ ifconfig = ip address, ip link
 netstat = ss
 route = ip route
 ```
+
+ifconfig等命令的package：
+```
+pacman -S net-tools dnsutils inetutils iproute2
+```
+
 
 ### ibus配置
 

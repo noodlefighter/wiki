@@ -4,7 +4,7 @@
 
 refer: https://stackoverflow.com/questions/31244862/what-is-the-use-of-spl-secondary-program-loader
 
-当系统内部内存（SRAM）装不下完整的uboot时，这时候需要使用被称为**SPL**的精简代码初始化内存。
+当系统内部内存（SRAM）装不下完整的uboot时（或者ROM Bootloader对启动代码有长度限制），这时候需要使用被称为**SPL**的精简代码初始化内存。
 
 ```
 +--------+----------------+----------------+----------+
@@ -28,7 +28,7 @@ refer: https://stackoverflow.com/questions/31244862/what-is-the-use-of-spl-secon
 +--------+----------------+----------------+----------+
 ```
 
-
+配置了`CONFIG_SPL`后，会生成`u-boot.bin`和`u-boot-xxx-with-spl.bin`，前者为完整u-boot，后者为带了SPL头部的u-boot。
 
 ## u-boot引导linux启动
 
