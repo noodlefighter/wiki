@@ -350,3 +350,18 @@ $ cd oldproject.git
 $ git push --mirror git@newgithub.com/username/newproject.git
 ```
 
+
+
+## 遇到的问题
+
+### error: insufficient permission for adding an object to repository database .git/objects
+
+权限有问题。
+
+如果是用root或者其他用户操作了git仓库，修复方法：
+
+```
+$ cd .git/objects
+$ sudo chown -R 用户名:组 .
+```
+

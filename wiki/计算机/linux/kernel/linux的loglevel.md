@@ -21,6 +21,22 @@
 
 
 
+动态修改：
+
+```
+echo "7 4 1 7" > /proc/sys/kernel/printk
+```
+
+
+调试驱动时常用的配置：
+
+```
+# cat /proc/sys/kernel/printk
+7	4	1	7
+```
+
+
+
 ## 修改DEFAULT_CONSOLE_LOGLEVEL
 
 如果需要修改，可以在内核启动时通过传参的方式修改（如在grub、uboot中传参启动）：
