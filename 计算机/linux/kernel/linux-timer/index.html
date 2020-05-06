@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.5">
     
     
       
@@ -19,7 +19,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.c4007cdc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.df84b5fe.min.css">
       
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.8435c73a.min.css">
       
@@ -2625,6 +2625,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../linux-list/" title="Linux list" class="md-nav__link">
+      Linux list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -2635,22 +2647,43 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        linux 内核中各delay函数的区别
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
     <a href="./" title="linux 内核中各delay函数的区别" class="md-nav__link md-nav__link--active">
       linux 内核中各delay函数的区别
     </a>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../linux-list/" title="Linux list" class="md-nav__link">
-      Linux list
-    </a>
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linuxhrtimerhigh-resolution-timers" class="md-nav__link">
+    Linux内核中的高精度时钟（HRTIMER，High Resolution Timers）
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -5014,6 +5047,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linuxhrtimerhigh-resolution-timers" class="md-nav__link">
+    Linux内核中的高精度时钟（HRTIMER，High Resolution Timers）
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5029,7 +5079,25 @@
                 
                 
                 <h1 id="linux-delay">linux 内核中各delay函数的区别<a class="headerlink" href="#linux-delay" title="Permanent link">&para;</a></h1>
-<p><a href="https://www.kernel.org/doc/html/latest/timers/timers-howto.html">https://www.kernel.org/doc/html/latest/timers/timers-howto.html</a></p>
+<p>via: <a href="https://www.kernel.org/doc/html/latest/timers/timers-howto.html">https://www.kernel.org/doc/html/latest/timers/timers-howto.html</a></p>
+<p><strong>ATOMIC CONTEXT:</strong></p>
+<p>You must use the *delay family of functions.</p>
+<p><strong>NON-ATOMIC CONTEXT:</strong></p>
+<p>You should use the *sleep[_range] family of functions.</p>
+<p>– Backed by busy-wait loop（<strong>&lt; ~10us</strong>）:</p>
+<blockquote>
+<p>udelay(unsigned long usecs)</p>
+</blockquote>
+<p>– Backed by hrtimers（<strong>10us - 20ms</strong>）:</p>
+<blockquote>
+<p>usleep_range(unsigned long min, unsigned long max)</p>
+</blockquote>
+<p>– Backed by jiffies / legacy_timers（<strong>10ms+</strong> ）：</p>
+<blockquote>
+<p>msleep(unsigned long msecs) msleep_interruptible(unsigned long msecs)</p>
+</blockquote>
+<h2 id="linuxhrtimerhigh-resolution-timers">Linux内核中的高精度时钟（HRTIMER，High Resolution Timers）<a class="headerlink" href="#linuxhrtimerhigh-resolution-timers" title="Permanent link">&para;</a></h2>
+<p><code>CONFIG_HIGH_RES_TIMERS</code>，在Kconfig的<code>General setup/Timers subsystem/High Resolution Timer Support</code>中。</p>
                 
               
               
@@ -5048,7 +5116,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="">
         
-          <a href="../linux-circular-buffer/" title="Linux circular buffer" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../linux-list/" title="Linux list" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -5057,19 +5125,19 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                Linux circular buffer
+                Linux list
               </div>
             </div>
           </a>
         
         
-          <a href="../linux-list/" title="Linux list" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../linux-%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9Csmp/" title="Linux 内存屏障smp" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                Linux list
+                Linux 内存屏障smp
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
