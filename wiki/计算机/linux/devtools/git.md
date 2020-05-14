@@ -342,6 +342,35 @@ git rm --cached 子模块名称
 
 
 
+## 修改历史commit
+
+1. 进入rebase状态
+
+   ```
+   git rebase -i master~1 #最后一次
+   git rebase -i master~5 #最后五次
+   git rebase -i HEAD~3   #当前版本的倒数第三次状态
+   git rebase -i 32e0a87f #指定的SHA位置
+   ```
+
+   
+
+2. 进去编辑界面，将需要修改的commit前的文字，由`pick`改为`edit`
+
+3. 命令行显示：
+
+   ```
+   You can amend the commit now, with
+   
+   	git commit --amend
+   
+   Once you are satisfied with your changes, run
+   
+   	git rebase --continue
+   ```
+
+4. 按照提示修改即可
+
 ## 仓库迁移
 
 ```
