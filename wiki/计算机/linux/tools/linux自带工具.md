@@ -5,6 +5,16 @@ tags:
 
 
 
+《The Linux Command Line 中文版》
+
+https://www.kancloud.cn/thinkphp/linux-command-line/39431
+
+
+
+---
+
+
+
 mkdir 创建目录
 cp 拷贝
 cat 输出文件内容
@@ -185,6 +195,17 @@ linux网络授时，使用NTP客户端完成：
 
 ```
 $ sudo ntpdate -u ntp.api.bz
+```
+
+
+
+## install命令
+
+在安装程序时比cp更方便的实用命令
+
+```
+相当于mkdir -p path/to/dst && cp src path/to/dst
+$ install -D src path/to/dst
 ```
 
 

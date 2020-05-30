@@ -59,7 +59,13 @@ else
 fi
 ```
 
+### 判断文件是否相同
 
+应该避免用diff命令，有性能问题，cmp命令会在发现第一个不同的
+
+```
+cmp --silent $old $new
+```
 
 ## 传参
 
@@ -125,6 +131,16 @@ echo $sum
 while :
 do
   echo ...
+done
+```
+
+
+
+## 遍历目录
+
+```
+for file in `ls $1`; do
+	echo $1/file
 done
 ```
 

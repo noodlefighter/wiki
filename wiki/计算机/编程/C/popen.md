@@ -4,6 +4,14 @@
 
 
 
+实践上这东西很容易出问题，能不用尽量不用：
+
+* 因为创建了新进程，原进程很可能在popen后异常退出，而创建的进程没退出，影响到下次popen
+* pclose会阻塞直到进程退出
+* 不同平台下的表现可能不一样
+
+
+
 ## 介绍
 
 > via: https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxbd00/rpopen.htm
