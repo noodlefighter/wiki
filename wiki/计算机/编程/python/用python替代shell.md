@@ -16,6 +16,19 @@ sys.argv[0]
 
 
 
+```
+parser = argparse.ArgumentParser()
+parser.add_argument('--ssid', help='wlan ssid')
+parser.add_argument('--sn', help='product serial number')
+args = parser.parse_args()
+
+print(args.ssid)
+```
+
+
+
+
+
 ## 路径操作
 
 ```
@@ -54,7 +67,10 @@ if os.system("echo abc") != 0:
 	print("error: execute")
 	exit(1)
 
-# todo: subprocess执行命令
+# subprocess执行命令
+import subprocess
+res = subprocess.Popen('uptime', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+result = res.stdout.readlines()
 
 # todo: 使用第三方sh模块 http://amoffat.github.io/sh/
 

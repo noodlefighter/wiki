@@ -2,27 +2,17 @@
 
 ---
 
-## netcat的两个版本
+## netcat的版本
 
-一般发行版仓库里有两个版本:
 * bsd-netcat
 * gnu-netcat
+* [nmap-netcat](https://nmap.org/ncat/)
 
-gnu这个用的时候得注意这样是不行的, 得用-p参数指定端口
+nmap的netcat可以这样实现一个echo-server：
+
 ```
-nc -l 9898
+$ ncat -l 2000 --keep-open --exec "/bin/cat"
 ```
-很好, 我选择bsd的实现.
-
-
-
-## 类似的工具
-
-nc缺少一些功能如端口转发，类似工具：
-
-https://nmap.org/ncat/
-
-http://www.dest-unreach.org/socat/doc/socat.html
 
 
 

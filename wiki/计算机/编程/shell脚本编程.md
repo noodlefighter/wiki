@@ -22,6 +22,14 @@ SHELL_DIR=$(cd "$(dirname "$0")";pwd)
 
 https://stackoverflow.com/questions/35006457/choosing-between-0-and-bash-source
 
+
+### 不显示所有stdout/stderr
+
+```
+$ do_something >/dev/null 2>&1
+```
+
+
 ### 判断环境变量是否存在
 
 ```
@@ -75,6 +83,26 @@ $1 第1个参数
 $2 第2个参数
 $# 参数数量, "ps -a"有1个参数；"tar -xf aaa.tar"有2个参数
 $? 上一条命令返回值
+```
+
+## xargs
+
+stdin作为参数执行命令
+
+```
+-n 参数个数 -i 用{}替换参数
+$ echo -e "1\n2\n3" |xargs -n 1 echo
+$ echo -e "1\n2\n3" |xargs -n 1 -i echo {} line
+
+```
+
+## 获取命令的输出
+
+```
+方法1:
+STR=`echo 123`
+方法2:
+STR="$(echo 123)"
 ```
 
 
