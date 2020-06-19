@@ -169,7 +169,7 @@ $ docker run --rm -it -u $UID:$GROUPS -v $PWD/platform:/opt/lichee jacklan/liche
 
 
 
-## docker的中国区镜象
+## dockerhub国内镜象
 
 编辑`/etc/docker/daemon.json`后，重启docker daemon：
 

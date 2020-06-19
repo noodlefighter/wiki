@@ -15,9 +15,7 @@
 
 配置了`O_NONBLOCK`后才是非阻塞读写。
 
-
-
-这里是一个实现了
+例，实现了Blocking I/O的字符设备：
 
 ```
 #define CHRDEV_CNT              1
@@ -129,3 +127,8 @@ void chrdev_exit(void)
 
 ```
 
+
+
+Blocking I/O：
+
+https://www.makelinux.net/ldd3/chp-6-sect-2.shtml
