@@ -29,6 +29,6 @@ tcp        0      1 192.168.8.1:4647        192.168.8.93:49154      FIN_WAIT1
 
 
 
-## TCP socket 可用选项
+## TCP Socket options
 
 https://linux.die.net/man/7/tcp

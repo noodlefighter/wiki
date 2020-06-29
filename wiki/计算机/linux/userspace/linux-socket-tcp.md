@@ -37,3 +37,12 @@
 	}
 ```
 
+
+
+## 错误：“bind() fail, Address already in use”
+
+用`netstat`命令即可知道情况，可能是：
+
+1. 已经有程序使用这个端口了；
+2. 端口处于`close_wait`状态，参考https://web.archive.org/web/20170113135705/http://unix.derkeiler.com/Mailing-Lists/SunManagers/2006-01/msg00367.html，可能是因为连接已经FIN但应用程序没有响应并close掉fd；
+3. 程序可能处于 `time_wait` 状态，可以等，或者用 `SO_REUSEADDR`

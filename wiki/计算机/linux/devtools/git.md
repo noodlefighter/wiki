@@ -61,6 +61,10 @@ git push --delete orgin v1.1.1
 git branch -D xxx
 # 删除远程分支
 git push origin --delete feature/main-functions
+# 更新远端跟踪分支
+git remote update
+# 清理remote追踪分支，比如远端已经删除了，但本地的跟踪分支没删时
+git remote prune origin --dry-run
 ```
 
 
