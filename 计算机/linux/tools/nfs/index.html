@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.3.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
     
     
       
@@ -534,8 +534,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../%E6%97%A5%E5%B8%B8/%E7%83%B9%E9%A5%AA/%E9%9D%A2%E5%8C%85%E6%9C%BA%E9%9D%A2%E5%8C%85/" title="面包机面包" class="md-nav__link">
-      面包机面包
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E7%83%B9%E9%A5%AA/%E9%9D%A2%E5%8C%85/" title="面包" class="md-nav__link">
+      面包
     </a>
   </li>
 
@@ -5679,19 +5679,43 @@
                   <h1>Nfs</h1>
                 
                 <h2 id="_1">服务器配置：<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>ubuntu:</p>
 <div class="highlight"><pre><span></span><code># apt install nfs-kernel-server
-# vi 
+# vi
 </code></pre></div>
 
-<p>编辑配置<code>/etc/exports</code>：
+<p>arch:</p>
+<div class="highlight"><pre><span></span><code># pacman -S nfs-utils
+# systemctl enable nfs-server
+# systemctl start nfs-server
+</code></pre></div>
+
+<p>编辑配置<code>/etc/exports</code>：</p>
 <div class="highlight"><pre><span></span><code>/home/dev/workspaces/hi3516a/nfs        *(rw,sync,no_subtree_check)
-</code></pre></div></p>
+</code></pre></div>
+
 <p>挂载：
 <div class="highlight"><pre><span></span><code>mount -t nfs localhost:/home/dev/workspaces/hi3516a/nfs /mnt/nfs
 </code></pre></div></p>
+<p>使配置生效：</p>
+<div class="highlight"><pre><span></span><code> # exportfs -afv
+</code></pre></div>
+
+<p>查看当前生效的配置：</p>
+<div class="highlight"><pre><span></span><code># exportfs -v
+</code></pre></div>
+
 <h2 id="_2">错误记录<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>svc: failed to register lockdv1 RPC service (errno 111)
 加个-o nolock
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>mount.nfs: requested NFS version or transport protocol is not supported
+可能没启动服务
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>mount.nfs: access denied by server while mounting 
+可能协议版本不对，增加选项-o nfsvers=3
 </code></pre></div>
 
 <h2 id="arch-linux">Arch Linux上的参考<a class="headerlink" href="#arch-linux" title="Permanent link">&para;</a></h2>
@@ -5871,14 +5895,14 @@ Use lang = euc-jp|euc-tw|euc-kr|shift-jis|big5|ksc5601|gb2312-80|ansi only
     </div>
     
       <script src="../../../../assets/javascripts/vendor.d710d30a.min.js"></script>
-      <script src="../../../../assets/javascripts/bundle.4a5ba8d6.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      <script src="../../../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
       <script>
         app = initialize({
           base: "../../../..",
           features: [],
           search: Object.assign({
-            worker: "../../../../assets/javascripts/worker/search.9b3611bd.min.js"
+            worker: "../../../../assets/javascripts/worker/search.a68abb33.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>

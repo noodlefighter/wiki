@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.3.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
     
     
       
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mtrace" class="md-skip">
+        <a href="#linux-core-dump" class="md-skip">
           跳转至
         </a>
       
@@ -534,8 +534,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../%E6%97%A5%E5%B8%B8/%E7%83%B9%E9%A5%AA/%E9%9D%A2%E5%8C%85%E6%9C%BA%E9%9D%A2%E5%8C%85/" title="面包机面包" class="md-nav__link">
-      面包机面包
+    <a href="../../../../%E6%97%A5%E5%B8%B8/%E7%83%B9%E9%A5%AA/%E9%9D%A2%E5%8C%85/" title="面包" class="md-nav__link">
+      面包
     </a>
   </li>
 
@@ -2394,6 +2394,13 @@
       目录
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux-core-dump" class="md-nav__link">
+    Linux Core Dump 内核转储
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#mtrace" class="md-nav__link">
@@ -5311,6 +5318,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#linux-core-dump" class="md-nav__link">
+    Linux Core Dump 内核转储
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mtrace" class="md-nav__link">
     mtrace
   </a>
@@ -5342,7 +5356,25 @@
                 
                   <h1>Linux内存错误检测</h1>
                 
-                <h2 id="mtrace">mtrace<a class="headerlink" href="#mtrace" title="Permanent link">&para;</a></h2>
+                <h2 id="linux-core-dump">Linux Core Dump 内核转储<a class="headerlink" href="#linux-core-dump" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># ulimit -c unlimited
+</code></pre></div>
+
+<p>开启后，程序执行崩溃后会在当前目录下保存core：</p>
+<div class="highlight"><pre><span></span><code>Segmentation fault (core dumped)
+# ls
+core 
+</code></pre></div>
+
+<p>修改coredump保存目录：</p>
+<div class="highlight"><pre><span></span><code># echo &quot;/root/nfsroot/sk02/ebi_works/core-%p-%t&quot; &gt; /proc/sys/kernel/core_pattern
+</code></pre></div>
+
+<p>gdb调试coredump文件：</p>
+<div class="highlight"><pre><span></span><code>$ gdb ./test core-test-31421-1476266571
+</code></pre></div>
+
+<h2 id="mtrace">mtrace<a class="headerlink" href="#mtrace" title="Permanent link">&para;</a></h2>
 <p><a href="http://man7.org/linux/man-pages/man3/mtrace.3.html">http://man7.org/linux/man-pages/man3/mtrace.3.html</a></p>
 <div class="highlight"><pre><span></span><code>#include &lt;mcheck.h&gt;
 </code></pre></div>
@@ -5427,14 +5459,14 @@
     </div>
     
       <script src="../../../../assets/javascripts/vendor.d710d30a.min.js"></script>
-      <script src="../../../../assets/javascripts/bundle.4a5ba8d6.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      <script src="../../../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
       <script>
         app = initialize({
           base: "../../../..",
           features: [],
           search: Object.assign({
-            worker: "../../../../assets/javascripts/worker/search.9b3611bd.min.js"
+            worker: "../../../../assets/javascripts/worker/search.a68abb33.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
