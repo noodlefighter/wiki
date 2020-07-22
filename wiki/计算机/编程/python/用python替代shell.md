@@ -25,7 +25,13 @@ args = parser.parse_args()
 print(args.ssid)
 ```
 
+## 像shell一样在字符串中插入变量
 
+```
+>>> a = 123
+>>> print(f'a={a}')
+a=123
+```
 
 
 

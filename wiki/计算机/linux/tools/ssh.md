@@ -45,7 +45,7 @@ zgtiENtUwccic/HDVMl8i2K7cYocFE9Iem8wXoYz/eI/QM9vSA==
 mv ssh_private_key ~/.ssh/id_dsa
 ```
 
-公钥位置在`~/.ssh/authorized_keys`，权限700。
+公钥位置在`~/.ssh/authorized_keys`，权限600。
 
 大概长这样
 ```none

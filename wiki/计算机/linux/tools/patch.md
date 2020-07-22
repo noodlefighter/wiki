@@ -20,3 +20,12 @@ diff -uprN a/ b/ > patch
 ```
 patch -p1 < patch1.diff
 ```
+
+
+
+## 使用git生成UNIX Patch
+
+```
+$ git format-patch  -1
+```
+

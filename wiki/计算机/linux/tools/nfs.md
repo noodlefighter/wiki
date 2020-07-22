@@ -6,12 +6,23 @@
 
 ## 服务器配置：
 
+ubuntu:
+
 ```
 # apt install nfs-kernel-server
-# vi 
+# vi
+```
+
+arch:
+
+```
+# pacman -S nfs-utils
+# systemctl enable nfs-server
+# systemctl start nfs-server
 ```
 
 编辑配置`/etc/exports`：
+
 ```
 /home/dev/workspaces/hi3516a/nfs        *(rw,sync,no_subtree_check)
 ```
@@ -21,6 +32,18 @@
 mount -t nfs localhost:/home/dev/workspaces/hi3516a/nfs /mnt/nfs
 ```
 
+使配置生效：
+
+```
+ # exportfs -afv
+```
+
+查看当前生效的配置：
+
+```
+# exportfs -v
+```
+
 ## 错误记录
 
 ```
@@ -28,7 +51,15 @@ svc: failed to register lockdv1 RPC service (errno 111)
 加个-o nolock
 ```
 
+```
+mount.nfs: requested NFS version or transport protocol is not supported
+可能没启动服务
+```
 
+```
+mount.nfs: access denied by server while mounting 
+可能协议版本不对，增加选项-o nfsvers=3
+```
 
 ## Arch Linux上的参考
 

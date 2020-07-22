@@ -54,6 +54,16 @@ $gdb hello 11127
 
 如果你的程序是一个服务程序，那么你可以指定这个服务程序运行时的进程ID。gdb会自动attach上去，并调试他。program应该在PATH环境变量中搜索得到。
 
+## gdb中忽略某些SIG
+
+比如需要忽略SIGPIPE，输入：
+
+```
+(gdb) handle SIGPIPE nostop noprint pass
+```
+
+
+
 ## gdbserver远程调试
 
 gdbServer + gdb 调试
