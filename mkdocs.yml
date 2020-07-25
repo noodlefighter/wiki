@@ -5,6 +5,7 @@ plugins:
 extra:
   search:
     language: 'ja'
+    prebuild_index: true
 
 theme:
   name: 'material'
