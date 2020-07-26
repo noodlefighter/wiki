@@ -3,5 +3,5 @@
 set -e
 
 cd "$(dirname "$0")"
-mkdocs build
+PYTHONPATH=$PWD python ./mkdocs/ build
 
