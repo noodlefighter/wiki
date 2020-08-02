@@ -383,6 +383,26 @@ $ cd oldproject.git
 $ git push --mirror git@newgithub.com/username/newproject.git
 ```
 
+## 重置仓库
+
+删掉`.git`目录后重新init在某些时候可用，但拥有submodules之类的时候，就不好使了，这是个更优的方案（https://stackoverflow.com/a/13102849）：
+
+```
+git checkout --orphan newBranch
+git add -A  # Add all files and commit them
+git commit
+git branch -D master  # Deletes the master branch
+git branch -m master  # Rename the current branch to master
+git push -f origin master  # Force push master branch to github
+git gc --aggressive --prune=all     # remove the old files
+```
+
+```
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+```
+
 
 
 ## 为git配置代理

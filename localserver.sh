@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd "$(dirname "$0")"
-mkdocs serve
+PYTHONPATH=$PWD python ./mkdocs/ serve

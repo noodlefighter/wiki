@@ -4,7 +4,7 @@ plugins:
     - search
 extra:
   search:
-    language: 'ja'
+    language: 'zh'
 
 theme:
   name: 'material'
