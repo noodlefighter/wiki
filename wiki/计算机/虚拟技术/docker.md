@@ -169,24 +169,38 @@ $ docker run --rm -it -u $UID:$GROUPS -v $PWD/platform:/opt/lichee jacklan/liche
 
 
 
-## dockerhub国内镜象
+## docker国内镜象、配置代理
 
-编辑`/etc/docker/daemon.json`后，重启docker daemon：
+冲国内使用docker、dockerhub仓库困难，需要配置镜象、代理。
+
+编辑`/etc/docker/daemon.json`后：
 
 ```
 {
   "registry-mirrors" : [
     "http://ovfftd6p.mirror.aliyuncs.com",
-    "http://registry.docker-cn.com",
-    "http://docker.mirrors.ustc.edu.cn",
-    "http://hub-mirror.c.163.com"
+    "http://docker.mirrors.ustc.edu.cn"
   ],
   "insecure-registries" : [
-    "registry.docker-cn.com",
     "docker.mirrors.ustc.edu.cn"
   ],
   "debug" : true,
   "experimental" : true
 }
+```
+
+由于镜象可能不会同步dockerhub上的包，需要额外设置代理`/etc/systemd/system/docker.service.d/http-proxy.conf`：
+
+```
+[Service]
+Environment="HTTP_PROXY=http://192.168.99.112:7890/" NO_PROXY=localhost,127.0.0.1,aliyuncs.com,tsinghua.edu.cn"
+```
+
+使生效：
+
+```
+$ sudo systemctl daemon-reload
+$ systemctl show --property=Environment docker
+$ sudo systemctl restart docker
 ```
 

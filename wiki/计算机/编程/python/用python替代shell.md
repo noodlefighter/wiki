@@ -38,11 +38,10 @@ a=123
 ## 路径操作
 
 ```
-# cd
-os.chdir()
-
 # 获取脚本所在路径
-py_script_dir = os.path.split(os.path.realpath(__file__))[0]
+import os
+script_dir = os.path.split(os.path.realpath(__file__))[0]
+os.chdir(script_dir)
 ```
 
 
@@ -61,6 +60,11 @@ shutil.rmtree("foo", ignore_errors=True)
 with open("./xxx.log") as file_obj:
 	xxx_list = file_obj.read().splitlines()
 
+# 遍历文件夹
+g = os.walk(script_dir)
+for path,dir_list,file_list in g:
+    for dir in dir_list:
+        print(os.path.join(path, file_name))
 ```
 
 

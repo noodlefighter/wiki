@@ -25,7 +25,18 @@ patch -p1 < patch1.diff
 
 ## 使用git生成UNIX Patch
 
-```
-$ git format-patch  -1
-```
+直接用patch工具生成标准patch还是略麻烦，可以先生成git仓库，再用git生成patch：
 
+```
+临时做个git仓库
+$ git init
+$ git commit -am "init"
+
+拷贝进来，打commit
+$ cp ../b/* ./
+$ git add file1 file2 file3
+$ git commit -m "a little bit of work"
+
+生成patch
+$ git format-patch -1
+```
