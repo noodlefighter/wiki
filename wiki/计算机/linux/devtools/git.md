@@ -385,6 +385,14 @@ $ git push --mirror git@newgithub.com/username/newproject.git
 
 
 
+## 为git配置代理
+
+```
+git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port
+```
+
+
+
 ## 遇到的问题
 
 ### error: insufficient permission for adding an object to repository database .git/objects

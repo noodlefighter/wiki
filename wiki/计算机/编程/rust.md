@@ -5,10 +5,6 @@
 知乎专栏：
 https://zhuanlan.zhihu.com/rust-lang
 
-嵌入式Rust：
-
-https://rust-embedded.github.io/book/intro/hardware.html
-
 零成本抽象：
 https://zhuanlan.zhihu.com/p/97574385
 
@@ -55,4 +51,10 @@ cargo build
 
 
 
+
+## 嵌入式Rust
+
+嵌入式Rust：https://rust-embedded.github.io/book/intro/hardware.html
+
+一篇帮助从C迁移学习的文章 Rust for Embedded C Programmers: https://docs.opentitan.org/doc/ug/rust_for_c/
 
