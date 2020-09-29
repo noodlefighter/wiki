@@ -1,7 +1,4 @@
 
-
-
-
 <!doctype html>
 <html lang="zh" class="no-js">
   <head>
@@ -12,27 +9,29 @@
       
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.0.1">
     
     
       
-        <title>Memtool - Noodlefighter's Wiki</title>
+        <title>Linux内存直接访问 - Noodlefighter's Wiki</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.d3202873.min.css">
-      
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ff0a5ce4.min.css">
-      
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.38780c08.min.css">
       
         
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f72e892.min.css">
         
-        <meta name="theme-color" content="#8bc34b">
+          
+          
+          <meta name="theme-color" content="#8bc34b">
+        
       
     
     
     
       
+        
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
@@ -50,16 +49,18 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-green" data-md-color-accent="pink">
-  
     
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-green" data-md-color-accent="pink">
+      
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
         
-        <a href="#memtool" class="md-skip">
+        <a href="#memtool-linux" class="md-skip">
           跳转至
         </a>
       
@@ -87,7 +88,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Memtool
+              Linux内存直接访问
             
           </span>
         </div>
@@ -129,8 +130,6 @@
 </header>
     
     <div class="md-container" data-md-component="container">
-      
-        
       
       
         
@@ -2292,18 +2291,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../linux%E5%86%85%E5%AD%98%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B/" title="Linux内存错误检测" class="md-nav__link">
-      Linux内存错误检测
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -2313,12 +2300,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Memtool
+        Linux内存直接访问
         <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" title="Memtool" class="md-nav__link md-nav__link--active">
-      Memtool
+    <a href="./" title="Linux内存直接访问" class="md-nav__link md-nav__link--active">
+      Linux内存直接访问
     </a>
     
       
@@ -2333,8 +2320,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#memtool" class="md-nav__link">
-    memtool
+  <a href="#memtool-linux" class="md-nav__link">
+    memtool Linux直接访问内存工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#devmem-linux" class="md-nav__link">
+    devmem Linux直接访问内存工具
   </a>
   
 </li>
@@ -2343,6 +2337,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux%E5%86%85%E5%AD%98%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B/" title="Linux内存错误检测" class="md-nav__link">
+      Linux内存错误检测
+    </a>
   </li>
 
         
@@ -5187,8 +5193,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#memtool" class="md-nav__link">
-    memtool
+  <a href="#memtool-linux" class="md-nav__link">
+    memtool Linux直接访问内存工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#devmem-linux" class="md-nav__link">
+    devmem Linux直接访问内存工具
   </a>
   
 </li>
@@ -5206,14 +5219,15 @@
               
                 
                 
-                  
+                  <h1>Linux内存直接访问</h1>
                 
-                
-                  <h1>Memtool</h1>
-                
-                <h2 id="memtool">memtool<a class="headerlink" href="#memtool" title="Permanent link">&para;</a></h2>
+                <p>Linux下可以用<code>/dev/mem</code>设备直接访问物理地址空间的RAM，当然了得是root权限</p>
+<hr />
+<h2 id="memtool-linux">memtool Linux直接访问内存工具<a class="headerlink" href="#memtool-linux" title="Permanent link">&para;</a></h2>
 <p>最简单的寄存器修改程序，buildroot里有包。</p>
 <p><a href="https://public.pengutronix.de/software/memtool/">https://public.pengutronix.de/software/memtool/</a></p>
+<h2 id="devmem-linux">devmem Linux直接访问内存工具<a class="headerlink" href="#devmem-linux" title="Permanent link">&para;</a></h2>
+<p>busybox自带的内存访问工具，能读写内存地址</p>
                 
               
               
@@ -5232,7 +5246,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../linux%E5%86%85%E5%AD%98%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B/" title="Linux内存错误检测" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../git/" title="Git" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -5241,19 +5255,19 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                Linux内存错误检测
+                Git
               </div>
             </div>
           </a>
         
         
-          <a href="../pkg-config/" title="Pkg config" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../linux%E5%86%85%E5%AD%98%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B/" title="Linux内存错误检测" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                Pkg config
+                Linux内存错误检测
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -5280,15 +5294,15 @@
       
     </div>
     
-      <script src="../../../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="../../../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      <script src="../../../../assets/javascripts/vendor.77e55a48.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.aa3f9871.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: "../../../..",
           features: [],
           search: Object.assign({
-            worker: "../../../../assets/javascripts/worker/search.5eca75d3.min.js"
+            worker: "../../../../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
