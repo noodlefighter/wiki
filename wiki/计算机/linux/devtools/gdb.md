@@ -80,6 +80,9 @@ gdb> target extended-remote 目标机器IP:5678
 # 指定目标程序路径
 gdb> set remote exec-file 目标机器运行程序路径
 
+# 设置动态库搜索路径
+gdb> set solib-search-path /home/mpc/workspaces/build/sk01/target/lib/
+
 # 指定本地程序，载入符号表
 gdb> file 本地程序路径
 
@@ -154,6 +157,11 @@ gdb> monitor exit
 - set args 参数:指定运行时的参数
 - show args：查看设置好的参数
 - info program： 来查看程序的是否在运行，进程号，被暂停的原因。
+
+### 多线程
+
+- info threads 查看线程列表
+- thread <Id>  切换当前线程
 
 ### 分割窗口
 

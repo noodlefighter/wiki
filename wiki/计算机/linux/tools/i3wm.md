@@ -90,13 +90,11 @@ bindsym $mod+o exec "cinnamon-screensaver-command -l; xset dpms force off;"
 bindsym $mod+o exec "cinnamon-screensaver-command -l"
 ```
 
-## compton
+## compton（推荐使用**picom**）
 
 效果器，提供淡入淡出、阴影、透明等效果支持。
 
 GUI配置界面`compton-conf`。
-
-
 
 ## 正在测试
 

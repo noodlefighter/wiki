@@ -192,10 +192,11 @@ wait -n 2 “xxx”
 
 ## 通过网络更新系统时间
 
-linux网络授时，使用NTP客户端完成：
+linux网络授时，使用NTP客户端完成；使用hwclock命令将时间写入主板：
 
 ```
 $ sudo ntpdate -u ntp.api.bz
+$ sudo hwclock -w
 ```
 
 
