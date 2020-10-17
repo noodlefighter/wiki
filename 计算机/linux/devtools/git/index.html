@@ -1096,6 +1096,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/flash/" class="md-nav__link">
+      Flash器件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/%E5%8F%8C%E6%A0%B8%E5%BC%82%E6%9E%84/" class="md-nav__link">
       双核异构
     </a>
@@ -1256,6 +1268,18 @@
   <li class="md-nav__item">
     <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/%E6%B4%BB%E5%8A%A8%E5%AF%B9%E8%B1%A1%E6%A1%86%E6%9E%B6/" class="md-nav__link">
       活动对象框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/%E7%94%A8%E4%BA%8Eflash%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      用于flash的文件系统
     </a>
   </li>
 
@@ -2527,6 +2551,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    重置仓库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#git" class="md-nav__link">
     为git配置代理
   </a>
@@ -2534,7 +2565,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     遇到的问题
   </a>
   
@@ -2774,18 +2805,6 @@
   <li class="md-nav__item">
     <a href="../../distribution/linux%E6%A1%8C%E9%9D%A2%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4%E7%AC%94%E8%AE%B0/" class="md-nav__link">
       Linux桌面系统维护笔记
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../distribution/manjaro%E5%B8%83%E7%BD%AE/" class="md-nav__link">
-      Manjaro布置
     </a>
   </li>
 
@@ -5644,6 +5663,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    重置仓库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#git" class="md-nav__link">
     为git配置代理
   </a>
@@ -5651,7 +5677,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     遇到的问题
   </a>
   
@@ -5950,10 +5976,24 @@ Once you are satisfied with your changes, run
 $ cd oldproject.git
 $ git push --mirror git@newgithub.com/username/newproject.git
 </code></pre></div>
+<h2 id="_15">重置仓库<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>删掉<code>.git</code>目录后重新init在某些时候可用，但拥有submodules之类的时候，就不好使了，这是个更优的方案（<a href="https://stackoverflow.com/a/13102849">https://stackoverflow.com/a/13102849</a>）：</p>
+<div class="highlight"><pre><span></span><code>git checkout --orphan newBranch
+git add -A  # Add all files and commit them
+git commit
+git branch -D master  # Deletes the master branch
+git branch -m master  # Rename the current branch to master
+git push -f origin master  # Force push master branch to github
+git gc --aggressive --prune=all     # remove the old files
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+</code></pre></div>
 <h2 id="git">为git配置代理<a class="headerlink" href="#git" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port
 </code></pre></div>
-<h2 id="_15">遇到的问题<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h2 id="_16">遇到的问题<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <h3 id="error-insufficient-permission-for-adding-an-object-to-repository-database-gitobjects">error: insufficient permission for adding an object to repository database .git/objects<a class="headerlink" href="#error-insufficient-permission-for-adding-an-object-to-repository-database-gitobjects" title="Permanent link">&para;</a></h3>
 <p>权限有问题。</p>
 <p>如果是用root或者其他用户操作了git仓库，修复方法：</p>

@@ -1096,6 +1096,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/flash/" class="md-nav__link">
+      Flash器件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/%E5%8F%8C%E6%A0%B8%E5%BC%82%E6%9E%84/" class="md-nav__link">
       双核异构
     </a>
@@ -1256,6 +1268,18 @@
   <li class="md-nav__item">
     <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/%E6%B4%BB%E5%8A%A8%E5%AF%B9%E8%B1%A1%E6%A1%86%E6%9E%B6/" class="md-nav__link">
       活动对象框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6/%E7%94%A8%E4%BA%8Eflash%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      用于flash的文件系统
     </a>
   </li>
 
@@ -2509,18 +2533,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../distribution/manjaro%E5%B8%83%E7%BD%AE/" class="md-nav__link">
-      Manjaro布置
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../distribution/snap%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8F/" class="md-nav__link">
       Snap打包方式
     </a>
@@ -3158,10 +3170,23 @@
     install命令
   </a>
   
+    <nav class="md-nav" aria-label="install命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    网络命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     待分类
   </a>
   
@@ -5365,10 +5390,23 @@
     install命令
   </a>
   
+    <nav class="md-nav" aria-label="install命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    网络命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     待分类
   </a>
   
@@ -5516,7 +5554,16 @@ $ sudo hwclock -w
 <div class="highlight"><pre><span></span><code>相当于mkdir -p path/to/dst &amp;&amp; cp src path/to/dst
 $ install -D src path/to/dst
 </code></pre></div>
-<h2 id="_4">待分类<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_4">网络命令<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>arp = ip neighbor
+ifconfig = ip address, ip link
+netstat = ss
+route = ip route
+</code></pre></div>
+<p>ifconfig等命令的package：
+<div class="highlight"><pre><span></span><code>pacman -S net-tools dnsutils inetutils iproute2
+</code></pre></div></p>
+<h2 id="_5">待分类<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>archivemount 利用FUSE（用户层文件系统框架）将归档文件mount到文件系统中
 gdb-multiarch   多架构gdb, 工具链中的gdb有问题的时候可以用</p>
                 
