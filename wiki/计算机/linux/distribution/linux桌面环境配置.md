@@ -2,6 +2,37 @@
 
 
 
+### ibus配置
+
+配置文件在`~/.config/ibus`
+
+.xprofile：
+
+```
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -d -x
+```
+
+默认输入法为第一个，顺序在dconf中配置：`desktop/ibus/general/engines-order`。
+
+### 安装字体
+
+
+
+```
+mkdir /usr/share/fonts/<font_name>
+cd /usr/share/fonts/<font_name>
+mkfontscale
+mkfontdir
+fc-cache -fv
+```
+
+
+
+
+
 ## 中文字体
 
 文泉驿字体wqy-microhei wqy-zenhei

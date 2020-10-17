@@ -212,6 +212,20 @@ $ install -D src path/to/dst
 
 
 
+### 网络命令
+
+```
+arp = ip neighbor
+ifconfig = ip address, ip link
+netstat = ss
+route = ip route
+```
+
+ifconfig等命令的package：
+```
+pacman -S net-tools dnsutils inetutils iproute2
+```
+
 
 
 ## 待分类
