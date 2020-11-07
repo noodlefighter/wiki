@@ -102,6 +102,16 @@ Kconfig中需要用select/depends on来描述软件包依赖，但这并不会�
 
 比如当创建一个[generic-package](https://buildroot.org/downloads/manual/manual.html#_infrastructure_for_packages_with_specific_build_systems)时，.mk文件中的`LIBFOO_DEPENDENCIES`指定了依赖关系。
 
+### 覆盖官方维护的package行为
+
+`local.mk`可以覆盖一些包的行为，比如libite包默认不编译静态库，可以添加：
+
+```
+LIBITE_CONF_OPTS = --enable-static
+```
+
+
+
 ## 自动登录
 
 调试时会希望有个自动登入的环境，修改`/etc/inittab`中：
@@ -115,6 +125,8 @@ ttySAC0::respawn:/sbin/getty -L  ttySAC0 115200 vt100 # GENERIC_SERIAL
 ```
 ::respawn:-/bin/sh
 ```
+
+
 
 
 > todo: 下列段落似乎不适合放buildroot里，毕竟通用知识

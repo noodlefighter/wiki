@@ -9,7 +9,7 @@
 1	4	1	4
 ```
 
-这4个值在`kernel/printk.c` 中定义:
+这4个值在`kernel/printk/printk.c` 中定义:
 
 * 控制台日志级别DEFAULT_CONSOLE_LOGLEVEL：打印至控制台的日志等级
 
@@ -66,5 +66,22 @@ Symbol: MESSAGE_LOGLEVEL_DEFAULT [=4]
    (1)   -> printk and dmesg options
      Defined at lib/Kconfig.debug:18
 
+```
+
+
+
+## Linux内核loglevel值的具体定义
+
+定义在`./include/linux/kern_levels.h`中：
+
+```
+#define KERN_EMERG      KERN_SOH "0"    /* system is unusable */
+#define KERN_ALERT      KERN_SOH "1"    /* action must be taken immediately */
+#define KERN_CRIT       KERN_SOH "2"    /* critical conditions */
+#define KERN_ERR        KERN_SOH "3"    /* error conditions */
+#define KERN_WARNING    KERN_SOH "4"    /* warning conditions */
+#define KERN_NOTICE     KERN_SOH "5"    /* normal but significant condition */
+#define KERN_INFO       KERN_SOH "6"    /* informational */
+#define KERN_DEBUG      KERN_SOH "7"    /* debug-level messages */
 ```
 

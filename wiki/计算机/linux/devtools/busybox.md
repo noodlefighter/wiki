@@ -2,7 +2,7 @@
 
 ---
 
-## DHCP客户端udhcpc
+## busybox中的DHCP客户端udhcpc
 
 busybox自带个简单的dhcp client，获取到IP后会执行脚本进行配置，编辑`/usr/share/udhcpc/default.script`，记得给+x权限：
 
@@ -68,3 +68,40 @@ eth0      Link encap:Ethernet  HWaddr 00:E0:4C:36:04:71
           collisions:0 txqueuelen:1000
           RX bytes:4522321 (4.3 MiB)  TX bytes:2728 (2.6 KiB)
 ```
+
+
+
+## busybox中的syslogd和klogd
+
+syslogd根据syslog.conf中的配置，将syslog发向它该去的地方；klogd将内核log收集起来，注向syslog。
+
+
+
+## busybox中的mdev
+
+参考：https://git.busybox.net/busybox/tree/docs/mdev.txt
+
+类似大多Linux发行版用的udev，它接收来自内核的hotplug事件，对硬件热插拔事件进行处理。
+
+简单使用例：
+
+```
+# echo /sbin/mdev > /proc/sys/kernel/hotplug
+# mdev -s
+```
+
+`/etc/mdev.conf`：
+
+```
+([hs]d[a-z])([0-9]+)	root:root	660	>disk/%1/%2  */bin/hotplug.sh
+```
+
+`/bin/hotplug.sh`：
+
+```
+#!/bin/sh
+logger mdev=$MDEV
+logger action=$ACTION
+```
+
+通过`tail /var/log/messages`能看到日志

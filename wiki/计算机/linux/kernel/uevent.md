@@ -4,7 +4,7 @@
 
 
 
-## 从hotplug说起
+## linux的hotplug机制
 
 busybox上的mdev是用sysfs写入需要触发时执行的程序的方式实现的hotplug.
 

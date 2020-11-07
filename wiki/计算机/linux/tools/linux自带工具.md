@@ -121,31 +121,6 @@ $ tar -tvf xxx.tar
 
 cksum是CRC32
 
-## 管道
-```
-> 输出到
-& 后台运行, 如 echo abc &
-|more和|less 用管道把上一条命令导过来显示，方便查看，比如一屏看不完的时候可以用上
-
-用../source.txt批量覆盖找到的a.txt
-find -name "a.txt"|xargs -I{} cp -f ../source.txt {}
-
-|grep 根据关键词获取到某行内容
-|awk 'NR==3 {print $1}' 获取第3行的第1个“参数”
-```
-
-## 输出个log
-
-0 STDIN
-
-1 STDOUT
-
-2 STDERR
-
-```bash
-cat foo > foo.log 2>&1
-```
-
 
 ## 以别的用户身份执行命令
 

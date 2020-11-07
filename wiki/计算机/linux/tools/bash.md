@@ -12,7 +12,9 @@ ctrl+z挂起
 ## 快捷操作
 
 ```
-ctrl+u   ctrl+k   光标处往前删除/光标处往后删除
+ctrl+u   ctrl+k   光标处往前删除/光标处往后删除（zsh里，ctrl+u是清掉一整行）
+ctrl+w 回删一个词
+ctrl+_ 撤销操作
 ```
 
 ### pushd,popd命令

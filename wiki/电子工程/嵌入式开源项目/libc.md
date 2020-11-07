@@ -16,6 +16,14 @@ https://www.musl-libc.org/
 https://github.com/tboox/tbox
 A glib-like multi-platform c library 
 
+
+
+### libite
+
+libc缺失的函数，似乎在这个库里可以找到
+
+
+
 ## 格式化输出
 
 ### tinyprintf [BSD/LGPL]

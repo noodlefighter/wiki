@@ -85,6 +85,28 @@ $# 参数数量, "ps -a"有1个参数；"tar -xf aaa.tar"有2个参数
 $? 上一条命令返回值
 ```
 
+## 管道
+
+0 STDIN 1 STDOUT 2 STDERR
+
+```
+> 输出到
+& 后台运行, 如 echo abc &
+|more和|less 用管道把上一条命令导过来显示，方便查看，比如一屏看不完的时候可以用上
+
+用../source.txt批量覆盖找到的a.txt
+find -name "a.txt"|xargs -I{} cp -f ../source.txt {}
+
+|grep 根据关键词获取到某行内容
+|awk 'NR==3 {print $1}' 获取第3行的第1个“参数”
+
+将stderr重定向到stdout，stdout重定向到foo.log文件
+cat foo > foo.log 2>&1
+
+stdout不输出，将stderr重定向到stdout（可以用来收集日志）
+ls 2iojedn 2>&1 1>/dev/null |grep ls
+```
+
 ## xargs
 
 stdin作为参数执行命令

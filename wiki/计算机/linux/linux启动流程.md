@@ -42,3 +42,10 @@ console::respawn:/sbin/getty -L  console 0 vt100 # GENERIC_SERIAL
 4. 使用getty, 将tty挂在串口上
 
 用户登入后, 才会执行/etc/profile
+
+
+
+## 杀掉一个被inittab respawn的进程
+
+1. 先在`/etc/inittab`中注释掉这项，然后让init重新加载配置：`kill -HUP 1`（1是init进程的PID）
+2. 再杀掉那个进程，就不会被重新拉起了
