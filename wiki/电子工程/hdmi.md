@@ -16,3 +16,9 @@ EDID协议详见一份`VESA Enhanced Display Data Channel (EDDC) Standard`（VES
 
 
 
+
+
+## 行同步场同步
+
+行(水平)同步（HSync）:控制电子束从屏幕右端返回左端
+场(垂直)同步、帧同步（VSync）:控制电子束从屏幕底部返回顶部
