@@ -10,15 +10,15 @@
       
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.1.5">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-6.1.6">
     
     
       
-        <title>Enca - Noodlefighter's Wiki</title>
+        <title>文件编码转换 - Noodlefighter's Wiki</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.21aed14c.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6910b76c.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.196e0c26.min.css">
@@ -91,7 +91,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Enca
+              文件编码转换
             
           </span>
         </div>
@@ -2860,52 +2860,6 @@
           
           
 
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Enca
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
-      Enca
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    文本编码转换
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
 
   <li class="md-nav__item">
     <a href="../fakeroot/" class="md-nav__link">
@@ -3427,6 +3381,52 @@
     <a href="../%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7/" class="md-nav__link">
       图形桌面相关工具
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        文件编码转换
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      文件编码转换
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    文件批量编码转换
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -4264,8 +4264,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../%E7%BC%96%E7%A8%8B/C/gcc%E9%94%99%E8%AF%AF%E9%9B%86/" class="md-nav__link">
-      Gcc错误集
+    <a href="../../../%E7%BC%96%E7%A8%8B/C/gcc%E7%9B%B8%E5%85%B3/" class="md-nav__link">
+      Gcc相关
     </a>
   </li>
 
@@ -5185,7 +5185,7 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    文本编码转换
+    文件批量编码转换
   </a>
   
 </li>
@@ -5203,18 +5203,20 @@
               
                 
                 
-                  <h1>Enca</h1>
+                  <h1>文件编码转换</h1>
                 
-                <h2 id="_1">文本编码转换<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p><a href="https://blog.csdn.net/u012724167/article/details/77248919">https://blog.csdn.net/u012724167/article/details/77248919</a></p>
+                <h2 id="_1">文件批量编码转换<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>使用enca（实践中发现部分文件无法成功转换，出现一些空白文件）：</p>
 <div class="highlight"><pre><span></span><code># 转换目录下所有文件到UTF8
 enca -L zh_CN -x UTF-8 *
+
+# 转换目录及子目录下的所有.c和.h文件
+find -type f -name &#39;*.[ch]&#39; | xargs enca -L zh_CN -x UTF-8
 </code></pre></div>
-<p>但是不成功啊：
-<div class="highlight"><pre><span></span><code>r@r-work /mnt/hgfs/project/osukb/osu-keyboard-v3/app $ enca -V -L zh_CN -x utf-8 keymap.c
-enca: converting `keymap.c&#39;: UCS-2/CRLF/21..UTF-8
-enca: librecode warning: Conversion leads to ambiguous output in `keymap.c&#39;
-</code></pre></div></p>
+<p>使用iconv：</p>
+<div class="highlight"><pre><span></span><code># 转换目录及子目录下的所有.c和.h文件
+find -type f -name &#39;*.[ch]&#39; | xargs -I{} -f gbk -t utf-8 -o {} {}
+</code></pre></div>
                 
               
               
@@ -5233,7 +5235,7 @@ enca: librecode warning: Conversion leads to ambiguous output in `keymap.c&#39;
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../date/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -5242,19 +5244,19 @@ enca: librecode warning: Conversion leads to ambiguous output in `keymap.c&#39;
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                Date
+                图形桌面相关工具
               </div>
             </div>
           </a>
         
         
-          <a href="../fakeroot/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../%E7%BC%A9%E5%B0%8F%E9%95%9C%E8%B1%A1%E6%96%87%E4%BB%B6/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                Fakeroot
+                缩小镜象文件
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -5281,8 +5283,8 @@ enca: librecode warning: Conversion leads to ambiguous output in `keymap.c&#39;
       
     </div>
     
-      <script src="../../../../assets/javascripts/vendor.7e0ee788.min.js"></script>
-      <script src="../../../../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../../../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
