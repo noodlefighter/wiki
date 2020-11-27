@@ -4,7 +4,7 @@
 
 # iperf3 网络测试工具
 
-
+文档：https://iperf.fr/iperf-doc.php
 
 服务端：
 
@@ -25,6 +25,8 @@ $ iperf3 -c <server_addr>
 --length 指定单个packet的大小
 -t 持续时间
 -P 客户端并行stream数
+-M MTU
+-p 指定服务器端口
 ```
 
 服务端输出例：
@@ -76,5 +78,17 @@ Connecting to host localhost, port 5201
 [  5]   0.00-10.00  sec  47.7 GBytes  41.0 Gbits/sec                  receiver
 
 iperf Done.
+```
+
+iperf3不像iperf2一样，支持多个客户端连接，但可以开两个进程，双向打流例子：
+
+```
+# server:
+iperf3 -s -p 1000 &
+iperf3 -s -p 1001 &
+# client1：
+iperf3 -c 192.168.99.111 --set-mss 100 -t 1000 -p 1000
+# client2：
+iperf3 -c 192.168.99.111 --set-mss 100 -t 1000 -p 1001 -R
 ```
 
