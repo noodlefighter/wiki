@@ -2198,7 +2198,7 @@
 
   <li class="md-nav__item">
     <a href="../../devtools/conda/" class="md-nav__link">
-      conda
+      anaconda
     </a>
   </li>
 
@@ -2443,6 +2443,18 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distribution/linux%E4%B8%ADx%E5%92%8Cwayland/" class="md-nav__link">
+      Linux中x和wayland
+    </a>
+  </li>
+
         
           
           
@@ -4661,6 +4673,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/javascript/nodejs%E6%89%93%E5%8C%85/" class="md-nav__link">
+      Nodejs打包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../%E7%BC%96%E7%A8%8B/javascript/typescript/" class="md-nav__link">
       Typescript
     </a>
@@ -4691,6 +4715,30 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/python/opencv-python/" class="md-nav__link">
+      opencv-python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/python/python%E6%89%93%E5%8C%85/" class="md-nav__link">
+      Python打包
+    </a>
+  </li>
+
         
           
           
@@ -5335,9 +5383,13 @@
 <div class="highlight"><pre><span></span><code>:{作用范围}s/{目标}/{替换}/{替换标志}
 {作用范围} 空为当前行，%为全文，&#39;&lt;,&#39;&gt;为选区，例.,+2是当前行和接下来的两行,例1-5是第一到第五行
 {替换标志} g为替换全部，i为大小写不敏感I为敏感，c表示需要确认，
+例如：
+:%s/UBOX_/LIBITE_/g
 </code></pre></div>
-<p>例如：</p>
-<div class="highlight"><pre><span></span><code>:%s/UBOX_/LIBITE_/g
+<p>跳转到行：</p>
+<div class="highlight"><pre><span></span><code>:行号
+例如跳转到第55行：
+:55
 </code></pre></div>
 <h2 id="vi_1">vi设置<a class="headerlink" href="#vi_1" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>&quot; 不带格式复制（防复制东西时格式乱掉）

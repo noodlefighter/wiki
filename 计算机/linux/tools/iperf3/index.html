@@ -2198,7 +2198,7 @@
 
   <li class="md-nav__item">
     <a href="../../devtools/conda/" class="md-nav__link">
-      conda
+      anaconda
     </a>
   </li>
 
@@ -2443,6 +2443,18 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../distribution/linux%E4%B8%ADx%E5%92%8Cwayland/" class="md-nav__link">
+      Linux中x和wayland
+    </a>
+  </li>
+
         
           
           
@@ -4581,6 +4593,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/javascript/nodejs%E6%89%93%E5%8C%85/" class="md-nav__link">
+      Nodejs打包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../%E7%BC%96%E7%A8%8B/javascript/typescript/" class="md-nav__link">
       Typescript
     </a>
@@ -4611,6 +4635,30 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/python/opencv-python/" class="md-nav__link">
+      opencv-python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../%E7%BC%96%E7%A8%8B/python/python%E6%89%93%E5%8C%85/" class="md-nav__link">
+      Python打包
+    </a>
+  </li>
+
         
           
           
@@ -5166,6 +5214,7 @@
                 
                 
                 <h1 id="iperf3">iperf3 网络测试工具<a class="headerlink" href="#iperf3" title="Permanent link">&para;</a></h1>
+<p>文档：<a href="https://iperf.fr/iperf-doc.php">https://iperf.fr/iperf-doc.php</a></p>
 <p>服务端：</p>
 <div class="highlight"><pre><span></span><code>$ iperf3 -s
 </code></pre></div>
@@ -5177,6 +5226,8 @@
 --length 指定单个packet的大小
 -t 持续时间
 -P 客户端并行stream数
+-M MTU
+-p 指定服务器端口
 </code></pre></div>
 <p>服务端输出例：</p>
 <div class="highlight"><pre><span></span><code>[r@r-lc sk]$ iperf3 -s
@@ -5222,6 +5273,15 @@ Connecting to host localhost, port 5201
 [  5]   0.00-10.00  sec  47.7 GBytes  41.0 Gbits/sec                  receiver
 
 iperf Done.
+</code></pre></div>
+<p>iperf3不像iperf2一样，支持多个客户端连接，但可以开两个进程，双向打流例子：</p>
+<div class="highlight"><pre><span></span><code># server:
+iperf3 -s -p 1000 &amp;
+iperf3 -s -p 1001 &amp;
+# client1：
+iperf3 -c 192.168.99.111 --set-mss 100 -t 1000 -p 1000
+# client2：
+iperf3 -c 192.168.99.111 --set-mss 100 -t 1000 -p 1001 -R
 </code></pre></div>
                 
               
