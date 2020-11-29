@@ -1,5 +1,7 @@
 ## usage
 
+.
+
 ```bash
 # 准备环境
 $ ./install.sh
