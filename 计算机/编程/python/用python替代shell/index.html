@@ -4719,8 +4719,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pexpect" class="md-nav__link">
-    使用pexpect进行交互式操作
+  <a href="#glob" class="md-nav__link">
+    使用glob匹配文件名
   </a>
   
 </li>
@@ -5302,8 +5302,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pexpect" class="md-nav__link">
-    使用pexpect进行交互式操作
+  <a href="#glob" class="md-nav__link">
+    使用glob匹配文件名
   </a>
   
 </li>
@@ -5379,7 +5379,18 @@ result = res.stdout.readlines()
 
 # todo: 使用第三方sh模块 http://amoffat.github.io/sh/
 </code></pre></div>
-<h2 id="pexpect">使用pexpect进行交互式操作<a class="headerlink" href="#pexpect" title="Permanent link">&para;</a></h2>
+<h2 id="glob">使用glob匹配文件名<a class="headerlink" href="#glob" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>import glob
+for name in glob.glob(&#39;dir/*&#39;):
+    print (name)
+</code></pre></div>
+<p>匹配表达式可以是：</p>
+<ul>
+<li><code>'dir/*/*'</code></li>
+<li><code>'dir/*'</code></li>
+<li><code>'dir/file?.txt'</code></li>
+<li><code>'dir/*[0-9].*'</code></li>
+</ul>
                 
               
               
