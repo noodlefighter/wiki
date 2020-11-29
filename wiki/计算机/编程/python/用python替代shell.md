@@ -88,4 +88,18 @@ result = res.stdout.readlines()
 
 
 
-## 使用pexpect进行交互式操作
+## 使用glob匹配文件名
+
+```
+import glob
+for name in glob.glob('dir/*'):
+    print (name)
+```
+
+匹配表达式可以是：
+
+- `'dir/*/*'`
+- `'dir/*'`
+- `'dir/file?.txt'`
+- `'dir/*[0-9].*'`
+
