@@ -117,7 +117,22 @@ Line 1092 of argv.c starts at pc 0x7540 and ends at 0x7550.
 
 如果用的是archlinux，AUR里有包：`yay -S electricfence`即可安装好，查看手册`man libefence`。
 
-用法：静态链接`libefence.a`即可，`-l:libefence.a`和`-lefence`都可以。
+```
+INSTRUCTIONS FOR DEBUGGING YOUR PROGRAM
+       1. Link with libefence.a as explained above.
+       2. Run your program in a debugger and fix any overruns or accesses to free memory.
+       3. Quit the debugger.
+       4. Set EF_PROTECT_BELOW = 1 in the shell environment.
+       5. Repeat step 2, this time repairing underruns if they occur.
+       6. Quit the debugger.
+       7. Read the restrictions in the section on WORD-ALIGNMENT AND OVERRUN DETECTION.  See if you can set EF_ALIGNMENT to 0 and repeat step 2. Sometimes this will be too much work, or there will be problems with library routines for which you don't have the source, that will prevent you from doing this.
+```
+
+用法：
+
+1. 静态链接`libefence.a`，如`-l:libefence.a`
+2. 使用debugger，默认行为是efence会捕获出问题的地方，然后退出
+3. 设置环境变量`EF_PROTECT_BELOW=1`，把行为修改成出问题时SIGSEGV，从而使debugger能捕获到错误
 
 
 

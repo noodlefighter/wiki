@@ -104,3 +104,10 @@ macos自带的包管理器，其实Linux和windows的WSL也能用。
 ## screenfetch Linux系统摘要打印
 
 一键打印当前linux的信息摘要
+
+## ncdu unix命令行下磁盘空间占用统计
+
+`Disk usage analyzer with an ncurses interface`
+
+![20201222153024](_assets/linux常用工具/20201222153024.png)
+

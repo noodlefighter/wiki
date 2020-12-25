@@ -52,6 +52,9 @@ git push --tags
 # 删除tag
 git tag -d v1.1.1
 git push --delete orgin v1.1.1
+
+# 获取HEAD的Commit ID
+git rev-parse --short HEAD
 ```
 
 ## 分支操作
