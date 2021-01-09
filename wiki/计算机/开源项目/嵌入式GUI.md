@@ -18,16 +18,11 @@ https://github.com/achimdoebler/UGUI
 
 ## 嵌入式应用GUI
 
-### lvgi
+### lvgl
 
 https://littlevgl.com/
 
 LittlevGL is a free and open-source graphics library providing everything you need to create embedded GUI with easy-to-use graphical elements, beautiful visual effects and low memory footprint.
-
-### AWTK [LGPL]
-
-https://github.com/zlgopen/awtk
-ZLG公司的GUI方案
 
 ## PC端
 ### imgui

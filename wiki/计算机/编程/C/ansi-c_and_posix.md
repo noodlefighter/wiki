@@ -60,3 +60,56 @@ int replaced = dup2(fd, STDOUT_FILENO);
     }
 ```
 
+
+
+## getopt_long()
+
+参考：[25.2.4 Example of Parsing Long Options with `getopt_long`](https://www.gnu.org/software/libc/manual/html_node/Getopt-Long-Option-Example.html)
+
+getopt()的加强版，同时支持长短参数，当匹配到长参数时，会返回`struct option`项中的val值，如下面例子中的`-h`。
+
+```
+#include <getopt.h>
+
+
+static void print_usage(const char *prog)
+{
+	printf("usage: %s [Options]\n\n", prog);
+	printf(
+		"Options:\n"
+		"  --dump-video=<file>          dump video stream to file\n"
+		"  -h                           print help\n"
+	);
+}
+
+#define ARG_DUMP_VIDEO    1
+static struct option long_options[] = {
+	{"dump-video", required_argument, 0, ARG_DUMP_VIDEO},
+	{"help",       no_argument,       0, 'h'},
+	{0, 0, 0, 0}
+};
+
+int main(int argc, char **argv)
+{	
+	int c, opt_index = 0;
+
+	while (1) {
+		c = getopt_long(argc, argv, "h", long_options, &opt_index);
+		if (c == -1)
+        	break;
+
+		switch (c) {
+			case ARG_DUMP_VIDEO:
+				printf("dump-video!!! %s\n", optarg);
+				break;
+			case 'h':
+				print_usage(argv[0]);
+				exit(0);
+				break;
+			default:
+				exit(1);
+				break;
+		}
+	}
+```
+
