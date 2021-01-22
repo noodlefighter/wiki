@@ -72,12 +72,24 @@ ChibiOS的硬件抽象层
 
 ### protothread协程
 
-PT协程
+PT协程，用得最多
 
 ### lw_coroutine协程
 
 https://github.com/xiaoliang314/lw_coroutine
 宣称比PT协程更高效更好用的类PT协程
+
+### Async.h
+
+https://github.com/naasking/async.h
+
+asynchronous, stackless subroutines
+
+### coroutine
+
+https://github.com/cloudwu/coroutine
+
+云风写的小协程库，强调非对称协程（和lua和python协程类似），其实PT也能实现一样的效果
 
 ### QP-nano
 

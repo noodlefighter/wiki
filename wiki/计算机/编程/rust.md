@@ -24,6 +24,8 @@ typesystem论文：
 
 http://lucacardelli.name/papers/typesystems.pdf
 
+[Rust异步编程: 你需要知道的事](https://funkill.github.io/async-book-i18n/zh-cn/async-in-rust/chapter.html#rust异步编程-你需要知道的事)
+
 ## Rust工具
 
 ### Rustup

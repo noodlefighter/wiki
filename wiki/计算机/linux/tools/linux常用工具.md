@@ -111,3 +111,20 @@ macos自带的包管理器，其实Linux和windows的WSL也能用。
 
 ![20201222153024](_assets/linux常用工具/20201222153024.png)
 
+## X11下复制文本到粘贴板
+
+Linux桌面，常需要手动复制命令行下当前路径
+
+1. 实际复制的操作可以用命令完成，需要安装`xsel`和`xclip`工具：
+
+```
+$ echo barhaha123 | xclip -selection c
+```
+
+2. 简化操作
+
+```
+$ alias xclip='xclip -selection c'
+$ pwd |xcilp
+```
+
