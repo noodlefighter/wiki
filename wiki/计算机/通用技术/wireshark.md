@@ -1,5 +1,6 @@
-
 ---
+
+## wireshark二次开发
 
 captrue options - interface management, pipes, 选择文件
 
@@ -32,3 +33,17 @@ https://www.runoob.com/lua/lua-object-oriented.html
 
 lua坑
 http://www.blogjava.net/rockblue1988/archive/2014/12/29/421910.html
+
+
+
+## wireshark usb抓包
+
+### Linux
+
+```
+$ modprobe usbmon
+$ sudo wireshark
+```
+
+usbmon<X>就是usb根设备
+

@@ -141,6 +141,14 @@ $ docker run --rm -it -u $UID:$GROUPS -v $PWD/platform:/opt/lichee jacklan/liche
 
 
 
+## 进入到docker容器中
+
+```
+$ docker exec -it containerID /bin/bash
+```
+
+
+
 ## 镜象打包成tar、从tar还原
 
 > 来源：https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html
