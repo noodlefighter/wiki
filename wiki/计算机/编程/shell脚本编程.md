@@ -204,6 +204,27 @@ done
 
 
 
+## case语句
+
+```
+case "$1" in
+    start)        
+        echo "start"
+        ;;
+    stop)
+        echo "stop"
+        ;;
+    restart|reload)
+        echo "restart"
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+```
+
+
+
 ## 遍历目录
 
 ```
