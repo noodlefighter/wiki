@@ -267,8 +267,8 @@ done
 ```
 [ -z STRING ] 如果STRING的长度为零则为真 ，即判断是否为空，空即是真；
 [ -n STRING ] 如果STRING的长度非零则为真 ，即判断是否为非空，非空即是真；
-[ STRING1 = STRING2 ] 如果两个字符串相同则为真 ；
-[ STRING1 != STRING2 ] 如果字符串不相同则为真 ；
+[ STRING1 = STRING2 ] 如果两个字符串相同则为真，如[ "$USBMODE" == "host" ]
+[ STRING1 != STRING2 ] 如果字符串不相同则为真，如[ "$USBMODE" != "host" ]
 [ STRING1 ]　 如果字符串不为空则为真,与-n类似
 ```
 

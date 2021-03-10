@@ -65,7 +65,22 @@ g = os.walk(script_dir)
 for path,dir_list,file_list in g:
     for dir in dir_list:
         print(os.path.join(path, file_name))
+
 ```
+
+
+
+shutil模块可以代替很多shell的文件操作命令，可以避免特殊情况字符转义带来的困扰（比如括号，空格之类）：
+
+```
+import shutil
+
+# 复制文件夹
+shutil.copytree(src, dest) 
+
+```
+
+
 
 
 

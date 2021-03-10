@@ -61,6 +61,13 @@ mount.nfs: access denied by server while mounting
 可能协议版本不对，增加选项-o nfsvers=3
 ```
 
+```
+mount.nfs: Stale file handle
+需要重启一下服务器，据说是客户端还没umount服务器就删除了文件夹造成的
+```
+
+
+
 ## Arch Linux上的参考
 
 https://wiki.archlinux.org/index.php/NFS

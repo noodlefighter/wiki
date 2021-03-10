@@ -12,7 +12,37 @@ https://github.com/kenzok8/openwrt-packages
 
 ## UCI
 
+文档：https://openwrt.org/docs/guide-user/base-system/uci
+
 UCI是openwrt的配置接口
+
+一个uci配置文件例子`/etc/config/sys`：
+
+```
+config app
+	option workmode 'rtsp'
+```
+
+命令行get/set：
+
+```
+$ uci get sys.@app[0].workmode
+rtsp
+$ uci set sys.@app[0].workmode='uvc'
+```
+
+
+
+## openwrt的工具
+
+包[block-mount](https://openwrt.org/packages/pkgdata_lede17_1/block-mount)，http://git.openwrt.org/project/fstools.git提供的block工具，和blkid命令差不多：
+
+```
+# block info
+/dev/loop0: UUID="4d6fe5a0-de0c-4945-9c91-8284225b7295" LABEL="rootfs_data" VERSION="1.13" MOUNT="/overlay" TYPE="f2fs"
+/dev/sda1: UUID="84173db5-fa99-e35a-95c6-28613cc79ea9" LABEL="kernel" VERSION="1.0" MOUNT="/boot" TYPE="ext4"
+/dev/sda2: UUID="5bdbe408-d6fc5cf7-c1c9f393-d4ff4ca9" VERSION="4.0" MOUNT="/rom" TYPE="squashfs"
+```
 
 
 

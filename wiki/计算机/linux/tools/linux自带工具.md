@@ -99,6 +99,9 @@ f  使用归档文件
 $ tar -cf xxx.tar foo1 foo2
 $ tar -xf xxx.tar
 
+解压部分文件
+$ tar -xf xxx.tar fileA
+
 创建归档gzip压缩文件
 $ tar -czf xxx.tar.gz foo1 foo2
 $ tar -xzf xxx.tar.gz
@@ -165,6 +168,10 @@ wait -n 2 “xxx”
 
 
 
+## lsblk
+
+lsblk - list block devices
+
 ## 通过网络更新系统时间
 
 linux网络授时，使用NTP客户端完成；使用hwclock命令将时间写入主板：
@@ -200,6 +207,20 @@ ifconfig等命令的package：
 ```
 pacman -S net-tools dnsutils inetutils iproute2
 ```
+
+
+
+## dd命令测试磁盘写入速度
+
+`conv=fsync`参数，dd在完成拷贝后执行一次sync，以反映真实的写入速度。
+
+参考：https://www.cnblogs.com/kongzhongqijing/articles/9049336.html
+
+```
+dd if=/dev/zero of=/yourdisk/abc bs=1M count=1024 conv=fsync
+```
+
+
 
 
 

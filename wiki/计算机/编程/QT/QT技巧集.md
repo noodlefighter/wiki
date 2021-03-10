@@ -121,3 +121,14 @@ enumItemFlag{
 浅色可双击编辑状态：Item.setflags((ItemFlags) 63);
 
 （注意：此处为63，不是64。虽然枚举类型中没有对应于63的值，但是63是QTableWidget实体创建的时候给每个Item的初始化flags值。设置成它就是可编辑状态！）
+
+
+
+
+
+## QString格式化
+
+```
+QString str = QString("%1:%2:%3").arg(0,2,10,QLatin1Char('0')).arg(1,2,10,QLatin1Char('0')) .arg(23,2,10,QLatin1Char('0'));
+```
+
