@@ -130,3 +130,51 @@ Comment[zh_CN]=自动启动坚果云
 ```
 
 窗口管理器（window manager）启动时->如i3wm的`$HOME/.config/i3/config`。
+
+## 声音
+
+控制系统音量的命令，可以自己绑定按键：
+
+```
+减音量：
+amixer -D pulse sset Master 3%- unmute
+增音量：
+amixer -D pulse sset Master 3%+ unmute
+静音：
+amixer -D pulse sset Master toggle
+```
+
+混音控制台软件推荐使用`pavucontrol`：
+
+![image-20210317232811638](_assets/linux桌面环境配置/image-20210317232811638.png)
+
+也许还需要一个音量Icon方便呼出这个混音控制台，`volumeicon`包，在`.xprofile`里添加`nohup volumeicon &`，修改配置`$HOME/.config/volumeicon/volumeicon`：
+
+```
+[Alsa]
+card=default
+
+[Notification]
+show_notification=true
+notification_type=0
+
+[StatusIcon]
+stepsize=5
+onclick=pavucontrol
+theme=Default
+use_panel_specific_icons=false
+lmb_slider=true
+mmb_mute=false
+use_horizontal_slider=false
+show_sound_level=true
+use_transparent_background=false
+
+[Hotkeys]
+up_enabled=true
+down_enabled=true
+mute_enabled=true
+up=XF86AudioRaiseVolume
+down=XF86AudioLowerVolume
+mute=XF86AudioMute
+```
+

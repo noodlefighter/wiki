@@ -209,7 +209,6 @@ pacman -S net-tools dnsutils inetutils iproute2
 ```
 
 
-
 ## dd命令测试磁盘写入速度
 
 `conv=fsync`参数，dd在完成拷贝后执行一次sync，以反映真实的写入速度。
@@ -218,11 +217,19 @@ pacman -S net-tools dnsutils inetutils iproute2
 
 ```
 dd if=/dev/zero of=/yourdisk/abc bs=1M count=1024 conv=fsync
+
+
+## Linux下强制重启
+
+```
+echo b > /proc/sysrq-trigger
 ```
 
+crontab（每天5点）：
 
-
-
+```
+00 5 * * * sleep 5 && echo b > /proc/sysrq-trigger
+```
 
 ## 待分类
 
