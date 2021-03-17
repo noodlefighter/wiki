@@ -9,16 +9,16 @@
       
       
       
-      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.0.5">
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.0.6">
     
     
       
-        <title>Linux的input子系统 - Noodlefighter's Wiki</title>
+        <title>Linux的键盘输入和布局 - Noodlefighter's Wiki</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.77f3fd56.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2c0c5eaf.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.7fa14f5b.min.css">
@@ -71,11 +71,9 @@
       
     </div>
     
-      
-
-<header class="md-header" data-md-component="header">
+      <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Noodlefighter&#39;s Wiki" class="md-header__button md-logo" aria-label="Noodlefighter's Wiki">
+    <a href="../../.." title="Noodlefighter&#39;s Wiki" class="md-header__button md-logo" aria-label="Noodlefighter's Wiki" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -94,7 +92,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linux的input子系统
+              Linux的键盘输入和布局
             
           </span>
         </div>
@@ -154,11 +152,9 @@
                     
 
 
-
-
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Noodlefighter&#39;s Wiki" class="md-nav__button md-logo" aria-label="Noodlefighter's Wiki">
+    <a href="../../.." title="Noodlefighter&#39;s Wiki" class="md-nav__button md-logo" aria-label="Noodlefighter's Wiki" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -1913,12 +1909,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Linux的input子系统
+          Linux的键盘输入和布局
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Linux的input子系统
+        Linux的键盘输入和布局
       </a>
       
         
@@ -1953,6 +1949,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    Linux下的键盘布局
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1980,18 +1983,6 @@
     <li class="md-nav__item">
       <a href="../linux%E7%BD%91%E7%BB%9C%E8%B0%83%E4%BC%98/" class="md-nav__link">
         Linux网络调优
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../linux%E9%94%AE%E7%9B%98%E5%B8%83%E5%B1%80%E7%9B%B8%E5%85%B3/" class="md-nav__link">
-        Linux键盘布局相关
       </a>
     </li>
   
@@ -2077,14 +2068,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_23" type="checkbox" id="__nav_10_2_23" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_22" type="checkbox" id="__nav_10_2_22" >
       
-      <label class="md-nav__link" for="__nav_10_2_23">
+      <label class="md-nav__link" for="__nav_10_2_22">
         Devtools
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Devtools" data-md-level="3">
-        <label class="md-nav__title" for="__nav_10_2_23">
+        <label class="md-nav__title" for="__nav_10_2_22">
           <span class="md-nav__icon md-icon"></span>
           Devtools
         </label>
@@ -2380,14 +2371,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_24" type="checkbox" id="__nav_10_2_24" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_23" type="checkbox" id="__nav_10_2_23" >
       
-      <label class="md-nav__link" for="__nav_10_2_24">
+      <label class="md-nav__link" for="__nav_10_2_23">
         Distribution
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Distribution" data-md-level="3">
-        <label class="md-nav__title" for="__nav_10_2_24">
+        <label class="md-nav__title" for="__nav_10_2_23">
           <span class="md-nav__icon md-icon"></span>
           Distribution
         </label>
@@ -2479,14 +2470,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_25" type="checkbox" id="__nav_10_2_25" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_24" type="checkbox" id="__nav_10_2_24" >
       
-      <label class="md-nav__link" for="__nav_10_2_25">
+      <label class="md-nav__link" for="__nav_10_2_24">
         Kernel
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Kernel" data-md-level="3">
-        <label class="md-nav__title" for="__nav_10_2_25">
+        <label class="md-nav__title" for="__nav_10_2_24">
           <span class="md-nav__icon md-icon"></span>
           Kernel
         </label>
@@ -2758,14 +2749,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_26" type="checkbox" id="__nav_10_2_26" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_25" type="checkbox" id="__nav_10_2_25" >
       
-      <label class="md-nav__link" for="__nav_10_2_26">
+      <label class="md-nav__link" for="__nav_10_2_25">
         Tools
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Tools" data-md-level="3">
-        <label class="md-nav__title" for="__nav_10_2_26">
+        <label class="md-nav__title" for="__nav_10_2_25">
           <span class="md-nav__icon md-icon"></span>
           Tools
         </label>
@@ -3433,14 +3424,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_27" type="checkbox" id="__nav_10_2_27" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_26" type="checkbox" id="__nav_10_2_26" >
       
-      <label class="md-nav__link" for="__nav_10_2_27">
+      <label class="md-nav__link" for="__nav_10_2_26">
         Userspace
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Userspace" data-md-level="3">
-        <label class="md-nav__title" for="__nav_10_2_27">
+        <label class="md-nav__title" for="__nav_10_2_26">
           <span class="md-nav__icon md-icon"></span>
           Userspace
         </label>
@@ -5634,6 +5625,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    Linux下的键盘布局
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5647,7 +5645,7 @@
               
                 
                 
-                  <h1>Linux的input子系统</h1>
+                  <h1>Linux的键盘输入和布局</h1>
                 
                 <p>linux的输入子系统，<code>/dev/input/*</code>，查看设备列表：</p>
 <div class="highlight"><pre><span></span><code>￥ cat /proc/bus/input/devices
@@ -5699,6 +5697,24 @@ SUBSYSTEM==&quot;input&quot;, KERNEL==&quot;event[0-9]*&quot;, ATTRS{name}==&quo
 <h2 id="evtest">测试工具evtest<a class="headerlink" href="#evtest" title="Permanent link">&para;</a></h2>
 <p>截图是测试一个触摸屏<code>/dev/input/event0</code></p>
 <p><img alt="1569472849646" src="../_assets/linux%E7%9A%84input%E5%AD%90%E7%B3%BB%E7%BB%9F/1569472849646.png" /></p>
+<h2 id="linux">Linux下的键盘布局<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h2>
+<p>archlinuxu的wiki上的说明：</p>
+<p><a href="https://wiki.archlinux.org/index.php/Linux_console/Keyboard_configuration">https://wiki.archlinux.org/index.php/Linux_console/Keyboard_configuration</a></p>
+<p>loadkeys:</p>
+<p><a href="https://jlk.fjfi.cvut.cz/arch/manpages/man/loadkeys.1">https://jlk.fjfi.cvut.cz/arch/manpages/man/loadkeys.1</a></p>
+<p>问答：</p>
+<p><a href="https://superuser.com/questions/729585/remap-keys-without-xmodmap-or-any-x-tools#comment1565295_729585">https://superuser.com/questions/729585/remap-keys-without-xmodmap-or-any-x-tools#comment1565295_729585</a></p>
+<p><a href="https://stackoverflow.com/questions/34582279/linux-c-keymapping-keycodes">https://stackoverflow.com/questions/34582279/linux-c-keymapping-keycodes</a></p>
+<p>在linux中，输入设备在input子系统中被抽象，如<code>/dev/input/event*</code>，我们能拿到的keycode在这里被归一。测试按键，获得keycode：</p>
+<div class="highlight"><pre><span></span><code># showkeys -a
+</code></pre></div>
+<p>只有keycode是不足以在console上输入字符的，因为不同的键盘布局上的同一个键打出来的字符是不一样的，比如Shift+2在US布局里是“@”而欧洲布局里是欧元符号，所以linux还有一套从keycode转换到字符的机制。</p>
+<p>从linux的map文件生成c语言数组的map表：</p>
+<div class="highlight"><pre><span></span><code># loadkeys --mktable defkeymap.map
+</code></pre></div>
+<p>查看当前映射表：</p>
+<div class="highlight"><pre><span></span><code># dumpkeys
+</code></pre></div>
                 
               
               
@@ -5769,7 +5785,7 @@ SUBSYSTEM==&quot;input&quot;, KERNEL==&quot;event[0-9]*&quot;, ATTRS{name}==&quo
     <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf3e710.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
       
         <script src="../../../js/cnzz-statistics.js"></script>
       
