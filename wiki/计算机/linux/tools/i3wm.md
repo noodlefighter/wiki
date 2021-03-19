@@ -24,7 +24,9 @@ https://wiki.archlinux.org/index.php/I3#Launching_programs_on_specific_workspace
 exec --no-startup-id xxx
 ```
 
+## 写i3wm配置
 
+如何确定窗口的class名：命令`xprop`，点击窗口可获得信息
 
 ## i3-cinnamon
 

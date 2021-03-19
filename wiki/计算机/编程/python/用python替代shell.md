@@ -6,6 +6,8 @@
 
 ## 获取命令行参数
 
+直接获取：
+
 ```
 # $# 取参数数量
 len(sys.argv)
@@ -14,9 +16,11 @@ len(sys.argv)
 sys.argv[0]
 ```
 
-
+使用`argparse`库:
 
 ```
+import argparse
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--ssid', help='wlan ssid')
 parser.add_argument('--sn', help='product serial number')
@@ -24,6 +28,26 @@ args = parser.parse_args()
 
 print(args.ssid)
 ```
+
+使用`click`库: https://click.palletsprojects.com/en/7.x/
+
+```
+import click
+
+@click.command()
+@click.option('--count', default=1, help='Number of greetings.')
+@click.option('--name', prompt='Your name',
+              help='The person to greet.')
+def hello(count, name):
+    """Simple program that greets NAME for a total of COUNT times."""
+    for x in range(count):
+        click.echo('Hello %s!' % name)
+
+if __name__ == '__main__':
+    hello()
+```
+
+
 
 ## 像shell一样在字符串中插入变量
 

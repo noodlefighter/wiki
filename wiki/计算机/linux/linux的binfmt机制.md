@@ -1,0 +1,3 @@
+
+
+Linux的binfmt机制允许执行非当前平台下的elf文件，比如Arch下安装qemu-user-static、binfmt-qemu-static即可支持直接运行arm平台的文件

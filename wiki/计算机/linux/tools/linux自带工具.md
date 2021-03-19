@@ -69,18 +69,6 @@ $ cat file1.bin file2.bin
 
 
 
-## mount
-
-
-
-```
-# 判断一个目录是否是挂载点
-mountpoint -q /mnt
-echo $?
-```
-
-
-
 ## tar 解压压缩
 
 .tar文件本身只是“归档”文件，把多个文件打包，而不带压缩；而.tar.gz文件是先把一些文件打包，然后用gzip压缩。
@@ -211,12 +199,13 @@ pacman -S net-tools dnsutils inetutils iproute2
 
 ## dd命令测试磁盘写入速度
 
-`conv=fsync`参数，dd在完成拷贝后执行一次sync，以反映真实的写入速度。
+`oflag=direct`参数将跳过内存缓存，`conv=fsync`参数，dd在完成拷贝后执行一次sync。
 
 参考：https://www.cnblogs.com/kongzhongqijing/articles/9049336.html
 
 ```
-dd if=/dev/zero of=/yourdisk/abc bs=1M count=1024 conv=fsync
+dd if=/dev/zero of=/yourdisk/abc bs=1M count=1024 oflag=direct
+```
 
 
 ## Linux下强制重启

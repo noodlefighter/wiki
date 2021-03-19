@@ -212,3 +212,7 @@ $ systemctl show --property=Environment docker
 $ sudo systemctl restart docker
 ```
 
+## daocloud加速
+
+https://www.daocloud.io/mirror
+

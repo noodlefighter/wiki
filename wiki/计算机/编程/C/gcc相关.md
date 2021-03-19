@@ -136,3 +136,14 @@ buildroot-2011.05-new/scripts/copy.sh
 ## -fpermissive
 
 -fno-permissive
+
+
+
+## gcc 解决库交叉引用、顺序错误的问题
+
+gcc是从右往左加载库的，比如存在静态库aaa和bbb，当bbb依赖aaa时，需要写成`-lbbb -laaa`，如果想临时解决这个问题（而不想大费周章地修改构建脚本），可以简单地用以下方式解决：
+
+```
+-Wl,--start-group -laaa -lbbb -Wl,--end-group
+```
+
