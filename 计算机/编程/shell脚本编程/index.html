@@ -6163,17 +6163,19 @@ else
 fi
 </code></pre></div>
 <h3 id="_4">判断命令是否存在<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>program_exists() {
-    local ret=&#39;0&#39;
-    command -v $1 &gt;/dev/null 2&gt;&amp;1 || { local ret=&#39;1&#39;; }
+<div class="highlight"><pre><span></span><code>function program_exists {
+    hash &quot;$1&quot; 2&gt; /dev/null
+}
 
-    # fail on non-zero return value
-    if [ &quot;$ret&quot; -ne 0 ]; then
+if program_exists python3; then
+    PY=python3
+elif program_exists python; then
+    PY=python
+    if [ $(python -c &#39;import sys; print(sys.version_info[:][0])&#39;) != &#39;3&#39; ]; then
+        echo &quot;python3 not found, will exit..&quot;
         return 1
     fi
-
-    return 0
-}
+fi
 </code></pre></div>
 <h3 id="_5">查看进程是否存在<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>ps -fe|grep hostapd |grep -v grep
