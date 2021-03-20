@@ -43,17 +43,19 @@ fi
 ### 判断命令是否存在
 
 ```
-program_exists() {
-    local ret='0'
-    command -v $1 >/dev/null 2>&1 || { local ret='1'; }
+function program_exists {
+    hash "$1" 2> /dev/null
+}
 
-    # fail on non-zero return value
-    if [ "$ret" -ne 0 ]; then
+if program_exists python3; then
+    PY=python3
+elif program_exists python; then
+    PY=python
+    if [ $(python -c 'import sys; print(sys.version_info[:][0])') != '3' ]; then
+        echo "python3 not found, will exit.."
         return 1
     fi
-
-    return 0
-}
+fi
 ```
 
 ### 查看进程是否存在
