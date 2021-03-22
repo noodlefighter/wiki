@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#linux" class="md-skip">
           跳转至
         </a>
       
@@ -2435,8 +2435,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    救援模式
+  <a href="#linux" class="md-nav__link">
+    Linux救援模式
   </a>
   
 </li>
@@ -2449,7 +2449,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     管理内核
   </a>
   
@@ -2463,7 +2463,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     无法进入桌面的处理方法
   </a>
   
@@ -2478,14 +2478,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     排查显示管理器问题
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     检查显示驱动
   </a>
   
@@ -5665,8 +5665,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    救援模式
+  <a href="#linux" class="md-nav__link">
+    Linux救援模式
   </a>
   
 </li>
@@ -5679,7 +5679,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     管理内核
   </a>
   
@@ -5693,7 +5693,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     无法进入桌面的处理方法
   </a>
   
@@ -5708,14 +5708,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     排查显示管理器问题
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     检查显示驱动
   </a>
   
@@ -5741,22 +5741,27 @@
                 
                   <h1>Linux桌面系统维护笔记</h1>
                 
-                <h2 id="_1">救援模式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>linux无法启动时，可以进LiveCD，mount整个rootfs，然后chroot，再进行修复操作，如：</p>
+                <h2 id="linux">Linux救援模式<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h2>
+<p>linux无法启动时，可以进LiveCD，mount整个rootfs，然后chroot，再进行修复操作。</p>
+<p>这里假设<code>/dev/sdb2</code>为根目录分区，<code>/dev/sdb1</code>为EFI分区：</p>
 <div class="highlight"><pre><span></span><code>$ su -
 # mkdir rootfs
 # mount /dev/sdb2 rootfs
-# mount /dev/sdb1 rootfs/boot/efi
-# mv /dev ./rootfs/
-# mv /proc ./rootfs/
 # cd rootfs
+# mount /dev/sdb1 boot/efi
+# mount -t proc /proc proc/
+# mount -t sysfs /sys sys/
+# mount --rbind /dev dev/ 
 # chroot .
 </code></pre></div>
-<p>在archlinux下，使用arch-chroot替代chroot，无需移动设备文件，如：</p>
-<div class="highlight"><pre><span></span><code>$ sudo pacman-mirrors -c China
-$ sudo pacman -Sy
-$ sudo pacman -S arch-install-scripts
-$ su -
+<blockquote>
+<p>chroot命令参考来自archlinux的wiki <a href="https://wiki.archlinux.org/index.php/Chroot#Using_chroot">Chroot#Using_chroot</a></p>
+</blockquote>
+<p>在archlinux下，可以使用arch-chroot替代chroot，无需手动mount那些sys、proc、dev文件夹：</p>
+<div class="highlight"><pre><span></span><code>$ su -
+# pacman-mirrors -c China
+# pacman -Sy
+# pacman -S arch-install-scripts
 # mkdir rootfs
 # mount /dev/sdb2 rootfs
 # mount /dev/sdb1 rootfs/boot/efi
@@ -5766,7 +5771,7 @@ $ su -
 <h2 id="grub">重建grub配置<a class="headerlink" href="#grub" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code># grub-mkconfig -o /boot/efi/grub/grub.cfg
 </code></pre></div>
-<h2 id="_2">管理内核<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_1">管理内核<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>使用指定内核的最简单的方法，<code>/boot</code>中用不到的内核镜象全删了，重建grub配置即可。</p>
 <h2 id="display-managers">更换显示管理器(Display Managers)<a class="headerlink" href="#display-managers" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -5781,7 +5786,7 @@ $ sudo systemctl enable sddm.service --force
 Removed /etc/systemd/system/display-manager.service.
 Created symlink /etc/systemd/system/display-manager.service → /usr/lib/systemd/system/sddm.service.
 </code></pre></div>
-<h2 id="_3">无法进入桌面的处理方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">无法进入桌面的处理方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>图形界面启动流程：</p>
 <ol>
 <li>启动x11，x11尝试加载显卡驱动</li>
@@ -5793,14 +5798,14 @@ Created symlink /etc/systemd/system/display-manager.service → /usr/lib/systemd
 <p>尝试在文字终端里启动x11：</p>
 <div class="highlight"><pre><span></span><code># startx
 </code></pre></div>
-<h3 id="_4">排查显示管理器问题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_3">排查显示管理器问题<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>查看lightdm日志：</p>
 <div class="highlight"><pre><span></span><code># systemctl status lightdm.service
 </code></pre></div>
 <p>debug模式启动lightdm：</p>
 <div class="highlight"><pre><span></span><code># lightdm --test-mode --debug
 </code></pre></div>
-<h3 id="_5">检查显示驱动<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_4">检查显示驱动<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>显示驱动详细列表：</p>
 <div class="highlight"><pre><span></span><code># mhwd -l -d
 </code></pre></div>
