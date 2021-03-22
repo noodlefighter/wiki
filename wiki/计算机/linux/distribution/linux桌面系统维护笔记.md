@@ -2,30 +2,33 @@
 
 ---
 
+## Linux救援模式
 
+linux无法启动时，可以进LiveCD，mount整个rootfs，然后chroot，再进行修复操作。
 
-## 救援模式
-
-linux无法启动时，可以进LiveCD，mount整个rootfs，然后chroot，再进行修复操作，如：
+这里假设`/dev/sdb2`为根目录分区，`/dev/sdb1`为EFI分区：
 
 ```
 $ su -
 # mkdir rootfs
 # mount /dev/sdb2 rootfs
-# mount /dev/sdb1 rootfs/boot/efi
-# mv /dev ./rootfs/
-# mv /proc ./rootfs/
 # cd rootfs
+# mount /dev/sdb1 boot/efi
+# mount -t proc /proc proc/
+# mount -t sysfs /sys sys/
+# mount --rbind /dev dev/ 
 # chroot .
 ```
 
-在archlinux下，使用arch-chroot替代chroot，无需移动设备文件，如：
+> chroot命令参考来自archlinux的wiki [Chroot#Using_chroot](https://wiki.archlinux.org/index.php/Chroot#Using_chroot)
+
+在archlinux下，可以使用arch-chroot替代chroot，无需手动mount那些sys、proc、dev文件夹：
 
 ```
-$ sudo pacman-mirrors -c China
-$ sudo pacman -Sy
-$ sudo pacman -S arch-install-scripts
 $ su -
+# pacman-mirrors -c China
+# pacman -Sy
+# pacman -S arch-install-scripts
 # mkdir rootfs
 # mount /dev/sdb2 rootfs
 # mount /dev/sdb1 rootfs/boot/efi
