@@ -4100,6 +4100,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        机器学习学习笔记
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -4907,6 +4919,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    实例
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5616,6 +5635,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    实例
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5642,6 +5668,27 @@
 <p>Matplotlib API：<a href="https://matplotlib.org/stable/api/index.html">https://matplotlib.org/stable/api/index.html</a></p>
 </blockquote>
 <h2 id="anaconda-vscode-jupyter">环境布置：anaconda + vscode + jupyter<a class="headerlink" href="#anaconda-vscode-jupyter" title="Permanent link">&para;</a></h2>
+<p>//TODO:</p>
+<h2 id="_1">实例<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>创建环境：</p>
+<div class="highlight"><pre><span></span><code>$ conda create -n math python=3.8
+$ conda activate math
+$ pip install matplotlib
+</code></pre></div>
+<p>测试程序：</p>
+<div class="highlight"><pre><span></span><code>import numpy as np
+import matplotlib.pyplot as plt
+
+scale_val = 256
+sample_rate = 16000
+sin_freq = 10
+half_scale = scale_val/2
+
+x = np.arange(0, 16000)
+y = half_scale * np.sin(x*sin_freq*(2*np.pi)/sample_rate) + half_scale
+plt.plot(x, y)
+plt.show()
+</code></pre></div>
                 
               
               

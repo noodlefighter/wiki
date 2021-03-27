@@ -4156,6 +4156,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        机器学习学习笔记
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -5668,11 +5680,38 @@
 <h2 id="anaconda_1">anaconda安装<a class="headerlink" href="#anaconda_1" title="Permanent link">&para;</a></h2>
 <p><a href="https://docs.anaconda.com/anaconda/install/linux/">https://docs.anaconda.com/anaconda/install/linux/</a></p>
 <p>conda提供了一个shell脚本，向导式安装，实际上是给shell的启动脚本中插入布置conda环境的脚本段。</p>
+<p>如果不希望用<code>conda init</code>安装，因为打开shell就会覆盖主机的环境，大多数时候会造成困扰，可以在<code>.bashrc</code>插入，只在键入<code>load-conda</code>时才载入conda环境：</p>
+<div class="highlight"><pre><span></span><code>load-conda()
+{
+       __conda_setup=&quot;$(&#39;/home/r/miniconda3/bin/conda&#39; &quot;shell.$(basename $SHELL)&quot; &#39;hook&#39; 2&gt; /dev/null)&quot;
+       if [ $? -eq 0 ]; then
+               eval &quot;$__conda_setup&quot;
+       else
+               if [ -f &quot;/home/r/miniconda3/etc/profile.d/conda.sh&quot; ]; then
+                       . &quot;/home/r/miniconda3/etc/profile.d/conda.sh&quot;
+               else
+                       export PATH=&quot;/home/r/miniconda3/bin:$PATH&quot;
+               fi
+       fi
+       unset __conda_setup
+}
+</code></pre></div>
 <h2 id="anaconda_2">anaconda使用<a class="headerlink" href="#anaconda_2" title="Permanent link">&para;</a></h2>
+<p><code>conda create</code>可以创建环境，例：</p>
+<div class="highlight"><pre><span></span><code>conda create -n myenv
+conda create -n myenv python=3.8
+</code></pre></div>
+<p><code>conda env</code>用于环境相关操作，比如列出所有已经创建的环境：</p>
+<div class="highlight"><pre><span></span><code>(base) ~ ᐅ conda env list
+# conda environments:
+#
+base                  *  /home/r/miniconda3
+TracKit                  /home/r/miniconda3/envs/TracKit
+finger                   /home/r/miniconda3/envs/finger
+math                     /home/r/miniconda3/envs/math
+</code></pre></div>
 <p><code>conda activate</code>命令可以给当前shell切换环境：</p>
-<div class="highlight"><pre><span></span><code>~/proj/k210/TracKit $ python --version
-Python <span class="m">3</span>.8.3
-~/proj/k210/TracKit $ conda activate TracKit
+<div class="highlight"><pre><span></span><code>~/proj/k210/TracKit $ conda activate TracKit
 <span class="o">(</span>TracKit<span class="o">)</span> ~/proj/k210/TracKit $ python --version
 Python <span class="m">3</span>.7.9
 <span class="o">(</span>TracKit<span class="o">)</span> ~/proj/k210/TracKit $
