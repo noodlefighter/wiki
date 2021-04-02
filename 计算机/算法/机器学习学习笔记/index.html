@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.0.6">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.0">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.2c0c5eaf.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.33e2939f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7fa14f5b.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ef6f36e2.min.css">
         
           
           
@@ -53,8 +53,9 @@
     
     
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-green" data-md-color-accent="pink">
-      
   
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -98,9 +99,8 @@
         </div>
       </div>
     </div>
-    <div class="md-header__options">
-      
-    </div>
+    
+    
     
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
@@ -116,7 +116,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
       <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
       </button>
     </form>
     <div class="md-search__output">
@@ -4140,6 +4140,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4basic-concept" class="md-nav__link">
+    4.Basic Concept
+  </a>
+  
+    <nav class="md-nav" aria-label="4.Basic Concept">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errorbias-variance" class="md-nav__link">
+    error分为bias &amp; variance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    模型的选择
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5626,6 +5653,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4basic-concept" class="md-nav__link">
+    4.Basic Concept
+  </a>
+  
+    <nav class="md-nav" aria-label="4.Basic Concept">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errorbias-variance" class="md-nav__link">
+    error分为bias &amp; variance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    模型的选择
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5660,6 +5714,38 @@
 <p><img alt="image-20210327151427436" src="../_assets/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210327151427436.png" /></p>
 <p>这就是过拟合（Overfitting）：</p>
 <p><img alt="image-20210327151538310" src="../_assets/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210327151538310.png" /></p>
+<p>改进的方法是，损失函数中加一项，表示“尽可能地使输出对输入不敏感”（平滑），正则化“Regularization”：</p>
+<p><img alt="image-20210329143441391" src="../_assets/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210329143441391.png" /></p>
+<p>平滑，但不希望太平滑：</p>
+<p><img alt="image-20210329143740916" src="../_assets/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210329143740916.png" /></p>
+<h2 id="4basic-concept">4.Basic Concept<a class="headerlink" href="#4basic-concept" title="Permanent link">&para;</a></h2>
+<h3 id="errorbias-variance">error分为bias &amp; variance<a class="headerlink" href="#errorbias-variance" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20210330094943240" src="../_assets/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210330094943240.png" /></p>
+<p>简单的model，variance会比较小；</p>
+<p>复杂的model，bias会比较小（图里黑线为假设的目标函数，蓝线是用不同数据集算出的函数平均出（？）的函数）</p>
+<p><img alt="image-20210330095640282" src="../_assets/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210330095640282.png" /></p>
+<p>bias大的解决方法，考虑欠拟合、过拟合，改进model：</p>
+<ul>
+<li>欠拟合可能是模型不够复杂、存在未考虑的input（特征）</li>
+<li>过拟合可能是模型过于复杂</li>
+</ul>
+<p>variance大的解决方法：</p>
+<ul>
+<li>增加数据集容量</li>
+<li>之前提到的正则化</li>
+</ul>
+<p><img alt="image-20210330100338100" src="../_assets/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210330100338100.png" /></p>
+<h3 id="_1">模型的选择<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>数据集分为：</p>
+<ul>
+<li>网上公开的Testing Set</li>
+<li>别人私有的Testing Set</li>
+</ul>
+<p>用网上公开的数据集筛选出的模型，对于私有的Testing Set肯定会有更高的误差。</p>
+<p>正确的做法是：把数据集分为：Training Set / Validation Set，千万不要参考“验证数据集”筛选（修改）模型。</p>
+<p><img alt="image-20210330101803887" src="../_assets/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210330101803887.png" /></p>
+<p>一种方法是，把数据集分为3份，两份用来训练一份用来训练，做三次，找出Avg Err最小的模型：</p>
+<p><img alt="image-20210330102221477" src="../_assets/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210330102221477.png" /></p>
                 
               
               
@@ -5670,6 +5756,7 @@
             </article>
           </div>
         </div>
+        
       </main>
       
         
@@ -5727,10 +5814,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d892486b.min.js"></script>
       
         <script src="../../../js/cnzz-statistics.js"></script>
       
