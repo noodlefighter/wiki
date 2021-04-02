@@ -165,3 +165,33 @@ async def main():
 asyncio.run(main())
 ```
 
+
+
+## python串口库
+
+库[pyserial](https://pyserial.readthedocs.io/en/latest/shortintro.html)：
+
+```
+import serial
+import time
+
+bandrate = 921600
+s_tx = serial.Serial('/dev/ttyUSB0', bandrate, timeout=0)
+s_rx = serial.Serial('/dev/ttyUSB1', bandrate, timeout=0)
+
+data = '1234567890abcdefg'.encode("ascii")
+s_tx.write(data)
+time.sleep(0.2)
+assert(s_rx.readall() == data)
+
+```
+
+
+
+## python的lambda
+
+```
+list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+[1, 4, 9, 16, 25, 36, 49, 64, 81]
+```
+
