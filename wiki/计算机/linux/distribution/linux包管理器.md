@@ -47,6 +47,18 @@ pacman -S yay
 
 yay支持pacman风格的命令，挪过来就能用。
 
+### 将debian的deb包转成arch package格式
+
+> refer: https://ostechnix.com/convert-deb-packages-arch-linux-packages/
+
+```
+$ yay -S debtap
+$ sudo debtap -u
+$ debtap intelmas_1.7.130-0_amd64.deb
+$ sudo pacman -U sudo pacman -U intelmas-1.7.130-1-x86_64.pkg.tar.zst
+```
+
+
 
 ## apt
 

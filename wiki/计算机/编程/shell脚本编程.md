@@ -177,6 +177,10 @@ my_array=(a b c)
 for item in ${my_array[@]};do
 	echo "${item}"
 done
+
+# 单行
+while true; do echo hahaha;sleep 1; done
+while true; do smartctl -x /dev/nvme1 |grep 'Temperature Sensor';sleep 60; done
 ```
 
 ## while语句

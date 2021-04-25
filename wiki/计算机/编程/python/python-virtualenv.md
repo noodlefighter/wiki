@@ -23,3 +23,13 @@ $ source ./bin/active
 2. 找到由virtualenv创建的`bin/python`
 3. 详情参考vscode的文档：[Using Python environments in VS Code](https://code.visualstudio.com/docs/python/environments#_manually-specify-an-interpreter)
 
+
+
+## python的venv使用[Invalid UTF-8]
+
+```
+$ python -m venv venv
+$ source venv/bin/activate
+$ pip install --upgrade pip
+```
+
