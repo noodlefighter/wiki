@@ -195,3 +195,14 @@ list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
 [1, 4, 9, 16, 25, 36, 49, 64, 81]
 ```
 
+
+
+## python把当前目录加入模块搜索路径
+
+```
+import os, sys
+sys.path.append(os.path.curdir)
+```
+
+
+

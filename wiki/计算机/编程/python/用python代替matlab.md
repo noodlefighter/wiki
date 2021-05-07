@@ -9,6 +9,9 @@
 >
 >  numpy教程 https://www.runoob.com/numpy/numpy-tutorial.html
 >
+
+> 文档：
+> Numpy API： https://numpy.org/doc/stable/reference/
 >  Matplotlib API：https://matplotlib.org/stable/api/index.html
 
 
@@ -47,6 +50,15 @@ plt.show()
 ```
 
 
+
+## python音频合成
+
+https://pythonaudiosynthesisbasics.com/
+
+这个网站提示了
+
+- 把声卡当信号发生器
+- 生成正波形文件
 
 
 

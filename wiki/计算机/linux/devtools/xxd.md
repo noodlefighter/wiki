@@ -40,7 +40,7 @@ $ xxd mount_mysdk.sh
 ## 文件转C语言格式数组
 
 ```
-$ xxd -g 1 -i -u -l 10000000 nm.ts
+$ xxd -i -u 123.bin > 123.bin.c
 ```
 
 ## 将文本导回二进制文件

@@ -9,9 +9,12 @@
 -encoders           show available encoders
 ```
 
-音频转换示例，wave转adpcm：
+音频转换示例：
 
 ```
-$ ffmpeg -i StarWars60.wav  -f wav -acodec adpcm_ms StarWars60-adpcm.wav
+wav转adpcm:
+ffmpeg -i test.wav  -f wav -acodec adpcm_ms test-adpcm.wav
+mp3转wav:
+ffmpeg -f mp3 -i test.mp3 test.wav
 ```
 
