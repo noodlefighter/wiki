@@ -8,7 +8,6 @@
 >  参考：
 >
 >  numpy教程 https://www.runoob.com/numpy/numpy-tutorial.html
->
 
 > 文档：
 > Numpy API： https://numpy.org/doc/stable/reference/
@@ -47,6 +46,39 @@ x = np.arange(0, 16000)
 y = half_scale * np.sin(x*sin_freq*(2*np.pi)/sample_rate) + half_scale
 plt.plot(x, y)
 plt.show()
+```
+
+## SymPy符号计算
+
+数值计算和符号计算的区别，符号计算在过程中会保留符号，例如计算`sin(pi)`时，数值计算不保证结果为0，而符号计算最后计算得出0.
+
+> 参考：
+>
+> - [SymPy符号计算-让Python帮我们推公式](https://zhuanlan.zhihu.com/p/83822118)
+> - [SymPy 符号计算基本教程](https://zhuanlan.zhihu.com/p/111573239)
+
+用SymPy可以帮助展开公式、化简数式.. 比如：
+
+```
+>>> x = symbols('x')
+>>> simplify(sin(x)**2)
+sin(x)**2
+>>> simplify(sin(x)**2+cos(x)**2)
+1
+>>> simplify(sin(x)**2+cos(x)**2+x)
+x + 1
+```
+
+带符号的矩阵计算例子：
+
+```
+>>> a = Matrix([[1, x], [3, 4], [0, 2]])
+>>> b = Matrix([[3], [4]])
+>>> a*b
+Matrix([
+[4*x + 3],
+[     25],
+[      8]])
 ```
 
 

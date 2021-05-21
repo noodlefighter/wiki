@@ -128,6 +128,8 @@ gdb> monitor exit
 
 - delete breakpoints：清除所有断点：
 
+- watch/rwatch [变量名]：设置内存断点，写时中断/读写时中断
+
 ### 查看源代码
 
 - list ：简记为 l ，其作用就是列出程序的源代码，默认每次显示10行。
@@ -148,6 +150,8 @@ gdb> monitor exit
 - whatis ：查询变量或函数
 - info function： 查询函数
 - 扩展info locals： 显示当前堆栈页的所有变量
+- `display /20i $pc`：查看当前汇编命令
+- 
 
 ### 查询运行信息
 
@@ -157,6 +161,7 @@ gdb> monitor exit
 - set args 参数:指定运行时的参数
 - show args：查看设置好的参数
 - info program： 来查看程序的是否在运行，进程号，被暂停的原因。
+- i registers：查看当前寄存器值（缩写`i r`？）
 
 ### 多线程
 

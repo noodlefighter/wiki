@@ -29,6 +29,16 @@ make LDFLAGS="--sysroot=/home/r/osp/buildroot-2019.02.1/output/host/arm-buildroo
 gcc -o helloworld helloworld.c -Wl,-Map,helloworld.map
 ```
 
+### 分析gcc的map文件
+
+可以用[fpvgcc](https://github.com/ebs-universe/fpv-gcc)，直接`pip install fpvgcc`即可安装：
+
+```
+$ fpvgcc --secc xxx.map
+```
+
+也可以用自己改的[linker-map-summary](https://github.com/noodlefighter/linker-map-summary)
+
 ## undefined behavior [-Waggressive-loop-optimizations]
 
 ```
