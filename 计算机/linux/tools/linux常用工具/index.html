@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.5">
     
     
       
@@ -3035,6 +3035,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sysstat" class="md-nav__link">
+    sysstat查看资源情况
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lm_sensors" class="md-nav__link">
     lm_sensors
   </a>
@@ -3249,6 +3256,18 @@
     <li class="md-nav__item">
       <a href="../patch/" class="md-nav__link">
         Patch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../picocom/" class="md-nav__link">
+        Picocom
       </a>
     </li>
   
@@ -5826,6 +5845,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sysstat" class="md-nav__link">
+    sysstat查看资源情况
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lm_sensors" class="md-nav__link">
     lm_sensors
   </a>
@@ -5916,6 +5942,42 @@
 <div class="highlight"><pre><span></span><code>#progress
 alias cv=&quot;progress -w&quot;
 </code></pre></div></p>
+<h2 id="sysstat">sysstat查看资源情况<a class="headerlink" href="#sysstat" title="Permanent link">&para;</a></h2>
+<ul>
+<li>cifsiostat: CIFS使用情况（CIFS共享协议）</li>
+<li>mpstat: 处理器使用情况</li>
+<li>iostat: 查看IO使用情况，输出例：
+  <div class="highlight"><pre><span></span><code>~ ᐅ iostat
+Linux 5.4.116-1-MANJARO (r-lh)    2021年05月14日     _x86_64_    
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+          19.69    0.00    1.83    0.70    0.00   77.78
+
+Device             tps    kB_read/s    kB_wrtn/s    kB_dscd/s    kB_read    kB_wrtn    kB_dscd
+md127           212.60     23405.41     67813.10         0.00  594233841 1721689240          0
+nvme0n1          86.08     11575.78     24663.27         0.00  293894451  626169368          0
+nvme1n1          84.12     11569.55     24645.65         0.00  293736400  625721876          0
+sda              56.94        98.01       504.19         0.29    2488333   12800713       7360
+sdb               0.11        10.14         0.00         0.00     257502         32          0
+</code></pre></div></li>
+<li>pidstat: 查看进程资源使用情况</li>
+</ul>
+<div class="highlight"><pre><span></span><code>~ ᐅ pidstat -G code
+Linux 5.4.116-1-MANJARO (r-lc)    2021年05月14日     _x86_64_    
+
+16时20分19秒   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+16时20分19秒  1000     19902    0.02    0.01    0.00    0.00    0.04     4  code
+16时20分19秒  1000     19923    0.00    0.00    0.00    0.00    0.00     2  code
+16时20分19秒  1000     19924    0.00    0.00    0.00    0.00    0.00     0  code
+16时20分19秒  1000     19954    0.02    0.01    0.00    0.00    0.03     2  code
+16时20分19秒  1000     19973    0.01    0.01    0.00    0.00    0.01     4  code
+16时20分19秒  1000     20013    0.87    0.23    0.00    0.00    1.10     6  code
+16时20分19秒  1000     20097    0.64    0.41    0.00    0.00    1.05     2  code
+16时20分19秒  1000     20171    0.05    0.01    0.00    0.00    0.06     1  code
+16时20分19秒  1000     20185    0.00    0.00    0.00    0.00    0.00     0  code
+16时20分19秒  1000     20202    0.00    0.00    0.00    0.00    0.00     2  code
+16时20分19秒  1000     20278    0.00    0.00    0.00    0.00    0.00     2  code
+</code></pre></div>
 <h2 id="lm_sensors">lm_sensors<a class="headerlink" href="#lm_sensors" title="Permanent link">&para;</a></h2>
 <p>查看传感器温度，cpu、主板、显卡温度等。</p>
 <div class="highlight"><pre><span></span><code>[r@r-pc test-activity]$ sensors 
@@ -6032,10 +6094,10 @@ $ pwd |xcilp
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.1d3bfcf1.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a1609d9a.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       

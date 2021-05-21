@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.5">
     
     
       
@@ -3142,6 +3142,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../linux/tools/picocom/" class="md-nav__link">
+        Picocom
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../linux/tools/redsocks/" class="md-nav__link">
         Redsocks
       </a>
@@ -5025,6 +5037,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sympy" class="md-nav__link">
+    SymPy符号计算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python" class="md-nav__link">
     python音频合成
   </a>
@@ -5749,6 +5768,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sympy" class="md-nav__link">
+    SymPy符号计算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python" class="md-nav__link">
     python音频合成
   </a>
@@ -5777,8 +5803,7 @@
 </ul>
 <blockquote>
 <p>参考：</p>
-<p>numpy教程 <a href="https://www.runoob.com/numpy/numpy-tutorial.html">https://www.runoob.com/numpy/numpy-tutorial.html</a>
-</p>
+<p>numpy教程 <a href="https://www.runoob.com/numpy/numpy-tutorial.html">https://www.runoob.com/numpy/numpy-tutorial.html</a></p>
 <p>文档：
 Numpy API： <a href="https://numpy.org/doc/stable/reference/">https://numpy.org/doc/stable/reference/</a>
  Matplotlib API：<a href="https://matplotlib.org/stable/api/index.html">https://matplotlib.org/stable/api/index.html</a></p>
@@ -5804,6 +5829,33 @@ x = np.arange(0, 16000)
 y = half_scale * np.sin(x*sin_freq*(2*np.pi)/sample_rate) + half_scale
 plt.plot(x, y)
 plt.show()
+</code></pre></div>
+<h2 id="sympy">SymPy符号计算<a class="headerlink" href="#sympy" title="Permanent link">&para;</a></h2>
+<p>数值计算和符号计算的区别，符号计算在过程中会保留符号，例如计算<code>sin(pi)</code>时，数值计算不保证结果为0，而符号计算最后计算得出0.</p>
+<blockquote>
+<p>参考：</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/83822118">SymPy符号计算-让Python帮我们推公式</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/111573239">SymPy 符号计算基本教程</a></li>
+</ul>
+</blockquote>
+<p>用SymPy可以帮助展开公式、化简数式.. 比如：</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; x = symbols(&#39;x&#39;)
+&gt;&gt;&gt; simplify(sin(x)**2)
+sin(x)**2
+&gt;&gt;&gt; simplify(sin(x)**2+cos(x)**2)
+1
+&gt;&gt;&gt; simplify(sin(x)**2+cos(x)**2+x)
+x + 1
+</code></pre></div>
+<p>带符号的矩阵计算例子：</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; a = Matrix([[1, x], [3, 4], [0, 2]])
+&gt;&gt;&gt; b = Matrix([[3], [4]])
+&gt;&gt;&gt; a*b
+Matrix([
+[4*x + 3],
+[     25],
+[      8]])
 </code></pre></div>
 <h2 id="python">python音频合成<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
 <p><a href="https://pythonaudiosynthesisbasics.com/">https://pythonaudiosynthesisbasics.com/</a></p>
@@ -5880,10 +5932,10 @@ plt.show()
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.1d3bfcf1.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a1609d9a.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       

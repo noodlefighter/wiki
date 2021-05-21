@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.5">
     
     
       
@@ -3146,6 +3146,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../picocom/" class="md-nav__link">
+        Picocom
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../redsocks/" class="md-nav__link">
         Redsocks
       </a>
@@ -3260,6 +3272,13 @@
         <li class="md-nav__item">
   <a href="#ssh_1" class="md-nav__link">
     ssh保持会话
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-ssh-ssh" class="md-nav__link">
+    ssh代理 ssh隧道 ssh跳板
   </a>
   
 </li>
@@ -5805,6 +5824,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ssh-ssh-ssh" class="md-nav__link">
+    ssh代理 ssh隧道 ssh跳板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ssh-dockergit" class="md-nav__link">
     ssh穿透-在docker容器里装git服务器
   </a>
@@ -5905,6 +5931,16 @@ sshfs user@xxx.xxx.xxx.xxx:/home/mpc/workspaces ~/mysdk
 <div class="highlight"><pre><span></span><code>ServerAliveInterval <span class="m">60</span> ＃client每隔60秒发送一次请求给server，然后server响应，从而保持连接
 
 ServerAliveCountMax <span class="m">3</span>  ＃client发出请求后，服务器端没有响应得次数达到3，就自动断开连接，正常情况下，server不会不响应
+</code></pre></div>
+<h2 id="ssh-ssh-ssh">ssh代理 ssh隧道 ssh跳板<a class="headerlink" href="#ssh-ssh-ssh" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>via: <a href="https://blog.dteam.top/posts/2017-07/%E5%88%A9%E7%94%A8ssh%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E8%B5%84%E6%BA%90.html">利用SSH代理访问内网资源</a></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>SSH的-L与-D代理
+SSH有三种代理参数-L,-D,-R。-R代理不是本次重点，有兴趣的读者可以自行查阅man手册。
+
+-L参数会在本地监听一个端口，转发数据到远程主机上。 ssh -NL 3306:localhost:3306 user@remote_ip 在本地监听一个3306端口，转发到远程主机上的localhost:3306上，等于访问本地的3306端口就相当于访问到了远程的mysql服务。这种方式访问远程服务会更安全，远程服务不需要对外网暴露端口。 很明显，这个代理只适用于代理单一ip单一服务的需求有用，本质上是反向代理，客户端不需要额外配置。
+-D参数就厉害了，在本地开放一个socks5协议的代理端口，利用这个端口可以动态的访问到远程内网的环境。 ssh -ND 1080 user@remote_ip 这条命令会在本地开放一个1080的socks5端口，支持socks5协议代理的应用程序就可以利用这个端口直接访问到内网资源。比如: curl –socks5 127.0.0.1:1080 localhost 让curl命令利用socks5协议代理访问到远程服务器上的http服务，浏览器直接配置这个代理服务就可以无阻碍的访问到内网中所有的http服务了。 很明显，这个代理本质上是正向代理，可以实现一个代理访问更多服务资源的需求。但是需要客户端本身支持代理。
 </code></pre></div>
 <h2 id="ssh-dockergit">ssh穿透-在docker容器里装git服务器<a class="headerlink" href="#ssh-dockergit" title="Permanent link">&para;</a></h2>
 <p>把git服务器装在docker容器中时，如果要用SSH方式访问git仓库，又不想在使用时指定特殊的端口，就必须与宿主共享22端口。</p>
@@ -6013,10 +6049,10 @@ rt-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAA34ff
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.1d3bfcf1.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a1609d9a.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       
