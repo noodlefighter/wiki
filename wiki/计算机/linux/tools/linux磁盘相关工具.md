@@ -90,3 +90,33 @@ e2fsck -f qt.img
 resize2fs -M qt.img
 ```
 
+
+
+## Linux下用mdadm创建soft raid 软件磁盘阵列
+
+> refer: https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-16-04
+
+Find the active arrays in the `/proc/mdstat` file by typing:
+
+```
+$ cat /proc/mdstat
+```
+
+移除阵列：
+
+```
+停止阵列，删除阵列
+$ sudo mdadm --stop /dev/md0
+$ sudo mdadm --remove /dev/md0
+
+清除超级块
+$ sudo mdadm --zero-superblock /dev/sdc
+$ sudo mdadm --zero-superblock /dev/sdd
+```
+
+创建raid0阵列：
+
+```
+$ sudo mdadm --create --verbose /dev/md0 --level=0 --raid-devices=2 /dev/sda /dev/sdb
+```
+
