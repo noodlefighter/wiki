@@ -67,7 +67,14 @@ Fuc()
 pip freeze > requirements.txt
 ```
 
+## python添加模块搜索路径
 
+```
+import os
+import sys
+current_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(current_path + '/../simplecborrpc')
+```
 
 ## python独立执行模块时测试
 
