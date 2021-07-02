@@ -578,6 +578,14 @@ echo -e "\033[?25h 显示光标 \033[0m"
 
 ## 技巧集
 
+## 获取CPU数
+
+```
+CPUS=$(cat /proc/cpuinfo |grep "processor"|wc -l)
+```
+
+已测试，在 git bash 和 msys2 环境中都可用
+
 ### 获取当前IP地址
 
 ```

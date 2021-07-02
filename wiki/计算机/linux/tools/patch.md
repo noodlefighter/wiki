@@ -39,4 +39,7 @@ $ git commit -m "a little bit of work"
 
 生成patch
 $ git format-patch -1
+
+使用path
+$ git am 0001-xxxx.patch
 ```

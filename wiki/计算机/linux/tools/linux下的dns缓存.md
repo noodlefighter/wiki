@@ -6,7 +6,7 @@ linux内核并不管理DNS缓存，具体服务有多种选择
 
 参考：https://www.maketecheasier.com/flush-dns-cache-linux/
 
-先systemctl看看存在什么服务，比如：nscd（glibc提供），dnsmasq，named，systemd-resolve（systemd提供）
+先systemctl看看存在什么服务，比如：nss-lookup，nscd（glibc提供），dnsmasq，named，systemd-resolve（systemd提供）
 
 存在服务的话：
 
@@ -22,5 +22,4 @@ linux内核并不管理DNS缓存，具体服务有多种选择
 
 # systemd-resolve --flush-caches
 ```
-
 

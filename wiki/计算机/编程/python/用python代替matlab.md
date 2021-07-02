@@ -8,6 +8,8 @@
 >  参考：
 >
 >  numpy教程 https://www.runoob.com/numpy/numpy-tutorial.html
+>
+>  SciPy Lecture Notes 中文版 https://wizardforcel.gitbooks.io/scipy-lecture-notes/content/index.html
 
 > 文档：
 > Numpy API： https://numpy.org/doc/stable/reference/
