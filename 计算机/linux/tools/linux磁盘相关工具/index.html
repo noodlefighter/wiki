@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.9">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.10">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mount" class="md-skip">
+        <a href="#uuid" class="md-skip">
           跳转至
         </a>
       
@@ -907,8 +907,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E7%94%9F%E6%B4%BB/%E9%9E%8B%E5%AD%90%E5%B7%A5%E8%89%BA/" class="md-nav__link">
-        鞋子工艺
+      <a href="../../../../%E7%94%9F%E6%B4%BB/%E9%9E%8B%E5%AD%90/" class="md-nav__link">
+        鞋的缝制工艺
       </a>
     </li>
   
@@ -1206,6 +1206,18 @@
     <li class="md-nav__item">
       <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/risc-v/" class="md-nav__link">
         Risc v
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/spi/" class="md-nav__link">
+        Spi
       </a>
     </li>
   
@@ -3139,6 +3151,13 @@
       目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    查看分区UUID等信息
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#mount" class="md-nav__link">
@@ -5939,6 +5958,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    查看分区UUID等信息
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mount" class="md-nav__link">
     mount
   </a>
@@ -6008,7 +6034,12 @@
                 
                   <h1>Linux磁盘相关工具</h1>
                 
-                <h2 id="mount">mount<a class="headerlink" href="#mount" title="Permanent link">&para;</a></h2>
+                <h2 id="uuid">查看分区UUID等信息<a class="headerlink" href="#uuid" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>$ blkid
+/dev/nvme0n1p1: UUID=&quot;1f118546-b8f0-4d80-b4da-ded14522c7f8&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;07b9804d-01&quot;
+/dev/sda1: UUID=&quot;FA68-E285&quot; BLOCK_SIZE=&quot;512&quot; TYPE=&quot;vfat&quot; PARTUUID=&quot;a26afd37-c6ca-4e5c-bbd4-9ca66929e785&quot;
+</code></pre></div>
+<h2 id="mount">mount<a class="headerlink" href="#mount" title="Permanent link">&para;</a></h2>
 <p>判断一个目录是否是挂载点：</p>
 <div class="highlight"><pre><span></span><code>mountpoint -q /mnt
 echo $?
@@ -6060,7 +6091,7 @@ images/2021-01-11-raspios-buster-armhf-lite.img2      532480 7831551 7299072  3.
 </code></pre></div>
 <h2 id="_2">缩小镜象文件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code># 创建回环设备，但不挂载
-losetup /dev/loop0 ./qt.img
+losetup /dev磁盘管理/loop0 ./qt.img
 # 置零空闲数据
 zerofree -v /dev/loop0
 # 断开回环设备
@@ -6162,7 +6193,7 @@ $ sudo mdadm --zero-superblock /dev/sdd
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       

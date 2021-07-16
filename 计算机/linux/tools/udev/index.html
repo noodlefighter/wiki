@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.9">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.1.10">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -907,8 +907,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E7%94%9F%E6%B4%BB/%E9%9E%8B%E5%AD%90%E5%B7%A5%E8%89%BA/" class="md-nav__link">
-        鞋子工艺
+      <a href="../../../../%E7%94%9F%E6%B4%BB/%E9%9E%8B%E5%AD%90/" class="md-nav__link">
+        鞋的缝制工艺
       </a>
     </li>
   
@@ -1206,6 +1206,18 @@
     <li class="md-nav__item">
       <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/risc-v/" class="md-nav__link">
         Risc v
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/spi/" class="md-nav__link">
+        Spi
       </a>
     </li>
   
@@ -5932,14 +5944,65 @@ RESULT==&quot;35000c50000a7ef67&quot;, NAME +=&quot;root_disk%n&quot;
 </code></pre></div>
 <p>相关命令：</p>
 <div class="highlight"><pre><span></span><code># 查看某设备文件的信息（可以用来获取sysfs路径） ，以便编写规则
-udevadm info --attribute-walk /dev/ttyUSB0
+udevadm info /dev/ttyUSB0
 # 测试规则
 udevadm test --action=&quot;add&quot; /devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.3/1-1.3.1/1-1.3.1:1.0/ttyUSB0/tty/ttyUSB0
 # 重新载入规则
-udevadm control --reload
+udevadm control --reload-rules &amp;&amp; udevadm trigger
 </code></pre></div>
 <p>例子，<code>99-tty-permission.rules</code>，设置所有ttyUSB设备权限为0777：</p>
 <div class="highlight"><pre><span></span><code>KERNEL==&quot;ttyUSB*[0-9]&quot;, MODE=&quot;0777&quot;
+</code></pre></div>
+<p>例子，mount USB存储设备（via: <a href="https://unix.stackexchange.com/questions/44454/how-to-mount-removable-media-in-media-label-automatically-when-inserted-with">https://unix.stackexchange.com/questions/44454/how-to-mount-removable-media-in-media-label-automatically-when-inserted-with</a>）：</p>
+<div class="highlight"><pre><span></span><code># Add symlink /dev/usbdisks/&lt;label&gt; to /dev/sd[a-z][1-9] 
+# if partition has a label
+# Add symlink /media/usb/&lt;label&gt; to /media/autousb/&lt;label&gt;
+# for automounter support
+ACTION==&quot;add&quot;, KERNEL==&quot;sd*&quot;, ENV{DEVTYPE}==&quot;partition&quot;, \
+    ENV{ID_BUS}==&quot;usb&quot;, ENV{ID_FS_LABEL_ENC}==&quot;?*&quot;, \
+    SYMLINK+=&quot;usbdisks/$env{ID_FS_LABEL_ENC}&quot;, MODE:=&quot;0660&quot;, \
+    RUN+=&quot;/bin/rm /media/usb/$env{ID_FS_LABEL_ENC}&quot;, \
+    RUN+=&quot;/bin/ln -sf /media/autousb/$env{ID_FS_LABEL_ENC} /media/usb/$env{ID_FS_LABEL_ENC}&quot;
+
+# Fallback: If partition has a NO label, use kernel name (sd[a-z][1-9])
+ACTION==&quot;add&quot;, KERNEL==&quot;sd*&quot;, ENV{DEVTYPE}==&quot;partition&quot;, \
+    ENV{ID_BUS}==&quot;usb&quot;, ENV{ID_FS_LABEL_ENC}!=&quot;?*&quot;, \
+    SYMLINK+=&quot;usbdisks/%k&quot;, MODE:=&quot;0660&quot;, \
+    RUN+=&quot;/bin/rm /media/usb/%k&quot;, \
+    RUN+=&quot;/bin/ln -sf /media/autousb/%k /media/usb/%k&quot;
+
+# Some FileSystems emit a &quot;change&quot; event when they are unmounted.
+# UDEV seems to delete the device symlink in this case :-(
+# So we need to re-create it here
+ACTION==&quot;change&quot;, KERNEL==&quot;sd*&quot;, ENV{DEVTYPE}==&quot;partition&quot;, \
+    ENV{ID_BUS}==&quot;usb&quot;, ENV{ID_FS_LABEL_ENC}==&quot;?*&quot;, \
+    SYMLINK+=&quot;usbdisks/$env{ID_FS_LABEL_ENC}&quot;, MODE:=&quot;0660&quot;
+
+# Fallback: If partition has NO label, use kernel name
+ACTION==&quot;change&quot;, KERNEL==&quot;sd*&quot;, ENV{DEVTYPE}==&quot;partition&quot;, \
+    ENV{ID_BUS}==&quot;usb&quot;, ENV{ID_FS_LABEL_ENC}!=&quot;?*&quot;, \
+    SYMLINK+=&quot;usbdisks/%k&quot;, MODE:=&quot;0660&quot;
+
+
+# When device is removed, also remove /media/usb/&lt;label&gt;
+ACTION==&quot;remove&quot;, KERNEL==&quot;sd*&quot;, ENV{DEVTYPE}==&quot;partition&quot;, \
+    ENV{ID_BUS}==&quot;usb&quot;, ENV{ID_FS_LABEL_ENC}==&quot;?*&quot;, \
+    RUN+=&quot;/bin/rm /media/usb/$env{ID_FS_LABEL_ENC}&quot;
+
+# Fallback: If partition has no label, remove /media/usb/%k
+ACTION==&quot;remove&quot;, KERNEL==&quot;sd*&quot;, ENV{DEVTYPE}==&quot;partition&quot;, \
+    ENV{ID_BUS}==&quot;usb&quot;, ENV{ID_FS_LABEL_ENC}!=&quot;?*&quot;, \
+    RUN+=&quot;/bin/rm /media/usb/%k&quot;
+</code></pre></div>
+<p>例，自动 mount 特定分区：</p>
+<div class="highlight"><pre><span></span><code>ACTION==&quot;add&quot;, ENV{DEVTYPE}==&quot;partition&quot;, \
+    ENV{ID_PART_ENTRY_UUID}==&quot;65e1a058-7993-48f1-89ab-e7f5384bd335&quot; \
+    RUN+=&quot;/bin/mount /dev/disk/by-partuuid/$env{ID_PART_ENTRY_UUID} /mnt/chiaplots&quot; \
+    RUN+=&quot;/bin/chmod 777 /mnt/chiaplots&quot;
+
+ACTION==&quot;remove&quot;, ENV{DEVTYPE}==&quot;partition&quot;, \
+    ENV{ID_PART_ENTRY_UUID}==&quot;65e1a058-7993-48f1-89ab-e7f5384bd335&quot; \
+    RUN+=&quot;/bin/umount /mnt/chiaplots&quot; 
 </code></pre></div>
                 
               
@@ -6014,7 +6077,7 @@ udevadm control --reload
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       
