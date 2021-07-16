@@ -23,6 +23,8 @@ pacman -Ss xxx
 
 # 安装包
 pacman -S xxx
+# 安装二进制包
+pacman -U xxx.tar.zst
 
 # 删除软件包，顺便移除没被其他包依赖的依赖包
 pacman -Rs xxx

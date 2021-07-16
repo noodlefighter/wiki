@@ -1,3 +1,11 @@
+## 查看分区UUID等信息
+
+```
+$ blkid
+/dev/nvme0n1p1: UUID="1f118546-b8f0-4d80-b4da-ded14522c7f8" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="07b9804d-01"
+/dev/sda1: UUID="FA68-E285" BLOCK_SIZE="512" TYPE="vfat" PARTUUID="a26afd37-c6ca-4e5c-bbd4-9ca66929e785"
+```
+
 ## mount
 
 判断一个目录是否是挂载点：
@@ -79,7 +87,7 @@ images/2021-01-11-raspios-buster-armhf-lite.img2      532480 7831551 7299072  3.
 
 ```
 # 创建回环设备，但不挂载
-losetup /dev/loop0 ./qt.img
+losetup /dev磁盘管理/loop0 ./qt.img
 # 置零空闲数据
 zerofree -v /dev/loop0
 # 断开回环设备

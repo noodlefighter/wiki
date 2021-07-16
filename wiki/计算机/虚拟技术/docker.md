@@ -2,6 +2,10 @@
 
 > TODO 整理
 
+> docker container 已经被社区抛弃，参考[Kubernetes 弃用 Docker 后怎么办？](https://www.infoq.cn/article/47hcixefry1cetbzugwd)
+>
+> 可用的代替品是  [containerd](https://containerd.io/)，它有[和 docker 兼容的CLI](https://github.com/containerd/nerdctl)
+
 
 
 电子书：Docker —— 从入门到实践

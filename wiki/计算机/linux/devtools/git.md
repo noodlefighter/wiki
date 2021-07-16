@@ -336,6 +336,14 @@ $ git rm --cached {MOD_NAME}
 
 完成删除后，提交到仓库即可。
 
+### move子模块
+
+```
+$ git mv xxx/submodule xxx/new_path
+```
+
+
+
 ## 修改历史commit
 
 1. 进入rebase状态
