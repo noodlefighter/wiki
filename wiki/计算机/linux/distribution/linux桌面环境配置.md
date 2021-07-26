@@ -178,3 +178,13 @@ down=XF86AudioLowerVolume
 mute=XF86AudioMute
 ```
 
+## nvidia闭源显卡驱动配置
+
+Arch系下，配置程序在`nvidia-utils`包中，使用`nvidia-settings`GUI程序进行配置。
+
+### nvidia 闭源显卡驱动 撕裂问题
+
+在`nvida-settings`程序中配置Nvidia X server setting中启用force full composition pipeline
+
+
+

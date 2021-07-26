@@ -6,12 +6,26 @@
 
 * bsd-netcat
 * gnu-netcat
-* [nmap-netcat](https://nmap.org/ncat/)
+* [nmap-netcat](https://nmap.org/ncat/)(ncat)
+
+## nmap的netcat(ncat)
 
 nmap的netcat可以这样实现一个echo-server：
 
 ```
 $ ncat -l 2000 --keep-open --exec "/bin/cat"
+```
+
+作为服务器，监听一个端口，连接的客户端间发送的消息会互通（像一个router）：
+
+```
+$ ncat --broker --listen -p 12345
+```
+
+服务器监听1234、1235端口，连接1234的客户端发送的数据，转发至连接到1235的客户端：
+
+```
+$ ncat --keep-open --listen -p 1234 | ncat --keep-open --listen -p 1235
 ```
 
 
