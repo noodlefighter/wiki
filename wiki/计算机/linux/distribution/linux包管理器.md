@@ -37,7 +37,33 @@ pacman -Rs xxx
 # pacman -Syy
 ```
 
-### AUR是非官方提供的包
+### pacman系 Arch下降级
+
+需要使用一个`downgrade`工具，以降级`mesa`为例：
+
+1. `sudo pacman -Syu`
+2. `sudo pacman -S downgrade`
+3. `sudo downgrade --ala-only mesa`
+4. Select option `102` for `mesa 21.1.4`
+5. Reboot to apply changes.
+
+工具会询问你是否将这个包加入 pacman 的 IgnorePkg 列表，这个列表位于`/etc/pacman.conf`，比如这里会自动帮你加上`IgnorePkg = mesa`
+
+### pacman忽略升级某些包
+
+撞 bug 就得回退，回退后怕又不小心升级上了，这时候就要忽略升级某些包。
+
+IgnorePkg 列表位于`/etc/pacman.conf`，比如：
+
+```
+IgnorePkg = mesa
+```
+
+
+
+### AUR是非官方的软件源
+
+用户可以自行上传
 
 为了安全，一般不是直接发布二进制包，而是一些包含编译脚本的信息。
 

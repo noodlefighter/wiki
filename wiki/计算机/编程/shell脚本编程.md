@@ -29,6 +29,13 @@ https://stackoverflow.com/questions/35006457/choosing-between-0-and-bash-source
 $ do_something >/dev/null 2>&1
 ```
 
+### 忽略错误
+
+```
+umount /aa/bb || true
+```
+
+
 
 ### 判断环境变量是否存在
 

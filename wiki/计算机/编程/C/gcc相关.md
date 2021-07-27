@@ -23,13 +23,13 @@ Add a directory to the runtime library search path. This is used when linking an
 make LDFLAGS="--sysroot=/home/r/osp/buildroot-2019.02.1/output/host/arm-buildroot-linux-uclibcgnueabi/sysroot
 ```
 
-## GCC生成MAP
+## GCC生成MAP文件
 
 ```
 gcc -o helloworld helloworld.c -Wl,-Map,helloworld.map
 ```
 
-### 分析gcc的map文件
+### 用fpvgcc分析gcc的map文件
 
 可以用[fpvgcc](https://github.com/ebs-universe/fpv-gcc)，直接`pip install fpvgcc`即可安装：
 
@@ -70,7 +70,10 @@ B:/Project/funckeyb/fw/funckeyb-fw/app/src/rgbled.c:172:9: note: within this loo
 这里下标越界了 优化时出了问题 关掉优化就不会有这个警告
 警告信息来看 是在loop-optimizations优化时 发现赋值操作行为未定义
 
+## error: storage class specified for parameter
 
+在当前行查找时，并没有发现错误，仅仅定义了一个结构体
+后向上追溯，发现是新增的头文件中，最后一个函数的声明缺少一个";“ 引起
 
 ## 警告：将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
 
