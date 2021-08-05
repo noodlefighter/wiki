@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.1">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.2">
     
     
       
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#shell" class="md-skip">
           跳转至
         </a>
       
@@ -4457,6 +4457,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    给自己定的，写shell脚本时的原则
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell_1" class="md-nav__link">
+    shell 脚本模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     技巧
   </a>
@@ -6207,6 +6221,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    给自己定的，写shell脚本时的原则
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell_1" class="md-nav__link">
+    shell 脚本模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     技巧
   </a>
@@ -6506,7 +6534,21 @@
                 
                   <h1>Shell脚本编程</h1>
                 
-                <h2 id="_1">技巧<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+                <h2 id="shell">给自己定的，写shell脚本时的原则<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h2>
+<ul>
+<li>尽量不要写 shell 脚本，shell 脚本陷阱太多，写 shell 脚本前先问自己是否有必要，比如只是为了加载一些环境变量，否则不要写 shell 脚本</li>
+<li>就算是简单的操作也要警惕，也尽量用 python 代替 shell 脚本，因为一开始简单的脚本可能在日后变成复杂的脚本</li>
+<li>一定要从模板开始编写 shell 脚本，避免错误，比如如果没设<code>`nounset</code>就可能出现类似<code>rm -rf $ABC/</code>但ABC变量不存在而删除根目录的情况</li>
+</ul>
+<h2 id="shell_1">shell 脚本模板<a class="headerlink" href="#shell_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+SHELL_DIR=$(cd &quot;$(dirname &quot;$0&quot;)&quot;;pwd)
+</code></pre></div>
+<h2 id="_1">技巧<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">获取脚本所在目录<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>获取脚本所在路径, 而不是$PWD:</p>
 <div class="highlight"><pre><span></span><code>cd &quot;$(dirname &quot;$0&quot;)&quot;
@@ -7156,10 +7198,10 @@ $ cat /tmp/mylog
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.716f8af4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.2b46852b.min.js"></script>
       
         <script src="../../../js/cnzz-statistics.js"></script>
       
