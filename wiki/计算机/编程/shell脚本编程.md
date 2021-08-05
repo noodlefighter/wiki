@@ -1,9 +1,25 @@
 
 
----
+## 给自己定的，写shell脚本时的原则
 
+- 尽量不要写 shell 脚本，shell 脚本陷阱太多，写 shell 脚本前先问自己是否有必要，比如只是为了加载一些环境变量，否则不要写 shell 脚本
+- 就算是简单的操作也要警惕，也尽量用 python 代替 shell 脚本，因为一开始简单的脚本可能在日后变成复杂的脚本
+- 一定要从模板开始编写 shell 脚本，避免错误，比如如果没设``nounset`就可能出现类似`rm -rf $ABC/`但ABC变量不存在而删除根目录的情况
+
+## shell 脚本模板
+
+```
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+SHELL_DIR=$(cd "$(dirname "$0")";pwd)
+
+```
 
 ## 技巧
+
 ### 获取脚本所在目录
 
 获取脚本所在路径, 而不是$PWD:
@@ -11,6 +27,8 @@
 ```
 cd "$(dirname "$0")"
 ```
+
+
 
 ```
 SHELL_DIR=$(cd "$(dirname "$0")";pwd)

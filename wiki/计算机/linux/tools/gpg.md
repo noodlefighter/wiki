@@ -11,8 +11,10 @@ gpg --list-keys
 
 # 导出
 gpg --armor --output public-key.txt --export
-gpg --armor --output private-key.txt --export-secret-keys 
+gpg --armor --output private-key.txt --export-secret-keys
 
+# 接受别人的gpg密钥
+gpg --receive-keys xxxxxx
 ```
 
 
