@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.2">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.4">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -863,6 +863,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%8A%95%E5%BD%B1%E4%BB%AA/" class="md-nav__link">
+        投影仪
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%8A%80%E5%B7%A7/" class="md-nav__link">
         时间管理技巧
       </a>
@@ -938,14 +950,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_10" type="checkbox" id="__nav_7_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_11" type="checkbox" id="__nav_7_11" >
       
-      <label class="md-nav__link" for="__nav_7_10">
+      <label class="md-nav__link" for="__nav_7_11">
         装修
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="装修" data-md-level="2">
-        <label class="md-nav__title" for="__nav_7_10">
+        <label class="md-nav__title" for="__nav_7_11">
           <span class="md-nav__icon md-icon"></span>
           装修
         </label>
@@ -3191,8 +3203,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    手动建立回环设备
+  <a href="#losetup" class="md-nav__link">
+    用losetup建立回环设备
   </a>
   
 </li>
@@ -3211,13 +3223,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kpartx" class="md-nav__link">
+    使用kpartx
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     缩小镜象文件
   </a>
   
@@ -5211,6 +5230,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../%E7%BC%96%E7%A8%8B/python/python-asyncio/" class="md-nav__link">
+        Python asyncio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../%E7%BC%96%E7%A8%8B/python/python-virtualenv/" class="md-nav__link">
         Python virtualenv
       </a>
@@ -6008,8 +6039,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    手动建立回环设备
+  <a href="#losetup" class="md-nav__link">
+    用losetup建立回环设备
   </a>
   
 </li>
@@ -6028,13 +6059,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kpartx" class="md-nav__link">
+    使用kpartx
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     缩小镜象文件
   </a>
   
@@ -6073,8 +6111,14 @@
 echo $?
 </code></pre></div>
 <h2 id="mount-lookback-device">mount 回环设备（lookback device）<a class="headerlink" href="#mount-lookback-device" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>参考：<a href="https://medium.com/swlh/using-kpartx-losetup-with-disk-image-img-files-and-partitions-a5e186d303e5">https://medium.com/swlh/using-kpartx-losetup-with-disk-image-img-files-and-partitions-a5e186d303e5</a></p>
+</blockquote>
 <p>需要把镜象文件到本地文件树，则需要建立回环设备。</p>
-<h3 id="_1">手动建立回环设备<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h3 id="losetup">用losetup建立回环设备<a class="headerlink" href="#losetup" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>TODO: 问题是，似乎不没看到类似loop0p0这样的分区设备，但kpartx就会直接弄出，待研究</p>
+</blockquote>
 <div class="highlight"><pre><span></span><code># losetup -f --show raspios.img
 /dev/loop3
 # fdisk -l /dev/loop3
@@ -6117,7 +6161,41 @@ images/2021-01-11-raspios-buster-armhf-lite.img2      532480 7831551 7299072  3.
 <div class="highlight"><pre><span></span><code># mount raspios.img  -o loop,offset=$((532480*512)),sizelimit=$((7299072*512)),rw /media/rpi/
 # mount raspios.img  -o loop,offset=$((8192*512)),sizelimit=$((524288*512)),rw  /media/rpi/boot
 </code></pre></div>
-<h2 id="_2">缩小镜象文件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="kpartx">使用kpartx<a class="headerlink" href="#kpartx" title="Permanent link">&para;</a></h3>
+<p>这是最方便的方法，但需要安装kpartx工具，无惧多分区的img</p>
+<ul>
+<li>查看分区列表</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&gt; sudo kpartx -l /mnt/hgfs/vm-disks/system_built_ext4.img
+loop7p1 : 0 2048 /dev/loop7 2048
+loop7p2 : 0 6307840 /dev/loop7 4096
+</code></pre></div>
+<ul>
+<li>设置分区分区mapping</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&gt; sudo kpartx -a -v /mnt/hgfs/vm-disks/system_built_ext4.img
+add map loop7p1 (253:0): 0 2048 linear 7:7 2048
+add map loop7p2 (253:1): 0 6307840 linear 7:7 4096
+</code></pre></div>
+<ul>
+<li>According to the output of <code>man</code>, we can use the mappings, established by the above command, at location <code>/dev/mapper</code> to access the partitions, i.e. <code>/dev/mapper/loop7p1</code> &amp; <code>/dev/mapper/loop7p2</code></li>
+<li>mount 分区</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&gt; sudo mount /dev/mapper/loop7p2 /mnt/p2
+</code></pre></div>
+<ul>
+<li>and to confirm the the mount has occurred</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&gt; df | grep loop7p2/dev/mapper/loop7p2
+3055092      4616   2876396   1% /mnt/p2
+</code></pre></div>
+<ul>
+<li>卸载</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&gt; sudo umount /mnt/p2
+&gt; sudo kpartx -d /mnt/hgfs/vm-disks/system_built_ext4.img
+</code></pre></div>
+<h2 id="_1">缩小镜象文件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code># 创建回环设备，但不挂载
 losetup /dev磁盘管理/loop0 ./qt.img
 # 置零空闲数据
@@ -6221,7 +6299,7 @@ $ sudo mdadm --zero-superblock /dev/sdd
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       

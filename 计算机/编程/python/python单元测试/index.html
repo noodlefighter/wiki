@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.2">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.4">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -863,6 +863,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%8A%95%E5%BD%B1%E4%BB%AA/" class="md-nav__link">
+        投影仪
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%8A%80%E5%B7%A7/" class="md-nav__link">
         时间管理技巧
       </a>
@@ -938,14 +950,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_10" type="checkbox" id="__nav_7_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_11" type="checkbox" id="__nav_7_11" >
       
-      <label class="md-nav__link" for="__nav_7_10">
+      <label class="md-nav__link" for="__nav_7_11">
         装修
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="装修" data-md-level="2">
-        <label class="md-nav__title" for="__nav_7_10">
+        <label class="md-nav__title" for="__nav_7_11">
           <span class="md-nav__icon md-icon"></span>
           装修
         </label>
@@ -5120,6 +5132,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../python-asyncio/" class="md-nav__link">
+        Python asyncio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../python-virtualenv/" class="md-nav__link">
         Python virtualenv
       </a>
@@ -5175,6 +5199,13 @@
         <li class="md-nav__item">
   <a href="#pythonpytest" class="md-nav__link">
     python单元测试框架pytest
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-unittest" class="md-nav__link">
+    python 自带的单元测试框架unittest
   </a>
   
 </li>
@@ -5937,6 +5968,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#python-unittest" class="md-nav__link">
+    python 自带的单元测试框架unittest
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5977,6 +6015,30 @@ E        +  where 4 = inc(3)
 
 test_sample.py:5: AssertionError
 ========================== 1 failed in 0.04 seconds===========================
+</code></pre></div>
+<h2 id="python-unittest">python 自带的单元测试框架unittest<a class="headerlink" href="#python-unittest" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>import os
+import unittest
+
+def exec_cmd(cmd):
+    r = os.popen(cmd)
+    text = r.read()
+    r.close()
+    return text
+
+def str_to_list(text):
+    l = str(text).split(&#39;\n&#39;)
+    return list(filter(lambda x: x != &#39;&#39;, map(lambda x: x.strip(), l)))
+
+class TestStringMethods(unittest.TestCase):
+
+    def test_add(self):
+        exec_cmd(&#39;python ./pkgsync test.json add 1 2 3&#39;)
+        sync_list = str_to_list(exec_cmd(&#39;python ./pkgsync test.json list-sync&#39;))
+        self.assertEqual(sync_list, [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;])
+
+if __name__ == &#39;__main__&#39;:
+    unittest.main()
 </code></pre></div>
                 
               
@@ -6051,7 +6113,7 @@ test_sample.py:5: AssertionError
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       

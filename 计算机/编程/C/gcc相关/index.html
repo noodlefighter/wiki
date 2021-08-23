@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.2">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.4">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -863,6 +863,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%8A%95%E5%BD%B1%E4%BB%AA/" class="md-nav__link">
+        投影仪
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%8A%80%E5%B7%A7/" class="md-nav__link">
         时间管理技巧
       </a>
@@ -938,14 +950,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_10" type="checkbox" id="__nav_7_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_11" type="checkbox" id="__nav_7_11" >
       
-      <label class="md-nav__link" for="__nav_7_10">
+      <label class="md-nav__link" for="__nav_7_11">
         装修
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="装修" data-md-level="2">
-        <label class="md-nav__title" for="__nav_7_10">
+        <label class="md-nav__title" for="__nav_7_11">
           <span class="md-nav__icon md-icon"></span>
           装修
         </label>
@@ -4800,6 +4812,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#gcc_2" class="md-nav__link">
+    gcc 对齐
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5208,6 +5227,18 @@
     <li class="md-nav__item">
       <a href="../../python/opencv-python/" class="md-nav__link">
         opencv-python
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python-asyncio/" class="md-nav__link">
+        Python asyncio
       </a>
     </li>
   
@@ -6061,6 +6092,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#gcc_2" class="md-nav__link">
+    gcc 对齐
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6138,54 +6176,34 @@ int event = (int)(intptr_t)from;
 <p>在使用buildroot配合自制的external工具链（gcc + uclibc）编译应用时提示<code>undefined reference to __fini_array_start</code>。</p>
 <p>搜索了下发现是由于开启了动态链接，但找不到动态库<code>libc.so</code>，而退行链到了<code>libc.a</code>静态库导致的：</p>
 <p><a href="http://lists.buildroot.org/pipermail/buildroot/2011-June/043776.html">http://lists.buildroot.org/pipermail/buildroot/2011-June/043776.html</a></p>
-<div class="highlight"><pre><span></span><code>Hi,
-
-I&#39;ve found that the target filesystem is missing /usr/lib/libc.so
-(simple script) when choosing the native gcc compiler package.
-
-This causes native gcc to fall back to static linking (libc.a), even
-though &quot;-shared&quot; is specified. You can see this by observing gcc
--Wl,verbose output. When building shared code it returns this cryptic
-error message:
-
-/home/nn/buildroot/output/staging/usr/lib/libc.a(__uClibc_main.os): In
-function `__uClibc_fini&#39;:
-__uClibc_main.c:(.text+0x6c): undefined reference to `__fini_array_start&#39;
-__uClibc_main.c:(.text+0x74): undefined reference to `__fini_array_end&#39;
-/home/nn/buildroot/output/staging/usr/lib/libc.a(__uClibc_main.os): In
-function `__uClibc_main&#39;:
-__uClibc_main.c:(.text+0x250): undefined reference to
-`__preinit_array_start&#39;
-__uClibc_main.c:(.text+0x254): undefined reference to `__preinit_array_end&#39;
-__uClibc_main.c:(.text+0x25c): undefined reference to `__init_array_start&#39;
-__uClibc_main.c:(.text+0x260): undefined reference to `__init_array_end&#39;
-/home/nn/buildroot/output/staging/usr/arm-linux-uclibcgnueabi/bin/ld:
-./libgcc_s.so.1.tmp: hidden symbol `__fini_array_end&#39; isn&#39;t defined
-/home/nn/buildroot/output/staging/usr/arm-linux-uclibcgnueabi/bin/ld:
-final link failed: Nonrepresentable section on output
-collect2: ld returned 1 exit status
-make[3]: *** [libgcc_s.so] Error 1
-
-Here&#39;s a patch:
-
-diff -ruN buildroot-2011.05/scripts/copy.sh
-buildroot-2011.05-new/scripts/copy.sh
---- buildroot-2011.05/scripts/copy.sh    2011-05-27 16:18:21.000000000 +0200
-+++ buildroot-2011.05-new/scripts/copy.sh    2011-06-30 16:02:59.059803037 +0200
-@@ -6,6 +6,7 @@
- echo &quot;Copying development files to target...&quot;
-
- cp -af ${STAGING_DIR}/usr/include ${TARGET_DIR}/usr
-+cp -af ${STAGING_DIR}/usr/lib/libc.so ${TARGET_DIR}/usr/lib/libc.so
-
- for LIBSDIR in /lib /usr/lib; do
-     for WILDCARD in *.a *.la; do
-</code></pre></div>
+<p><img alt="image-20210804150852689" src="../_assets/gcc%E7%9B%B8%E5%85%B3/image-20210804150852689.png" /></p>
 <h2 id="-fpermissive">-fpermissive<a class="headerlink" href="#-fpermissive" title="Permanent link">&para;</a></h2>
 <p>-fno-permissive</p>
 <h2 id="gcc_1">gcc 解决库交叉引用、顺序错误的问题<a class="headerlink" href="#gcc_1" title="Permanent link">&para;</a></h2>
 <p>gcc是从右往左加载库的，比如存在静态库aaa和bbb，当bbb依赖aaa时，需要写成<code>-lbbb -laaa</code>，如果想临时解决这个问题（而不想大费周章地修改构建脚本），可以简单地用以下方式解决：</p>
 <div class="highlight"><pre><span></span><code>-Wl,--start-group -laaa -lbbb -Wl,--end-group
+</code></pre></div>
+<h2 id="gcc_2">gcc 对齐<a class="headerlink" href="#gcc_2" title="Permanent link">&para;</a></h2>
+<p>变量分配地址对齐：</p>
+<div class="highlight"><pre><span></span><code>int x __attribute__ ((aligned (16))) = 0;
+
+// 用于结构体时，不仅分配的地址会对齐，内部成员的对齐也会受影响
+struct __attribute__ ((aligned (8))) my_struct1 {
+    short f[3];
+};
+</code></pre></div>
+<p>设置结构体成员对齐的两种写法：</p>
+<div class="highlight"><pre><span></span><code>struct __attribute__ ((packed)) my_struct3 {
+    char c;
+    int  i;
+};
+
+#pragma pack(1)
+struct my_struct3 {
+    char c;
+    int  i;
+};
+#pragma pack()
 </code></pre></div>
                 
               
@@ -6260,7 +6278,7 @@ buildroot-2011.05-new/scripts/copy.sh
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       

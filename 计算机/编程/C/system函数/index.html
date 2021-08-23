@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.2">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.4">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -863,6 +863,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%8A%95%E5%BD%B1%E4%BB%AA/" class="md-nav__link">
+        投影仪
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%8A%80%E5%B7%A7/" class="md-nav__link">
         时间管理技巧
       </a>
@@ -938,14 +950,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_10" type="checkbox" id="__nav_7_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_11" type="checkbox" id="__nav_7_11" >
       
-      <label class="md-nav__link" for="__nav_7_10">
+      <label class="md-nav__link" for="__nav_7_11">
         装修
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="装修" data-md-level="2">
-        <label class="md-nav__title" for="__nav_7_10">
+        <label class="md-nav__title" for="__nav_7_11">
           <span class="md-nav__icon md-icon"></span>
           装修
         </label>
@@ -5156,6 +5168,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../python/python-asyncio/" class="md-nav__link">
+        Python asyncio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../python/python-virtualenv/" class="md-nav__link">
         Python virtualenv
       </a>
@@ -5964,7 +5988,7 @@ int system(const char *command);
 <p>via: <a href="https://blog.csdn.net/cheyo/article/details/6595955">https://blog.csdn.net/cheyo/article/details/6595955</a></p>
 </blockquote>
 <p>例：</p>
-<div class="highlight"><pre><span></span><code><span class="n">status</span> <span class="o">=</span> <span class="n">system</span><span class="p">(</span><span class="s">&quot;./test.sh&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="s">&quot;./test.sh&quot;</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p>1、先统一两个说法：
 （1）system返回值：指调用system函数后的返回值，比如上例中status为system返回值
@@ -6002,43 +6026,43 @@ int system(const char *command);
 根据以上分析，当shell脚本不存在、没有执行权限等场景下时，以上前2个条件仍会成立，此时WEXITSTATUS(status)为127，126等数值。
 所以，我们在shell脚本中不能将127，126等数值定义为返回值，否则无法区分中是shell的返回值，还是调用shell脚本异常的原因值。shell脚本中的返回值最好多1开始递增。</p>
 <p>判断shell脚本正常执行结束的健全代码如下：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;sys/wait.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/types.h&gt;</span><span class="cp"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">pid_t</span> <span class="n">status</span><span class="p">;</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="n">system</span><span class="p">(</span><span class="s">&quot;./test.sh&quot;</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="s">&quot;./test.sh&quot;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="mi">-1</span> <span class="o">==</span> <span class="n">status</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;system error!&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;exit status value = [0x%x]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;system error!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;exit status value = [0x%x]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">);</span><span class="w"></span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">WIFEXITED</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
-            <span class="p">{</span>
-                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;run shell script successfully.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="k">else</span>
-            <span class="p">{</span>
-                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;run shell script fail, script exit code: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">else</span>
-        <span class="p">{</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;exit status = [%d]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WIFEXITED</span><span class="p">(</span><span class="n">status</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">))</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;run shell script successfully.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">else</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;run shell script fail, script exit code: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;exit status = [%d]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <blockquote>
 <p>WIFEXITED(stat_val) Evaluates to a non-zero value if status
@@ -6124,7 +6148,7 @@ process returned from main().</p>
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       

@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.2">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.4">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -858,6 +858,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%8A%95%E5%BD%B1%E4%BB%AA/" class="md-nav__link">
+        投影仪
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%8A%80%E5%B7%A7/" class="md-nav__link">
         时间管理技巧
       </a>
@@ -933,14 +945,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_10" type="checkbox" id="__nav_7_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_11" type="checkbox" id="__nav_7_11" >
       
-      <label class="md-nav__link" for="__nav_7_10">
+      <label class="md-nav__link" for="__nav_7_11">
         装修
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="装修" data-md-level="2">
-        <label class="md-nav__title" for="__nav_7_10">
+        <label class="md-nav__title" for="__nav_7_11">
           <span class="md-nav__icon md-icon"></span>
           装修
         </label>
@@ -5123,6 +5135,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../%E7%BC%96%E7%A8%8B/python/python-asyncio/" class="md-nav__link">
+        Python asyncio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../%E7%BC%96%E7%A8%8B/python/python-virtualenv/" class="md-nav__link">
         Python virtualenv
       </a>
@@ -5891,32 +5915,32 @@
                 
                 <p>linux内核中实现了环形buffer，它也能和内存屏障配合实现允许同时写、清空的buffer。</p>
 <p><a href="https://www.kernel.org/doc/html/latest/core-api/circular-buffers.html">https://www.kernel.org/doc/html/latest/core-api/circular-buffers.html</a></p>
-<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">circ_buf</span> <span class="p">{</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">head</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">tail</span><span class="p">;</span>
-<span class="p">};</span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">circ_buf</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">tail</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="cm">/* 使用空间 */</span>
+<span class="cm">/* 使用空间 */</span><span class="w"></span>
 <span class="cp">#define CIRC_CNT(head,tail,size) (((head) - (tail)) &amp; ((size)-1))</span>
 
-<span class="cm">/* 剩余空间 */</span>
+<span class="cm">/* 剩余空间 */</span><span class="w"></span>
 <span class="cp">#define CIRC_SPACE(head,tail,size) CIRC_CNT((tail),((head)+1),(size))</span>
 
-<span class="cm">/* 立即可读的连续空间  */</span>
+<span class="cm">/* 立即可读的连续空间  */</span><span class="w"></span>
 <span class="cp">#define CIRC_CNT_TO_END(head,tail,size) \</span>
 <span class="cp">    ({int end = (size) - (tail); \</span>
 <span class="cp">      int n = ((head) + end) &amp; ((size)-1); \</span>
 <span class="cp">      n &lt; end ? n : end;})</span>
 
-<span class="cm">/* 立即可写的连续空间  */</span>
+<span class="cm">/* 立即可写的连续空间  */</span><span class="w"></span>
 <span class="cp">#define CIRC_SPACE_TO_END(head,tail,size) \</span>
 <span class="cp">    ({int end = (size) - 1 - (head); \</span>
 <span class="cp">      int n = (end + (tail)) &amp; ((size)-1); \</span>
 <span class="cp">      n &lt;= end ? n : end+1;})</span>
 </code></pre></div>
 <p>提供的设施还是比较原始的，用法参考了下，<a href="https://github.com/torvalds/linux/blob/master/drivers/acpi/acpi_dbg.c">acpi_dbg.c</a>：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;linux/circ_buf.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/circ_buf.h&gt;</span><span class="cp"></span>
 
 <span class="cp">#define circ_count(circ) \</span>
 <span class="cp">    (CIRC_CNT((circ)-&gt;head, (circ)-&gt;tail, ACPI_AML_BUF_SIZE))</span>
@@ -5928,65 +5952,65 @@
 <span class="cp">    (CIRC_SPACE_TO_END((circ)-&gt;head, (circ)-&gt;tail, ACPI_AML_BUF_SIZE))</span>
 
 <span class="c1">// 初始化</span>
-<span class="kt">int</span> <span class="n">__init</span> <span class="n">acpi_aml_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> 
-<span class="p">{</span>
-    <span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">.</span><span class="n">buf</span> <span class="o">=</span> <span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_buf</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">static</span> <span class="kt">int</span> <span class="n">acpi_aml_open</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">)</span> 
-<span class="p">{</span>
-    <span class="cm">/* ... */</span>    
-    <span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">.</span><span class="n">tail</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="cm">/* ... */</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">__init</span><span class="w"> </span><span class="n">acpi_aml_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">.</span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_buf</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">acpi_aml_open</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* ... */</span><span class="w">    </span>
+<span class="w">    </span><span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">.</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">.</span><span class="n">tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* ... */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="c1">// 生产者</span>
-<span class="k">static</span> <span class="kt">int</span> <span class="n">acpi_aml_write_user</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="nc">circ_buf</span> <span class="o">*</span><span class="n">crc</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">;</span>        <span class="c1">// &lt;----实例</span>
-    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">acpi_aml_write_user</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__user</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span> <span class="nc">circ_buf</span><span class="w"> </span><span class="o">*</span><span class="n">crc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">;</span><span class="w">        </span><span class="c1">// &lt;----实例</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">ret</span> <span class="o">=</span> <span class="n">acpi_aml_lock_write</span><span class="p">(</span><span class="n">crc</span><span class="p">,</span> <span class="n">ACPI_AML_IN_USER</span><span class="p">);</span>  <span class="c1">// &lt;----上锁</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
-    <span class="cm">/* sync tail before inserting cmds */</span>
-    <span class="n">smp_mb</span><span class="p">();</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">];</span>                          <span class="c1">// &lt;----获取头部</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">len</span><span class="p">,</span> <span class="n">circ_space_to_end</span><span class="p">(</span><span class="n">crc</span><span class="p">));</span>              <span class="c1">// &lt;----填充长度</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">copy_from_user</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="p">{</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
-        <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="cm">/* sync head after inserting cmds */</span>
-    <span class="n">smp_wmb</span><span class="p">();</span>
-    <span class="n">crc</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">=</span> <span class="p">(</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ACPI_AML_BUF_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// &lt;----计算新的head，与上mask（2^n-1就是掩码）</span>
-    <span class="n">ret</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
-<span class="nl">out</span><span class="p">:</span>
-    <span class="n">acpi_aml_unlock_fifo</span><span class="p">(</span><span class="n">ACPI_AML_IN_USER</span><span class="p">,</span> <span class="n">ret</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acpi_aml_lock_write</span><span class="p">(</span><span class="n">crc</span><span class="p">,</span><span class="w"> </span><span class="n">ACPI_AML_IN_USER</span><span class="p">);</span><span class="w">  </span><span class="c1">// &lt;----上锁</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* sync tail before inserting cmds */</span><span class="w"></span>
+<span class="w">    </span><span class="n">smp_mb</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">];</span><span class="w">                          </span><span class="c1">// &lt;----获取头部</span>
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="n">circ_space_to_end</span><span class="p">(</span><span class="n">crc</span><span class="p">));</span><span class="w">              </span><span class="c1">// &lt;----填充长度</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">copy_from_user</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">out</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* sync head after inserting cmds */</span><span class="w"></span>
+<span class="w">    </span><span class="n">smp_wmb</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">ACPI_AML_BUF_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;----计算新的head，与上mask（2^n-1就是掩码）</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<span class="nl">out</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">acpi_aml_unlock_fifo</span><span class="p">(</span><span class="n">ACPI_AML_IN_USER</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="c1">// 消费者(每次只消耗1byte)</span>
-<span class="k">static</span> <span class="kt">int</span> <span class="n">acpi_aml_readb_kern</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="nc">circ_buf</span> <span class="o">*</span><span class="n">crc</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">;</span>        <span class="c1">// &lt;----实例</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">acpi_aml_readb_kern</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span> <span class="nc">circ_buf</span><span class="w"> </span><span class="o">*</span><span class="n">crc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">acpi_aml_io</span><span class="p">.</span><span class="n">in_crc</span><span class="p">;</span><span class="w">        </span><span class="c1">// &lt;----实例</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">ret</span> <span class="o">=</span> <span class="n">acpi_aml_lock_read</span><span class="p">(</span><span class="n">crc</span><span class="p">,</span> <span class="n">ACPI_AML_IN_KERN</span><span class="p">);</span>   <span class="c1">// &lt;----上锁</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
-    <span class="cm">/* sync head before removing cmds */</span>
-    <span class="n">smp_rmb</span><span class="p">();</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">tail</span><span class="p">];</span>                          <span class="c1">// &lt;----获取尾部</span>
-    <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
-    <span class="cm">/* sync tail before inserting cmds */</span>
-    <span class="n">smp_mb</span><span class="p">();</span>
-    <span class="n">crc</span><span class="o">-&gt;</span><span class="n">tail</span> <span class="o">=</span> <span class="p">(</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">tail</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ACPI_AML_BUF_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// &lt;----计算新的tail，与上mask（2^n-1就是掩码）</span>
-    <span class="n">acpi_aml_unlock_fifo</span><span class="p">(</span><span class="n">ACPI_AML_IN_KERN</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>      <span class="c1">// &lt;----解锁</span>
-    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acpi_aml_lock_read</span><span class="p">(</span><span class="n">crc</span><span class="p">,</span><span class="w"> </span><span class="n">ACPI_AML_IN_KERN</span><span class="p">);</span><span class="w">   </span><span class="c1">// &lt;----上锁</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* sync head before removing cmds */</span><span class="w"></span>
+<span class="w">    </span><span class="n">smp_rmb</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">tail</span><span class="p">];</span><span class="w">                          </span><span class="c1">// &lt;----获取尾部</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* sync tail before inserting cmds */</span><span class="w"></span>
+<span class="w">    </span><span class="n">smp_mb</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">crc</span><span class="o">-&gt;</span><span class="n">tail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">ACPI_AML_BUF_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;----计算新的tail，与上mask（2^n-1就是掩码）</span>
+<span class="w">    </span><span class="n">acpi_aml_unlock_fifo</span><span class="p">(</span><span class="n">ACPI_AML_IN_KERN</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w">      </span><span class="c1">// &lt;----解锁</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
                 
               
@@ -6061,7 +6085,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       

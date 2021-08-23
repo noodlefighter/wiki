@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.2">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.4">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -863,6 +863,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%8A%95%E5%BD%B1%E4%BB%AA/" class="md-nav__link">
+        投影仪
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%8A%80%E5%B7%A7/" class="md-nav__link">
         时间管理技巧
       </a>
@@ -938,14 +950,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_10" type="checkbox" id="__nav_7_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_11" type="checkbox" id="__nav_7_11" >
       
-      <label class="md-nav__link" for="__nav_7_10">
+      <label class="md-nav__link" for="__nav_7_11">
         装修
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="装修" data-md-level="2">
-        <label class="md-nav__title" for="__nav_7_10">
+        <label class="md-nav__title" for="__nav_7_11">
           <span class="md-nav__icon md-icon"></span>
           装修
         </label>
@@ -5191,6 +5203,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../python/python-asyncio/" class="md-nav__link">
+        Python asyncio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../python/python-virtualenv/" class="md-nav__link">
         Python virtualenv
       </a>
@@ -6046,28 +6070,28 @@ $ ~/linuxdeployqt-7-x86_64.AppImage &lt;编译好的程序&gt; -appimage
 </blockquote>
 <p>子类中实现<code>dragEnterEvent</code>和<code>dropEvent</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//当用户拖动文件到窗口部件上时候，就会触发dragEnterEvent事件</span>
-<span class="kt">void</span> <span class="nf">MainWindow::dragEnterEvent</span><span class="p">(</span><span class="n">QDragEnterEvent</span> <span class="o">*</span><span class="n">event</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">//如果为文件，则支持拖放</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">event</span><span class="o">-&gt;</span><span class="n">mimeData</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">hasFormat</span><span class="p">(</span><span class="s">&quot;text/uri-list&quot;</span><span class="p">))</span>
-        <span class="n">event</span><span class="o">-&gt;</span><span class="n">acceptProposedAction</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">MainWindow::dragEnterEvent</span><span class="p">(</span><span class="n">QDragEnterEvent</span><span class="w"> </span><span class="o">*</span><span class="n">event</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//如果为文件，则支持拖放</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="o">-&gt;</span><span class="n">mimeData</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">hasFormat</span><span class="p">(</span><span class="s">&quot;text/uri-list&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="n">event</span><span class="o">-&gt;</span><span class="n">acceptProposedAction</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="c1">//当用户放下这个文件后，就会触发dropEvent事件</span>
-<span class="kt">void</span> <span class="nf">MainWindow::dropEvent</span><span class="p">(</span><span class="n">QDropEvent</span> <span class="o">*</span><span class="n">event</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">//注意：这里如果有多文件存在，意思是用户一下子拖动了多个文件，而不是拖动一个目录</span>
-    <span class="c1">//如果想读取整个目录，则在不同的操作平台下，自己编写函数实现读取整个目录文件名</span>
-    <span class="n">QList</span><span class="o">&lt;</span><span class="n">QUrl</span><span class="o">&gt;</span> <span class="n">urls</span> <span class="o">=</span> <span class="n">event</span><span class="o">-&gt;</span><span class="n">mimeData</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">urls</span><span class="p">();</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">urls</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">())</span>
-        <span class="k">return</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">MainWindow::dropEvent</span><span class="p">(</span><span class="n">QDropEvent</span><span class="w"> </span><span class="o">*</span><span class="n">event</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//注意：这里如果有多文件存在，意思是用户一下子拖动了多个文件，而不是拖动一个目录</span>
+<span class="w">    </span><span class="c1">//如果想读取整个目录，则在不同的操作平台下，自己编写函数实现读取整个目录文件名</span>
+<span class="w">    </span><span class="n">QList</span><span class="o">&lt;</span><span class="n">QUrl</span><span class="o">&gt;</span><span class="w"> </span><span class="n">urls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="o">-&gt;</span><span class="n">mimeData</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">urls</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">urls</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
 
-    <span class="c1">//往文本框中追加文件名</span>
-    <span class="n">foreach</span><span class="p">(</span><span class="n">QUrl</span> <span class="n">url</span><span class="p">,</span> <span class="n">urls</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">QString</span> <span class="n">file_name</span> <span class="o">=</span> <span class="n">url</span><span class="p">.</span><span class="n">toLocalFile</span><span class="p">();</span>
-        <span class="n">textEdit</span><span class="o">-&gt;</span><span class="n">append</span><span class="p">(</span><span class="n">file_name</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="c1">//往文本框中追加文件名</span>
+<span class="w">    </span><span class="n">foreach</span><span class="p">(</span><span class="n">QUrl</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">urls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">QString</span><span class="w"> </span><span class="n">file_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="n">toLocalFile</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">textEdit</span><span class="o">-&gt;</span><span class="n">append</span><span class="p">(</span><span class="n">file_name</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="qtmd5">QT计算md5校验值<a class="headerlink" href="#qtmd5" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -6103,18 +6127,18 @@ $ ~/linuxdeployqt-7-x86_64.AppImage &lt;编译好的程序&gt; -appimage
 <p>via: <a href="https://blog.csdn.net/sinat_27593959/article/details/53048614">https://blog.csdn.net/sinat_27593959/article/details/53048614</a></p>
 </blockquote>
 <p>通过QTableWidget中的item( )方法可以获得相应行数和列数的QTableWidgetItem，若要设置该Item的编辑状态（即可编辑状态和不可编辑状态），可以通过QTableWidgetItem下的setflags函数来设置。setflags函数需要传入的参数为枚举型的Qt::ItemFlags，该枚举类型描述如下： </p>
-<div class="highlight"><pre><span></span><code><span class="n">enumItemFlag</span><span class="p">{</span>
- <span class="n">NoItemFlags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
- <span class="n">ItemIsSelectable</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
- <span class="n">ItemIsEditable</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
- <span class="n">ItemIsDragEnabled</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
- <span class="n">ItemIsDropEnabled</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
- <span class="n">ItemIsUserCheckable</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
- <span class="n">ItemIsEnabled</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
- <span class="n">ItemIsTristate</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
- <span class="n">ItemNeverHasChildren</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
- <span class="n">ItemIsUserTristate</span><span class="o">=</span><span class="mi">256</span>
-<span class="p">};</span> 
+<div class="highlight"><pre><span></span><code><span class="n">enumItemFlag</span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">NoItemFlags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="n">ItemIsSelectable</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="n">ItemIsEditable</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="n">ItemIsDragEnabled</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="n">ItemIsDropEnabled</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="n">ItemIsUserCheckable</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="n">ItemIsEnabled</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="n">ItemIsTristate</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="n">ItemNeverHasChildren</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="n">ItemIsUserTristate</span><span class="o">=</span><span class="mi">256</span><span class="w"></span>
+<span class="p">};</span><span class="w"> </span>
 </code></pre></div>
 <p>通过需要表格框状态可分为如下三种：灰色不可编辑状态、浅色不可编辑状态和浅色可双击编辑状态，而setflags的参数传入可以通过强制类型转换的方式。即对应于如下：</p>
 <p>灰色不可编辑状态：Item.setflags((ItemFlags) 0); 
@@ -6197,7 +6221,7 @@ $ ~/linuxdeployqt-7-x86_64.AppImage &lt;编译好的程序&gt; -appimage
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       

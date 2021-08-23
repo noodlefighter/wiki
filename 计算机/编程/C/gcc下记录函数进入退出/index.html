@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.2">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.2.4">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -863,6 +863,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%8A%95%E5%BD%B1%E4%BB%AA/" class="md-nav__link">
+        投影仪
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%9F%E6%B4%BB/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%8A%80%E5%B7%A7/" class="md-nav__link">
         时间管理技巧
       </a>
@@ -938,14 +950,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_10" type="checkbox" id="__nav_7_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_11" type="checkbox" id="__nav_7_11" >
       
-      <label class="md-nav__link" for="__nav_7_10">
+      <label class="md-nav__link" for="__nav_7_11">
         装修
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="装修" data-md-level="2">
-        <label class="md-nav__title" for="__nav_7_10">
+        <label class="md-nav__title" for="__nav_7_11">
           <span class="md-nav__icon md-icon"></span>
           装修
         </label>
@@ -5163,6 +5175,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../python/python-asyncio/" class="md-nav__link">
+        Python asyncio
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../python/python-virtualenv/" class="md-nav__link">
         Python virtualenv
       </a>
@@ -5992,56 +6016,56 @@
 </blockquote>
 <p>The execution flow can be traced implementing these monitoring points, for example writing on file some useful information.</p>
 <p>Suppose you have to analyze the following code:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
-<span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
- <span class="n">printf</span><span class="p">(</span><span class="s">&quot;foo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;foo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
- <span class="n">foo</span><span class="p">();</span>
+<span class="w"> </span><span class="n">foo</span><span class="p">();</span><span class="w"></span>
 
- <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Create a file called “<code>trace.c</code>” with the following content:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
 
-<span class="k">static</span> <span class="kt">FILE</span> <span class="o">*</span><span class="n">fp_trace</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp_trace</span><span class="p">;</span><span class="w"></span>
 
-<span class="kt">void</span>
-<span class="nf">__attribute__</span> <span class="p">((</span><span class="n">constructor</span><span class="p">))</span>
-<span class="n">trace_begin</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
- <span class="n">fp_trace</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&quot;trace.out&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"></span>
+<span class="nf">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">constructor</span><span class="p">))</span><span class="w"></span>
+<span class="n">trace_begin</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">fp_trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;trace.out&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span>
-<span class="nf">__attribute__</span> <span class="p">((</span><span class="n">destructor</span><span class="p">))</span>
-<span class="n">trace_end</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
- <span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
- <span class="n">fclose</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">);</span>
- <span class="p">}</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"></span>
+<span class="nf">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">destructor</span><span class="p">))</span><span class="w"></span>
+<span class="n">trace_end</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">fclose</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span>
-<span class="nf">__cyg_profile_func_enter</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">func</span><span class="p">,</span>  <span class="kt">void</span> <span class="o">*</span><span class="n">caller</span><span class="p">)</span>
-<span class="p">{</span>
- <span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
- <span class="n">fprintf</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">,</span> <span class="s">&quot;e %p %p %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">caller</span><span class="p">,</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">);</span>
- <span class="p">}</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"></span>
+<span class="nf">__cyg_profile_func_enter</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">func</span><span class="p">,</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">caller</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;e %p %p %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">caller</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span>
-<span class="nf">__cyg_profile_func_exit</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">func</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">caller</span><span class="p">)</span>
-<span class="p">{</span>
- <span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
- <span class="n">fprintf</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">,</span> <span class="s">&quot;x %p %p %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">caller</span><span class="p">,</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
- <span class="p">}</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"></span>
+<span class="nf">__cyg_profile_func_exit</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">caller</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x %p %p %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">caller</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>The idea is to write into a log (in our case “<code>trace.out</code>“) the function addresses, the address of the call and the execution time. To do so, a file needs to be open at the beginning of execution. The GCC-specific attribute “<a href="http://gcc.gnu.org/onlinedocs/gcc-4.5.1/gcc/Function-Attributes.html#index-g_t_0040code_007bconstructor_007d-function-attribute-2343"><code>constructor</code></a>” helps in defining a function that is executed before “main”. In the same way the attribute “<code>destructor</code>” specifies that a function must be executed when the program is going to exit.</p>
 <p>To compile and execute the program, the command-line is:</p>
@@ -6172,7 +6196,7 @@ Exit  main at <span class="m">2010</span>-10-06T15:35:53+0200
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       
