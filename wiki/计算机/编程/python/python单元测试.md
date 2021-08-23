@@ -32,3 +32,34 @@ test_sample.py:5: AssertionError
 ========================== 1 failed in 0.04 seconds===========================
 ```
 
+
+
+## python 自带的单元测试框架unittest
+
+
+
+```
+import os
+import unittest
+
+def exec_cmd(cmd):
+    r = os.popen(cmd)
+    text = r.read()
+    r.close()
+    return text
+
+def str_to_list(text):
+    l = str(text).split('\n')
+    return list(filter(lambda x: x != '', map(lambda x: x.strip(), l)))
+
+class TestStringMethods(unittest.TestCase):
+
+    def test_add(self):
+        exec_cmd('python ./pkgsync test.json add 1 2 3')
+        sync_list = str_to_list(exec_cmd('python ./pkgsync test.json list-sync'))
+        self.assertEqual(sync_list, ['1', '2', '3'])
+
+if __name__ == '__main__':
+    unittest.main()
+```
+

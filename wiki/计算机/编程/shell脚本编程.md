@@ -650,6 +650,16 @@ echo $(dirname $MY_PATH)
 printf "\033c"
 ```
 
+### 按行倒序读文件
+
+读日志时有用：
+
+```
+$ tac file.txt | less
+```
+
+
+
 ### 查找文件内容
 
 > from: https://blog.csdn.net/JiaJunLee/article/details/50470643

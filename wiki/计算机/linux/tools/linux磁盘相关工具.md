@@ -17,9 +17,13 @@ echo $?
 
 ## mount 回环设备（lookback device）
 
+>  参考：https://medium.com/swlh/using-kpartx-losetup-with-disk-image-img-files-and-partitions-a5e186d303e5
+
 需要把镜象文件到本地文件树，则需要建立回环设备。
 
-### 手动建立回环设备
+### 用losetup建立回环设备
+
+>  TODO: 问题是，似乎不没看到类似loop0p0这样的分区设备，但kpartx就会直接弄出，待研究
 
 ```
 # losetup -f --show raspios.img
@@ -79,6 +83,47 @@ images/2021-01-11-raspios-buster-armhf-lite.img2      532480 7831551 7299072  3.
 ```
 # mount raspios.img  -o loop,offset=$((532480*512)),sizelimit=$((7299072*512)),rw /media/rpi/
 # mount raspios.img  -o loop,offset=$((8192*512)),sizelimit=$((524288*512)),rw  /media/rpi/boot
+```
+
+### 使用kpartx
+
+这是最方便的方法，但需要安装kpartx工具，无惧多分区的img
+
+- 查看分区列表
+
+```
+> sudo kpartx -l /mnt/hgfs/vm-disks/system_built_ext4.img
+loop7p1 : 0 2048 /dev/loop7 2048
+loop7p2 : 0 6307840 /dev/loop7 4096
+```
+
+- 设置分区分区mapping
+
+```
+> sudo kpartx -a -v /mnt/hgfs/vm-disks/system_built_ext4.img
+add map loop7p1 (253:0): 0 2048 linear 7:7 2048
+add map loop7p2 (253:1): 0 6307840 linear 7:7 4096
+```
+
+- According to the output of `man`, we can use the mappings, established by the above command, at location `/dev/mapper` to access the partitions, i.e. `/dev/mapper/loop7p1` & `/dev/mapper/loop7p2`
+- mount 分区
+
+```
+> sudo mount /dev/mapper/loop7p2 /mnt/p2
+```
+
+- and to confirm the the mount has occurred
+
+```
+> df | grep loop7p2/dev/mapper/loop7p2
+3055092      4616   2876396   1% /mnt/p2
+```
+
+- 卸载
+
+```
+> sudo umount /mnt/p2
+> sudo kpartx -d /mnt/hgfs/vm-disks/system_built_ext4.img
 ```
 
 

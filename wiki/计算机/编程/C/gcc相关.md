@@ -99,52 +99,7 @@ int event = (int)(intptr_t)from;
 
 http://lists.buildroot.org/pipermail/buildroot/2011-June/043776.html
 
-```none
-Hi,
-
-I've found that the target filesystem is missing /usr/lib/libc.so
-(simple script) when choosing the native gcc compiler package.
-
-This causes native gcc to fall back to static linking (libc.a), even
-though "-shared" is specified. You can see this by observing gcc
--Wl,verbose output. When building shared code it returns this cryptic
-error message:
-
-/home/nn/buildroot/output/staging/usr/lib/libc.a(__uClibc_main.os): In
-function `__uClibc_fini':
-__uClibc_main.c:(.text+0x6c): undefined reference to `__fini_array_start'
-__uClibc_main.c:(.text+0x74): undefined reference to `__fini_array_end'
-/home/nn/buildroot/output/staging/usr/lib/libc.a(__uClibc_main.os): In
-function `__uClibc_main':
-__uClibc_main.c:(.text+0x250): undefined reference to
-`__preinit_array_start'
-__uClibc_main.c:(.text+0x254): undefined reference to `__preinit_array_end'
-__uClibc_main.c:(.text+0x25c): undefined reference to `__init_array_start'
-__uClibc_main.c:(.text+0x260): undefined reference to `__init_array_end'
-/home/nn/buildroot/output/staging/usr/arm-linux-uclibcgnueabi/bin/ld:
-./libgcc_s.so.1.tmp: hidden symbol `__fini_array_end' isn't defined
-/home/nn/buildroot/output/staging/usr/arm-linux-uclibcgnueabi/bin/ld:
-final link failed: Nonrepresentable section on output
-collect2: ld returned 1 exit status
-make[3]: *** [libgcc_s.so] Error 1
-
-Here's a patch:
-
-diff -ruN buildroot-2011.05/scripts/copy.sh
-buildroot-2011.05-new/scripts/copy.sh
---- buildroot-2011.05/scripts/copy.sh    2011-05-27 16:18:21.000000000 +0200
-+++ buildroot-2011.05-new/scripts/copy.sh    2011-06-30 16:02:59.059803037 +0200
-@@ -6,6 +6,7 @@
- echo "Copying development files to target..."
-
- cp -af ${STAGING_DIR}/usr/include ${TARGET_DIR}/usr
-+cp -af ${STAGING_DIR}/usr/lib/libc.so ${TARGET_DIR}/usr/lib/libc.so
-
- for LIBSDIR in /lib /usr/lib; do
-     for WILDCARD in *.a *.la; do
-```
-
-
+![image-20210804150852689](_assets/gcc%E7%9B%B8%E5%85%B3/image-20210804150852689.png)
 
 ## -fpermissive
 
@@ -158,5 +113,36 @@ gcc是从右往左加载库的，比如存在静态库aaa和bbb，当bbb依赖aa
 
 ```
 -Wl,--start-group -laaa -lbbb -Wl,--end-group
+```
+
+
+
+## gcc 对齐
+
+变量分配地址对齐：
+
+```
+int x __attribute__ ((aligned (16))) = 0;
+
+// 用于结构体时，不仅分配的地址会对齐，内部成员的对齐也会受影响
+struct __attribute__ ((aligned (8))) my_struct1 {
+	short f[3];
+};
+```
+
+设置结构体成员对齐的两种写法：
+
+```
+struct __attribute__ ((packed)) my_struct3 {
+	char c;
+	int  i;
+};
+
+#pragma pack(1)
+struct my_struct3 {
+	char c;
+	int  i;
+};
+#pragma pack()
 ```
 

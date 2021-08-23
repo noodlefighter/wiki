@@ -188,3 +188,14 @@ Arch系下，配置程序在`nvidia-utils`包中，使用`nvidia-settings`GUI程
 
 
 
+## Linux打印机服务
+
+CUPS=公共UNIX打印系统（Comon UNIX Printing System）
+
+```
+$ sudo pacman -S cups
+$ sudo systemctl enable cups
+$ sudo systemctl start cups
+```
+
+确认是否成功配置：http://localhost:631

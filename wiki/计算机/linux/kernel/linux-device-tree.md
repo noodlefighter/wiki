@@ -19,4 +19,15 @@ ARM WIki  https://community.arm.com/developer/tools-software/oss-platforms/w/doc
 
 
 
- 
+## proc 目录下观察设备树
+
+
+
+```
+/proc/device-tree/
+```
+
+
+
+
+

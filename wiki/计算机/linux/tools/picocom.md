@@ -21,3 +21,14 @@ $ picocom --imap spchex,nrmhex,8bithex
 ```
 
 使用`ctrl+a,w`写入十六进制数据
+
+
+
+## 使用 picocom dump 串口原始数据（raw 数据）
+
+```
+$ picocom /dev/ttyUSB0 -b 115200 --quiet > dump.bin
+```
+
+`--quiet`参数避免打出初始化信息
+
