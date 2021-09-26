@@ -603,7 +603,15 @@ echo -e "\033[?25h 显示光标 \033[0m"
 
 ## 技巧集
 
-## 获取CPU数
+### 计算
+
+取模：`echo 123 % 2 | bc`
+
+
+
+
+
+### 获取CPU数
 
 ```
 CPUS=$(cat /proc/cpuinfo |grep "processor"|wc -l)

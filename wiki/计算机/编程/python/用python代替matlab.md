@@ -19,7 +19,80 @@
 
 ## 环境布置：anaconda + vscode + jupyter
 
+> refer: vscode官方博客提到了「文学式编程」「Literate programming」 https://code.visualstudio.com/blogs/2021/08/05/notebooks
+
 //TODO:
+
+jupyter允许你在文档中插入Markdown、代码段，这样就可以轻松地写代码相关的文章，而拿到它的人也能轻松的运行程序观察效果，例如`abc.ipynb`档，内嵌了Markdown和一段Python程序：
+
+```
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "source": [
+    "这是一段文字"
+   ],
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "source": [
+    "import tensorflow as tf\n",
+    "\n",
+    "mnist = tf.keras.datasets.mnist\n",
+    "\n",
+    "(x_train, y_train), (x_test, y_test) = mnist.load_data()\n",
+    "x_train, x_test = x_train / 255.0, x_test / 255.0\n",
+    "\n",
+    "model = tf.keras.models.Sequential([\n",
+    "  tf.keras.layers.Flatten(input_shape=(28, 28)),\n",
+    "  tf.keras.layers.Dense(128, activation='relu'),\n",
+    "  tf.keras.layers.Dropout(0.2),\n",
+    "  tf.keras.layers.Dense(10, activation='softmax')\n",
+    "])\n",
+    "\n",
+    "model.compile(optimizer='adam',\n",
+    "              loss='sparse_categorical_crossentropy',\n",
+    "              metrics=['accuracy'])\n",
+    "\n",
+    "model.fit(x_train, y_train, epochs=5)\n",
+    "\n",
+    "model.evaluate(x_test,  y_test, verbose=2)"
+   ],
+   "outputs": [],
+   "metadata": {}
+  }
+ ],
+ "metadata": {
+  "orig_nbformat": 4,
+  "language_info": {
+   "name": "python",
+   "version": "3.8.3",
+   "mimetype": "text/x-python",
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "pygments_lexer": "ipython3",
+   "nbconvert_exporter": "python",
+   "file_extension": ".py"
+  },
+  "kernelspec": {
+   "name": "python3",
+   "display_name": "Python 3.8.3 64-bit ('base': conda)"
+  },
+  "interpreter": {
+   "hash": "aaa97bc5370cf97ed399135bd4cca32d07276e3f65c685ca649928a10d743540"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
+```
+
+
 
 
 

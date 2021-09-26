@@ -424,3 +424,16 @@ $ cd .git/objects
 $ sudo chown -R 用户名:组 .
 ```
 
+
+
+## 备份整个 gitlab 中的仓库
+
+
+
+```
+gitlabber -t 'your api key' -u 'http://your-gitlab.com/' -m ssh ./gitbackup
+tar -czf skgit-$(date +%Y%m%d).tar.gz ./gitbackup
+```
+
+
+

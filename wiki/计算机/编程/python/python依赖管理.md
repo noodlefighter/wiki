@@ -1,4 +1,20 @@
+## python 使用 Pipenv 管理依赖
 
+Pipenv = pip + Pipfile + virtualenv，整合起来，以获得良好的体验。
+
+pip 是 Python 的包管理器；virtualenv 是虚拟环境，为你的创建虚拟的rootfs，为 shell 设置各种环境变量，可以在这个环境中用 pip 安装依赖；Pipfile 是 lock 文件，用于代替 requirements.txt。
+
+https://pipenv.pypa.io/en/latest/
+
+使用 Pipenv 的项目：
+
+```
+$ cd project
+$ pipenv install
+$ pipenv shell
+```
+
+> 博文参考：https://www.maxieewong.com/Pipenv.html
 
 ## python的virtualenv使用
 
