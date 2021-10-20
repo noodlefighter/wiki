@@ -66,6 +66,9 @@ a=123
 import os
 script_dir = os.path.split(os.path.realpath(__file__))[0]
 os.chdir(script_dir)
+
+# 展开用户路径，方便跨平台
+print(os.path.expanduser('~/.config'))
 ```
 
 
@@ -86,6 +89,7 @@ with open("./xxx.log") as file_obj:
 
 # 遍历文件夹
 g = os.walk(script_dir)
+
 for path,dir_list,file_list in g:
     for dir in dir_list:
         print(os.path.join(path, file_name))
@@ -120,6 +124,13 @@ if os.system("echo abc") != 0:
 import subprocess
 res = subprocess.Popen('uptime', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
 result = res.stdout.readlines()
+
+# 例子，编译执行测试用例，当shell来用，check_call()会在执行返回错误时抛出错误
+for test in tests:
+	os.chdir(os.path.join(script_dir, test))
+	output = subprocess.check_call(f"make", shell=True)
+	output = subprocess.check_call(f"./test_case", shell=True)
+
 
 # todo: 使用第三方sh模块 http://amoffat.github.io/sh/
 

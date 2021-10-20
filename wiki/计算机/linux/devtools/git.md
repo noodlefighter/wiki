@@ -16,9 +16,10 @@ git config --global user.signingkey 0A46826A
 
 ## 基本操作
 
-
-
 ```
+# 将变更部分变为一段一段patch，再交互式地询问你提交哪部分到暂存区
+git add --patch xxx.c
+
 # 检出dev分支
 git checkout dev
 

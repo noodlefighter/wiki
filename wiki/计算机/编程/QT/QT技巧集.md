@@ -28,6 +28,34 @@ $ ~/linuxdeployqt-7-x86_64.AppImage <编译好的程序> -appimage
 #endif
 ```
 
+
+
+## QT信号槽连接
+
+推荐的方式，在编译时就能检查出错误：
+
+```cpp
+QObject::connect(arduino, &QSerialPort::readyRead, this, &Dialog::readSerial);
+```
+
+lambda例：
+
+```
+auto *reply = m_link->lightNetkey(false, 0);
+connect(reply, &InkeeV1Reply::finished, this, [=](bool result) {
+	
+});
+```
+
+
+老的方式，可能到运行时才有错误日志：
+
+```cpp
+QObject::connect(arduino, SIGNAL(readyRead()), this, SLOT(readSerial()));
+```
+
+
+
 ## QT拖放
 
 > via: <https://www.cnblogs.com/findumars/p/5599427.html>

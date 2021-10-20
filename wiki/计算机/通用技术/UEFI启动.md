@@ -11,11 +11,35 @@ refers:
 
 而UEFI启动方式依靠的是EFI分区，有启动需求的OS、程序会在这个分区里加入自己的EFI文件，UEFI BIOS会启动EFI分区里的程序，不同OS能和谐共存。
 
+概念：
 
+- ESP=EFI System Partition，EFI系统分区
+
+## 创建EFI系统分区
+
+1. 用 fdisk 创建一个EFI分区，`fdisk /dev/sdx`，c创建分区，t修改类型为EFI分区，w确认修改
+
+2. 格式化：`mkfs.fat -F 32 /dev/sdx1`
+
+3. 完成，在这个分区里安装EFI启动文件，目录结构一般是：
+
+   ```
+   [r-lc efi]# tree -L 3
+   .
+   ├── EFI
+   │   ├── boot
+   │   │   └── bootx64.efi
+   │   └── Manjaro
+   │       └── grubx64.efi
+   ```
+
+   
 
 ## Linux下用efibootmgr管理UEFI启动项
 
+Linux内核需要加载`efivarfs`内核模块，否则会提示系统不支持。
 
+当建立ESP分区
 
 ```
 [r-lm3 efi]# efibootmgr
@@ -33,6 +57,9 @@ Boot0007* MsTemp
 
 改变顺序
 # efibootmgr --bootorder 0004,0006,0005,0002,0001,0000,0003
+
+创建启动项
+# efibootmgr --create --write-signature -L "My Linux" --loader '\EFI\debian\grubx64.efi'
 ```
 
 
