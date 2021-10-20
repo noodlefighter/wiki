@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-7.3.4">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8b42a75e.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.db9e7362.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -800,6 +800,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%83%B9%E9%A5%AA/%E9%A3%9F%E8%B0%B1-%E9%A5%BA%E5%AD%90/" class="md-nav__link">
+        食谱 饺子
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%83%B9%E9%A5%AA/%E9%A3%9F%E8%B0%B1-%E9%A5%BC/" class="md-nav__link">
         食谱 饼
       </a>
@@ -817,18 +831,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_22" type="checkbox" id="__nav_6_22" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_23" type="checkbox" id="__nav_6_23" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_6_22">
+        <label class="md-nav__link" for="__nav_6_23">
           食品与营养学
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="食品与营养学" data-md-level="2">
-        <label class="md-nav__title" for="__nav_6_22">
+        <label class="md-nav__title" for="__nav_6_23">
           <span class="md-nav__icon md-icon"></span>
           食品与营养学
         </label>
@@ -1364,6 +1378,20 @@
           嵌入式硬件
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%A1%AC%E4%BB%B6/arm/" class="md-nav__link">
+        Arm
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -6107,20 +6135,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E7%BC%96%E7%A8%8B/python/python%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/" class="md-nav__link">
-        Python依赖管理
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../%E7%BC%96%E7%A8%8B/python/python%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="md-nav__link">
         Python单元测试
       </a>
@@ -6137,6 +6151,20 @@
     <li class="md-nav__item">
       <a href="../../../%E7%BC%96%E7%A8%8B/python/python%E6%89%93%E5%8C%85/" class="md-nav__link">
         Python打包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BC%96%E7%A8%8B/python/python%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        Python环境管理
       </a>
     </li>
   
@@ -7086,7 +7114,7 @@ int main () {
 }
 </code></pre></div>
 <h2 id="2">2.如何保证在进程挂掉后把进程重新启动<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>pid file的功能做不到这一点。此时，我们需要搞一个脚本检测pid file，如果读取文件为空，则进程肯定没启动，再执行启动就OK。那么，万一读取文件不为空呢？上一个进程退出后没法删除pid file中的进程号（当然，理论上也可以做到，只是比较麻烦：析构函数进行删除，同时注册信号量响应函数，响应各种异常退出的信号量进行pid file的删除）。一种比较简单的方法是发送kill -0 <span><span class="MathJax_Preview">pid命令，</span><script type="math/tex">pid命令，</script></span>pid是读取出来的pid号。如果返回值$?为0表示进程存在，否则表示不存在，重新启动即可。ps:注意一下权限。
+<p>pid file的功能做不到这一点。此时，我们需要搞一个脚本检测pid file，如果读取文件为空，则进程肯定没启动，再执行启动就OK。那么，万一读取文件不为空呢？上一个进程退出后没法删除pid file中的进程号（当然，理论上也可以做到，只是比较麻烦：析构函数进行删除，同时注册信号量响应函数，响应各种异常退出的信号量进行pid file的删除）。一种比较简单的方法是发送kill -0 <span class="arithmatex"><span class="MathJax_Preview">pid命令，</span><script type="math/tex">pid命令，</script></span>pid是读取出来的pid号。如果返回值$?为0表示进程存在，否则表示不存在，重新启动即可。ps:注意一下权限。
   脚本实例如下：</p>
 <div class="highlight"><pre><span></span><code>#!/bin/sh
 
@@ -7186,10 +7214,10 @@ done
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.1e84347e.min.js"></script>
       
         <script src="../../../../js/cnzz-statistics.js"></script>
       
