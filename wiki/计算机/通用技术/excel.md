@@ -24,7 +24,7 @@
 
    ![excel按月汇总数据](_assets/excel/46a92de039723d03ed535732bb486143d6d4570d.jpg)
 
-   点击一个日期 ，按右键选择组合。
+   点击一个日期 ，按右键选择组合（如果是Libreoffice下，操作有细微区别，菜单-数据-分组及分级显示-组合）。
 
    ![excel按月汇总数据](_assets/excel/d695563104ebf6a701b6eb9fffee1c324a184f0d.jpg)
 

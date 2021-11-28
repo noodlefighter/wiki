@@ -87,12 +87,15 @@ shutil.rmtree("foo", ignore_errors=True)
 with open("./xxx.log") as file_obj:
 	xxx_list = file_obj.read().splitlines()
 
-# 遍历文件夹
-g = os.walk(script_dir)
+# 列出目录下文件
+os.listdir()
+['pkgsync', 'hosts', 'pkglist-aur.json', 'apply-pkgsync.sh', 'pkglist.json', 'rootfs', 'private', '.vscode', '.git', 'home', 'stow_all.sh', '.gitignore', 'local_rootfs', 'rime', 'i3', '.gitmodules', 'README.md']
 
+# 自顶向下，遍历文件夹，path是路径，dir_list是目录列表，file_list是文件列表
+g = os.walk(script_dir)
 for path,dir_list,file_list in g:
     for dir in dir_list:
-        print(os.path.join(path, file_name))
+        print(os.path.join(path, file_name))        
 
 ```
 
@@ -125,12 +128,15 @@ import subprocess
 res = subprocess.Popen('uptime', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
 result = res.stdout.readlines()
 
-# 例子，编译执行测试用例，当shell来用，check_call()会在执行返回错误时抛出错误
+# check_call()例子，编译执行测试用例，当shell来用，check_call()会在执行返回错误时抛出错误
 for test in tests:
 	os.chdir(os.path.join(script_dir, test))
 	output = subprocess.check_call(f"make", shell=True)
 	output = subprocess.check_call(f"./test_case", shell=True)
 
+# 需要获取打印出的数据时，还可以用check_output()，比如这里获取文件列表
+res = subprocess.check_output('find . -maxdepth 2 -name rootfs', shell=True).decode()
+rootfs_dirs = res.strip().split('\n')
 
 # todo: 使用第三方sh模块 http://amoffat.github.io/sh/
 

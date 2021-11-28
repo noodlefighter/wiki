@@ -123,6 +123,24 @@ plt.plot(x, y)
 plt.show()
 ```
 
+## pandas
+
+https://www.pypandas.cn/docs/getting_started/
+
+强大的 Python 数据分析支持库，主要用于数据处理，比如I/O导入数据（从csv/excel/sql数据库）、合并分组等。
+
+
+$$
+\begin{align*}
+y = y(x,t) &= A e^{i\theta} \\
+&= A (\cos \theta + i \sin \theta) \\
+&= A (\cos(kx - \omega t) + i \sin(kx - \omega t)) \\
+&= A\cos(kx - \omega t) + i A\sin(kx - \omega t)  \\
+&= A\cos \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big) + i A\sin \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big)  \\
+&= A\cos \frac{2\pi}{\lambda} (x - v t) + i A\sin \frac{2\pi}{\lambda} (x - v t)
+\end{align*}
+$$
+
 ## SymPy符号计算
 
 数值计算和符号计算的区别，符号计算在过程中会保留符号，例如计算`sin(pi)`时，数值计算不保证结果为0，而符号计算最后计算得出0.
