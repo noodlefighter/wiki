@@ -98,6 +98,8 @@ dpkg -L packagename
 dpkg -l | grep packagename
 # 同上
 apt list --installed | grep packagename
+# apt通过packages.txt安装软件包
+xargs sudo apt-get install <packages.txt
 ```
 
 

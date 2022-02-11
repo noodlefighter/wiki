@@ -46,9 +46,7 @@ $ su -
 
 
 
-## 管理内核
 
-使用指定内核的最简单的方法，`/boot`中用不到的内核镜象全删了，重建grub配置即可。
 
 
 
@@ -77,8 +75,8 @@ Created symlink /etc/systemd/system/display-manager.service → /usr/lib/systemd
 
 图形界面启动流程：
 
-1. 启动x11，x11尝试加载显卡驱动
-2. 显示管理器（display manager，如lightdm）启动，它尝试连接X进行显示，它是一个用户登入界面
+1. 启动x11，x11尝试加载显卡驱动（日志`/var/log/Xorg.0.log`）
+2. 显示管理器（display manager，如lightdm）启动，它尝试连接X进行显示，它是一个用户登入界面（日志`/var/log/lightdm/lightdm.log`）
 3. 显示管理器加载窗口管理器session（如i3-session、gnome-session）
 
 使用快捷键Ctrl+Alt+FnX可以切换文字终端，以便排查问题。

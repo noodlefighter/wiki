@@ -26,6 +26,10 @@ parser.add_argument('--ssid', help='wlan ssid')
 parser.add_argument('--sn', help='product serial number')
 args = parser.parse_args()
 
+# 位置参数，第一个是src，第二个是dst
+parser.add_argument(dest='src', type=str)
+parser.add_argument(dest='dst', type=str)
+
 print(args.ssid)
 ```
 

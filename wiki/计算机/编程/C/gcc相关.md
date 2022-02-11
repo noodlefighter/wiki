@@ -11,17 +11,23 @@ make LDFLAGS="-Wl,-rpath,/xxx/xx/libs"
 ```
 -Wl,option
 Pass option as an option to the linker. If option contains commas, it is split into multiple options at the commas. You can use this syntax to pass an argument to the option. For example, -Wl,-Map,output.map passes  -Map output.map to the linker. When using the GNU linker, you can also get the same effect with `-Wl,-Map=output.map'.
+```
 
--rpath=dir
-
+```
+-Wl,-rpath=dir
+指定运行时的动态库搜索路径
 Add a directory to the runtime library search path. This is used when linking an ELF executable with shared objects. All -rpath arguments are concatenated and passed to the runtime linker, which uses them to locate shared objects at runtime. The -rpath option is also used when locating shared objects which are needed by shared objects explicitly included in the link;
 ```
+
+
 
 设定sysroot
 
 ```
 make LDFLAGS="--sysroot=/home/r/osp/buildroot-2019.02.1/output/host/arm-buildroot-linux-uclibcgnueabi/sysroot
 ```
+
+
 
 ## GCC生成MAP文件
 
@@ -145,4 +151,8 @@ struct my_struct3 {
 };
 #pragma pack()
 ```
+
+
+
+## nm工具
 

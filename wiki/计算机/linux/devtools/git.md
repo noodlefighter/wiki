@@ -247,7 +247,7 @@ git config --global core.safecrlf warn
 
 ## git的subtree子树
 
-subtree是submodule的改进功能。
+subtree是submodule的~~改进功能~~类似功能，直接把仓库包含到当前repo下。
 
 > todo:
 > [git subtree教程](https://segmentfault.com/a/1190000012002151)
@@ -341,6 +341,16 @@ $ git rm --cached {MOD_NAME}
 
 ```
 $ git mv xxx/submodule xxx/new_path
+```
+
+### 递归重置所有子模块
+
+```
+git clean -xfd
+git submodule foreach --recursive git clean -xfd
+git reset --hard
+git submodule foreach --recursive git reset --hard
+git submodule update --init --recursive
 ```
 
 

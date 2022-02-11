@@ -24,6 +24,10 @@ https://wiki.archlinux.org/index.php/I3#Launching_programs_on_specific_workspace
 exec --no-startup-id xxx
 ```
 
+## i3wm默认终端模拟器
+
+`i3-sensible-terminal`
+
 ## 写i3wm配置
 
 如何确定窗口的class名：命令`xprop`，点击窗口可获得信息

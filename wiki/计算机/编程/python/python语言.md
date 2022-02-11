@@ -1,3 +1,10 @@
+## python使用utf编码
+
+```
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+```
+
 
 
 ## Python装饰器
