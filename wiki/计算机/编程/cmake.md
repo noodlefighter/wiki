@@ -10,6 +10,13 @@
 mkdir build && cmake ..
 ```
 
+## 调试
+
+```
+多显示点信息，比如具体执行了什么命令
+cmake -DCMAKE_VERBOSE_MAKEFILE=on .
+```
+
 
 
 ## 交叉编译
