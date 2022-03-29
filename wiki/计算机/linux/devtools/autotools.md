@@ -2,6 +2,10 @@
 
 ---
 
+## autoconf调试方法
+
+autoconf发生错误时，查看`ffbuild/config.log`中的提示
+
 ## 提示缺少build-aux
 
 ```bash

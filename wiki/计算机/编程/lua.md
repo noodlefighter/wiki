@@ -14,3 +14,14 @@ luac能将.lua源码转成二进制码，加速加载过程，并不能独立运
 ## Lua C混编
 
 详细指导：http://lua-users.org/wiki/BindingCodeToLua
+
+
+
+## lua的包 管理器luarocks
+
+使用例：
+
+```
+$ luarocks --lua-version 5.2 install bit
+```
+

@@ -102,6 +102,16 @@ fi
 cmp --silent $old $new
 ```
 
+
+
+### 随机选一个文件
+
+```
+ls |sort -R |tail -1
+```
+
+
+
 ## 传参
 
 ```

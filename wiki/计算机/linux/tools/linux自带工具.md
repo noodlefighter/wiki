@@ -67,7 +67,19 @@ cat拼接文件，连接文件，合并文件
 $ cat file1.bin file2.bin
 ```
 
+## mount ISO文件
 
+```
+$ sudo mount /path/to/image.iso /media/iso -o loop
+```
+
+## 压缩包转换 例如gz转bz2压缩包
+
+```
+gunzip --to-stdout foo.gz | bzip2 > foo.bz2
+```
+
+直接用流实现, 不用解压到磁盘上再处理
 
 ## tar 解压压缩
 

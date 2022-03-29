@@ -202,11 +202,23 @@ assert(s_rx.readall() == data)
 
 
 
+## python的函数式编程
+
+Python函数式编程指引:
+
+https://docs.python.org/zh-cn/3/howto/functional.html
+
+
+
+filter()、map()、[`enumerate`](https://docs.python.org/zh-cn/3/library/functions.html#enumerate)
+
 ## python的lambda
 
 ```
 list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
 [1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+
 ```
 
 

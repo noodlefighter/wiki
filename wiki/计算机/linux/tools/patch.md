@@ -19,6 +19,7 @@ diff -uprN a/ b/ > patch
 打patch，需要切换到该目录中，用p1参数忽略第一级目录，因为目录名可能不同：
 ```
 patch -p1 < patch1.diff
+patch -d xxx_dir -p1 < patch1.diff
 ```
 
 

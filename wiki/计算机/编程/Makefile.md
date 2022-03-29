@@ -1,5 +1,9 @@
 ---
 
+## 关于CFLAGS、CXXFLAGS、CPPFLAGS等变量用法
+
+https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html#Implicit-Variables
+
 ## 编译调试
 
 打印更多信息
@@ -7,6 +11,12 @@
 ```
 # 想看makefile工作细节
 make --debug=v
+```
+
+直接打印变量
+
+```
+$(warning  1SECURITY=$(SECURITY)) 
 ```
 
 ## 常见问题

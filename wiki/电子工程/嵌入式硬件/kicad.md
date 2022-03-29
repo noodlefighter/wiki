@@ -1,5 +1,18 @@
 
 
+## kicad中的层
+
+- Cu：铜层
+- Adhesive：粘合层，波峰焊前将SMD元件贴在电路板上的粘合层
+- SilkS：丝印层
+- Mask：绿油开窗，默认是负片
+- Paste：焊膏层
+- Courtyard：空间层，表示元件实际占用大小
+- Fab：生产层，辅助生产的图示
+- Edge.Cuts：边界层
+
+
+
 ## kicad 输出 gerber 文件
 
 > via: https://support.jlcpcb.com/article/149-how-to-generate-gerber-and-drill-files-in-kicad
@@ -183,3 +196,21 @@ The folling changes are required:
 Ref to Designator PosX to Mid X PosY to Mid Y Rot to Rotation Side to Layer
 
 Before, as exported from KiCAD:![img](_assets/kicad/WzrMgkN.png)After modifying the header:![img](_assets/kicad/JpazXtn.png)
+
+
+
+
+
+## kicad格式转换
+
+### dxp转kicad
+
+工具：https://github.com/thesourcerer8/altium2kicad
+
+1. 如果原来的文件是ascii格式，先将文件转换成binary格式，立创eda导出的就是这种格式
+   - pcbdoc文件，用dxp打开，并重新保存，转成PCB binary格式
+   - schdoc文件，用dxp打开，并重新保存，转成SCH binary 5.0格式
+2. web工具：http://www2.futureware.at/KiCad/ 转成kicad的pcb
+3. 导入符号：将`xxxxx-schdoc-cache.lib`添加到工程的符号库中，打开符号编辑器，将符号复制到自建的库中即可
+4. 导入封装：打开转出的pcb，再打开封装编辑器，同工程下复制粘贴，保存封装即可；注意检查焊盘，会缺层！
+

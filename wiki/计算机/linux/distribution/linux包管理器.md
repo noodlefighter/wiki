@@ -102,6 +102,12 @@ apt list --installed | grep packagename
 xargs sudo apt-get install <packages.txt
 ```
 
+提示`GPG error: http://mirror.sjtu.edu.cn stable InRelease: The following signatures couldn't be verified because the public key is not available:`的解决方法:
+
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${keys}
+```
+
 
 
 ### auto-apt
