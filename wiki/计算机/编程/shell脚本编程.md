@@ -627,7 +627,15 @@ echo -e "\033[?25h 显示光标 \033[0m"
 CPUS=$(cat /proc/cpuinfo |grep "processor"|wc -l)
 ```
 
-已测试，在 git bash 和 msys2 环境中都可用
+已测试，在 git bash 和 msys2 环境中都可用，macos下用不了
+
+也可以借助python：
+
+```
+CPUSecho "from multiprocessing import cpu_count\nprint(cpu_count())" | python
+```
+
+
 
 ### 获取当前IP地址
 

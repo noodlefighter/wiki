@@ -232,3 +232,14 @@ sys.path.append(os.path.curdir)
 
 
 
+## python脚本中动态执行脚本
+
+python像js一样也有eval函数：
+
+```
+def abc():
+	print("hahah")
+	
+eval("abc()")
+```
+

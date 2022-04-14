@@ -353,7 +353,10 @@ git submodule foreach --recursive git reset --hard
 git submodule update --init --recursive
 ```
 
+### 更换子模块的url
 
+1. 修改.gitsubmodule中的url
+2. `git submodule sync`将url更新到展开的子模块中
 
 ## 修改历史commit
 
