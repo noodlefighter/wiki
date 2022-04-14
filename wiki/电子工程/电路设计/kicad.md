@@ -214,3 +214,4 @@ Before, as exported from KiCAD:![img](_assets/kicad/WzrMgkN.png)After modifying 
 3. 导入符号：将`xxxxx-schdoc-cache.lib`添加到工程的符号库中，打开符号编辑器，将符号复制到自建的库中即可
 4. 导入封装：打开转出的pcb，再打开封装编辑器，同工程下复制粘贴，保存封装即可；注意检查焊盘，会缺层！
 
+> 如果原来的文件就是AD创建的PCB binary格式，直接导入可能出问题，可以先导入立创eda再导出dxp，再走上面的流程
