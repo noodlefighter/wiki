@@ -13,9 +13,11 @@
 
 
 
-## kicad 输出 gerber 文件
+## kicad 输出 gerber 文件 (KiCAD5)
 
 > via: https://support.jlcpcb.com/article/149-how-to-generate-gerber-and-drill-files-in-kicad
+>
+> kicad6根据这篇：https://support.jlcpcb.com/article/194-how-to-generate-gerber-and-drill-files-in-kicad-6
 
 When you finished your design in KiCad, the last step before sending it off to the fab house is to generate the Gerber and Drill files. PCB fab houses will use these files to make your boards. Basically 3 sets of files need to be generated:
 
@@ -215,3 +217,15 @@ Before, as exported from KiCAD:![img](_assets/kicad/WzrMgkN.png)After modifying 
 4. 导入封装：打开转出的pcb，再打开封装编辑器，同工程下复制粘贴，保存封装即可；注意检查焊盘，会缺层！
 
 > 如果原来的文件就是AD创建的PCB binary格式，直接导入可能出问题，可以先导入立创eda再导出dxp，再走上面的流程
+
+
+
+## kicad中布定长的线、差分线
+
+定长的线：布线-调整单轨布线长度（绕蛇形线功能），选择线，右键菜单中”长度优化设置”设置目标长度
+
+差分线：
+
+- 网络名以`_N/_P`或者`+/-`，布线-差分对交互布线
+- 调整长度：布线-调整差分布线偏移，默认偏移是0也就是等长
+

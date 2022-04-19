@@ -451,3 +451,18 @@ tar -czf skgit-$(date +%Y%m%d).tar.gz ./gitbackup
 
 
 
+## git https方式免密码特性
+
+```
+$ git config --global credential.helper store
+```
+
+`$HOME/.gitconfig`：
+
+```
+[credential]  
+    helper = store
+```
+
+
+

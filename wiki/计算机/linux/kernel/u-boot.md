@@ -62,3 +62,36 @@ $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- LOADADDR=0x80008000 make uImage
 mkimage -A arm -O linux -T kernel -C none -a 0x80008000 -e 0x80008000 -n 'Linux-3.0' -d arch/arm/boot/zImage arch/arm/boot/uImage
 ```
 
+
+
+## boot.scr脚本
+
+可以在启动时加载脚本，实现动态传参，不用重新编译u-boot，一个实例：
+
+```
+bootcmd=run findfdt;mmc dev ${mmcdev};mmc dev ${mmcdev}; if mmc rescan; then if run loadbootscript; then run bootscript; else if run loadimage; then run mmcboot; else run netboot; fi; fi; else run netboot; fi
+loadbootscript=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};
+```
+
+sd卡启动，启动时先尝试加载脚本，如果存在则执行loadbootscript
+
+编译boot.scr，需要用到u-boot构建出的mkimage工具：
+
+```
+$ mkimage -A arm -T script -O linux -d boot.txt boot.scr
+Image Name:
+Created:      Tue Apr 19 06:44:13 2022
+Image Type:   ARM Linux Script (gzip compressed)
+Data Size:    84 Bytes = 0.08 kB = 0.00 MB
+Load Address: 00000000
+Entry Point:  00000000
+Contents:
+   Image 0: 76 Bytes = 0.07 kB = 0.00 MB
+```
+
+
+
+
+
+
+

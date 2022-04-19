@@ -134,7 +134,10 @@ add map loop7p2 (253:1): 0 6307840 linear 7:7 4096
 
 ```
 > sudo umount /mnt/p2
+
 > sudo kpartx -d /mnt/hgfs/vm-disks/system_built_ext4.img
+或者
+> sudo kpartx -d /dev/loop5
 ```
 
 
