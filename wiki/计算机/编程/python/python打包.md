@@ -7,3 +7,13 @@ $ pip install pyinstaller
 $ pyinstaller abc.py
 ```
 
+
+
+## pip 安装本地源码
+
+即指定setup.py所在目录
+
+```
+$ pip install -e /srv/pkg
+```
+

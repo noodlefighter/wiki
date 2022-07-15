@@ -22,6 +22,12 @@ reboot
 Linux下mount samba到目录：
 
 ```
-mount.cifs '\\r-wm\share' '/home/r/abc' -o username=my_user,password=123456,dir_mode=0777,file_mode=0777
+mount.cifs '\\r-wm\share' '/home/r/abc' -o username=my_user,password=123456,dir_mode=0777,file_mode=0777,uid=本地用户名,vers=1.0
+```
+
+用fstab来挂载：
+
+```
+//192.168.3.200/ebsx /mnt/ebsx cifs username=用户,password=密码,uid=本地用户名,iocharset=utf8,file_mode=0777,dir_mode=0777,noperm,vers=1.0 0 0
 ```
 
