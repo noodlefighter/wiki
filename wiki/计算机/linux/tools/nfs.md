@@ -24,7 +24,13 @@ arch:
 编辑配置`/etc/exports`：
 
 ```
+/  *(rw,sync,no_all_squash,no_subtree_check)
+
 /home/dev/workspaces/hi3516a/nfs        *(rw,sync,no_subtree_check)
+
+给板子用的配置，允许板子上用root写入
+/gdwas/ebsx/board-dbg  *(rw,sync,no_all_squash,no_root_squash,no_subtree_check)
+
 ```
 
 挂载：

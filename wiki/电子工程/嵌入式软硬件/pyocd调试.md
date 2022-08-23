@@ -1,5 +1,7 @@
 
 
+## pyocd+vscode调试mcu
+
 原料：
 
 - vscode
@@ -50,4 +52,36 @@ $ pyocd list --target
     ]
   }
 ```
+
+
+
+
+
+## 为PyOCD添加新MCU Target
+
+1)下载pyocd源码
+
+git clone https://github.com/pyocd/pyOCD.git 
+注意要把python升级到3.9以上，这个倒霉孩子python3.8就不正常了
+
+主要是为了 使用 scripts/generate_flash_algo.py  ，用来从 elf 抽取 算法文件。
+
+2）执行 generate_flash_algo.py le5010.elf (FLM) ，如果正常它会生成一个 pyocd_blob.py
+
+但是大概率会直接崩溃，在这里
+
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pyocd/target/pack/flash_algo.py
+
+可以找我，我教你怎么修复这个BUG。
+
+3)查找pyocd安装路径
+                      pip show pyocd
+
+5)添加target
+
+在目录/usr/local/lib/python3.9/site-packages/pyocd/target/builtin/
+
+随便复制一个出来修改。
+
+把生成出来的 pyocd_blob.py copy 进去即可
 

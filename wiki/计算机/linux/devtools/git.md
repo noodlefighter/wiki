@@ -2,9 +2,6 @@
 
 
 
-图形界面:
-gitkraken   据说好用的git图形界面
-
 
 ```bash
 # 检出分支到本地新分支、覆盖工作区
@@ -56,6 +53,12 @@ git push --delete orgin v1.1.1
 
 # 获取HEAD的Commit ID
 git rev-parse --short HEAD
+
+# 暂存/弹出文件
+git stash
+git stash pop
+# 弹出文件后遇到冲突，取消
+git reset --merge
 ```
 
 ## 分支操作
@@ -456,6 +459,14 @@ tar -czf skgit-$(date +%Y%m%d).tar.gz ./gitbackup
 ```
 $ git config --global credential.helper store
 ```
+
+清空
+
+```
+$ git config --unset credential.helper
+```
+
+
 
 `$HOME/.gitconfig`：
 

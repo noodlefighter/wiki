@@ -811,3 +811,18 @@ int main(int argc, char *argv[])
 $ ping www.google.com | ftee /tmp/mylog
 $ cat /tmp/mylog
 ```
+
+
+
+## awk用法
+
+例，lsusb中找到指定vid/pid设备，转换成设备文件路径：
+
+```
+$ lsusb -d 04b4:8613
+Bus 003 Device 005: ID 04b4:8613 Cypress Semiconductor Corp. CY7C68013 EZ-USB FX2 USB 2.0 Development Kit
+
+$ lsusb -d 04b4:8613 | awk -F: '{print $1}' | sed 's/://' | awk '{printf("/dev/bus/usb/%s/%s", $2, $4)}'
+/dev/bus/usb/003/005
+```
+

@@ -51,12 +51,39 @@ int replaced = dup2(fd, STDOUT_FILENO);
 ```
 	#include <unistd.h>
 	
-	const char *optstring = "ab:c"; // 参数有-a -b -c其中-b必须跟参数
-	while ((opt = getopt(argc, argv, optstring)) != -1) {
+    const char *optstring = "f:b:m:h";
+	int opt;
+    while ((opt = getopt(argc, argv, optstring)) != -1) {
         printf("opt = %c\n", opt);  // 命令参数，亦即 -a -b -c -d
         printf("optarg = %s\n", optarg); // 参数内容
         printf("optind = %d\n", optind); // 下一个被处理的下标值
-        printf("argv[optind - 1] = %s\n\n",  argv[optind - 1]); // 参数内容	
+        printf("argv[optind - 1] = %s\n\n",  argv[optind - 1]); // 参数内容
+
+		switch (opt) {
+		case 'f':
+			FreqKHz = atoi(optarg);
+			printf("option freq=%d\n", FreqKHz);
+			break;
+		case 'b':
+			BandWidthKHz = atoi(optarg);
+			printf("option band=%d\n", BandWidthKHz);
+			break;
+		case 'm':
+			if (0 == strcmp(optarg, "dvbc")) {
+				mode = DTV_MODE_DVBC;
+			}
+			else if (0 == strcmp(optarg, "dtmb")) {
+				mode = DTV_MODE_DTMB;
+			}
+			else {
+				printf("unknown mode %s", optarg);
+			}
+			printf("option band=%s\n", optarg);
+			break;
+		default:
+			printf("error optopt: %c\n", optopt);
+			printf("error opterr: %d\n", opterr);
+		}
     }
 ```
 

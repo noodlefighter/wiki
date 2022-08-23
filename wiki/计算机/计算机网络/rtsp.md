@@ -33,8 +33,10 @@ $ docker run -it -p 8554:8554 aler9/rtsp-simple-server
 
 MP3推RTSP流
 $ ffmpeg -re -stream_loop -1 -i 01-Skyfall.flac -vn -c:a libmp3lame -rtsp_transport tcp -f rtsp rtsp://localhost:8554/aaaa.rdp
+
+拉流
+$ ffplay rtsp://localhost:8554/aaaa.rdp
+
 ```
 
 
-
-## 

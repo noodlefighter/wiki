@@ -1,3 +1,5 @@
+
+
 ---
 
 ## linux内核的loglevel日志等级
@@ -30,36 +32,28 @@ echo "7 4 1 7" > /proc/sys/kernel/printk
 7    4    1    7
 ```
 
-## 修改DEFAULT_CONSOLE_LOGLEVEL
+## 修改内核配置
 
-如果需要修改，可以在内核启动时通过传参的方式修改（如在grub、uboot中传参启动）：
+看不到关注的LOG时，注意查看一下这些内核配置
 
-`u-boot`中是`bootargs`
+- DEFAULT_CONSOLE_LOGLEVEL：打印到console上的默认级别
+- DEFAULT_MESSAGE_LOGLEVEL：默认信息等级，没有声明loglevel的API就用这个等级
+
+### 动态修改CONSOLE_LOGLEVEL
+
+`u-boot`传参修改，参数`bootargs`加上：
 
 ```
 loglevel=3
 ```
 
-也可以动态修改：
+sysfs里修改：
 
 ```
 echo 3 > /proc/sys/kernel/printk
 ```
 
-## 修改DEFAULT_MESSAGE_LOGLEVEL
 
-可在内核编译时修改`CONFIG_MESSAGE_LOGLEVEL_DEFAULT`，Kconfig中帮助：
-
-```
-Symbol: MESSAGE_LOGLEVEL_DEFAULT [=4]
-   Type  : integer
-   Range : [1 7]
-   Prompt: Default message log level (1-7)
-     Location:
-       -> Kernel hacking
-   (1)   -> printk and dmesg options
-     Defined at lib/Kconfig.debug:18
-```
 
 ## Linux内核loglevel值的具体定义
 
