@@ -1247,6 +1247,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%85%83%E4%BB%B6/%E6%A8%A1%E6%8B%9F%E5%BC%80%E5%85%B3/" class="md-nav__link">
+        模拟开关
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%85%83%E4%BB%B6/%E7%94%B5%E5%AE%B9/" class="md-nav__link">
         电容
       </a>
@@ -1382,8 +1394,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/pyocd%2Bvscode%E8%B0%83%E8%AF%95mcu/" class="md-nav__link">
-        Pyocd+vscode调试mcu
+      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/pyocd%E8%B0%83%E8%AF%95/" class="md-nav__link">
+        Pyocd调试
       </a>
     </li>
   
@@ -1610,6 +1622,18 @@
           接插件
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E6%8E%A5%E6%8F%92%E4%BB%B6/DC%E5%8F%A3/" class="md-nav__link">
+        DC口
+      </a>
+    </li>
+  
+
           
             
   
@@ -4036,6 +4060,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../tools/nmap/" class="md-nav__link">
+        Nmap
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../tools/openssl/" class="md-nav__link">
         Openssl
       </a>
@@ -5590,6 +5626,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../%E7%BC%96%E7%A8%8B/CPP/CPP%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        CPP字符串操作
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../%E7%BC%96%E7%A8%8B/CPP/CPP%E7%9A%84%E5%90%91%E4%B8%8A%E5%90%91%E4%B8%8B%E8%BD%AC%E5%9E%8B/" class="md-nav__link">
         CPP的向上向下转型
       </a>
@@ -7033,9 +7081,7 @@
                 
                   <h1>Git</h1>
                 
-                <p>图形界面:
-gitkraken   据说好用的git图形界面</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 检出分支到本地新分支、覆盖工作区</span>
+                <div class="highlight"><pre><span></span><code><span class="c1"># 检出分支到本地新分支、覆盖工作区</span>
 git checkout -f -B branchabc remotes/origin/branchabc --
 
 <span class="c1"># 添加gpg签名密钥</span>
@@ -7081,6 +7127,12 @@ git push --delete orgin v1.1.1
 
 # 获取HEAD的Commit ID
 git rev-parse --short HEAD
+
+# 暂存/弹出文件
+git stash
+git stash pop
+# 弹出文件后遇到冲突，取消
+git reset --merge
 </code></pre></div>
 <h2 id="_2">分支操作<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code># 删除分支
@@ -7335,6 +7387,9 @@ tar -czf skgit-$(date +%Y%m%d).tar.gz ./gitbackup
 </code></pre></div>
 <h2 id="git-https">git https方式免密码特性<a class="headerlink" href="#git-https" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>$ git config --global credential.helper store
+</code></pre></div>
+<p>清空</p>
+<div class="highlight"><pre><span></span><code>$ git config --unset credential.helper
 </code></pre></div>
 <p><code>$HOME/.gitconfig</code>：</p>
 <div class="highlight"><pre><span></span><code>[credential]  
