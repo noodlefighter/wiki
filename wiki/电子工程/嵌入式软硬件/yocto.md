@@ -67,3 +67,37 @@ do_install_append() {
 $ apt install tmux
 ```
 
+
+
+## 在一个recipe中添加多个initscripts，用update-rc.d类
+
+> refer: http://www.embeddedlinux.org.cn/OEManual/update-rc-d_class.html
+
+```
+# 分多个子包，并让${PN}包依赖子包
+PACKAGES =+ "${PN}-fix-eth-mac ${PN}-mount-user"
+RDEPENDS_${PN} = "${PN}-fix-eth-mac ${PN}-mount-user"
+
+inherit update-rc.d
+
+INITSCRIPT_PACKAGES = "${PN} ${PN}-fix-eth-mac ${PN}-mount-user"
+
+INITSCRIPT_NAME_${PN} = "rc.local"
+INITSCRIPT_PARAMS_${PN} = "start 99 2 3 4 5 ."
+
+INITSCRIPT_NAME_${PN}-fix-eth-mac = "fix-eth-mac"
+INITSCRIPT_PARAMS_${PN}-fix-eth-mac = "start 10 2 3 4 5 ."
+
+INITSCRIPT_NAME_${PN}-mount-user = "mount-user-partition"
+INITSCRIPT_PARAMS_${PN}-mount-user = "start 02 S ."
+
+# 记得添加这些文件，让他们存在于package中
+FILES_${PN} = " \
+    ${sysconfdir}/ \
+    ${sysconfdir}/init.d/rc.local \
+"
+FILES_${PN}-fix-eth-mac = "${sysconfdir}/init.d/fix-eth-mac"
+FILES_${PN}-mount-user = "${sysconfdir}/init.d/mount-user-partition"
+
+```
+

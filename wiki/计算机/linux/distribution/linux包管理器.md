@@ -75,6 +75,14 @@ pacman -S yay
 
 yay支持pacman风格的命令，挪过来就能用。
 
+yay换源：
+
+```
+$ yay --aururl "https://aur.archlinux.org/" --save
+```
+
+
+
 ### 将debian的deb包转成arch package格式
 
 > refer: https://ostechnix.com/convert-deb-packages-arch-linux-packages/

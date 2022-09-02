@@ -5,6 +5,14 @@
 # -*- coding: UTF-8 -*-
 ```
 
+## Python2
+
+让python2的print兼容python3，即是一个函数
+
+```
+from __future__ import print_function
+```
+
 
 
 ## Python装饰器

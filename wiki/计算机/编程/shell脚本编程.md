@@ -9,14 +9,14 @@
 ## shell 脚本模板
 
 ```
-#!/bin/bash
-
-set -o nounset
-set -o errexit
+#!/bin/bash -e -u
 
 SHELL_DIR=$(cd "$(dirname "$0")";pwd)
 
 ```
+
+`-e`= nounset 禁止空变量
+`-u`= errexit 错误则退出
 
 ## 技巧
 
@@ -156,7 +156,7 @@ find -name "a.txt"|xargs -I{} cp -f ../source.txt {}
 |awk 'NR==3 {print $1}' 获取第3行的第1个“参数”
 
 将stderr重定向到stdout，stdout重定向到foo.log文件
-cat foo > foo.log 2>&1
+foo 2>&1 > foo.log
 
 stdout不输出，将stderr重定向到stdout（可以用来收集日志）
 ls 2iojedn 2>&1 1>/dev/null |grep ls

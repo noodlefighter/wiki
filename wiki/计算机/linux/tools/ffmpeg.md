@@ -2,6 +2,8 @@
 
 ## 使用ffmpeg转换音频视频格式
 
+> 参数：http://www.ffmpeg.org/ffmpeg-all.html
+
 查看支持的格式：
 
 ```
@@ -22,6 +24,14 @@ ffmpeg -f mp3 -i test.mp3 test.wav
 
 ```
 ffmpeg -i input.wav -ss 00:00:05 -t 00:00:10 output.wav
+```
+
+常用参数：
+
+```
+-ac 1 设置声道数为1
+-ar 48000 设置采样率为48000Hz
+例： ffmpeg -f mp3 -i kukou.mp3 -ac 1 -ar 22050 kukou-22050-mono.mp3
 ```
 
 
