@@ -3027,6 +3027,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../distribution/linux%E5%90%AF%E5%8A%A8%E7%AD%89%E7%BA%A7/" class="md-nav__link">
+        Linux启动等级
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../distribution/linux%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="md-nav__link">
         Linux桌面环境配置
       </a>
@@ -3879,6 +3891,18 @@
     <li class="md-nav__item">
       <a href="../samba/" class="md-nav__link">
         Samba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../screen%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        Screen命令
       </a>
     </li>
   
@@ -6548,6 +6572,9 @@
                   <h1>Ffmpeg</h1>
                 
                 <h2 id="ffmpeg">使用ffmpeg转换音频视频格式<a class="headerlink" href="#ffmpeg" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>参数：<a href="http://www.ffmpeg.org/ffmpeg-all.html">http://www.ffmpeg.org/ffmpeg-all.html</a></p>
+</blockquote>
 <p>查看支持的格式：</p>
 <div class="highlight"><pre><span></span><code>-decoders           show available decoders
 -encoders           show available encoders
@@ -6560,6 +6587,11 @@ ffmpeg -f mp3 -i test.mp3 test.wav
 </code></pre></div>
 <p>截取：</p>
 <div class="highlight"><pre><span></span><code>ffmpeg -i input.wav -ss 00:00:05 -t 00:00:10 output.wav
+</code></pre></div>
+<p>常用参数：</p>
+<div class="highlight"><pre><span></span><code>-ac 1 设置声道数为1
+-ar 48000 设置采样率为48000Hz
+例： ffmpeg -f mp3 -i kukou.mp3 -ac 1 -ar 22050 kukou-22050-mono.mp3
 </code></pre></div>
 <h2 id="ffmpegmkv">ffmpeg提取mkv的音视频<a class="headerlink" href="#ffmpegmkv" title="Permanent link">&para;</a></h2>
 <p>先用ffprobe看mkv里内封的数据：</p>

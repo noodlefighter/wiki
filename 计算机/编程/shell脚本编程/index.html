@@ -3025,6 +3025,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../linux/distribution/linux%E5%90%AF%E5%8A%A8%E7%AD%89%E7%BA%A7/" class="md-nav__link">
+        Linux启动等级
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../linux/distribution/linux%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="md-nav__link">
         Linux桌面环境配置
       </a>
@@ -3825,6 +3837,18 @@
     <li class="md-nav__item">
       <a href="../../linux/tools/samba/" class="md-nav__link">
         Samba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/tools/screen%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        Screen命令
       </a>
     </li>
   
@@ -7164,13 +7188,12 @@
 <li>一定要从模板开始编写 shell 脚本，避免错误，比如如果没设<code>`nounset</code>就可能出现类似<code>rm -rf $ABC/</code>但ABC变量不存在而删除根目录的情况</li>
 </ul>
 <h2 id="shell_1">shell 脚本模板<a class="headerlink" href="#shell_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>#!/bin/bash
-
-set -o nounset
-set -o errexit
+<div class="highlight"><pre><span></span><code>#!/bin/bash -e -u
 
 SHELL_DIR=$(cd &quot;$(dirname &quot;$0&quot;)&quot;;pwd)
 </code></pre></div>
+<p><code>-e</code>= nounset 禁止空变量
+<code>-u</code>= errexit 错误则退出</p>
 <h2 id="_1">技巧<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">获取脚本所在目录<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>获取脚本所在路径, 而不是$PWD:</p>
@@ -7253,7 +7276,7 @@ find -name &quot;a.txt&quot;|xargs -I{} cp -f ../source.txt {}
 |awk &#39;NR==3 {print $1}&#39; 获取第3行的第1个“参数”
 
 将stderr重定向到stdout，stdout重定向到foo.log文件
-cat foo &gt; foo.log 2&gt;&amp;1
+foo 2&gt;&amp;1 &gt; foo.log
 
 stdout不输出，将stderr重定向到stdout（可以用来收集日志）
 ls 2iojedn 2&gt;&amp;1 1&gt;/dev/null |grep ls

@@ -1523,6 +1523,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#recipeinitscriptsupdate-rcd" class="md-nav__link">
+    在一个recipe中添加多个initscripts，用update-rc.d类
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3117,6 +3124,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA/linux/distribution/linux%E5%90%AF%E5%8A%A8%E7%AD%89%E7%BA%A7/" class="md-nav__link">
+        Linux启动等级
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA/linux/distribution/linux%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="md-nav__link">
         Linux桌面环境配置
       </a>
@@ -3917,6 +3936,18 @@
     <li class="md-nav__item">
       <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA/linux/tools/samba/" class="md-nav__link">
         Samba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA/linux/tools/screen%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        Screen命令
       </a>
     </li>
   
@@ -6610,6 +6641,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#recipeinitscriptsupdate-rcd" class="md-nav__link">
+    在一个recipe中添加多个initscripts，用update-rc.d类
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6668,6 +6706,35 @@ addtask make_scr after do_compile before do_deploy
 <h2 id="bitbake_1">bitbake问题集<a class="headerlink" href="#bitbake_1" title="Permanent link">&para;</a></h2>
 <h3 id="no-valid-terminal-found-unable-to-open-devshell"><code>No valid terminal found, unable to open devshell.</code><a class="headerlink" href="#no-valid-terminal-found-unable-to-open-devshell" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>$ apt install tmux
+</code></pre></div>
+<h2 id="recipeinitscriptsupdate-rcd">在一个recipe中添加多个initscripts，用update-rc.d类<a class="headerlink" href="#recipeinitscriptsupdate-rcd" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>refer: <a href="http://www.embeddedlinux.org.cn/OEManual/update-rc-d_class.html">http://www.embeddedlinux.org.cn/OEManual/update-rc-d_class.html</a></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code># 分多个子包，并让${PN}包依赖子包
+PACKAGES =+ &quot;${PN}-fix-eth-mac ${PN}-mount-user&quot;
+RDEPENDS_${PN} = &quot;${PN}-fix-eth-mac ${PN}-mount-user&quot;
+
+inherit update-rc.d
+
+INITSCRIPT_PACKAGES = &quot;${PN} ${PN}-fix-eth-mac ${PN}-mount-user&quot;
+
+INITSCRIPT_NAME_${PN} = &quot;rc.local&quot;
+INITSCRIPT_PARAMS_${PN} = &quot;start 99 2 3 4 5 .&quot;
+
+INITSCRIPT_NAME_${PN}-fix-eth-mac = &quot;fix-eth-mac&quot;
+INITSCRIPT_PARAMS_${PN}-fix-eth-mac = &quot;start 10 2 3 4 5 .&quot;
+
+INITSCRIPT_NAME_${PN}-mount-user = &quot;mount-user-partition&quot;
+INITSCRIPT_PARAMS_${PN}-mount-user = &quot;start 02 S .&quot;
+
+# 记得添加这些文件，让他们存在于package中
+FILES_${PN} = &quot; \
+    ${sysconfdir}/ \
+    ${sysconfdir}/init.d/rc.local \
+&quot;
+FILES_${PN}-fix-eth-mac = &quot;${sysconfdir}/init.d/fix-eth-mac&quot;
+FILES_${PN}-mount-user = &quot;${sysconfdir}/init.d/mount-user-partition&quot;
 </code></pre></div>
                 
               
