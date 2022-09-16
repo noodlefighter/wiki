@@ -55,3 +55,57 @@
    sl.l_linger = 0;	/* timeout interval in seconds */
    setsockopt(sockfd, SOL_SOCKET, SO_LINGER, &sl, sizeof(sl));
    ```
+
+
+
+## socket keepalive的opt设置
+
+```
+  setsockopt(_nSock, SOL_SOCKET, SO_KEEPALIVE, (void *)&keepAlive, sizeof(keepAlive));
+  setsockopt(_nSock, SOL_TCP, TCP_KEEPIDLE, (void*)&keepIdle, sizeof(keepIdle));
+  setsockopt(_nSock, SOL_TCP, TCP_KEEPINTVL, (void *)&keepInterval, sizeof(keepInterval));
+  setsockopt(_nSock, SOL_TCP, TCP_KEEPCNT, (void *)&keepCount, sizeof(keepCount));
+  int flags  = fcntl(_nSock,F_GETFL,0);
+  logger->debug("SocketIO::connect flag:%d",flags);
+  fcntl(_nSock,F_SETFL,flags&~O_NONBLOCK);
+```
+
+
+
+## socket 指定网卡发包
+
+```
+#include <net/if.h>
+
+struct ifreq ifr;
+memset(&ifr, 0x00, sizeof(ifr));
+strncpy(ifr.ifr_name, interface, strlen(interface));
+setsockopt(_nSock, SOL_SOCKET, SO_BINDTODEVICE, (char *)&ifr, sizeof(ifr));
+```
+
+
+
+## 阻塞式socket设置超时时间
+
+
+
+```
+  {
+    int ret = 0;
+    struct timeval timeout;
+    timeout.tv_sec = 5;
+    timeout.tv_usec = 0;
+    socklen_t len = sizeof(timeout);
+    do {
+      ret = setsockopt(_nSock, SOL_SOCKET, SO_SNDTIMEO, &timeout, len);
+      CC_BREAK_IF(ret < 0);
+      ret = setsockopt(_nSock, SOL_SOCKET, SO_RCVTIMEO, &timeout, len);
+      CC_BREAK_IF(ret < 0);
+    } while(0);
+    if (ret < 0) {
+        logger->error("Error when setsockopt: [%d]%s", errno, strerror(errno));
+        return FALSE;
+    }
+  }
+```
+
