@@ -37,3 +37,15 @@ digraph finite_state_machine {
 vscode中使用`Graphviz Markdown`插件:
 
 ![image-20200503002441625](_assets/graphviz/image-20200503002441625.png)
+
+
+
+## graphviz工具包
+
+> 入门教程参考：https://itopic.org/graphviz.html
+
+将dot转换成图片：
+
+```
+dot demo.dot -T png -o demo.png
+```

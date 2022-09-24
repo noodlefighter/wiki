@@ -208,6 +208,13 @@ ifconfig等命令的package：
 pacman -S net-tools dnsutils inetutils iproute2
 ```
 
+ifconfig设置ip：
+
+```
+ifconfig eth0 192.168.10.199
+```
+
+
 
 ## dd命令测试磁盘写入速度
 

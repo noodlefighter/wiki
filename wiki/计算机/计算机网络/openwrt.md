@@ -8,7 +8,67 @@ https://github.com/coolsnowwolf/lede
 
 https://github.com/kenzok8/openwrt-packages
 
+## x86软路由openwrt折腾笔记
 
+### 安装
+
+机器是J1900软路由，64位的CPU，下载镜象：https://downloads.openwrt.org/releases/21.02.3/targets/x86/64/
+
+把`generic-ext4-combined-efi.img.gz`解压出来，用Etcher之类的工具写到软路由硬盘上，想办法进到Shell，我用的VGA视频输出（机器留了个COM口，但是懒得自己做转换线）
+
+设置`/etc/config/network`中的LAN/WAN口，自己先试着插插网线看看ethX和物理端口的对应关系（先用ifconfig ethX up把网口都拉起来，插网线会看到log的）：
+
+```
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'eth0'
+	list ports 'eth1'
+	list ports 'eth2'
+
+config interface 'lan'
+	option proto 'static'
+	option ipaddr '192.168.1.1'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+	option device 'br-lan'
+	
+config interface 'wan'
+	option device 'eth3'
+	option proto 'dhcp'
+
+config interface 'wan6'
+	option device 'eth3'
+	option proto 'dhcpv6'
+```
+
+配置好之后重启网络`/etc/init.d/network restart`，插网线到LAN口，应该能访问web配置界面了。
+
+### 换源
+
+```
+$ cat /etc/opkg/distfeeds.conf
+src/gz openwrt_core https://mirrors.ustc.edu.cn/openwrt/releases/21.02.3/targets/x86/64/packages
+src/gz openwrt_base https://mirrors.ustc.edu.cn/openwrt/releases/21.02.3/packages/x86_64/base
+src/gz openwrt_luci https://mirrors.ustc.edu.cn/openwrt/releases/21.02.3/packages/x86_64/luci
+src/gz openwrt_packages https://mirrors.ustc.edu.cn/openwrt/releases/21.02.3/packages/x86_64/packages
+src/gz openwrt_routing https://mirrors.ustc.edu.cn/openwrt/releases/21.02.3/packages/x86_64/routing
+src/gz openwrt_telephony https://mirrors.ustc.edu.cn/openwrt/releases/21.02.3/packages/x86_64/telephony
+```
+
+### 自己编译软件包
+
+为了能自己编译软件，先下载sdk，比如`openwrt-sdk-21.02.3-x86-64_gcc-8.4.0_musl.Linux-x86_64.tar.xz`，解压
+
+添加第三方软件源，修改`./feeds.conf.default`，更新软件：
+
+```
+$ ./scripts/feeds update clean
+$ ./scripts/feeds update -a
+$ ./scripts/feeds install -a
+```
+
+更新完之后，再执行`make menuconfig`，就能看到软件列表了。
 
 ## UCI
 

@@ -21,13 +21,20 @@ ARM WIki  https://community.arm.com/developer/tools-software/oss-platforms/w/doc
 
 ## proc 目录下观察设备树
 
-
-
 ```
 /proc/device-tree/
+/sys/firmware/devicetree/base/
 ```
 
 
+
+
+
+## 使用dtc转换dtb到dts
+
+```
+$ dtc -I dtb -O dts -o myb6ulx.dts myb6ulx.dtb
+```
 
 
 

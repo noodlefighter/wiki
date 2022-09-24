@@ -105,3 +105,16 @@ logger action=$ACTION
 ```
 
 通过`tail /var/log/messages`能看到日志
+
+
+
+## busybox自带的microcom
+
+Ctrl+a 进入设置状态, z进入设置菜单
+（1）S键：发送文件到目标系统中；
+（2）W键：自动卷屏。当显示的内容超过一行之後，自动将後面的内容换行。这个功能在查看内核的啓动信息时很有用。
+（3）C键：清除屏幕的显示内容；
+（4）B键：浏览minicom的历史显示；
+（5）X键：退出mInicom，会提示确认退出。
+
+比如需要退出：ctrl,a,z,x

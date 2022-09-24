@@ -25,3 +25,11 @@ luac能将.lua源码转成二进制码，加速加载过程，并不能独立运
 $ luarocks --lua-version 5.2 install bit
 ```
 
+
+
+## lua程序中添加搜索路径
+
+```
+package.path = "../?.lua;"..package.path
+```
+
