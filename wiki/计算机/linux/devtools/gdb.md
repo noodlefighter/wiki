@@ -56,10 +56,10 @@ $gdb hello 11127
 
 ## gdb中忽略某些SIG
 
-比如需要忽略SIGPIPE，输入：
+比如需要忽略SIGPIPE，`.gdbinit`加入：
 
 ```
-(gdb) handle SIGPIPE nostop noprint pass
+handle SIG34 nostop noprint pass noignore
 ```
 
 

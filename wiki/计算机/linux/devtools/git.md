@@ -426,6 +426,13 @@ git gc --aggressive --prune=now
 git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port
 ```
 
+仅为某些目标配置代理，修改`~/.gitconfig`：
+
+```
+[http "https://github.com"]
+	proxy=socks5://xxxxxx:7890
+```
+
 
 
 ## 遇到的问题

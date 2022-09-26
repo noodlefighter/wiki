@@ -50,3 +50,20 @@ unset https_proxy
 unset ftp_proxy
 unset no_proxy
 ```
+
+## 用curl测试代理
+
+```
+$ curl -x socks5://192.168.3.146:1080 google.com
+```
+
+## 让SSH走代理
+
+比如ssh方式访问github仓库，修改`$HOME/.ssh/config`，r-proxy是HTTP代理的地址：
+
+```
+Host github.com
+     ProxyCommand /usr/bin/corkscrew r-proxy 7890 %h %p
+```
+
+corkscrew = A tool for tunneling SSH through HTTP proxies
