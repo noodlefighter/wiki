@@ -7482,6 +7482,10 @@ git gc --aggressive --prune=now
 <h2 id="git">为git配置代理<a class="headerlink" href="#git" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port
 </code></pre></div>
+<p>仅为某些目标配置代理，修改<code>~/.gitconfig</code>：</p>
+<div class="highlight"><pre><span></span><code>[http &quot;https://github.com&quot;]
+    proxy=socks5://xxxxxx:7890
+</code></pre></div>
 <h2 id="_17">遇到的问题<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
 <h3 id="error-insufficient-permission-for-adding-an-object-to-repository-database-gitobjects">error: insufficient permission for adding an object to repository database .git/objects<a class="headerlink" href="#error-insufficient-permission-for-adding-an-object-to-repository-database-gitobjects" title="Permanent link">&para;</a></h3>
 <p>权限有问题。</p>

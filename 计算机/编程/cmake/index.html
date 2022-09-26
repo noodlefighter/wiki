@@ -5008,14 +5008,21 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    调试
+    交叉编译
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    交叉编译
+  <a href="#cmake" class="md-nav__link">
+    CMake寻找依赖库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake_1" class="md-nav__link">
+    CMake中描述安装
   </a>
   
 </li>
@@ -6626,14 +6633,21 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    调试
+    交叉编译
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    交叉编译
+  <a href="#cmake" class="md-nav__link">
+    CMake寻找依赖库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake_1" class="md-nav__link">
+    CMake中描述安装
   </a>
   
 </li>
@@ -6655,12 +6669,11 @@
                 
                 <h2 id="_1">一般使用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>mkdir build &amp;&amp; cmake ..
-</code></pre></div>
-<h2 id="_2">调试<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>多显示点信息，比如具体执行了什么命令
+
+多显示点信息，比如具体执行了什么命令
 cmake -DCMAKE_VERBOSE_MAKEFILE=on .
 </code></pre></div>
-<h2 id="_3">交叉编译<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">交叉编译<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>Makefile:</p>
 <div class="highlight"><pre><span></span><code>all: local
 
@@ -6693,6 +6706,42 @@ cmake .. \
         -DCMAKE_C_COMPILER=${CC}
 
 make -j8
+</code></pre></div>
+<p>一个有价值的参考是openembedded的cmake.bbclass通用交叉编译过程：<a href="https://github.com/openembedded/openembedded/blob/master/classes/cmake.bbclass">https://github.com/openembedded/openembedded/blob/master/classes/cmake.bbclass</a></p>
+<h2 id="cmake">CMake寻找依赖库<a class="headerlink" href="#cmake" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>refers:</p>
+<ul>
+<li>文档 <a href="https://cmake.org/cmake/help/latest/command/target_link_directories.html?highlight=link_directories#command:target_link_directories">target_link_directories</a></li>
+<li><a href="https://stackoverflow.com/questions/29191855/what-is-the-proper-way-to-use-pkg-config-from-cmake">https://stackoverflow.com/questions/29191855/what-is-the-proper-way-to-use-pkg-config-from-cmake</a></li>
+</ul>
+</blockquote>
+<p>一个用PkgConfig模块的例子，这里对应OS为Linux的场合，其他OS应该分别处理：</p>
+<div class="highlight"><pre><span></span><code>find_package(PkgConfig REQUIRED)
+pkg_check_modules(AVCODEC REQUIRED libavcodec)
+pkg_check_modules(SWSCALE REQUIRED libswscale)
+pkg_check_modules(AVUTIL REQUIRED libavutil)
+pkg_check_modules(AVFORMAT REQUIRED libavformat)
+pkg_check_modules(SWRESAMPLE REQUIRED libswresample)
+pkg_check_modules(AVFILTER REQUIRED libavfilter)
+set(FFMPEG_LIBS ${AVCODEC_LIBRARIES} ${SWSCALE_LIBRARIES} ${AVUTIL_LIBRARIES} ${AVFORMAT_LIBRARIES} ${SWRESAMPLE_LIBRARIES} ${AVFILTER_LIBRARIES})
+set(FFMPEG_INCS ${AVCODEC_INCLUDE_DIRS} ${SWSCALE_INCLUDE_DIRS} ${AVUTIL_INCLUDE_DIRS} ${AVFORMAT_INCLUDE_DIRS} ${SWRESAMPLE_INCLUDE_DIRS} ${AVFILTER_INCLUDE_DIRS})
+set(FFMPEG_LIBDIRS ${AVCODEC_LIBRARY_DIRS} ${SWSCALE_LIBRARY_DIRS} ${AVUTIL_LIBRARY_DIRS} ${AVFORMAT_LIBRARY_DIRS} ${SWRESAMPLE_LIBRARY_DIRS} ${AVFILTER_LIBRARY_DIRS})
+
+add_library(ebsx ${EBSX_SRC})
+target_link_libraries(ebsx ${FFMPEG_LIBS})
+target_include_directories(ebsx PUBLIC ${FFMPEG_INCS})
+target_link_directories(ebsx PUBLIC ${FFMPEG_LIBDIRS})
+</code></pre></div>
+<h2 id="cmake_1">CMake中描述安装<a class="headerlink" href="#cmake_1" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>refers:</p>
+<ul>
+<li><a href="https://cmake.org/cmake/help/latest/command/install.html">https://cmake.org/cmake/help/latest/command/install.html</a></li>
+</ul>
+</blockquote>
+<p>安装一个目标：</p>
+<div class="highlight"><pre><span></span><code>install(TARGETS &lt;目标名...&gt;)
 </code></pre></div>
                 
               

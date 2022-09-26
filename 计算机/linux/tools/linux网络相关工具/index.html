@@ -3756,6 +3756,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    用curl测试代理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    让SSH走代理
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6640,6 +6654,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    用curl测试代理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    让SSH走代理
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6717,6 +6745,15 @@ unset https_proxy
 unset ftp_proxy
 unset no_proxy
 </code></pre></div>
+<h2 id="curl">用curl测试代理<a class="headerlink" href="#curl" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>$ curl -x socks5://192.168.3.146:1080 google.com
+</code></pre></div>
+<h2 id="ssh">让SSH走代理<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h2>
+<p>比如ssh方式访问github仓库，修改<code>$HOME/.ssh/config</code>，r-proxy是HTTP代理的地址：</p>
+<div class="highlight"><pre><span></span><code>Host github.com
+     ProxyCommand /usr/bin/corkscrew r-proxy 7890 %h %p
+</code></pre></div>
+<p>corkscrew = A tool for tunneling SSH through HTTP proxies</p>
                 
               
               
