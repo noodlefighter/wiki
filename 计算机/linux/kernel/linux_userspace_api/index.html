@@ -6299,7 +6299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6658,90 +6658,90 @@ config UEVENT_HELPER_PATH
       via /proc/sys/kernel/hotplug or via /sys/kernel/uevent_helper
 </code></pre></div>
 <p>以下是相关实现，<a href="https://github.com/torvalds/linux/blob/f678d6da749983791850876e3421e7c48a0a7127/lib/kobject_uevent.c">github传送门</a>：</p>
-<div class="highlight"><pre><span></span><code><span class="p">...</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="p">...</span>
+<span class="p">...</span>
 <span class="cp">#ifdef CONFIG_UEVENT_HELPER</span>
-<span class="kt">char</span><span class="w"> </span><span class="n">uevent_helper</span><span class="p">[</span><span class="n">UEVENT_HELPER_PATH_LEN</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONFIG_UEVENT_HELPER_PATH</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">uevent_helper</span><span class="p">[</span><span class="n">UEVENT_HELPER_PATH_LEN</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONFIG_UEVENT_HELPER_PATH</span><span class="p">;</span>
 <span class="cp">#endif</span>
-<span class="p">...</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
+<span class="p">...</span>
+<span class="p">...</span>
 <span class="cp">#ifdef CONFIG_UEVENT_HELPER</span>
-<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kobj_usermode_filter</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">kobject</span><span class="w"> </span><span class="o">*</span><span class="n">kobj</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">kobj_ns_type_operations</span><span class="w"> </span><span class="o">*</span><span class="n">ops</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kobj_usermode_filter</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">kobject</span><span class="w"> </span><span class="o">*</span><span class="n">kobj</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">kobj_ns_type_operations</span><span class="w"> </span><span class="o">*</span><span class="n">ops</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">ops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kobj_ns_ops</span><span class="p">(</span><span class="n">kobj</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ops</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">init_ns</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ns</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">ops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kobj_ns_ops</span><span class="p">(</span><span class="n">kobj</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ops</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">init_ns</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ns</span><span class="p">;</span>
 
-<span class="w">        </span><span class="n">ns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kobj</span><span class="o">-&gt;</span><span class="n">ktype</span><span class="o">-&gt;</span><span class="n">namespace</span><span class="p">(</span><span class="n">kobj</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">init_ns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">initial_ns</span><span class="p">();</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ns</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">init_ns</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">ns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kobj</span><span class="o">-&gt;</span><span class="n">ktype</span><span class="o">-&gt;</span><span class="n">namespace</span><span class="p">(</span><span class="n">kobj</span><span class="p">);</span>
+<span class="w">        </span><span class="n">init_ns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">initial_ns</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ns</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">init_ns</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">init_uevent_argv</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">kobj_uevent_env</span><span class="w"> </span><span class="o">*</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">subsystem</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">init_uevent_argv</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">kobj_uevent_env</span><span class="w"> </span><span class="o">*</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">subsystem</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="p">],</span><span class="w"> </span><span class="n">subsystem</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="k">sizeof</span><span class="p">(</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">len</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">WARN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">KERN_ERR</span><span class="w"> </span><span class="s">&quot;init_uevent_argv: buffer size too small</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="p">],</span><span class="w"> </span><span class="n">subsystem</span><span class="p">,</span>
+<span class="w">              </span><span class="k">sizeof</span><span class="p">(</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">len</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">WARN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">KERN_ERR</span><span class="w"> </span><span class="s">&quot;init_uevent_argv: buffer size too small</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uevent_helper</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="p">];</span><span class="w"></span>
-<span class="w">    </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uevent_helper</span><span class="p">;</span>
+<span class="w">    </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="p">];</span>
+<span class="w">    </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">buflen</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">cleanup_uevent_env</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">subprocess_info</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">kfree</span><span class="p">(</span><span class="n">info</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">cleanup_uevent_env</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">subprocess_info</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">kfree</span><span class="p">(</span><span class="n">info</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
 <span class="cp">#endif</span>
-<span class="p">...</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">kobject_uevent_env</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">kobject</span><span class="w"> </span><span class="o">*</span><span class="n">kobj</span><span class="p">,</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="n">kobject_action</span><span class="w"> </span><span class="n">action</span><span class="p">,</span><span class="w"></span>
-<span class="w">               </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">envp_ext</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">kobject_uevent_env</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">kobject</span><span class="w"> </span><span class="o">*</span><span class="n">kobj</span><span class="p">,</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="n">kobject_action</span><span class="w"> </span><span class="n">action</span><span class="p">,</span>
+<span class="w">               </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">envp_ext</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="p">...</span>
+<span class="p">...</span>
 <span class="cp">#ifdef CONFIG_UEVENT_HELPER</span>
-<span class="w">    </span><span class="cm">/* call uevent_helper, usually only enabled during early boot */</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">uevent_helper</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">kobj_usermode_filter</span><span class="p">(</span><span class="n">kobj</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">subprocess_info</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* call uevent_helper, usually only enabled during early boot */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">uevent_helper</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">kobj_usermode_filter</span><span class="p">(</span><span class="n">kobj</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">subprocess_info</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">;</span>
 
-<span class="w">        </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_uevent_var</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HOME=/&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retval</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">exit</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_uevent_var</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s">&quot;PATH=/sbin:/bin:/usr/sbin:/usr/bin&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retval</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">exit</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init_uevent_argv</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="n">subsystem</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retval</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">exit</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_uevent_var</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HOME=/&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retval</span><span class="p">)</span>
+<span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">exit</span><span class="p">;</span>
+<span class="w">        </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_uevent_var</span><span class="p">(</span><span class="n">env</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;PATH=/sbin:/bin:/usr/sbin:/usr/bin&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retval</span><span class="p">)</span>
+<span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">exit</span><span class="p">;</span>
+<span class="w">        </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init_uevent_argv</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="n">subsystem</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retval</span><span class="p">)</span>
+<span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">exit</span><span class="p">;</span>
 
-<span class="w">        </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">call_usermodehelper_setup</span><span class="p">(</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">,</span><span class="w"></span>
-<span class="w">                         </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">envp</span><span class="p">,</span><span class="w"> </span><span class="n">GFP_KERNEL</span><span class="p">,</span><span class="w"></span>
-<span class="w">                         </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">cleanup_uevent_env</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">call_usermodehelper_exec</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="w"> </span><span class="n">UMH_NO_WAIT</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="cm">/* freed by cleanup_uevent_env */</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+<span class="w">        </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">call_usermodehelper_setup</span><span class="p">(</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">env</span><span class="o">-&gt;</span><span class="n">envp</span><span class="p">,</span><span class="w"> </span><span class="n">GFP_KERNEL</span><span class="p">,</span>
+<span class="w">                         </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">cleanup_uevent_env</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">call_usermodehelper_exec</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="w"> </span><span class="n">UMH_NO_WAIT</span><span class="p">);</span>
+<span class="w">            </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="cm">/* freed by cleanup_uevent_env */</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="cp">#endif</span>
-<span class="p">...</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="p">}</span>
 </code></pre></div>
                 
               

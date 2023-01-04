@@ -6306,7 +6306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6667,105 +6667,105 @@
 </blockquote>
 <p>The execution flow can be traced implementing these monitoring points, for example writing on file some useful information.</p>
 <p>Suppose you have to analyze the following code:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;foo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;foo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w"> </span><span class="n">foo</span><span class="p">();</span><span class="w"></span>
+<span class="w"> </span><span class="n">foo</span><span class="p">();</span>
 
-<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Create a file called “<code>trace.c</code>” with the following content:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span>
 
-<span class="k">static</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp_trace</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp_trace</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"></span>
-<span class="nf">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">constructor</span><span class="p">))</span><span class="w"></span>
-<span class="n">trace_begin</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="n">fp_trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;trace.out&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">void</span>
+<span class="nf">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">constructor</span><span class="p">))</span>
+<span class="n">trace_begin</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w"> </span><span class="n">fp_trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;trace.out&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span class="kt">void</span><span class="w"></span>
-<span class="nf">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">destructor</span><span class="p">))</span><span class="w"></span>
-<span class="n">trace_end</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="n">fclose</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">);</span><span class="w"></span>
-<span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">void</span>
+<span class="nf">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">destructor</span><span class="p">))</span>
+<span class="n">trace_end</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="n">fclose</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="kt">void</span><span class="w"></span>
-<span class="nf">__cyg_profile_func_enter</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">func</span><span class="p">,</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">caller</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;e %p %p %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">caller</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
-<span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">void</span>
+<span class="nf">__cyg_profile_func_enter</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">func</span><span class="p">,</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">caller</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;e %p %p %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">caller</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="kt">void</span><span class="w"></span>
-<span class="nf">__cyg_profile_func_exit</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">caller</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x %p %p %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">caller</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w"></span>
-<span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">void</span>
+<span class="nf">__cyg_profile_func_exit</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">caller</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fp_trace</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp_trace</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x %p %p %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">caller</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>The idea is to write into a log (in our case “<code>trace.out</code>“) the function addresses, the address of the call and the execution time. To do so, a file needs to be open at the beginning of execution. The GCC-specific attribute “<a href="http://gcc.gnu.org/onlinedocs/gcc-4.5.1/gcc/Function-Attributes.html#index-g_t_0040code_007bconstructor_007d-function-attribute-2343"><code>constructor</code></a>” helps in defining a function that is executed before “main”. In the same way the attribute “<code>destructor</code>” specifies that a function must be executed when the program is going to exit.</p>
 <p>To compile and execute the program, the command-line is:</p>
-<div class="highlight"><pre><span></span><code>$ gcc -finstrument-functions -g -c -o main.o main.c
-$ gcc -c -o trace.o trace.c
-$ gcc main.o trace.o -o main
-$ ./main
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcc<span class="w"> </span>-finstrument-functions<span class="w"> </span>-g<span class="w"> </span>-c<span class="w"> </span>-o<span class="w"> </span>main.o<span class="w"> </span>main.c
+$<span class="w"> </span>gcc<span class="w"> </span>-c<span class="w"> </span>-o<span class="w"> </span>trace.o<span class="w"> </span>trace.c
+$<span class="w"> </span>gcc<span class="w"> </span>main.o<span class="w"> </span>trace.o<span class="w"> </span>-o<span class="w"> </span>main
+$<span class="w"> </span>./main
 foo
-$ cat trace.out
-e 0x400679 0x394281c40b <span class="m">1286372153</span>
-e 0x400648 0x40069a <span class="m">1286372153</span>
-x 0x400648 0x40069a <span class="m">1286372153</span>
-x 0x400679 0x394281c40b <span class="m">1286372153</span>
+$<span class="w"> </span>cat<span class="w"> </span>trace.out
+e<span class="w"> </span>0x400679<span class="w"> </span>0x394281c40b<span class="w"> </span><span class="m">1286372153</span>
+e<span class="w"> </span>0x400648<span class="w"> </span>0x40069a<span class="w"> </span><span class="m">1286372153</span>
+x<span class="w"> </span>0x400648<span class="w"> </span>0x40069a<span class="w"> </span><span class="m">1286372153</span>
+x<span class="w"> </span>0x400679<span class="w"> </span>0x394281c40b<span class="w"> </span><span class="m">1286372153</span>
 </code></pre></div>
 <p>To understand the addresses, the “<code>addr2line</code>” tool can be used: it’s a tool included in “<code>binutils</code>” package that, given an executable with debug information, maps an execution address to a source code file and line. I put together an executable shell script (“<code>readtracelog.sh</code>“) that uses <code>addr2line</code> to print the trace log into a readable format:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-<span class="k">if</span> <span class="nb">test</span> ! -f <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
 <span class="k">then</span>
- <span class="nb">echo</span> <span class="s2">&quot;Error: executable </span><span class="nv">$1</span><span class="s2"> does not exist.&quot;</span>
- <span class="nb">exit</span> <span class="m">1</span>
+<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: executable </span><span class="nv">$1</span><span class="s2"> does not exist.&quot;</span>
+<span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="k">fi</span>
-<span class="k">if</span> <span class="nb">test</span> ! -f <span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
 <span class="k">then</span>
- <span class="nb">echo</span> <span class="s2">&quot;Error: trace log </span><span class="nv">$2</span><span class="s2"> does not exist.&quot;</span>
- <span class="nb">exit</span> <span class="m">1</span>
+<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: trace log </span><span class="nv">$2</span><span class="s2"> does not exist.&quot;</span>
+<span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="k">fi</span>
 <span class="nv">EXECUTABLE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
 <span class="nv">TRACELOG</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
-<span class="k">while</span> <span class="nb">read</span> LINETYPE FADDR CADDR CTIME<span class="p">;</span> <span class="k">do</span>
- <span class="nv">FNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>addr2line -f -e <span class="si">${</span><span class="nv">EXECUTABLE</span><span class="si">}</span> <span class="si">${</span><span class="nv">FADDR</span><span class="si">}</span><span class="p">|</span>head -1<span class="k">)</span><span class="s2">&quot;</span>
- <span class="nv">CDATE</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>date -Iseconds -d @<span class="si">${</span><span class="nv">CTIME</span><span class="si">}</span><span class="k">)</span><span class="s2">&quot;</span>
- <span class="k">if</span> <span class="nb">test</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">LINETYPE</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;e&quot;</span>
- <span class="k">then</span>
- <span class="nv">CNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>addr2line -f -e <span class="si">${</span><span class="nv">EXECUTABLE</span><span class="si">}</span> <span class="si">${</span><span class="nv">CADDR</span><span class="si">}</span><span class="p">|</span>head -1<span class="k">)</span><span class="s2">&quot;</span>
- <span class="nv">CLINE</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>addr2line -s -e <span class="si">${</span><span class="nv">EXECUTABLE</span><span class="si">}</span> <span class="si">${</span><span class="nv">CADDR</span><span class="si">}</span><span class="k">)</span><span class="s2">&quot;</span>
- <span class="nb">echo</span> <span class="s2">&quot;Enter </span><span class="si">${</span><span class="nv">FNAME</span><span class="si">}</span><span class="s2"> at </span><span class="si">${</span><span class="nv">CDATE</span><span class="si">}</span><span class="s2">, called from </span><span class="si">${</span><span class="nv">CNAME</span><span class="si">}</span><span class="s2"> (</span><span class="si">${</span><span class="nv">CLINE</span><span class="si">}</span><span class="s2">)&quot;</span>
- <span class="k">fi</span>
- <span class="k">if</span> <span class="nb">test</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">LINETYPE</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
- <span class="k">then</span>
- <span class="nb">echo</span> <span class="s2">&quot;Exit  </span><span class="si">${</span><span class="nv">FNAME</span><span class="si">}</span><span class="s2"> at </span><span class="si">${</span><span class="nv">CDATE</span><span class="si">}</span><span class="s2">&quot;</span>
- <span class="k">fi</span>
-<span class="k">done</span> &lt; <span class="s2">&quot;</span><span class="si">${</span><span class="nv">TRACELOG</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>LINETYPE<span class="w"> </span>FADDR<span class="w"> </span>CADDR<span class="w"> </span>CTIME<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w"> </span><span class="nv">FNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>addr2line<span class="w"> </span>-f<span class="w"> </span>-e<span class="w"> </span><span class="si">${</span><span class="nv">EXECUTABLE</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">FADDR</span><span class="si">}</span><span class="p">|</span>head<span class="w"> </span>-1<span class="k">)</span><span class="s2">&quot;</span>
+<span class="w"> </span><span class="nv">CDATE</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span>-Iseconds<span class="w"> </span>-d<span class="w"> </span>@<span class="si">${</span><span class="nv">CTIME</span><span class="si">}</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LINETYPE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;e&quot;</span>
+<span class="w"> </span><span class="k">then</span>
+<span class="w"> </span><span class="nv">CNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>addr2line<span class="w"> </span>-f<span class="w"> </span>-e<span class="w"> </span><span class="si">${</span><span class="nv">EXECUTABLE</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">CADDR</span><span class="si">}</span><span class="p">|</span>head<span class="w"> </span>-1<span class="k">)</span><span class="s2">&quot;</span>
+<span class="w"> </span><span class="nv">CLINE</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>addr2line<span class="w"> </span>-s<span class="w"> </span>-e<span class="w"> </span><span class="si">${</span><span class="nv">EXECUTABLE</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">CADDR</span><span class="si">}</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Enter </span><span class="si">${</span><span class="nv">FNAME</span><span class="si">}</span><span class="s2"> at </span><span class="si">${</span><span class="nv">CDATE</span><span class="si">}</span><span class="s2">, called from </span><span class="si">${</span><span class="nv">CNAME</span><span class="si">}</span><span class="s2"> (</span><span class="si">${</span><span class="nv">CLINE</span><span class="si">}</span><span class="s2">)&quot;</span>
+<span class="w"> </span><span class="k">fi</span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LINETYPE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;x&quot;</span>
+<span class="w"> </span><span class="k">then</span>
+<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Exit  </span><span class="si">${</span><span class="nv">FNAME</span><span class="si">}</span><span class="s2"> at </span><span class="si">${</span><span class="nv">CDATE</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w"> </span><span class="k">fi</span>
+<span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TRACELOG</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>Testing the script with the previous output, the result is:</p>
-<div class="highlight"><pre><span></span><code>$ ./readtracelog.sh main trace.out
-Enter main at <span class="m">2010</span>-10-06T15:35:53+0200, called from ?? <span class="o">(</span>??:0<span class="o">)</span>
-Enter foo at <span class="m">2010</span>-10-06T15:35:53+0200, called from main <span class="o">(</span>main.c:9<span class="o">)</span>
-Exit  foo at <span class="m">2010</span>-10-06T15:35:53+0200
-Exit  main at <span class="m">2010</span>-10-06T15:35:53+0200
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./readtracelog.sh<span class="w"> </span>main<span class="w"> </span>trace.out
+Enter<span class="w"> </span>main<span class="w"> </span>at<span class="w"> </span><span class="m">2010</span>-10-06T15:35:53+0200,<span class="w"> </span>called<span class="w"> </span>from<span class="w"> </span>??<span class="w"> </span><span class="o">(</span>??:0<span class="o">)</span>
+Enter<span class="w"> </span>foo<span class="w"> </span>at<span class="w"> </span><span class="m">2010</span>-10-06T15:35:53+0200,<span class="w"> </span>called<span class="w"> </span>from<span class="w"> </span>main<span class="w"> </span><span class="o">(</span>main.c:9<span class="o">)</span>
+Exit<span class="w">  </span>foo<span class="w"> </span>at<span class="w"> </span><span class="m">2010</span>-10-06T15:35:53+0200
+Exit<span class="w">  </span>main<span class="w"> </span>at<span class="w"> </span><span class="m">2010</span>-10-06T15:35:53+0200
 </code></pre></div>
 <p>The “<code>??</code>” symbol indicates that <code>addr2line</code> has no debug information on that address: in fact it should belong to C runtime libraries that initialize the program and call the main function. In this case the execution time was very small (less than a second) but in more complex scenarios the execution time can be useful to detect where the application spends the most time. It is also a good idea to use the most precise timer on the system, such as <a href="http://linux.die.net/man/2/gettimeofday">gettimeofday</a> in Linux that returns also fractions of a second.</p>
 <p>Some thoughts for embedded platforms:</p>

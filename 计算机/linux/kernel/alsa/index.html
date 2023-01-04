@@ -6306,7 +6306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6683,10 +6683,10 @@ Simple mixer control &#39;Left Capture Mux&#39;,0
 <ul>
 <li>定义 SPKMIXL 相关路由：</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">snd_soc_dapm_route</span><span class="w"> </span><span class="n">intercon</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">snd_soc_dapm_route</span><span class="w"> </span><span class="n">intercon</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;SPKL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAC1 Switch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAC1L&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;SPKL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAC2 Switch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAC2L&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;SPKL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAC1 Switch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAC1L&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;SPKL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAC2 Switch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAC2L&quot;</span><span class="w"> </span><span class="p">},</span>
 </code></pre></div>
 <p>最终上层会看到两个控件：“SPKL DAC1 Switch”，“SPKL DAC2 Switch”；前者用于 “SPKL” 选中 “DAC1L” 作为输入，后者用于 “SPKL” 选中 “DAC2L” 作为输入。</p>
 <p>但控件 “SPKLDAC1 Switch” 或 “SPKL DAC2 Switch” 的打开，不代表能使得 “SPKL” 上电。只有当 “SPKL” 位于完整的音频路径中时，“SPKL” 才会上电。</p>

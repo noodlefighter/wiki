@@ -6423,7 +6423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6948,12 +6948,12 @@ bindsym $mod+o exec &quot;cinnamon-screensaver-command -l&quot;
 <span class="c1"># Known bugs: doesn&#39;t work with non-window container focused                         #</span>
 <span class="c1"># ================================================================================== #</span>
 
-<span class="nv">ws</span><span class="o">=</span><span class="k">$(</span>i3-msg -t get_workspaces<span class="p">|</span>jq <span class="s2">&quot;map(select(.focused))[]|.name&quot;</span><span class="k">)</span>
-<span class="nv">windows</span><span class="o">=</span><span class="k">$(</span>i3-msg -t get_tree<span class="p">|</span>jq <span class="s2">&quot;.nodes|map(.nodes[])|map(.nodes[])|map(select(.type==\&quot;workspace\&quot; and .name==</span><span class="nv">$ws</span><span class="s2">))[0].nodes|map(recurse(.nodes[]))|map(.window)|.[]|values&quot;</span><span class="k">)</span>
-<span class="nv">current</span><span class="o">=</span><span class="k">$(</span>i3-msg -t get_tree<span class="p">|</span>jq <span class="s2">&quot;recurse(.nodes[])|select(.focused)|.window&quot;</span><span class="k">)</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;x</span><span class="nv">$current</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;xnull&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nv">next</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$windows</span> <span class="p">|</span> awk <span class="s2">&quot;BEGIN {RS=\&quot; \&quot;;FS=\&quot;   \&quot;};NR == 1 {w=\$1};{if (f == 1){w=\$1;f=0}else if (\$1 == \&quot;</span><span class="nv">$current</span><span class="s2">\&quot;) f=1};END {print w}&quot;</span><span class="k">)</span>
-    i3-msg <span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="nv">$next</span><span class="o">]</span> focus &gt; /dev/null
+<span class="nv">ws</span><span class="o">=</span><span class="k">$(</span>i3-msg<span class="w"> </span>-t<span class="w"> </span>get_workspaces<span class="p">|</span>jq<span class="w"> </span><span class="s2">&quot;map(select(.focused))[]|.name&quot;</span><span class="k">)</span>
+<span class="nv">windows</span><span class="o">=</span><span class="k">$(</span>i3-msg<span class="w"> </span>-t<span class="w"> </span>get_tree<span class="p">|</span>jq<span class="w"> </span><span class="s2">&quot;.nodes|map(.nodes[])|map(.nodes[])|map(select(.type==\&quot;workspace\&quot; and .name==</span><span class="nv">$ws</span><span class="s2">))[0].nodes|map(recurse(.nodes[]))|map(.window)|.[]|values&quot;</span><span class="k">)</span>
+<span class="nv">current</span><span class="o">=</span><span class="k">$(</span>i3-msg<span class="w"> </span>-t<span class="w"> </span>get_tree<span class="p">|</span>jq<span class="w"> </span><span class="s2">&quot;recurse(.nodes[])|select(.focused)|.window&quot;</span><span class="k">)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;x</span><span class="nv">$current</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;xnull&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">next</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$windows</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">&quot;BEGIN {RS=\&quot; \&quot;;FS=\&quot;   \&quot;};NR == 1 {w=\$1};{if (f == 1){w=\$1;f=0}else if (\$1 == \&quot;</span><span class="nv">$current</span><span class="s2">\&quot;) f=1};END {print w}&quot;</span><span class="k">)</span>
+<span class="w">    </span>i3-msg<span class="w"> </span><span class="o">[</span><span class="nv">id</span><span class="o">=</span><span class="nv">$next</span><span class="o">]</span><span class="w"> </span>focus<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 <span class="k">fi</span>
 </code></pre></div>
 <p>i3加入配置：</p>

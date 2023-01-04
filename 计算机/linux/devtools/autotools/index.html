@@ -6313,7 +6313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6658,24 +6658,24 @@
                 <h2 id="autoconf">autoconf调试方法<a class="headerlink" href="#autoconf" title="Permanent link">&para;</a></h2>
 <p>autoconf发生错误时，查看<code>ffbuild/config.log</code>中的提示</p>
 <h2 id="build-aux">提示缺少build-aux<a class="headerlink" href="#build-aux" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>dev@develop:~/workspaces/libnl$ autoreconf
-configure.ac:51: error: required file <span class="s1">&#39;build-aux/ar-lib&#39;</span> not found
-configure.ac:51:   <span class="s1">&#39;automake --add-missing&#39;</span> can install <span class="s1">&#39;ar-lib&#39;</span>
-configure.ac:51: error: required file <span class="s1">&#39;build-aux/compile&#39;</span> not found
-configure.ac:51:   <span class="s1">&#39;automake --add-missing&#39;</span> can install <span class="s1">&#39;compile&#39;</span>
-configure.ac:73: error: required file <span class="s1">&#39;build-aux/config.guess&#39;</span> not found
-configure.ac:73:   <span class="s1">&#39;automake --add-missing&#39;</span> can install <span class="s1">&#39;config.guess&#39;</span>
-configure.ac:73: error: required file <span class="s1">&#39;build-aux/config.sub&#39;</span> not found
-configure.ac:73:   <span class="s1">&#39;automake --add-missing&#39;</span> can install <span class="s1">&#39;config.sub&#39;</span>
-configure.ac:49: error: required file <span class="s1">&#39;build-aux/install-sh&#39;</span> not found
-configure.ac:49:   <span class="s1">&#39;automake --add-missing&#39;</span> can install <span class="s1">&#39;install-sh&#39;</span>
-configure.ac:73: error: required file <span class="s1">&#39;build-aux/ltmain.sh&#39;</span> not found
-configure.ac:49: error: required file <span class="s1">&#39;build-aux/missing&#39;</span> not found
-configure.ac:49:   <span class="s1">&#39;automake --add-missing&#39;</span> can install <span class="s1">&#39;missing&#39;</span>
-lib/Makefile.am: error: required file <span class="s1">&#39;build-aux/depcomp&#39;</span> not found
-lib/Makefile.am:   <span class="s1">&#39;automake --add-missing&#39;</span> can install <span class="s1">&#39;depcomp&#39;</span>
-parallel-tests: error: required file <span class="s1">&#39;build-aux/test-driver&#39;</span> not found
-parallel-tests:   <span class="s1">&#39;automake --add-missing&#39;</span> can install <span class="s1">&#39;test-driver&#39;</span>
+<div class="highlight"><pre><span></span><code>dev@develop:~/workspaces/libnl$<span class="w"> </span>autoreconf
+configure.ac:51:<span class="w"> </span>error:<span class="w"> </span>required<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;build-aux/ar-lib&#39;</span><span class="w"> </span>not<span class="w"> </span>found
+configure.ac:51:<span class="w">   </span><span class="s1">&#39;automake --add-missing&#39;</span><span class="w"> </span>can<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;ar-lib&#39;</span>
+configure.ac:51:<span class="w"> </span>error:<span class="w"> </span>required<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;build-aux/compile&#39;</span><span class="w"> </span>not<span class="w"> </span>found
+configure.ac:51:<span class="w">   </span><span class="s1">&#39;automake --add-missing&#39;</span><span class="w"> </span>can<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;compile&#39;</span>
+configure.ac:73:<span class="w"> </span>error:<span class="w"> </span>required<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;build-aux/config.guess&#39;</span><span class="w"> </span>not<span class="w"> </span>found
+configure.ac:73:<span class="w">   </span><span class="s1">&#39;automake --add-missing&#39;</span><span class="w"> </span>can<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;config.guess&#39;</span>
+configure.ac:73:<span class="w"> </span>error:<span class="w"> </span>required<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;build-aux/config.sub&#39;</span><span class="w"> </span>not<span class="w"> </span>found
+configure.ac:73:<span class="w">   </span><span class="s1">&#39;automake --add-missing&#39;</span><span class="w"> </span>can<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;config.sub&#39;</span>
+configure.ac:49:<span class="w"> </span>error:<span class="w"> </span>required<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;build-aux/install-sh&#39;</span><span class="w"> </span>not<span class="w"> </span>found
+configure.ac:49:<span class="w">   </span><span class="s1">&#39;automake --add-missing&#39;</span><span class="w"> </span>can<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;install-sh&#39;</span>
+configure.ac:73:<span class="w"> </span>error:<span class="w"> </span>required<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;build-aux/ltmain.sh&#39;</span><span class="w"> </span>not<span class="w"> </span>found
+configure.ac:49:<span class="w"> </span>error:<span class="w"> </span>required<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;build-aux/missing&#39;</span><span class="w"> </span>not<span class="w"> </span>found
+configure.ac:49:<span class="w">   </span><span class="s1">&#39;automake --add-missing&#39;</span><span class="w"> </span>can<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;missing&#39;</span>
+lib/Makefile.am:<span class="w"> </span>error:<span class="w"> </span>required<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;build-aux/depcomp&#39;</span><span class="w"> </span>not<span class="w"> </span>found
+lib/Makefile.am:<span class="w">   </span><span class="s1">&#39;automake --add-missing&#39;</span><span class="w"> </span>can<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;depcomp&#39;</span>
+parallel-tests:<span class="w"> </span>error:<span class="w"> </span>required<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;build-aux/test-driver&#39;</span><span class="w"> </span>not<span class="w"> </span>found
+parallel-tests:<span class="w">   </span><span class="s1">&#39;automake --add-missing&#39;</span><span class="w"> </span>can<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;test-driver&#39;</span>
 </code></pre></div>
 <p>解决方法：
 <div class="highlight"><pre><span></span><code>automake --add-missing

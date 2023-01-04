@@ -6617,7 +6617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -7410,12 +7410,12 @@ while true; do smartctl -x /dev/nvme1 |grep &#39;Temperature Sensor&#39;;sleep 6
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nv">i</span><span class="o">=</span><span class="m">1</span>
 <span class="nv">sum</span><span class="o">=</span><span class="m">0</span>
-<span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le <span class="m">100</span> <span class="o">]</span>
+<span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-le<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="o">]</span>
 <span class="k">do</span>
-  <span class="nb">let</span> <span class="nv">sum</span><span class="o">=</span>sum+<span class="nv">$i</span>
-  <span class="nb">let</span> i++
+<span class="w">  </span><span class="nb">let</span><span class="w"> </span><span class="nv">sum</span><span class="o">=</span>sum+<span class="nv">$i</span>
+<span class="w">  </span><span class="nb">let</span><span class="w"> </span>i++
 <span class="k">done</span>
-<span class="nb">echo</span> <span class="nv">$sum</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$sum</span>
 </code></pre></div>
 <p>死循环</p>
 <div class="highlight"><pre><span></span><code>while :
@@ -7556,12 +7556,12 @@ ${var:0-start}
 <p>via:<a href="https://stackoverflow.com/questions/22009364/is-there-a-try-catch-command-in-bash">https://stackoverflow.com/questions/22009364/is-there-a-try-catch-command-in-bash</a></p>
 </blockquote>
 <p>利用<code>&amp;&amp;</code>短路性：</p>
-<div class="highlight"><pre><span></span><code><span class="o">{</span> <span class="c1"># try</span>
-    command1 <span class="o">&amp;&amp;</span>
-    command2 <span class="o">&amp;&amp;</span>
-    command3
-<span class="o">}</span> <span class="o">||</span> <span class="o">{</span> <span class="c1"># catch</span>
-    <span class="nb">echo</span> “error catch”
+<div class="highlight"><pre><span></span><code><span class="o">{</span><span class="w"> </span><span class="c1"># try</span>
+<span class="w">    </span>command1<span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">    </span>command2<span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">    </span>command3
+<span class="o">}</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="c1"># catch</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>“error<span class="w"> </span>catch”
 <span class="o">}</span>
 </code></pre></div>
 <p>感觉很容易漏写<code>&amp;&amp;</code>，特别是维护的人。</p>

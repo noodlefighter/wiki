@@ -6299,7 +6299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6639,7 +6639,7 @@ int system(const char *command);
 <p>via: <a href="https://blog.csdn.net/cheyo/article/details/6595955">https://blog.csdn.net/cheyo/article/details/6595955</a></p>
 </blockquote>
 <p>例：</p>
-<div class="highlight"><pre><span></span><code><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="s">&quot;./test.sh&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="s">&quot;./test.sh&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>1、先统一两个说法：
 （1）system返回值：指调用system函数后的返回值，比如上例中status为system返回值
@@ -6677,43 +6677,43 @@ int system(const char *command);
 根据以上分析，当shell脚本不存在、没有执行权限等场景下时，以上前2个条件仍会成立，此时WEXITSTATUS(status)为127，126等数值。
 所以，我们在shell脚本中不能将127，126等数值定义为返回值，否则无法区分中是shell的返回值，还是调用shell脚本异常的原因值。shell脚本中的返回值最好多1开始递增。</p>
 <p>判断shell脚本正常执行结束的健全代码如下：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/types.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/types.h&gt;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="s">&quot;./test.sh&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="s">&quot;./test.sh&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;system error!&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;exit status value = [0x%x]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">status</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;system error!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;exit status value = [0x%x]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">);</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WIFEXITED</span><span class="p">(</span><span class="n">status</span><span class="p">))</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">))</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;run shell script successfully.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="k">else</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;run shell script fail, script exit code: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="k">else</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;exit status = [%d]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WIFEXITED</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;run shell script successfully.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;run shell script fail, script exit code: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;exit status = [%d]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>WIFEXITED(stat_val) Evaluates to a non-zero value if status

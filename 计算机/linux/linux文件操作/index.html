@@ -6325,7 +6325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6682,7 +6682,7 @@
                   <h1>Linux文件操作</h1>
                 
                 <h2 id="fopen">打开文件fopen<a class="headerlink" href="#fopen" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 <span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">fopen</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">,</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">type</span><span class="p">);</span><span class="w"> </span>
 </code></pre></div>
 <p>type为<code>&lt;A&gt;[B][C]</code>组合字符串.</p>
@@ -6699,25 +6699,25 @@
 <div class="highlight"><pre><span></span><code>* +: 可以同时input/output, 使用时必须注意用fflush或者fseek来防止内置buffer没消耗干净
 </code></pre></div></p>
 <h2 id="freadfwrite">读文件fread/写文件fwrite<a class="headerlink" href="#freadfwrite" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="kt">size_t</span><span class="w"> </span><span class="nf">fread</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nmembFILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
-<span class="kt">size_t</span><span class="w"> </span><span class="nf">fwrite</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nmemb</span><span class="p">,</span><span class="w"></span>
-<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">size_t</span><span class="w"> </span><span class="nf">fread</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nmembFILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="w"> </span><span class="p">);</span>
+<span class="kt">size_t</span><span class="w"> </span><span class="nf">fwrite</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nmemb</span><span class="p">,</span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
 </code></pre></div>
 <p><code>fwrite()</code>的语义是写入<code>nmemb</code>个<code>size</code>大小的对象, 返回值为写入对象的数量(而不是总共的字节数).</p>
 <h2 id="posix_fallocate">空间预分配posix_fallocate<a class="headerlink" href="#posix_fallocate" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span><span class="cp"></span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">posix_fallocate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">__fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">__offset</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">__len</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">posix_fallocate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">__fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">__offset</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">__len</span><span class="p">);</span>
 </code></pre></div>
 <p>据说还有个linux版本的 <a href="http://man7.org/linux/man-pages/man2/fallocate.2.html">http://man7.org/linux/man-pages/man2/fallocate.2.html</a>: 
-<div class="highlight"><pre><span></span><code><span class="cp">#define _GNU_SOURCE      </span><span class="cm">/* See feature_test_macros(7) */</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span><span class="cp"></span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">fallocate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">len</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define _GNU_SOURCE      </span><span class="cm">/* See feature_test_macros(7) */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fallocate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
 </code></pre></div></p>
 <h2 id="ftruncate">改变文件大小ftruncate<a class="headerlink" href="#ftruncate" title="Permanent link">&para;</a></h2>
 <p>将文件大小改变为参数length指定的大小，如果原来的文件大小比参数length大，则超过的部分会被删除，如果原来的文件大小比参数length小，则文件将被扩展.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">ftruncate</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">__fd</span><span class="p">,</span><span class="w"> </span><span class="n">__off_t</span><span class="w"> </span><span class="n">__length</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">ftruncate</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">__fd</span><span class="p">,</span><span class="w"> </span><span class="n">__off_t</span><span class="w"> </span><span class="n">__length</span><span class="p">);</span>
 </code></pre></div>
 <p>注意这个操作不会改变当前指针, 比如缩小文件为0时, 并不会将指针置0.</p>
 <h2 id="posix">将通过posix接口打开的文件改为非阻塞方式读<a class="headerlink" href="#posix" title="Permanent link">&para;</a></h2>

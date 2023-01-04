@@ -6361,7 +6361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6905,27 +6905,27 @@ System configuration -&gt; /dev management. The four ways are :
 <h2 id="_5">热插拔<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>mdev是busybox上类似udev的实现，看help和<code>/etc/init.d/S10mdev</code>就能大概了解用法。（这还有<a href="https://git.busybox.net/busybox/plain/docs/mdev.txt">mdev文档</a>）</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># mdev</span>
-BusyBox v1.29.3 <span class="o">(</span><span class="m">2019</span>-04-10 <span class="m">20</span>:07:42 CST<span class="o">)</span> multi-call binary.
+BusyBox<span class="w"> </span>v1.29.3<span class="w"> </span><span class="o">(</span><span class="m">2019</span>-04-10<span class="w"> </span><span class="m">20</span>:07:42<span class="w"> </span>CST<span class="o">)</span><span class="w"> </span>multi-call<span class="w"> </span>binary.
 
-Usage: mdev <span class="o">[</span>-s<span class="o">]</span>
+Usage:<span class="w"> </span>mdev<span class="w"> </span><span class="o">[</span>-s<span class="o">]</span>
 
-mdev -s is to be run during boot to scan /sys and populate /dev.
+mdev<span class="w"> </span>-s<span class="w"> </span>is<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>run<span class="w"> </span>during<span class="w"> </span>boot<span class="w"> </span>to<span class="w"> </span>scan<span class="w"> </span>/sys<span class="w"> </span>and<span class="w"> </span>populate<span class="w"> </span>/dev.
 
-Bare mdev is a kernel hotplug helper. To activate it:
-        <span class="nb">echo</span> /sbin/mdev &gt;/proc/sys/kernel/hotplug
+Bare<span class="w"> </span>mdev<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>kernel<span class="w"> </span>hotplug<span class="w"> </span>helper.<span class="w"> </span>To<span class="w"> </span>activate<span class="w"> </span>it:
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span>/sbin/mdev<span class="w"> </span>&gt;/proc/sys/kernel/hotplug
 
-It uses /etc/mdev.conf with lines
-        <span class="o">[</span>-<span class="o">][</span><span class="nv">ENV</span><span class="o">=</span>regex<span class="p">;</span><span class="o">]</span>...DEVNAME UID:GID PERM <span class="o">[</span>&gt;<span class="p">|</span><span class="o">=</span>PATH<span class="o">]</span><span class="p">|</span><span class="o">[</span>!<span class="o">]</span> <span class="o">[</span>@<span class="p">|</span>$<span class="p">|</span>*PROG<span class="o">]</span>
-where DEVNAME is device name regex, @major,minor<span class="o">[</span>-minor2<span class="o">]</span>, or
-environment variable regex. A common use of the latter is
-to load modules <span class="k">for</span> hotplugged devices:
-        <span class="nv">$MODALIAS</span><span class="o">=</span>.* <span class="m">0</span>:0 <span class="m">660</span> @modprobe <span class="s2">&quot;</span><span class="nv">$MODALIAS</span><span class="s2">&quot;</span>
+It<span class="w"> </span>uses<span class="w"> </span>/etc/mdev.conf<span class="w"> </span>with<span class="w"> </span>lines
+<span class="w">        </span><span class="o">[</span>-<span class="o">][</span><span class="nv">ENV</span><span class="o">=</span>regex<span class="p">;</span><span class="o">]</span>...DEVNAME<span class="w"> </span>UID:GID<span class="w"> </span>PERM<span class="w"> </span><span class="o">[</span>&gt;<span class="p">|</span><span class="o">=</span>PATH<span class="o">]</span><span class="p">|</span><span class="o">[</span>!<span class="o">]</span><span class="w"> </span><span class="o">[</span>@<span class="p">|</span>$<span class="p">|</span>*PROG<span class="o">]</span>
+where<span class="w"> </span>DEVNAME<span class="w"> </span>is<span class="w"> </span>device<span class="w"> </span>name<span class="w"> </span>regex,<span class="w"> </span>@major,minor<span class="o">[</span>-minor2<span class="o">]</span>,<span class="w"> </span>or
+environment<span class="w"> </span>variable<span class="w"> </span>regex.<span class="w"> </span>A<span class="w"> </span>common<span class="w"> </span>use<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>latter<span class="w"> </span>is
+to<span class="w"> </span>load<span class="w"> </span>modules<span class="w"> </span><span class="k">for</span><span class="w"> </span>hotplugged<span class="w"> </span>devices:
+<span class="w">        </span><span class="nv">$MODALIAS</span><span class="o">=</span>.*<span class="w"> </span><span class="m">0</span>:0<span class="w"> </span><span class="m">660</span><span class="w"> </span>@modprobe<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MODALIAS</span><span class="s2">&quot;</span>
 
-If /dev/mdev.seq file exists, mdev will <span class="nb">wait</span> <span class="k">for</span> its value
-to match <span class="nv">$SEQNUM</span> variable. This prevents plug/unplug races.
-To activate this feature, create empty /dev/mdev.seq at boot.
+If<span class="w"> </span>/dev/mdev.seq<span class="w"> </span>file<span class="w"> </span>exists,<span class="w"> </span>mdev<span class="w"> </span>will<span class="w"> </span><span class="nb">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>its<span class="w"> </span>value
+to<span class="w"> </span>match<span class="w"> </span><span class="nv">$SEQNUM</span><span class="w"> </span>variable.<span class="w"> </span>This<span class="w"> </span>prevents<span class="w"> </span>plug/unplug<span class="w"> </span>races.
+To<span class="w"> </span>activate<span class="w"> </span>this<span class="w"> </span>feature,<span class="w"> </span>create<span class="w"> </span>empty<span class="w"> </span>/dev/mdev.seq<span class="w"> </span>at<span class="w"> </span>boot.
 
-If /dev/mdev.log file exists, debug log will be appended to it.
+If<span class="w"> </span>/dev/mdev.log<span class="w"> </span>file<span class="w"> </span>exists,<span class="w"> </span>debug<span class="w"> </span>log<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>appended<span class="w"> </span>to<span class="w"> </span>it.
 </code></pre></div>
                 
               

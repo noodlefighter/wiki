@@ -6313,7 +6313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6663,21 +6663,21 @@
 <p>参考: <a href="http://fatmouse.xyz/2016/03/07/2016-03-07-manage-package-using-stow/">http://fatmouse.xyz/2016/03/07/2016-03-07-manage-package-using-stow/</a></p>
 </blockquote>
 <p>建立stow文件夹</p>
-<div class="highlight"><pre><span></span><code>mkdir /usr/local/stow
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/usr/local/stow
 </code></pre></div>
 <p>安装程序时：</p>
-<div class="highlight"><pre><span></span><code>./configure --prefix<span class="o">=</span>/usr/local/stow/ruby
+<div class="highlight"><pre><span></span><code>./configure<span class="w"> </span>--prefix<span class="o">=</span>/usr/local/stow/ruby
 make
-sudo make install
+sudo<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <p>安装后执行映射，创建软链接：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /usr/local/stow
-sudo stow ruby
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/usr/local/stow
+sudo<span class="w"> </span>stow<span class="w"> </span>ruby
 </code></pre></div>
 <p>需要卸载程序时：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /usr/local/stow
-sudo stow --delete ruby
-rm -rf ruby
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/usr/local/stow
+sudo<span class="w"> </span>stow<span class="w"> </span>--delete<span class="w"> </span>ruby
+rm<span class="w"> </span>-rf<span class="w"> </span>ruby
 </code></pre></div>
 <h2 id="gnu-stowlinux">使用Gnu Stow管理linux配置文件<a class="headerlink" href="#gnu-stowlinux" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -6725,10 +6725,10 @@ rm -rf ruby
                 .vimrc
 </code></pre></div>
 <p>然后，执行以下命令：</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/dotfiles
-$ stow bash
-$ stow uzbl
-$ stow vim
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/dotfiles
+$<span class="w"> </span>stow<span class="w"> </span>bash
+$<span class="w"> </span>stow<span class="w"> </span>uzbl
+$<span class="w"> </span>stow<span class="w"> </span>vim
 </code></pre></div>
 <h2 id="stow">stow文件冲突的问题<a class="headerlink" href="#stow" title="Permanent link">&para;</a></h2>
 <p>欲stow的文件目前已经存在于target中时，stow会失败，此时：</p>

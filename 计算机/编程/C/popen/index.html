@@ -6340,7 +6340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6720,14 +6720,14 @@
 <p>via: <a href="https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxbd00/rpopen.htm">https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxbd00/rpopen.htm</a></p>
 </blockquote>
 <h3 id="_2">原型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">popen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">);</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">pclose</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">popen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pclose</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="_3">一般性描述<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>popen（）函数执行string命令指定的命令。它在调用程序和执行的命令之间创建一个管道，并返回一个指向流的指针，该流可用于读取或写入管道。</p>
 <p>执行命令的环境就像使用fork（）在popen（）调用中创建子进程一样，并且子进程调用了sh实用程序：</p>
-<div class="highlight"><pre><span></span><code><span class="n">execl</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">execl</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
 <p>popen（）函数确保在子进程中关闭在父进程中保持打开的先前popen（）调用的任何流。</p>
 <p>popen（）的mode参数是一个指定I / O模式的字符串： </p>

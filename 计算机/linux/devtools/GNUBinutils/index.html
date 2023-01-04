@@ -6313,7 +6313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6691,31 +6691,31 @@ windres - A compiler for Windows resource files.</p>
  0x0000000000000001 (NEEDED)             共享库：[libc.so.6]
 </code></pre></div>
 <p>ldd命令可以查看程序依赖的动态库：
-<div class="highlight"><pre><span></span><code>$ ldd /bin/ls
-/bin/ls: is setuid
-        libc.so.0 <span class="o">=</span>&gt; /lib//libc.so.0 <span class="o">(</span>0xb6e7e000<span class="o">)</span>
-        ld-uClibc.so.1 <span class="o">=</span>&gt; /lib/ld-uClibc.so.0 <span class="o">(</span>0xb6f29000<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ldd<span class="w"> </span>/bin/ls
+/bin/ls:<span class="w"> </span>is<span class="w"> </span>setuid
+<span class="w">        </span>libc.so.0<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>/lib//libc.so.0<span class="w"> </span><span class="o">(</span>0xb6e7e000<span class="o">)</span>
+<span class="w">        </span>ld-uClibc.so.1<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>/lib/ld-uClibc.so.0<span class="w"> </span><span class="o">(</span>0xb6f29000<span class="o">)</span>
 </code></pre></div></p>
 <p>objdump工具：
-<div class="highlight"><pre><span></span><code>$ objdump -p ./sample_venc <span class="p">|</span>grep NEEDED
-  NEEDED               libc.so.0
-  NEEDED               ld-uClibc.so.1
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>objdump<span class="w"> </span>-p<span class="w"> </span>./sample_venc<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>NEEDED
+<span class="w">  </span>NEEDED<span class="w">               </span>libc.so.0
+<span class="w">  </span>NEEDED<span class="w">               </span>ld-uClibc.so.1
 </code></pre></div></p>
 <p>查看正在运行中的程序的依赖库：
-<div class="highlight"><pre><span></span><code>$ ps -ef<span class="p">|</span>grep bash
-dev      <span class="m">10280</span> <span class="m">10276</span>  <span class="m">0</span> <span class="m">14</span>:32 pts/0    <span class="m">00</span>:00:00 -bash
-dev      <span class="m">11711</span> <span class="m">10280</span>  <span class="m">0</span> <span class="m">16</span>:08 pts/0    <span class="m">00</span>:00:00 grep --color<span class="o">=</span>auto bash
-dev@develop:~/workspaces/hi3516a/Hi3516A_SDK_V1.0.7.1/mpp/sample/venc$ pmap <span class="m">10280</span> <span class="p">|</span>head
-<span class="m">10280</span>:   -bash
-<span class="m">0000000000400000</span>    976K r-x-- bash
-00000000006f3000      4K r---- bash
-00000000006f4000     36K rw--- bash
-00000000006fd000     24K rw---   <span class="o">[</span> anon <span class="o">]</span>
-0000000000b84000   1816K rw---   <span class="o">[</span> anon <span class="o">]</span>
-00007fee9e033000     44K r-x-- libnss_files-2.23.so
-00007fee9e03e000   2044K ----- libnss_files-2.23.so
-00007fee9e23d000      4K r---- libnss_files-2.23.so
-00007fee9e23e000      4K rw--- libnss_files-2.23.so
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-ef<span class="p">|</span>grep<span class="w"> </span>bash
+dev<span class="w">      </span><span class="m">10280</span><span class="w"> </span><span class="m">10276</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">14</span>:32<span class="w"> </span>pts/0<span class="w">    </span><span class="m">00</span>:00:00<span class="w"> </span>-bash
+dev<span class="w">      </span><span class="m">11711</span><span class="w"> </span><span class="m">10280</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">16</span>:08<span class="w"> </span>pts/0<span class="w">    </span><span class="m">00</span>:00:00<span class="w"> </span>grep<span class="w"> </span>--color<span class="o">=</span>auto<span class="w"> </span>bash
+dev@develop:~/workspaces/hi3516a/Hi3516A_SDK_V1.0.7.1/mpp/sample/venc$<span class="w"> </span>pmap<span class="w"> </span><span class="m">10280</span><span class="w"> </span><span class="p">|</span>head
+<span class="m">10280</span>:<span class="w">   </span>-bash
+<span class="m">0000000000400000</span><span class="w">    </span>976K<span class="w"> </span>r-x--<span class="w"> </span>bash
+00000000006f3000<span class="w">      </span>4K<span class="w"> </span>r----<span class="w"> </span>bash
+00000000006f4000<span class="w">     </span>36K<span class="w"> </span>rw---<span class="w"> </span>bash
+00000000006fd000<span class="w">     </span>24K<span class="w"> </span>rw---<span class="w">   </span><span class="o">[</span><span class="w"> </span>anon<span class="w"> </span><span class="o">]</span>
+0000000000b84000<span class="w">   </span>1816K<span class="w"> </span>rw---<span class="w">   </span><span class="o">[</span><span class="w"> </span>anon<span class="w"> </span><span class="o">]</span>
+00007fee9e033000<span class="w">     </span>44K<span class="w"> </span>r-x--<span class="w"> </span>libnss_files-2.23.so
+00007fee9e03e000<span class="w">   </span>2044K<span class="w"> </span>-----<span class="w"> </span>libnss_files-2.23.so
+00007fee9e23d000<span class="w">      </span>4K<span class="w"> </span>r----<span class="w"> </span>libnss_files-2.23.so
+00007fee9e23e000<span class="w">      </span>4K<span class="w"> </span>rw---<span class="w"> </span>libnss_files-2.23.so
 </code></pre></div></p>
 <p><code>readelf</code>工具和objdump类似，但信息更好读，信息会更全因为objdump会省略部分辅助性的段。</p>
 <h2 id="objcopy">把二进制文件用objcopy工具装入一个目标文件<a class="headerlink" href="#objcopy" title="Permanent link">&para;</a></h2>

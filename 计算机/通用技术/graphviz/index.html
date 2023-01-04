@@ -6261,7 +6261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Graph%3A%3AEasy/" class="md-nav__link">
+      <a href="../Graph-Easy/" class="md-nav__link">
         ASCII字符画流程图工具：Graph::Easy
       </a>
     </li>
@@ -6652,22 +6652,22 @@
 <p>graphviz允许用户使用标记语言描述图表，渲染成各种格式。</p>
 <h2 id="graphvizmarkdown">graphviz在markdown中的使用<a class="headerlink" href="#graphvizmarkdown" title="Permanent link">&para;</a></h2>
 <p>测试一下渲染器里带graphviz支持了没：
-<div class="highlight"><pre><span></span><code><span class="k">digraph</span><span class="w"> </span><span class="nt">finite_state_machine</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="na">rankdir</span><span class="p">=</span><span class="s">LR</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="na">size</span><span class="p">=</span><span class="s2">&quot;8,5&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">digraph</span><span class="w"> </span><span class="nt">finite_state_machine</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">rankdir</span><span class="p">=</span><span class="s">LR</span><span class="p">;</span>
+<span class="w">    </span><span class="na">size</span><span class="p">=</span><span class="s2">&quot;8,5&quot;</span>
 
-<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="na">shape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">doublecircle</span><span class="p">];</span><span class="w"> </span><span class="nt">S</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="na">shape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">point</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="nt">qi</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="na">shape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">doublecircle</span><span class="p">];</span><span class="w"> </span><span class="nt">S</span><span class="p">;</span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="na">shape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">point</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="nt">qi</span>
 
-<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="na">shape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">circle</span><span class="p">];</span><span class="w"></span>
-<span class="w">    </span><span class="nt">qi</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">S</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">S</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q1</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
-<span class="w">    </span><span class="nt">S</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">S</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
-<span class="w">    </span><span class="nt">q1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">S</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
-<span class="w">    </span><span class="nt">q1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q2</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;ddb&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
-<span class="w">    </span><span class="nt">q2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q1</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
-<span class="w">    </span><span class="nt">q2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q2</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="na">shape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">circle</span><span class="p">];</span>
+<span class="w">    </span><span class="nt">qi</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">S</span><span class="p">;</span>
+<span class="w">    </span><span class="nt">S</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q1</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="nt">S</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">S</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="nt">q1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">S</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="nt">q1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q2</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;ddb&quot;</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="nt">q2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q1</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="w"> </span><span class="p">];</span>
+<span class="w">    </span><span class="nt">q2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q2</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="w"> </span><span class="p">];</span>
+<span class="p">}</span>
 </code></pre></div></p>
 <p>vscode中使用<code>Graphviz Markdown</code>插件:</p>
 <p><img alt="image-20200503002441625" src="../_assets/graphviz/image-20200503002441625.png" /></p>
