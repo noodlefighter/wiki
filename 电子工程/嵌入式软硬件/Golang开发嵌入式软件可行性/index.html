@@ -64,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#golang" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1364,10 +1369,50 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Golang开发嵌入式软件可行性
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Golang开发嵌入式软件可行性
       </a>
       
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#golang" class="md-nav__link">
+    golang交叉编译测试
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RGB-LCD%E6%97%B6%E5%BA%8F/" class="md-nav__link">
+        RGB LCD时序
+      </a>
     </li>
   
 
@@ -1475,6 +1520,18 @@
     <li class="md-nav__item">
       <a href="../rtos/" class="md-nav__link">
         Rtos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../u8g2/" class="md-nav__link">
+        U8g2
       </a>
     </li>
   
@@ -5619,13 +5676,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_11_22" type="checkbox" id="__nav_11_11_22" >
       
       <label class="md-nav__link" for="__nav_11_11_22">
-        Go
+        Golang
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Go" data-md-level="3">
+      <nav class="md-nav" aria-label="Golang" data-md-level="3">
         <label class="md-nav__title" for="__nav_11_11_22">
           <span class="md-nav__icon md-icon"></span>
-          Go
+          Golang
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -5634,7 +5691,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B/go/go%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B/golang/golang%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3/" class="md-nav__link">
+        Golang编译相关
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B/golang/go%E8%AE%B0%E5%BD%95/" class="md-nav__link">
         Go记录
       </a>
     </li>
@@ -6578,6 +6647,36 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#golang" class="md-nav__link">
+    golang交叉编译测试
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -6603,6 +6702,97 @@
 <p><a href="https://mender.io/blog/why-did-we-choose-golang-over-c">https://mender.io/blog/why-did-we-choose-golang-over-c</a></p>
 <p>golang问题最大还是GC，即使不断优化，但还是用着老旧的算法，我们只能减少频繁创建对象，减轻GC的负担。</p>
 <p>选用这种语言，很多时候是想利用他现成的库，如果那些库在设计的时候没这方面考量，那在嵌入式场合可能就不能直接拿来用（如果有go的嵌入式社区，可能又是另外一番景象了）</p>
+<h2 id="golang">golang交叉编译测试<a class="headerlink" href="#golang" title="Permanent link">&para;</a></h2>
+<p><strong>helloworld</strong></p>
+<div class="highlight"><pre><span></span><code>$ cat helloworld.go
+package main
+import (
+  &quot;fmt&quot;
+  &quot;time&quot;
+)
+
+func main() {
+    fmt.Println(&quot;hello world&quot;)
+    time.Sleep(200 * 1000 * time.Millisecond)
+}
+$ env GOOS=linux GOARCH=arm go build -a -gcflags=all=&quot;-B&quot; -ldflags=&quot;-w -s&quot; helloworld.go
+$ ls -lah helloworld
+-rwxr-xr-x 1 r r 1.3M 12月 7日 10:16 helloworld
+</code></pre></div>
+<p>板上运行</p>
+<div class="highlight"><pre><span></span><code># cat /proc/4261/status
+Name:   helloworld
+State:  S (sleeping)
+Tgid:   4261
+Ngid:   0
+Pid:    4261
+PPid:   4254
+TracerPid:  0
+Uid:    0   0   0   0
+Gid:    0   0   0   0
+FDSize: 256
+Groups: 0
+VmPeak:   794956 kB
+VmSize:   794956 kB
+VmLck:         0 kB
+VmPin:         0 kB
+VmHWM:      1292 kB
+VmRSS:      1292 kB
+VmData:   793660 kB
+VmStk:       136 kB
+VmExe:       560 kB
+VmLib:         0 kB
+VmPTE:        12 kB
+VmPMD:         0 kB
+VmSwap:        0 kB
+Threads:    4
+</code></pre></div>
+<p><strong>simple-rtsp-server</strong>（<a href="https://github.com/aler9/rtsp-simple-server/tree/v0.20.2">https://github.com/aler9/rtsp-simple-server/tree/v0.20.2</a>）</p>
+<div class="highlight"><pre><span></span><code>$ env GOOS=linux GOARCH=arm go build -ldflags=&quot;-extldflags=-static -s&quot; -gcflags=all=-l -o rtsp-simple-server_arm
+$ ls -lah rtsp-simple-server_arm
+-rwxr-xr-x 1 r r 12M 12月 7日 11:16 rtsp-simple-server_arm
+$ upx ./rtsp-simple-server_arm
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2022
+UPX git-fdec47  Markus Oberhumer, Laszlo Molnar &amp; John Reiser   Nov 16th 2022
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+  11796480 -&gt;   4100684   34.76%    linux/arm    rtsp-simple-server_arm
+
+Packed 1 file.
+
+WARNING: this is an unstable beta version - use for testing only! Really.
+</code></pre></div>
+<p>编译后12M，upx后4M。板上运行：</p>
+<div class="highlight"><pre><span></span><code># cat /proc/4395/status
+Name:   rtsp-simple-ser
+State:  S (sleeping)
+Tgid:   4395
+Ngid:   0
+Pid:    4395
+PPid:   615
+TracerPid:  0
+Uid:    0   0   0   0
+Gid:    0   0   0   0
+FDSize: 256
+Groups: 0
+VmPeak:   806444 kB
+VmSize:   806444 kB
+VmLck:         0 kB
+VmPin:         0 kB
+VmHWM:     15780 kB
+VmRSS:     15780 kB
+VmData:   806176 kB
+VmStk:       264 kB
+VmExe:     15656 kB
+VmLib:  4294951640 kB
+VmPTE:        30 kB
+VmPMD:         0 kB
+VmSwap:        0 kB
+Threads:    8
+</code></pre></div>
+<p>VmSize莫名地大，可能是runtime开了一大片heap区域。</p>
                 
               
               
@@ -6638,13 +6828,13 @@
       
       
         
-        <a href="../arduino/" class="md-footer__link md-footer__link--next" aria-label="下一页: Arduino" rel="next">
+        <a href="../RGB-LCD%E6%97%B6%E5%BA%8F/" class="md-footer__link md-footer__link--next" aria-label="下一页: RGB LCD时序" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              Arduino
+              RGB LCD时序
             </div>
           </div>
           <div class="md-footer__button md-icon">

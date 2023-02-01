@@ -1370,6 +1370,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/RGB-LCD%E6%97%B6%E5%BA%8F/" class="md-nav__link">
+        RGB LCD时序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/arduino/" class="md-nav__link">
         Arduino
       </a>
@@ -1468,6 +1480,18 @@
     <li class="md-nav__item">
       <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/rtos/" class="md-nav__link">
         Rtos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/u8g2/" class="md-nav__link">
+        U8g2
       </a>
     </li>
   
@@ -2795,6 +2819,13 @@
         <li class="md-nav__item">
   <a href="#objcopy" class="md-nav__link">
     把二进制文件用objcopy工具装入一个目标文件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objcopyhexbin" class="md-nav__link">
+    用objcopy转换hex到bin
   </a>
   
 </li>
@@ -5668,13 +5699,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_11_22" type="checkbox" id="__nav_11_11_22" >
       
       <label class="md-nav__link" for="__nav_11_11_22">
-        Go
+        Golang
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Go" data-md-level="3">
+      <nav class="md-nav" aria-label="Golang" data-md-level="3">
         <label class="md-nav__title" for="__nav_11_11_22">
           <span class="md-nav__icon md-icon"></span>
-          Go
+          Golang
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -5683,7 +5714,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E7%BC%96%E7%A8%8B/go/go%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../%E7%BC%96%E7%A8%8B/golang/golang%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3/" class="md-nav__link">
+        Golang编译相关
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BC%96%E7%A8%8B/golang/go%E8%AE%B0%E5%BD%95/" class="md-nav__link">
         Go记录
       </a>
     </li>
@@ -6664,6 +6707,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#objcopyhexbin" class="md-nav__link">
+    用objcopy转换hex到bin
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6746,6 +6796,9 @@ dev@develop:~/workspaces/hi3516a/Hi3516A_SDK_V1.0.7.1/mpp/sample/venc$<span clas
 <p>就是把二进制资源变成符号：</p>
 <div class="highlight"><pre><span></span><code># objcopy -I binary -O elf32-i386 -B i386 image.jpg image.o
 # objdump -ht image.o
+</code></pre></div>
+<h2 id="objcopyhexbin">用objcopy转换hex到bin<a class="headerlink" href="#objcopyhexbin" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>$ objcopy --input-target=ihex --output-target=binary abc.hex abc.bin
 </code></pre></div>
                 
               
