@@ -92,3 +92,10 @@ dev@develop:~/workspaces/hi3516a/Hi3516A_SDK_V1.0.7.1/mpp/sample/venc$ pmap 1028
 # objcopy -I binary -O elf32-i386 -B i386 image.jpg image.o
 # objdump -ht image.o
 ```
+
+## 用objcopy转换hex到bin
+
+```
+$ objcopy --input-target=ihex --output-target=binary abc.hex abc.bin
+```
+
