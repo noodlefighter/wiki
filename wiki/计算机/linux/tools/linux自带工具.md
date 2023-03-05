@@ -214,6 +214,13 @@ ifconfig设置ip：
 ifconfig eth0 192.168.10.199
 ```
 
+route设置路由：
+
+```
+设置默认路由
+# route add default gw 192.168.1.1 enp0s8 
+```
+
 
 
 ## dd命令测试磁盘写入速度

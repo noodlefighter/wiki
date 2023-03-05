@@ -17,6 +17,11 @@ cmake -DCMAKE_VERBOSE_MAKEFILE=on .
 
 ## 交叉编译
 
+> refers: 
+>
+> - https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/CrossCompiling
+> - https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html?highlight=cmake_c_compiler
+
 Makefile:
 
 ```

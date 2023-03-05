@@ -93,7 +93,9 @@ int replaced = dup2(fd, STDOUT_FILENO);
 
 参考：[25.2.4 Example of Parsing Long Options with `getopt_long`](https://www.gnu.org/software/libc/manual/html_node/Getopt-Long-Option-Example.html)
 
-getopt()的加强版，同时支持长短参数，当匹配到长参数时，会返回`struct option`项中的val值，如下面例子中的`-h`。
+getopt()的加强版，同时支持长短参数，当匹配到长参数时，会返回`struct option`项中的val值；
+
+使用短参数时，和getopt()一样要传入optstring，如下面例子中的`-h`，需要传一个`h`。
 
 ```
 #include <getopt.h>
