@@ -6859,7 +6859,8 @@ int replaced = dup2(fd, STDOUT_FILENO);
 </code></pre></div>
 <h2 id="getopt_long">getopt_long()<a class="headerlink" href="#getopt_long" title="Permanent link">&para;</a></h2>
 <p>参考：<a href="https://www.gnu.org/software/libc/manual/html_node/Getopt-Long-Option-Example.html">25.2.4 Example of Parsing Long Options with <code>getopt_long</code></a></p>
-<p>getopt()的加强版，同时支持长短参数，当匹配到长参数时，会返回<code>struct option</code>项中的val值，如下面例子中的<code>-h</code>。</p>
+<p>getopt()的加强版，同时支持长短参数，当匹配到长参数时，会返回<code>struct option</code>项中的val值；</p>
+<p>使用短参数时，和getopt()一样要传入optstring，如下面例子中的<code>-h</code>，需要传一个<code>h</code>。</p>
 <div class="highlight"><pre><span></span><code>#include &lt;getopt.h&gt;
 
 

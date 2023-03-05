@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gcc" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -5371,6 +5371,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    打印预定义宏
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gcc" class="md-nav__link">
     GCC交叉编译
   </a>
@@ -6742,6 +6749,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    打印预定义宏
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gcc" class="md-nav__link">
     GCC交叉编译
   </a>
@@ -6839,7 +6853,10 @@
                 
                   <h1>Gcc相关</h1>
                 
-                <h2 id="gcc">GCC交叉编译<a class="headerlink" href="#gcc" title="Permanent link">&para;</a></h2>
+                <h2 id="_1">打印预定义宏<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>$ gcc -dM -E - &lt; /dev/null
+</code></pre></div>
+<h2 id="gcc">GCC交叉编译<a class="headerlink" href="#gcc" title="Permanent link">&para;</a></h2>
 <p>一般写Makefile时会把link时加的参数声明为<code>LDFLAGS</code>，所以当想设定库搜索路径时，可以写：</p>
 <div class="highlight"><pre><span></span><code>make LDFLAGS=&quot;-Wl,-rpath,/xxx/xx/libs&quot;
 </code></pre></div>

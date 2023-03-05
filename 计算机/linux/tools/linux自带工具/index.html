@@ -7052,6 +7052,10 @@ route = ip route
 <p>ifconfig设置ip：</p>
 <div class="highlight"><pre><span></span><code>ifconfig eth0 192.168.10.199
 </code></pre></div>
+<p>route设置路由：</p>
+<div class="highlight"><pre><span></span><code>设置默认路由
+# route add default gw 192.168.1.1 enp0s8 
+</code></pre></div>
 <h2 id="dd">dd命令测试磁盘写入速度<a class="headerlink" href="#dd" title="Permanent link">&para;</a></h2>
 <p><code>oflag=direct</code>参数将跳过内存缓存，<code>conv=fsync</code>参数，dd在完成拷贝后执行一次sync。</p>
 <p>参考：<a href="https://www.cnblogs.com/kongzhongqijing/articles/9049336.html">https://www.cnblogs.com/kongzhongqijing/articles/9049336.html</a></p>
