@@ -113,9 +113,7 @@ Line 1092 of argv.c starts at pc 0x7540 and ends at 0x7550.
 > * Overrunning the end (or beginning) of a dynamically allocated buffer
 > * Using a dynamically allocated buffer after returning it to the heap
 
-用于检测动态分配内存（堆内存）的越界操作、释放后仍然写入的行为。原理是不释放堆内存，持续监控。
-
-如果用的是archlinux，AUR里有包：`yay -S electricfence`即可安装好，查看手册`man libefence`。
+一个用于检测堆内存越界读写、释放后仍然写入等错误。简单使用方法：
 
 ```
 INSTRUCTIONS FOR DEBUGGING YOUR PROGRAM
@@ -133,6 +131,19 @@ INSTRUCTIONS FOR DEBUGGING YOUR PROGRAM
 1. 静态链接`libefence.a`，如`-l:libefence.a`
 2. 使用debugger，默认行为是efence会捕获出问题的地方，然后退出
 3. 设置环境变量`EF_PROTECT_BELOW=1`，把行为修改成出问题时SIGSEGV，从而使debugger能捕获到错误
+
+参考（manual：https://linux.die.net/man/3/efence），启动时可设置的环境变量控制efence行为：
+
+- `EF_ALIGNMENT`：内存地址对齐
+- `EF_PROTECT_BELOW`：检查内存操作越界的情况，在内存块尾部添加不可访问区域
+- `EF_PROTECT_FREE`：检查内存被释放后依旧被操作的情况，原理是free()后将地址设置不可访问，且永不重新分配
+- `EF_ALLOW_MALLOC_0`：允许malloc(0)，默认不允许
+- `EF_FILL`设置申请到的内存的初始值，用于检测变量未初始化等情况
+
+注意：
+
+- 这工具还是太老了，实际用起来各种问题，试用后发现fedora的那些patch比ubuntu的好使，我自己fork了一份方便修改维护，用的时候应该直接源码编译安装，方便调试 https://github.com/noodlefighter/electric-fence
+- 如果遇到`mprotect() failed: No Memory`，其实是mmap数量受限制，`echo 128000 > /proc/sys/vm/max_map_count`可解决（mmap情况：`cat /proc/$pid/maps`）
 
 
 
