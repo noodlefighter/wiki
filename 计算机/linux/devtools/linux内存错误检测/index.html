@@ -3987,6 +3987,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../tools/podman/" class="md-nav__link">
+        Podman
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../tools/pulseaudio/" class="md-nav__link">
         Pulseaudio
       </a>
@@ -6814,8 +6826,7 @@ Line 1092 of argv.c starts at pc 0x7540 and ends at 0x7550.
 <li>Using a dynamically allocated buffer after returning it to the heap</li>
 </ul>
 </blockquote>
-<p>用于检测动态分配内存（堆内存）的越界操作、释放后仍然写入的行为。原理是不释放堆内存，持续监控。</p>
-<p>如果用的是archlinux，AUR里有包：<code>yay -S electricfence</code>即可安装好，查看手册<code>man libefence</code>。</p>
+<p>一个用于检测堆内存越界读写、释放后仍然写入等错误。简单使用方法：</p>
 <div class="highlight"><pre><span></span><code>INSTRUCTIONS FOR DEBUGGING YOUR PROGRAM
        1. Link with libefence.a as explained above.
        2. Run your program in a debugger and fix any overruns or accesses to free memory.
@@ -6831,6 +6842,19 @@ Line 1092 of argv.c starts at pc 0x7540 and ends at 0x7550.
 <li>使用debugger，默认行为是efence会捕获出问题的地方，然后退出</li>
 <li>设置环境变量<code>EF_PROTECT_BELOW=1</code>，把行为修改成出问题时SIGSEGV，从而使debugger能捕获到错误</li>
 </ol>
+<p>参考（manual：<a href="https://linux.die.net/man/3/efence">https://linux.die.net/man/3/efence</a>），启动时可设置的环境变量控制efence行为：</p>
+<ul>
+<li><code>EF_ALIGNMENT</code>：内存地址对齐</li>
+<li><code>EF_PROTECT_BELOW</code>：检查内存操作越界的情况，在内存块尾部添加不可访问区域</li>
+<li><code>EF_PROTECT_FREE</code>：检查内存被释放后依旧被操作的情况，原理是free()后将地址设置不可访问，且永不重新分配</li>
+<li><code>EF_ALLOW_MALLOC_0</code>：允许malloc(0)，默认不允许</li>
+<li><code>EF_FILL</code>设置申请到的内存的初始值，用于检测变量未初始化等情况</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>这工具还是太老了，实际用起来各种问题，试用后发现fedora的那些patch比ubuntu的好使，我自己fork了一份方便修改维护，用的时候应该直接源码编译安装，方便调试 <a href="https://github.com/noodlefighter/electric-fence">https://github.com/noodlefighter/electric-fence</a></li>
+<li>如果遇到<code>mprotect() failed: No Memory</code>，其实是mmap数量受限制，<code>echo 128000 &gt; /proc/sys/vm/max_map_count</code>可解决（mmap情况：<code>cat /proc/$pid/maps</code>）</li>
+</ul>
 <h2 id="valgrindmemcheck">valgrind工具包（包含memcheck）<a class="headerlink" href="#valgrindmemcheck" title="Permanent link">&para;</a></h2>
 <p><a href="http://valgrind.org/docs/manual/mc-manual.html">memcheck的文档</a></p>
 <p>使用未初始化的内存 (Use of uninitialised memory)</p>
