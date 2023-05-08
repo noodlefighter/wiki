@@ -132,6 +132,7 @@ INSTRUCTIONS FOR DEBUGGING YOUR PROGRAM
 2. 使用debugger，默认行为是efence会捕获出问题的地方，然后退出
 3. 设置环境变量`EF_PROTECT_BELOW=1`，把行为修改成出问题时SIGSEGV，从而使debugger能捕获到错误
 
+
 参考（manual：https://linux.die.net/man/3/efence），启动时可设置的环境变量控制efence行为：
 
 - `EF_ALIGNMENT`：内存地址对齐
@@ -185,3 +186,67 @@ src和dst的重叠(Overlapping src and dst pointers in memcpy() and related func
         extension ------> 可以利用core提供的功能，自己编写特定的内存调试工具
 ```
 
+特点:
+
+- 无需重新编译程序
+- 缺点是很慢，“valgrind模拟的一个软CPU，将可执行程序运行在其中”、“valgrind的是单线程的（应该是），它会将你程序的所有线程统一管理起来”
+
+
+
+测试当前环境是否能正常使用valgrind，测试`ls -l`命令是否有内存泄漏：
+
+```
+$ valgrind --tool=memcheck --leak-check=yes  ls -l
+```
+
+
+
+问题集：
+
+- `valgrind: Fatal error at startup: a function redirection`：glibc没有debuginfo
+
+
+
+## 重写C的malloc
+
+> https://www.gnu.org/software/libc/manual/html_node/Replacing-malloc.html
+>
+> The minimum set of functions which has to be provided by a custom `malloc` is given in the table below.
+>
+> - `malloc`
+> - `free`
+> - `calloc`
+> - `realloc`
+>
+> These `malloc`-related functions are required for the GNU C Library to work.[1](https://www.gnu.org/software/libc/manual/html_node/Replacing-malloc.html#FOOT1)
+>
+> The `malloc` implementation in the GNU C Library provides additional functionality not used by the library itself, but which is often used by other system libraries and applications. A general-purpose replacement `malloc` implementation should provide definitions of these functions, too. Their names are listed in the following table.
+>
+> - `aligned_alloc`
+> - `malloc_usable_size`
+> - `memalign`
+> - `posix_memalign`
+> - `pvalloc`
+> - `valloc`
+
+
+
+## C++中使用这些内存检查工具
+
+>  https://gcc.gnu.org/onlinedocs/libstdc++/manual/memory.html
+>
+> ##### Disabling Memory Caching
+>
+> In use, `allocator` may allocate and deallocate using implementation-specific strategies and heuristics. Because of this, a given call to an allocator object's `allocate` member function may not actually call the global `operator new` and a given call to to the `deallocate` member function may not call `operator delete`.
+>
+> This can be confusing.
+>
+> In particular, this can make debugging memory errors more difficult, especially when using third-party tools like valgrind or debug versions of `new`.
+>
+> There are various ways to solve this problem. One would be to use a custom allocator that just called operators `new` and `delete` directly, for every allocation. (See the default allocator, `include/ext/new_allocator.h`, for instance.) However, that option may involve changing source code to use a non-default allocator. Another option is to force the default allocator to remove caching and pools, and to directly allocate with every call of `allocate` and directly deallocate with every call of `deallocate`, regardless of efficiency. As it turns out, this last option is also available.
+>
+> To globally disable memory caching within the library for some of the optional non-default allocators, merely set `GLIBCXX_FORCE_NEW` (with any value) in the system's environment before running the program. If your program crashes with `GLIBCXX_FORCE_NEW` in the environment, it likely means that you linked against objects built against the older library (objects which might still using the cached allocations...).
+
+
+
+> C++重写new和delete，比想像中困难 https://www.cnblogs.com/coding-my-life/p/10125538.html

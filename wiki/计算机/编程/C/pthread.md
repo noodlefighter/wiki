@@ -36,6 +36,55 @@ thr_func返回时，pthread仍保留着线程资源和返回值，直到使用`p
 
 
 
+
+
+## 从 pthread_t 获得 PID 和 TID
+
+一个思路是找到偏移量，然后打印出来，问题是不同实现的偏移量不同，做法不能通用
+
+```
+int get_tid_from_pthread(pthread_t t)
+{
+	struct pthread_fake {
+		void *nothing[90];
+		pid_t tid;
+	};
+
+	struct pthread_fake* f = (struct pthread_fake*)t;
+	return f->tid;
+}
+
+int get_pid_from_pthread(pthread_t t)
+{
+	struct pthread_fake {
+		void *nothing[90];
+		pid_t tid;
+		pid_t pid;
+	};
+
+	struct pthread_fake* f = (struct pthread_fake*)t;
+	return f->pid;
+}
+
+```
+
+还是在线程里使用gettid()来得快（版本过早的glibc没有gettid()，改用syscall）：
+
+```
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/syscall.h>
+#include <stdio.h>
+
+printf("thread %s: %d\n", This->name.c_str(), syscall(SYS_gettid));;
+```
+
+
+
+
+
+
+
 ## 错误
 
 ### 错误1

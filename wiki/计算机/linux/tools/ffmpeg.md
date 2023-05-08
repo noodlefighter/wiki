@@ -23,7 +23,7 @@ ffmpeg -f mp3 -i test.mp3 test.wav
 截取：
 
 ```
-ffmpeg -i input.wav -ss 00:00:05 -t 00:00:10 output.wav
+ffmpeg -i input.wav -ss 00:00:05 -t 00:00:10 -c copy output.wav
 ```
 
 常用参数：

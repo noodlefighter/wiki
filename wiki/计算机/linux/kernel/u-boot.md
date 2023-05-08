@@ -93,5 +93,14 @@ Contents:
 
 
 
+## u-boot使用网口
+
+```
+setenv ipaddr 192.168.200.119
+setenv ethaddr 11:22:33:44:55:66
+setenv netmask 255.255.255.0
+setenv gatewayip 192.168.200.1
+```
+
 
 

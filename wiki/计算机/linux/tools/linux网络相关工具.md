@@ -67,3 +67,20 @@ Host github.com
 ```
 
 corkscrew = A tool for tunneling SSH through HTTP proxies
+
+
+
+## linux的iproute2命令
+
+删除所有路由信息：
+
+```
+ip route flush table all
+```
+
+添加路由：
+
+```
+ip route add default dev %s via %s
+```
+

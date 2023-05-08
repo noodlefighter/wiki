@@ -433,6 +433,13 @@ git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.c
 	proxy=socks5://xxxxxx:7890
 ```
 
+ssh方式要在`~/.ssh/config`中配置：
+
+```
+Host github.com
+     ProxyCommand /usr/bin/corkscrew r-proxy 7890 %h %p
+```
+
 
 
 ## 遇到的问题
