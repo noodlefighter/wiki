@@ -81,6 +81,19 @@ printf("thread %s: %d\n", This->name.c_str(), syscall(SYS_gettid));;
 
 
 
+## pthread提升线程优先级
+
+单独设置有限级没用，还要设置调度算法
+
+```
+
+  {
+    struct sched_param sched_params;
+    sched_params.sched_priority = 50;
+    pthread_setschedparam(pthread_self(), SCHED_RR, &sched_params);
+  }
+```
+
 
 
 

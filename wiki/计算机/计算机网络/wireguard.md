@@ -4,14 +4,15 @@
 
 wg的配置涉及到的概念：
 
-- Interface，本机接口
-  - 私钥，本机的私钥
-  - Address：本机在wg网络中的地址
-  - ListenPort：监听的端口，不指定就随机，如果做服务端就应该指定，让其他peer指定Endpoint时带上这个端口
-- Peer，wg不分服务端、客户端，peer就是本机以外的其他节点
-  - 公钥，目标节点的公钥
-  - Endpoint，peer对应的主机，可以写作`39.156.66.10:5432`
-  - 允许的IP，允许该 Peer 在隧道中使用的 IP段，通常是该 Peer 的隧道 IP 地址和通过隧道的路由网络，客户端可能会根据这个选项自动设置路由表
+Interface，本机接口
+- 私钥，本机的私钥
+- Address：本机在wg网络中的地址
+- ListenPort：监听的端口，不指定就随机，如果做服务端就应该指定，让其他peer指定Endpoint时带上这个端口
+
+Peer，wg不分服务端、客户端，peer就是本机以外的其他节点
+- 公钥，目标节点的公钥
+- Endpoint，peer对应的主机，可以写作`39.156.66.10:5432`
+- 允许的IP，允许该 Peer 在隧道中使用的 IP段，通常是该 Peer 的隧道 IP 地址和通过隧道的路由网络，客户端可能会根据这个选项自动设置路由表
 
 
 
@@ -37,7 +38,7 @@ PrivateKey = (VPS的私钥)
 
 [Peer]
 PublicKey = （写NAS的公钥）
-AllowedIPs = 10.10.10.2/32（可以直接写死NAS地址）
+AllowedIPs = 10.10.10.2/32（这里就一台机器，直接写死NAS地址）
 PersistentKeepalive = 25
 ```
 
@@ -51,9 +52,7 @@ $ wg-quick up wg0
 
 **NAS上配置**
 
-一样先生成公私钥
-
-配置`/etc/wireguard/wg0.conf`
+一样要先生成公私钥，然后配置`/etc/wireguard/wg0.conf`
 
 ```
 [Interface]
@@ -62,9 +61,24 @@ PrivateKey = (NAS的私钥)
 
 [Peer]
 Endpoint = （VPS的IP）:5432
-AllowedIPs = 10.10.10.1/32
+AllowedIPs = 10.10.10.1/32（直接写死VPS的IP地址）
 PublicKey = （写VPS的公钥）
 PersistentKeepalive = 25
 ```
 
-开启即可，应该就可以相互ping通了
+开启即可，应该就可以相互ping通了，如果不通，可以在两端分别用`wg`命令看当前状态，例如：
+
+```
+interface: wg0
+  public key: 5MQ48dLW/ngQCd7WcHYGzDCt5G6UbDwnpFyWY0He/Dg=
+  private key: (hidden)
+  listening port: 42791
+
+peer: hJkRu0eHnzstHTpuACPTDQ83S6QuZ/vU9rMLE5IVkUw=
+  endpoint: (..VPS的IP..):5432
+  allowed ips: 10.10.10.1/32
+  latest handshake: 46 seconds ago
+  transfer: 2.86 MiB received, 145.47 MiB sent
+  persistent keepalive: every 25 seconds
+```
+

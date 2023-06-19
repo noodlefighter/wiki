@@ -43,3 +43,12 @@ autoreconf -i
 ./configure --host=arm --with-sysroot=$SYSROOT CC=${TCHAIN}gcc
 ```
 
+
+## autotools构建的项目 编译debug目标
+
+```
+CFLAGS="-O0 -ggdb3" ./configure
+```
+
+
+
