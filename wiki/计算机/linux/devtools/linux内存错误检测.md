@@ -144,7 +144,7 @@ INSTRUCTIONS FOR DEBUGGING YOUR PROGRAM
 注意：
 
 - 这工具还是太老了，实际用起来各种问题，试用后发现fedora的那些patch比ubuntu的好使，我自己fork了一份方便修改维护，用的时候应该直接源码编译安装，方便调试 https://github.com/noodlefighter/electric-fence
-- 如果遇到`mprotect() failed: No Memory`，其实是mmap数量受限制，`echo 128000 > /proc/sys/vm/max_map_count`可解决（mmap情况：`cat /proc/$pid/maps`）
+- 如果遇到`mprotect() failed: No Memory`，其实是mmap数量受限制，`echo 1280000 > /proc/sys/vm/max_map_count`可解决（mmap情况：`cat /proc/$pid/maps`）
 
 
 

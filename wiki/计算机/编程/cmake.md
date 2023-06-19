@@ -68,6 +68,55 @@ make -j8
 
 
 
+自己最近用的：
+
+```
+# refers:
+# - https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/CrossCompiling
+# - https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html?highlight=cmake_c_compiler
+
+SET(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+
+# rootfs
+set(CMAKE_SYSROOT /opt/myir-imx-fb/4.1.15-2.0.1/sysroots/cortexa7hf-neon-poky-linux-gnueabi/)
+
+# host-tools root
+set(HOST_TOOLS_ROOT /opt/myir-imx-fb/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux)
+
+# specify the cross compiler
+SET(CMAKE_C_COMPILER   "${HOST_TOOLS_ROOT}/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-gcc")
+SET(CMAKE_CXX_COMPILER "${HOST_TOOLS_ROOT}/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-g++")
+set(CMAKE_C_FLAGS "-march=armv7ve -marm -mfpu=neon  -mfloat-abi=hard -mcpu=cortex-a7")
+set(CMAKE_CXX_FLAGS "-march=armv7ve -marm -mfpu=neon  -mfloat-abi=hard -mcpu=cortex-a7")
+
+# where is the target environment
+SET(CMAKE_FIND_ROOT_PATH ${CMAKE_SYSROOT})
+
+# for qmake, etc...
+set(OE_QMAKE_PATH_EXTERNAL_HOST_BINS "${HOST_TOOLS_ROOT}/usr/bin/qt5/")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DQT_NO_OPENGL_ES_3")
+
+# search for programs in the build host directories (not necessary)
+SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+
+# for libraries and headers in the target directories
+SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+
+# pkgconfig
+set(ENV{PKG_CONFIG_DIR} "")
+set(ENV{PKG_CONFIG_LIBDIR} "${CMAKE_SYSROOT}/usr/lib/pkgconfig:${CMAKE_SYSROOT}/usr/share/pkgconfig")
+set(ENV{PKG_CONFIG_SYSROOT_DIR} ${CMAKE_SYSROOT})
+
+```
+
+
+
+
+
+
+
 ## CMake寻找依赖库
 
 > refers:
@@ -107,5 +156,35 @@ target_link_directories(ebsx PUBLIC ${FFMPEG_LIBDIRS})
 
 ```
 install(TARGETS <目标名...>)
+```
+
+
+
+## CMake遇到过的问题
+
+
+
+### 包含一个非子目录的CMake工程
+
+比如：
+
+```
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../../lib/CGame++
+```
+
+可能会报错：
+
+```
+CMake Error at CMakeLists.txt:6 (add_subdirectory):
+add_subdirectory not given a binary directory but the given source
+directory "/home/r/proj/asrx/asrx-main/lib/CGame++" is not a subdirectory
+of "/home/r/proj/asrx/asrx-main/driver/drv_audio". When specifying an
+out-of-tree source a binary directory must be explicitly specified.
+```
+
+必须指定目标目录，如此解决：
+
+```
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../../lib/CGame++ ${CMAKE_BINARY_DIR}/CGame++)
 ```
 
