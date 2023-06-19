@@ -2871,6 +2871,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#autotools-debug" class="md-nav__link">
+    autotools构建的项目 编译debug目标
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6832,6 +6839,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#autotools-debug" class="md-nav__link">
+    autotools构建的项目 编译debug目标
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6875,6 +6889,9 @@ autoreconf -i
 </code></pre></div></p>
 <h2 id="autotools-arm">autotools构建的项目 交叉编译到ARM<a class="headerlink" href="#autotools-arm" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>./configure --host=arm --with-sysroot=$SYSROOT CC=${TCHAIN}gcc
+</code></pre></div>
+<h2 id="autotools-debug">autotools构建的项目 编译debug目标<a class="headerlink" href="#autotools-debug" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>CFLAGS=&quot;-O0 -ggdb3&quot; ./configure
 </code></pre></div>
                 
               

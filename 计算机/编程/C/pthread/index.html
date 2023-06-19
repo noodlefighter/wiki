@@ -5532,6 +5532,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pthread" class="md-nav__link">
+    pthread提升线程优先级
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     错误
   </a>
@@ -6900,6 +6907,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pthread" class="md-nav__link">
+    pthread提升线程优先级
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     错误
   </a>
@@ -6993,6 +7007,14 @@ int get_pid_from_pthread(pthread_t t)
 #include &lt;stdio.h&gt;
 
 printf(&quot;thread %s: %d\n&quot;, This-&gt;name.c_str(), syscall(SYS_gettid));;
+</code></pre></div>
+<h2 id="pthread">pthread提升线程优先级<a class="headerlink" href="#pthread" title="Permanent link">&para;</a></h2>
+<p>单独设置有限级没用，还要设置调度算法</p>
+<div class="highlight"><pre><span></span><code>  {
+    struct sched_param sched_params;
+    sched_params.sched_priority = 50;
+    pthread_setschedparam(pthread_self(), SCHED_RR, &amp;sched_params);
+  }
 </code></pre></div>
 <h2 id="_3">错误<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <h3 id="1">错误1<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>

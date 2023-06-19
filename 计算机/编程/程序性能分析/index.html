@@ -6995,11 +6995,11 @@
 <p>火焰图就是通过定时采样堆栈信息，生成“时间占比-堆栈层次”的图表，通过观察函数执行时间占比（越宽占用时间越长）、CPU使用程度（颜色越深吃的CPU资源越多）来调优程序性能，“平顶山”式的图形一般就是要优化的地方。</p>
 <p>局限性：由于原理是定时采样，信息是不完整的，无法观察到调用过深的情况；只适合观察同步阻塞，而通过异步实现的延迟无法观察。</p>
 <h3 id="perf">用perf捕捉堆栈信息<a class="headerlink" href="#perf" title="Permanent link">&para;</a></h3>
-<p>程序编译时应使用<code>-Og -g</code>。</p>
-<div class="highlight"><pre><span></span><code># perf record -F 99 -p &lt;pid&gt; -g
+<p>程序编译时应使用<code>-Og -g</code>。采样频率99，持续20秒：</p>
+<div class="highlight"><pre><span></span><code># perf record -F 99 -p &lt;pid&gt; -g -- sleep 20
 </code></pre></div>
 <p>简单看看采集到的东西，但数据一多就没法看了：</p>
-<div class="highlight"><pre><span></span><code># perf report -n --stdio
+<div class="highlight"><pre><span></span><code># perf report -n --stdio | head -n 200
 </code></pre></div>
 <h3 id="flamegraph">用FlameGraph生成火焰图<a class="headerlink" href="#flamegraph" title="Permanent link">&para;</a></h3>
 <p>安装：b</p>
