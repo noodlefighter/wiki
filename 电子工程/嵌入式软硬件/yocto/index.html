@@ -1759,6 +1759,19 @@
     include "imx6qdl-phytec-peb-wlbt-01.dtsi"
   </a>
   
+    <nav class="md-nav" aria-label="include "imx6qdl-phytec-peb-wlbt-01.dtsi"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yoctobitbakegit" class="md-nav__link">
+    Yocto(Bitbake)中加速git子模块拉取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -5584,6 +5597,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B/C/c%E8%AF%AD%E8%A8%80%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%A0%88%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+        c语言中实现栈回溯
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B/C/c%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E6%97%B6%E9%97%B4/" class="md-nav__link">
         C语言中的时间
       </a>
@@ -7216,6 +7241,19 @@
     include "imx6qdl-phytec-peb-wlbt-01.dtsi"
   </a>
   
+    <nav class="md-nav" aria-label="include "imx6qdl-phytec-peb-wlbt-01.dtsi"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yoctobitbakegit" class="md-nav__link">
+    Yocto(Bitbake)中加速git子模块拉取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -7705,8 +7743,33 @@ SOC_FAMILY .= ":phyboard-mira-imx6"</p>
 ### 检查yocto编译环境的变量
 </code></pre></div>
 bitbake -e
-```</p>
-<p>这个指令的输出可以直接grep 或者用 &gt; 输出到一个文件后打开查看。</p>
+<div class="highlight"><pre><span></span><code>这个指令的输出可以直接grep 或者用 &gt; 输出到一个文件后打开查看。
+</code></pre></div></p>
+<h2 id="yoctobitbakegit">Yocto(Bitbake)中加速git子模块拉取<a class="headerlink" href="#yoctobitbakegit" title="Permanent link">&para;</a></h2>
+<p>目前是在configure阶段拉取子模块，耗费大量时间：</p>
+<div class="highlight"><pre><span></span><code>do_configure_prepend() {
+    cd ${S}
+    git submodule update --init --recursive
+}
+</code></pre></div>
+<p>找到一篇文章介绍一种抛弃git内部submodule管理，自行拉取子模块的方法</p>
+<blockquote>
+<p>Bitbake and Git Submodules Done Right <a href="https://amboar.github.io/notes/2019/08/30/bitbake-and-git-submodules.html">https://amboar.github.io/notes/2019/08/30/bitbake-and-git-submodules.html</a></p>
+</blockquote>
+<p>它给出的例子：</p>
+<div class="highlight"><pre><span></span><code>SRCREV_FORMAT = &quot;glm_gli&quot;
+SRCREV_glm = &quot;01f9ab5b6d21e5062ac0f6e0f205c7fa2ca9d769&quot;
+SRCREV_gli = &quot;8e43030b3e12bb58a4663d85adc5c752f89099c0&quot;
+SRCREV = &quot;ae0b59c6e2e8630a2ae26f4a0b7a72cbe7547948&quot;
+
+SRC_URI = &quot;git://github.com/SaschaWillems/Vulkan.git \
+           git://github.com/g-truc/glm;destsuffix=git/external/glm;name=glm \
+           git://github.com/g-truc/gli;destsuffix=git/external/gli;name=gli \
+           file://0001-Don-t-build-demos-with-questionably-licensed-data.patch \
+&quot;
+</code></pre></div>
+<p>这样就能实现子模块不更新则不拉取、只选用部分子模块，缩短构建时间。</p>
+<p>但是我们的工程依赖了太多的子模块，手动管理不现实...</p>
                 
               
               
