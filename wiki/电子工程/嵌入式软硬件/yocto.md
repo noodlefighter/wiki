@@ -593,3 +593,43 @@ bitbake -e
 ```
 
 这个指令的输出可以直接grep 或者用 > 输出到一个文件后打开查看。
+
+```
+
+
+
+
+
+## Yocto(Bitbake)中加速git子模块拉取
+
+目前是在configure阶段拉取子模块，耗费大量时间：
+
+```
+do_configure_prepend() {
+    cd ${S}
+    git submodule update --init --recursive
+}
+```
+
+找到一篇文章介绍一种抛弃git内部submodule管理，自行拉取子模块的方法
+
+> Bitbake and Git Submodules Done Right https://amboar.github.io/notes/2019/08/30/bitbake-and-git-submodules.html
+
+它给出的例子：
+
+```
+SRCREV_FORMAT = "glm_gli"
+SRCREV_glm = "01f9ab5b6d21e5062ac0f6e0f205c7fa2ca9d769"
+SRCREV_gli = "8e43030b3e12bb58a4663d85adc5c752f89099c0"
+SRCREV = "ae0b59c6e2e8630a2ae26f4a0b7a72cbe7547948"
+
+SRC_URI = "git://github.com/SaschaWillems/Vulkan.git \
+           git://github.com/g-truc/glm;destsuffix=git/external/glm;name=glm \
+           git://github.com/g-truc/gli;destsuffix=git/external/gli;name=gli \
+           file://0001-Don-t-build-demos-with-questionably-licensed-data.patch \
+"
+```
+
+这样就能实现子模块不更新则不拉取、只选用部分子模块，缩短构建时间。
+
+但是我们的工程依赖了太多的子模块，手动管理不现实...

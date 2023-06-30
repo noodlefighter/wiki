@@ -32,6 +32,16 @@
 
 
 
+## TRS音频规范参考
+
+标准乱七八糟，可以参考Android手机的开放标准：
+
+> 3.5 毫米耳机插孔：设备规范:https://source.android.google.cn/docs/core/interaction/accessories/headset/jack-headset-spec
+>
+> 3.5 毫米耳机：配件规范: https://source.android.google.cn/docs/core/interaction/accessories/headset/plug-headset-spec
+
+![image-20230629091000842](_assets/TRS/image-20230629091000842.png)
+
 ## 音频Line-in/Mic-in，以及Line-out/HeadPhone接口区别
 
 >  via: https://blog.csdn.net/tq384998430/article/details/72356914
