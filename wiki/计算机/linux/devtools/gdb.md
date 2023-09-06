@@ -70,8 +70,27 @@ gdbServer + gdb 调试
 https://www.cnblogs.com/Dennis-mi/articles/5018745.html
 
 ```
-target$ gdbserver --multi :5678
+不指定程序，仅启动服务
+# gdbserver --multi :5678
+
+指定调试的程序
+# gdbserver --once :5678 ./my_app
+
+嵌在initscripts里：
+if [[ ${DEBUG} == "1" ]]; then
+    /opt/gdbserver --once :1234 ./$APP &
+else
+    ./$APP &
+fi
 ```
+
+
+
+    
+
+
+
+
 
 ```
 # 连接到目标机

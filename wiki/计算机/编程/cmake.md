@@ -160,6 +160,19 @@ install(TARGETS <目标名...>)
 
 
 
+## CMake目标别名
+
+
+
+```
+add_library(efence efence.c page.c print.c)
+add_library(efence::efence ALIAS efence)
+```
+
+
+
+
+
 ## CMake遇到过的问题
 
 

@@ -7,6 +7,16 @@ https://wiki.archlinux.org/index.php/Pacman/Rosetta_(%E7%AE%80%E4%BD%93%E4%B8%AD
 
 
 
+debian系换源：
+
+```
+sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirrors.aliyun.com\/ubuntu\//g' /etc/apt/sources.list
+```
+
+
+
+
+
 ## pacman系
 
 pacman是arch系下的包管理工具

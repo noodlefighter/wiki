@@ -220,3 +220,19 @@ $ sudo systemctl restart docker
 
 https://www.daocloud.io/mirror
 
+
+
+## 创建一个永不退出的什么都不做的容器
+
+
+
+```
+version: '3'
+
+services:
+  playground-web:
+    image: ubuntu:16.04
+    command: /bin/bash -c "while true;do echo hello docker;sleep 1;done"
+    restart: always
+```
+

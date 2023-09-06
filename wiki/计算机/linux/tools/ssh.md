@@ -82,6 +82,14 @@ Host github.com
     User github_username
 ```
 
+## scp命令
+
+指定端口需要带`-P`参数，注意是大写：
+
+```
+scp -P 33890 haha nas.1000bug.com:/home/r
+```
+
 
 
 ## sshfs

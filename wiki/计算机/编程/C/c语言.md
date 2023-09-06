@@ -23,3 +23,13 @@ int main (void)
 a-b=-2, b-a=2
 ```
 
+
+
+## C语言变参宏
+
+
+
+```
+#define PR(…) printf(__VA_ARGS__)
+```
+
