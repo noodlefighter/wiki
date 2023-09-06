@@ -1370,6 +1370,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/MCU%E7%9A%84CPP%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        MCU的CPP运行环境
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/RGB-LCD%E6%97%B6%E5%BA%8F/" class="md-nav__link">
         RGB LCD时序
       </a>
@@ -6372,6 +6384,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/tailscale/" class="md-nav__link">
+        Tailscale
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/tcp/" class="md-nav__link">
         Tcp
       </a>
@@ -7105,7 +7129,18 @@ $gdb hello 11127
 <h2 id="gdbserver">gdbserver远程调试<a class="headerlink" href="#gdbserver" title="Permanent link">&para;</a></h2>
 <p>gdbServer + gdb 调试
 <a href="https://www.cnblogs.com/Dennis-mi/articles/5018745.html">https://www.cnblogs.com/Dennis-mi/articles/5018745.html</a></p>
-<div class="highlight"><pre><span></span><code>target$ gdbserver --multi :5678
+<div class="highlight"><pre><span></span><code>不指定程序，仅启动服务
+# gdbserver --multi :5678
+
+指定调试的程序
+# gdbserver --once :5678 ./my_app
+
+嵌在initscripts里：
+if [[ ${DEBUG} == &quot;1&quot; ]]; then
+    /opt/gdbserver --once :1234 ./$APP &amp;
+else
+    ./$APP &amp;
+fi
 </code></pre></div>
 <div class="highlight"><pre><span></span><code># 连接到目标机
 gdb&gt; target extended-remote 目标机器IP:5678

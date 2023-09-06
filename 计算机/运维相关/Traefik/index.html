@@ -64,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#traefik" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1355,6 +1360,18 @@
     <li class="md-nav__item">
       <a href="../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/Golang%E5%BC%80%E5%8F%91%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%8F%AF%E8%A1%8C%E6%80%A7/" class="md-nav__link">
         Golang开发嵌入式软件可行性
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E7%A1%AC%E4%BB%B6/MCU%E7%9A%84CPP%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        MCU的CPP运行环境
       </a>
     </li>
   
@@ -6209,6 +6226,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/tailscale/" class="md-nav__link">
+        Tailscale
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/tcp/" class="md-nav__link">
         Tcp
       </a>
@@ -6416,9 +6445,37 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Traefik
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Traefik
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#traefik" class="md-nav__link">
+    Traefik手动部署实例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -6758,6 +6815,36 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#traefik" class="md-nav__link">
+    Traefik手动部署实例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -6767,8 +6854,50 @@
                   <h1>Traefik</h1>
                 
                 <p>Traefik能方便地管理docker实例，代替nginx做反向代理、均衡负载，性能一般，易用为王。</p>
-<p>快速入门：‘</p>
+<p>快速入门：</p>
 <p><a href="https://docs.traefik.io/getting-started/quick-start/">https://docs.traefik.io/getting-started/quick-start/</a></p>
+<h2 id="traefik">Traefik手动部署实例<a class="headerlink" href="#traefik" title="Permanent link">&para;</a></h2>
+<p><code>traefik/docker-compose.yml</code>，network_mode为host方便route到其他网络下的容器</p>
+<div class="highlight"><pre><span></span><code>version: &#39;3&#39;
+
+services:
+  reverse-proxy:
+    # The official v2 Traefik docker image
+    image: traefik:v2.10
+    # Enables the web UI and tells Traefik to listen to docker
+    command:
+      - &quot;--api.insecure=true&quot;
+      - &quot;--providers.docker&quot;
+      - &quot;--entrypoints.web.address=:38899&quot;
+    network_mode: &quot;host&quot;
+    ports:
+      # The HTTP port
+      - &quot;38899:38899&quot;
+      # The Web UI (enabled by --api.insecure=true)
+      - &quot;8080:8080&quot;
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+</code></pre></div>
+<p>另一个容器：</p>
+<div class="highlight"><pre><span></span><code>version: &#39;3&#39;
+services:
+  homepage:
+    image: nginx
+    container_name: &quot;homepage&quot;
+    volumes:
+      - &quot;./nginx.conf:/etc/nginx/nginx.conf&quot;
+      - &quot;./logs:/var/log/nginx&quot;
+      - &quot;./html:/usr/share/nginx/html&quot;
+    restart: always
+    labels:
+      - &quot;traefik.enable=true&quot;
+      - &quot;traefik.http.routers.homepage.rule=Host(`nas.1000bug.com`)&amp;&amp;PathPrefix(`/`)&quot;
+      - &quot;traefik.http.routers.homepage.entrypoints=web&quot;
+      - &quot;traefik.http.middlewares.home-page-auth.basicauth.users=test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/&quot;
+      - &quot;traefik.http.routers.homepage.middlewares=home-page-auth@docker&quot;
+</code></pre></div>
+<p>这样就为homepage创建了一个route、basicath中间件。</p>
                 
               
               
