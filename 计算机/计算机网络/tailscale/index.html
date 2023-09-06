@@ -6263,6 +6263,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#custom-derpstundrep" class="md-nav__link">
+    自建Custom DERP节点，自定义STUN和DREP服务端口
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6664,6 +6671,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        计算机稳定性测试
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -6838,6 +6857,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#custom-derpstundrep" class="md-nav__link">
+    自建Custom DERP节点，自定义STUN和DREP服务端口
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6872,6 +6898,105 @@
 <li>DERP：tailscale的中继服务器，自创协议</li>
 <li>STUN：Session Traversal Utilities for NAT，NAT会话穿越应用程序，就是打洞服务</li>
 </ul>
+<h2 id="custom-derpstundrep">自建Custom DERP节点，自定义STUN和DREP服务端口<a class="headerlink" href="#custom-derpstundrep" title="Permanent link">&para;</a></h2>
+<p>前提：</p>
+<ul>
+<li>我这里用的NAT VPS， 就是那种免备案的巨便宜的，一台机只给你在公网IP上挂10个端口转发的VPS，所以必须自定义端口</li>
+<li>DERP是中转服务，TCP，在HTTP协议的基础上转发流量，</li>
+<li>STUN是打洞服务，UDP，</li>
+<li>有自己的域名，下文都是xxxxx.com</li>
+</ul>
+<p>Step1. 给域名申请SSL证书，最简单是用<code>acme.sh</code>申请，我的域名挂在cloudflare上，用DNS API的方式最简单：</p>
+<div class="highlight"><pre><span></span><code>  export CF_Key=&quot;XXXXX&quot;
+  export CF_Email=&quot;XXXXXX&quot;
+  acme.sh --set-default-ca --server https://acme-v02.api.letsencrypt.org/directory
+  acme.sh  --issue  -d xxxxxx.com --dns dns_cf
+</code></pre></div>
+<blockquote>
+<p>cloudflare如何拿API KEY？</p>
+<ul>
+<li>登入后，右上角My Profile</li>
+<li>左侧API Tokens</li>
+<li>添加KEY；如果已经有KEY了就在“Global API Key”右边点“View”查看</li>
+</ul>
+</blockquote>
+<p>Step2. 建一个derp服务的目录，把证书复制进来：</p>
+<div class="highlight"><pre><span></span><code>mkdir derper &amp;&amp; cd derper
+mkdir certs
+acme.sh --install-cert -d xxxx.com --cert-file ./certs/xxxx.com.crt --key-file ./certs/xxxx.com.key
+acme.sh --install-cert -d derp.1000bug.com --cert-file ./certs/derp.1000bug.com.crt --key-file ./certs/derp.1000bug.com.key
+</code></pre></div>
+<p>Step3.开启DERP服务，使用网友现成的Dockerfile，这里用docker-compose，新建<code>docker-compose.yml</code>：</p>
+<div class="highlight"><pre><span></span><code>version: &#39;3.5&#39;
+services:
+  derper:
+    container_name: derper
+    image: fredliang/derper
+    restart: always
+    ports:
+      - &quot;3478:38893/udp&quot; # STUN服务
+      - &quot;38894:38894&quot; # DERP服务
+    volumes:
+      - /home/r/derper/certs:/app/certs    
+    command: /app/derper --hostname=xxx.com --certmode=manual --certdir=/app/certs/ --a=:38894 --stun=true --stun-port=38893
+</code></pre></div>
+<p>Step4. 编辑tailscale的线上ACL配置，添加</p>
+<div class="highlight"><pre><span></span><code>    &quot;derpMap&quot;: {
+        &quot;Regions&quot;: {
+            &quot;900&quot;: {
+                &quot;RegionID&quot;:   900,
+                &quot;RegionCode&quot;: &quot;cn&quot;,
+                &quot;RegionName&quot;: &quot;My CN Dreper&quot;,
+                &quot;Nodes&quot;: [
+                    {
+                        &quot;Name&quot;:     &quot;1&quot;,
+                        &quot;RegionID&quot;: 900,
+                        &quot;HostName&quot;: &quot;xxxx.com&quot;,
+                        &quot;STUNPort&quot;: 38893,
+                        &quot;STUNOnly&quot;: false,
+                        &quot;DERPPort&quot;: 38894,              
+                    },
+                ],
+            },
+        },
+    },
+</code></pre></div>
+<p>执行<code>docker-compose up</code>（调通之后，后台运行可以加<code>-d</code>参数）：</p>
+<div class="highlight"><pre><span></span><code>$ docker-compose up
+Recreating derper ... done
+Attaching to derper
+derper    | 2023/09/06 05:40:22 no config path specified; using /var/lib/derper/derper.key
+derper    | 2023/09/06 05:40:22 derper: serving on :38894 with TLS
+derper    | 2023/09/06 05:40:22 running STUN server on [::]:38893
+</code></pre></div>
+<p>这时候用浏览器打开<code>https://xxxx.com:38894</code>，应该能看到“This is a <a href="https://tailscale.com/">Tailscale</a> <a href="https://pkg.go.dev/tailscale.com/derp">DERP</a> server.”的字样，说明服务正常运行了，注意看证书是否被信任。</p>
+<p>Step5:验证通讯：</p>
+<p>在网络内任一台机<code>tailscale netcheck</code>，能看到自己节点的延迟就说明正常，不正常请加<code>--verbose</code>：</p>
+<div class="highlight"><pre><span></span><code>$ tailscale netcheck
+Report:
+    * UDP: true
+    * IPv4: yes, ************8:9003
+    * IPv6: yes, [ ************]:47246
+    * MappingVariesByDestIP: false
+    * HairPinning: false
+    * PortMapping:
+    * CaptivePortal: false
+    * Nearest DERP: My CN Dreper
+    * DERP latency:
+        - cna: 32.5ms  (My CN Dreper)  &lt;------ 有数字出来才正常
+        - tok: 81.9ms  (Tokyo)
+        - hkg: 83.2ms  (Hong Kong)
+</code></pre></div>
+<p>再使用<code>tailscale ping xxx</code>一台必须使用中继连接的机器，能ping通说明中转节点转发流量了：</p>
+<div class="highlight"><pre><span></span><code>$ tailscale ping r-store
+pong from r-store (100.73.43.142) via DERP(cna) in 69ms
+pong from r-store (100.73.43.142) via DERP(cna) in 60ms
+</code></pre></div>
+<blockquote>
+<p>当前，我自己的运行情况，证书还是有问题：
+netcheck正常，ping不正常，用curl访问DERP会提示:curl: (60) SSL certificate problem: unable to get local issuer certificate
+只有ACL里用加了<code>InsecureForTests: true</code>选项流量才能被中转，这个选项关闭了TLS验证</p>
+</blockquote>
                 
               
               

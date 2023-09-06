@@ -6712,6 +6712,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        计算机稳定性测试
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -6951,6 +6963,8 @@
                 
                 <h2 id="_1">一般使用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>mkdir build &amp;&amp; cmake ..
+
+cmake -S{{ SRC_DIR }} -B{{ BUILD_DIR}} -GNinja -DCMAKE_BUILD_TYPE=Debug
 
 多显示点信息，比如具体执行了什么命令
 cmake -DCMAKE_VERBOSE_MAKEFILE=on .

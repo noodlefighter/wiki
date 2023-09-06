@@ -6294,8 +6294,49 @@
       
         <li class="md-nav__item">
   <a href="#wireguard" class="md-nav__link">
-    WireGuard配置例
+    WireGuard
   </a>
+  
+    <nav class="md-nav" aria-label="WireGuard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wg" class="md-nav__link">
+    wg的配置涉及到的概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    安装、配置、基本使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vps" class="md-nav__link">
+    VPS上配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nas" class="md-nav__link">
+    NAS上配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    调试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -6664,6 +6705,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        计算机稳定性测试
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -6833,8 +6886,49 @@
       
         <li class="md-nav__item">
   <a href="#wireguard" class="md-nav__link">
-    WireGuard配置例
+    WireGuard
   </a>
+  
+    <nav class="md-nav" aria-label="WireGuard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wg" class="md-nav__link">
+    wg的配置涉及到的概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    安装、配置、基本使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vps" class="md-nav__link">
+    VPS上配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nas" class="md-nav__link">
+    NAS上配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    调试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -6853,20 +6947,54 @@
                 
                   <h1>Wireguard</h1>
                 
-                <h2 id="wireguard">WireGuard配置例<a class="headerlink" href="#wireguard" title="Permanent link">&para;</a></h2>
-<p>因为家庭宽带没有IPv4，买了个NAT-VPS做流量转发，VPS仅有IPv4地址+10个端口，所以方案选用WireGuard建VPN，与NAS互通，以下简称wg。</p>
-<p>wg的配置涉及到的概念：</p>
-<p>Interface，本机接口
-- 私钥，本机的私钥
-- Address：本机在wg网络中的地址
-- ListenPort：监听的端口，不指定就随机，如果做服务端就应该指定，让其他peer指定Endpoint时带上这个端口</p>
-<p>Peer，wg不分服务端、客户端，peer就是本机以外的其他节点
-- 公钥，目标节点的公钥
-- Endpoint，peer对应的主机，可以写作<code>39.156.66.10:5432</code>
-- 允许的IP，允许该 Peer 在隧道中使用的 IP段，通常是该 Peer 的隧道 IP 地址和通过隧道的路由网络，客户端可能会根据这个选项自动设置路由表</p>
-<p>WireGuard需要用到内核特性，Linux 5.6以后自带，而这之前需要安装内核模块，比如在ubuntu上是<code>wireguard-dkms</code>这个包，以及工具<code>wireguard-tools</code></p>
-<p><strong>VPS上配置</strong></p>
-<p>先生成公私钥：</p>
+                <h2 id="wireguard">WireGuard<a class="headerlink" href="#wireguard" title="Permanent link">&para;</a></h2>
+<p>因为家庭宽带没有IPv4，NAS在外无法方案，所以买了个VPS做流量转发，又因为VPS只有IPv4网络，所以先组VPN与NAS网络互通。</p>
+<p>WireGuard和OpenVPN、Zerotier之类功能类似，就是虚拟局域网，相较竞品的特点就是极简，使用简单、功能简单。</p>
+<p>WireGuard以下简称wg。</p>
+<h3 id="wg">wg的配置涉及到的概念<a class="headerlink" href="#wg" title="Permanent link">&para;</a></h3>
+<p>截一段manual中的配置例：</p>
+<div class="highlight"><pre><span></span><code>[Interface]
+PrivateKey = yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
+ListenPort = 51820
+
+[Peer]
+PublicKey = xTIBA5rboUvnH4htodjb6e697QjLERt1NAB4mZqp8Dg=
+Endpoint = 192.95.5.67:1234
+AllowedIPs = 10.192.122.3/32, 10.192.124.1/24
+
+[Peer]
+PublicKey = TrMvSoP4jYQlY6RIzBgbssQqY3vxI2Pi+y71lOWWXX0=
+Endpoint = [2607:5300:60:6b0::c05f:543]:2468
+AllowedIPs = 10.192.122.4/32, 192.168.0.0/16
+
+[Peer]
+PublicKey = gN65BkIKy1eCE9pP1wdc8ROUtkHLF2PfAqYdyYBz6EA=
+Endpoint = test.wireguard.com:18981
+AllowedIPs = 10.10.10.230/32
+</code></pre></div>
+<p>Interface，本机接口：</p>
+<ul>
+<li>PrivateKey，本机的私钥</li>
+<li>ListenPort：监听的端口，不指定就随机（希望其他人连接这台机器就指定清楚，让其他peer指定Endpoint时带上这个端口）</li>
+<li>Address：本机在wg网络中的地址</li>
+</ul>
+<p>Peer，wg不分服务端、客户端，Peer就是对等的节点：</p>
+<ul>
+<li>PublicKey，节点的公钥，也就是允许持有对应私钥的Peer接入网络</li>
+<li>Endpoint，peer对应的主机，可以写作<code>39.156.66.10:5432</code></li>
+<li>AllowedIPs，允许该 Peer 在隧道中使用的 IP段，通常是该 Peer 的隧道 IP 地址和通过隧道的路由网络，工具可能会根据这个选项自动设置路由表</li>
+</ul>
+<h3 id="_1">安装、配置、基本使用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>wg需要用到内核特性，Linux 5.6以后自带，而这之前需要安装内核模块，比如在ubuntu上是<code>wireguard-dkms</code>这个包，以及工具<code>wireguard-tools</code></p>
+<div class="highlight"><pre><span></span><code>看当前状态：
+wg
+
+wg-quick工具帮助从`/etc/wireguard/&lt;INTERFACE&gt;.conf`配置文件，快速配置接口，如：
+wg-quick up wg0
+wg-quick down wg0
+</code></pre></div>
+<h3 id="vps">VPS上配置<a class="headerlink" href="#vps" title="Permanent link">&para;</a></h3>
+<p>生成公私钥：</p>
 <div class="highlight"><pre><span></span><code>wg genkey | tee wg0-prikey | wg pubkey &gt; wg0-pubkey
 </code></pre></div>
 <p>配置<code>/etc/wireguard/wg0.conf</code></p>
@@ -6883,7 +7011,7 @@ PersistentKeepalive = 25
 <p>开启：</p>
 <div class="highlight"><pre><span></span><code>$ wg-quick up wg0
 </code></pre></div>
-<p><strong>NAS上配置</strong></p>
+<h3 id="nas">NAS上配置<a class="headerlink" href="#nas" title="Permanent link">&para;</a></h3>
 <p>一样要先生成公私钥，然后配置<code>/etc/wireguard/wg0.conf</code></p>
 <div class="highlight"><pre><span></span><code>[Interface]
 Address = 10.10.10.2/24
@@ -6895,7 +7023,12 @@ AllowedIPs = 10.10.10.1/32（直接写死VPS的IP地址）
 PublicKey = （写VPS的公钥）
 PersistentKeepalive = 25
 </code></pre></div>
-<p>开启即可，应该就可以相互ping通了，如果不通，可以在两端分别用<code>wg</code>命令看当前状态，例如：</p>
+<p>用wg-quick开启接口即可</p>
+<h3 id="_2">调试<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>这时应该就可以相互ping通了，如果不通，建议按以下顺序调试：</p>
+<ol>
+<li>各peer分别用<code>wg</code>命令看当前状态，如：</li>
+</ol>
 <div class="highlight"><pre><span></span><code>interface: wg0
   public key: 5MQ48dLW/ngQCd7WcHYGzDCt5G6UbDwnpFyWY0He/Dg=
   private key: (hidden)
@@ -6908,6 +7041,11 @@ peer: hJkRu0eHnzstHTpuACPTDQ83S6QuZ/vU9rMLE5IVkUw=
   transfer: 2.86 MiB received, 145.47 MiB sent
   persistent keepalive: every 25 seconds
 </code></pre></div>
+<p>要是latest handshake在很久之前，或者根本没这条信息，很可能到endpoint的udp根本不通。</p>
+<ol>
+<li>如果wg状态正常，优先检查路由配置，应该能看到peer的AllowedIPs配置了对应的路由条目：</li>
+</ol>
+<p><img alt="image-20230619124329591" src="../_assets/wireguard/image-20230619124329591.png" /></p>
                 
               
               
