@@ -9,6 +9,8 @@
 ```
 mkdir build && cmake ..
 
+cmake -S{{ SRC_DIR }} -B{{ BUILD_DIR}} -GNinja -DCMAKE_BUILD_TYPE=Debug
+
 多显示点信息，比如具体执行了什么命令
 cmake -DCMAKE_VERBOSE_MAKEFILE=on .
 ```

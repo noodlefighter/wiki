@@ -15,8 +15,8 @@ SHELL_DIR=$(cd "$(dirname "$0")";pwd)
 
 ```
 
-`-e`= nounset 禁止空变量
-`-u`= errexit 错误则退出
+`-e`= errexit 错误则退出
+`-u`= nounset 禁止空变量
 
 ## 技巧
 
